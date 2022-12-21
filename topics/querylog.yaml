@@ -1,0 +1,5 @@
+topic: querylog
+topic_creation_config:
+schema:
+  type: json
+  resource: querylog.schema.json
