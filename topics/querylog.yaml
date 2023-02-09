@@ -2,4 +2,4 @@ topic: querylog
 schemas:
   - version: 1
     type: json
-    resource: querylog.schema.json
+    resource: querylog.v1.schema.json
