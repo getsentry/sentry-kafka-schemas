@@ -1,5 +1,6 @@
 topic: querylog
 schemas:
   - version: 1
+    compatibility_mode: none
     type: json
     resource: querylog.v1.schema.json
