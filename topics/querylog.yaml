@@ -5,4 +5,4 @@ schemas:
     type: json
     resource: querylog.v1.schema.json
     examples:
-      querylog1
+      - querylog1
