@@ -21,6 +21,18 @@
       "dataset": {
           "type": "string"
       },
+      "entity": {
+        "type": "string"
+      },
+      "start_timestamp": {
+        "type": ["integer", "null"]
+      },
+      "end_timestamp": {
+        "type": ["integer", "null"]
+      },
+      "status": {
+        "type": "string"
+      },
       "projects": {
           "type": "array",
           "items": {
@@ -32,8 +44,29 @@
           "items": {
               "type": "object"
           }
+      },
+      "timing": {
+        "type": "object",
+        "properties": {
+            "timestamp": {
+                "type": "integer"
+            },
+            "duration_ms": {
+                "type": "integer"
+            },
+            "marks_ms": {
+                "type": "object"
+            },
+            "tags": {
+                "type": "object"
+            }
+        },
+        "additionalProperties": false
+      },
+      "snql_anonymized": {
+        "type": "string"
       }
   },
-  "required": ["request", "dataset"],
+  "required": ["request", "dataset", "entity", "start_timestamp", "end_timestamp", "status", "projects", "query_list", "timing"],
   "additionalProperties": false
 }
