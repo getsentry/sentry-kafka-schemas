@@ -16,5 +16,6 @@ setup(
     url="https://github.com/getsentry/sentry-kafka-schemas",
     description="Kafka topics and schemas for Sentry",
     zip_safe=False,
-    install_requires=get_requirements()
+    install_requires=get_requirements(),
+    packages=["sentry_kafka_schemas"],
 )
