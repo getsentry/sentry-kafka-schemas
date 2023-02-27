@@ -1,0 +1,2 @@
+recursive-include schemas *
+recursive-include topics *
