@@ -41,7 +41,7 @@ jobs:
           make install
       - name: Run mypy
         run: |
-          make lint
+          make type-checking
   tests:
     name: "Run tests"
     runs-on: ubuntu-latest
