@@ -1,4 +1,3 @@
-import os
 import rapidjson
 from typing import Optional, MutableMapping
 from sentry_kafka_schemas.types import Schema
@@ -36,7 +35,9 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
             __TOPIC_TO_SCHEMA[topic] = None
             raise SchemaNotFound
 
-        resource_path = Path.joinpath(Path(__file__).parent, "schemas", schema_metadata["resource"])
+        resource_path = Path.joinpath(
+            Path(__file__).parent, "schemas", schema_metadata["resource"]
+        )
         with open(resource_path) as f:
             json_schema = rapidjson.load(f)
         schema: Schema = {
