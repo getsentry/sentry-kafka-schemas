@@ -18,4 +18,5 @@ setup(
     zip_safe=False,
     install_requires=get_requirements(),
     packages=["sentry_kafka_schemas"],
+    include_package_data=True,
 )
