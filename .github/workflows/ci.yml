@@ -23,8 +23,8 @@ jobs:
           pip install -r python/requirements-test.txt
       - name: Run linter
         run: |
-          black arroyo tests
-          flake8 arroyo tests
+          black python
+          flake8 python
   typing:
     name: "Type checking"
     runs-on: ubuntu-latest
