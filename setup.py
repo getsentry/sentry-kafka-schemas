@@ -4,7 +4,7 @@ from typing import Sequence
 
 
 def get_requirements() -> Sequence[str]:
-    with open("requirements.txt") as fp:
+    with open("python/requirements.txt") as fp:
         return [x.strip() for x in fp if not x.startswith("#")]
 
 
@@ -18,5 +18,6 @@ setup(
     zip_safe=False,
     install_requires=get_requirements(),
     packages=["sentry_kafka_schemas"],
+    package_dir={"": "python/"},
     include_package_data=True,
 )

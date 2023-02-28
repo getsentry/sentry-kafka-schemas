@@ -4,5 +4,5 @@
 .venv
 .DS_Store
 *.egg-info/
-python/dist
-python/build
+/dist
+/build

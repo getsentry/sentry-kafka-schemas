@@ -1,2 +1,0 @@
-recursive-include sentry_kafka_schemas/topics *
-recursive-include sentry_kafka_schemas/schemas *
