@@ -1,4 +1,3 @@
-import os
 import rapidjson
 from typing import Optional, MutableMapping
 from sentry_kafka_schemas.types import Schema
