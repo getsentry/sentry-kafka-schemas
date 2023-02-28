@@ -23,7 +23,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
     """
 
     if topic not in __TOPIC_TO_SCHEMA:
-        topic_path = Path.joinpath(Path(__file__).parents[2], "topics", f"{topic}.yaml")
+        topic_path = Path.joinpath(Path(__file__).parent, "topics", f"{topic}.yaml")
 
         try:
             with open(topic_path) as f:
@@ -36,7 +36,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
             __TOPIC_TO_SCHEMA[topic] = None
             raise SchemaNotFound
 
-        resource_path = Path.joinpath(Path(__file__).parents[2], "schemas", schema_metadata["resource"])
+        resource_path = Path.joinpath(Path(__file__).parent, "schemas", schema_metadata["resource"])
         with open(resource_path) as f:
             json_schema = rapidjson.load(f)
         schema: Schema = {
