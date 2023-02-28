@@ -1,5 +1,6 @@
 # Changelog and versioning
 
-## Unreleased
+## 0.0.1
 
 - First release 🎉
+
