@@ -1,5 +1,5 @@
 import rapidjson
-from typing import Optional, MutableMapping, Tuple
+from typing import Any, Optional, MutableMapping, Sequence, Tuple, TypedDict, cast, Union, Literal
 from sentry_kafka_schemas.types import Schema
 from pathlib import Path
 from yaml import safe_load
@@ -9,6 +9,23 @@ __TOPIC_TO_SCHEMA: MutableMapping[Tuple[str, Optional[int]], Optional[Schema]] =
 
 class SchemaNotFound(Exception):
     pass
+
+TopicSchema = TypedDict(
+    "TopicSchema",
+    {
+        "version": int,
+        "type": Union[Literal["json"]],
+        "compatibility_mode": Union[Literal["none"], Literal["backward"]],
+        "resource": str,
+    },
+)
+
+TopicData = TypedDict(
+    "TopicData", {
+        "version": int,
+        "schemas": Sequence[TopicSchema]
+    }
+)
 
 
 def get_schema(topic: str, version: Optional[int] = None) -> Schema:
@@ -28,7 +45,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
         try:
             with open(topic_path) as f:
-                topic_data = safe_load(f)
+                topic_data = cast(TopicData, safe_load(f))
 
                 topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
 
