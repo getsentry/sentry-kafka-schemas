@@ -30,7 +30,7 @@ def get_all_schemas() -> Iterator[Tuple[Any, Any]]:
                             )
 
 
-def _get_most_specific_jsonschema_error(e):
+def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
     """
     Errors from the jsonschema library are often somewhat vague as the
     validator backs out of 10 nested anyOfs. Dive in and pick a random specific
