@@ -1,5 +1,4 @@
 from pathlib import Path
-from yaml import safe_load
 
 from sentry_kafka_schemas import get_schema
 
@@ -11,4 +10,4 @@ def test_all_topics() -> None:
             raise Exception(f"Invalid YAML file: {filename}")
 
         # The schema can be loaded
-        schema = get_schema(filename.stem)
+        get_schema(filename.stem)
