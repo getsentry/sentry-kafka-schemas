@@ -19,7 +19,6 @@ JsonSchema = TypedDict(
 Schema = TypedDict(
     "Schema",
     {
-        "topic": str,
         "version": int,
         "type": Union[Literal["json"]],
         "compatibility_mode": Union[Literal["none"], Literal["backward"]],
