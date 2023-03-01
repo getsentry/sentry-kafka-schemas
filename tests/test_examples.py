@@ -1,3 +1,4 @@
+from typing import Iterator, Tuple, Any
 import pytest
 import os
 import rapidjson
@@ -6,7 +7,7 @@ import jsonschema
 from yaml import safe_load
 
 
-def get_all_schemas():
+def get_all_schemas() -> Iterator[Tuple[Any, Any]] :
     for topic in os.listdir("topics/"):
         assert topic.endswith(".yaml")
         with open(os.path.join("topics/", topic)) as f:
@@ -29,7 +30,7 @@ def get_all_schemas():
 
 @pytest.mark.parametrize("jsonschema_path,example_path", get_all_schemas())
 @pytest.mark.parametrize("jsonschema_library", ['fastjsonschema', 'jsonschema'])
-def test_examples(jsonschema_path, example_path, jsonschema_library):
+def test_examples(jsonschema_path: str, example_path: str, jsonschema_library: str) -> None:
     with open(jsonschema_path) as f:
         schema = rapidjson.load(f)
 
