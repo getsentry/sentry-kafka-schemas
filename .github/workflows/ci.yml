@@ -20,11 +20,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r python/requirements-test.txt
+          make install
       - name: Run linter
         run: |
-          black python
-          flake8 python
+          make lint format
   typing:
     name: "Type checking"
     runs-on: ubuntu-latest
