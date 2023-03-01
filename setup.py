@@ -19,5 +19,6 @@ setup(
     install_requires=get_requirements(),
     packages=["sentry_kafka_schemas"],
     package_dir={"": "python/"},
+    package_data={"sentry-kafka-schemas": ["py.typed"]},
     include_package_data=True,
 )
