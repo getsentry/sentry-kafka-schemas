@@ -30,6 +30,17 @@ def get_all_schemas() -> Iterator[Tuple[Any, Any]]:
                             )
 
 
+def _get_most_specific_jsonschema_error(e):
+    """
+    Errors from the jsonschema library are often somewhat vague as the
+    validator backs out of 10 nested anyOfs. Dive in and pick a random specific
+    issue to fix.
+    """
+    for e2 in e.context:
+        return _get_most_specific_jsonschema_error(e2)
+    raise e
+
+
 @pytest.mark.parametrize("jsonschema_path,example_path", get_all_schemas())
 @pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema"])
 def test_examples(
@@ -44,4 +55,7 @@ def test_examples(
     if jsonschema_library == "fastjsonschema":
         fastjsonschema.compile(schema)(example)
     elif jsonschema_library == "jsonschema":
-        jsonschema.validate(example, schema)
+        try:
+            jsonschema.validate(example, schema)
+        except jsonschema.ValidationError as e:
+            _get_most_specific_jsonschema_error(e)
