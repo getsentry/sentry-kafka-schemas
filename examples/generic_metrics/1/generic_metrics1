@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "mapping_meta": {
+    "c": {
+      "1": "c:sessions/session@none",
+      "3": "environment",
+      "5": "session.status"
+    }
+  },
+  "metric_id": 1,
+  "org_id": 1,
+  "project_id": 3,
+  "retention_days": 90,
+  "tags": {
+    "3": "production",
+    "5": "init"
+  },
+  "timestamp": 1677512412,
+  "type": "c",
+  "use_case_id": "performance",
+  "value": 1
+}

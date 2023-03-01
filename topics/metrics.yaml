@@ -1,8 +1,8 @@
-topic: querylog
+topic: metrics
 schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: querylog.v1.schema.json
+    resource: metrics.v1.schema.json
     examples:
-      - querylog/1/
+      - metrics/1/
