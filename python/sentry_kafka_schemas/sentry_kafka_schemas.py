@@ -1,5 +1,14 @@
 import rapidjson
-from typing import Any, Optional, MutableMapping, Sequence, Tuple, TypedDict, cast, Union, Literal
+from typing import (
+    Optional,
+    MutableMapping,
+    Sequence,
+    Tuple,
+    TypedDict,
+    cast,
+    Union,
+    Literal,
+)
 from sentry_kafka_schemas.types import Schema
 from pathlib import Path
 from yaml import safe_load
@@ -9,6 +18,7 @@ __TOPIC_TO_SCHEMA: MutableMapping[Tuple[str, Optional[int]], Optional[Schema]] =
 
 class SchemaNotFound(Exception):
     pass
+
 
 TopicSchema = TypedDict(
     "TopicSchema",
@@ -20,12 +30,7 @@ TopicSchema = TypedDict(
     },
 )
 
-TopicData = TypedDict(
-    "TopicData", {
-        "version": int,
-        "schemas": Sequence[TopicSchema]
-    }
-)
+TopicData = TypedDict("TopicData", {"version": int, "schemas": Sequence[TopicSchema]})
 
 
 def get_schema(topic: str, version: Optional[int] = None) -> Schema:
@@ -39,7 +44,6 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
     """
     schema_key = (topic, version)
 
-
     if schema_key not in __TOPIC_TO_SCHEMA:
         topic_path = Path.joinpath(Path(__file__).parent, "topics", f"{topic}.yaml")
 
@@ -47,7 +51,9 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
             with open(topic_path) as f:
                 topic_data = cast(TopicData, safe_load(f))
 
-                topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
+                topic_schemas = sorted(
+                    topic_data["schemas"], key=lambda x: x["version"]
+                )
 
                 schema_metadata = None
                 if version is None:
@@ -60,7 +66,6 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
                     if schema_metadata is None:
                         raise SchemaNotFound("Invalid version")
-
 
         except FileNotFoundError:
             __TOPIC_TO_SCHEMA[schema_key] = None
