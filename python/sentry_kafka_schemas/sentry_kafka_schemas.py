@@ -1,10 +1,10 @@
 import rapidjson
-from typing import Optional, MutableMapping
+from typing import Optional, MutableMapping, Tuple
 from sentry_kafka_schemas.types import Schema
 from pathlib import Path
 from yaml import safe_load
 
-__TOPIC_TO_SCHEMA: MutableMapping[str, Optional[Schema]] = {}
+__TOPIC_TO_SCHEMA: MutableMapping[Tuple[str, Optional[int]], Optional[Schema]] = {}
 
 
 class SchemaNotFound(Exception):
@@ -20,19 +20,33 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
     Only JSON schemas are currently supported.
     """
+    schema_key = (topic, version)
 
-    if topic not in __TOPIC_TO_SCHEMA:
+
+    if schema_key not in __TOPIC_TO_SCHEMA:
         topic_path = Path.joinpath(Path(__file__).parent, "topics", f"{topic}.yaml")
 
         try:
             with open(topic_path) as f:
                 topic_data = safe_load(f)
 
-                # TODO: Actually respect the version number
-                schema_metadata = topic_data["schemas"][-1]
+                topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
+
+                schema_metadata = None
+                if version is None:
+                    schema_metadata = topic_schemas[-1]
+                else:
+                    for s in topic_schemas:
+                        if s["version"] == version:
+                            schema_metadata = s
+                            break
+
+                    if schema_metadata is None:
+                        raise SchemaNotFound("Invalid version")
+
 
         except FileNotFoundError:
-            __TOPIC_TO_SCHEMA[topic] = None
+            __TOPIC_TO_SCHEMA[schema_key] = None
             raise SchemaNotFound
 
         resource_path = Path.joinpath(
@@ -47,12 +61,12 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
             "schema": json_schema,
         }
 
-        __TOPIC_TO_SCHEMA[topic] = schema
+        __TOPIC_TO_SCHEMA[schema_key] = schema
         return schema
 
-    elif __TOPIC_TO_SCHEMA[topic] is None:
+    elif __TOPIC_TO_SCHEMA[schema_key] is None:
         raise SchemaNotFound
 
-    cached_schema = __TOPIC_TO_SCHEMA[topic]
+    cached_schema = __TOPIC_TO_SCHEMA[schema_key]
     assert cached_schema is not None
     return cached_schema
