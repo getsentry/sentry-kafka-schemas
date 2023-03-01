@@ -23,6 +23,7 @@ class SchemaNotFound(Exception):
 TopicSchema = TypedDict(
     "TopicSchema",
     {
+        "topic": str,
         "version": int,
         "type": Union[Literal["json"]],
         "compatibility_mode": Union[Literal["none"], Literal["backward"]],
