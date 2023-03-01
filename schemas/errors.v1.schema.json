@@ -46,7 +46,8 @@
     "GroupState": {
       "properties": {
         "id": {
-          "type": "string"
+          "$comment": "yes, we have seen both types in prod, not sure where they come from",
+          "type": ["string", "integer"]
         },
         "is_new": {
           "type": "boolean"
@@ -99,6 +100,7 @@
     "Event": {
       "description": "The sentry v7 event structure.",
       "type": "object",
+      "additionalProperties": true,
       "properties": {
         "contexts": {
           "description": " Contexts describing the environment (e.g. device, os or browser).",
@@ -131,23 +133,6 @@
             "string",
             "null"
           ]
-        },
-        "errors": {
-          "description": " Errors encountered during processing. Intended to be phased out in favor of\n annotation/metadata system.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/EventProcessingError"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
         },
         "event_id": {
           "description": " Unique identifier of this event.\n\n Hexadecimal string representing a uuid4 value. The length is exactly 32 characters. Dashes\n are not allowed. Has to be lowercase.\n\n Even though this field is backfilled on the server with a new uuid4, it is strongly\n recommended to generate that uuid4 clientside. There are some features like user feedback\n which are easier to implement that way, and debugging in case events get lost in your\n Sentry installation is also easier.\n\n Example:\n\n ```json\n {\n   \"event_id\": \"fc6d8c0c43fc4630ad850ee518f1b9d0\"\n }\n ```",
@@ -321,31 +306,6 @@
               "type": "null"
             }
           ]
-        },
-        "threads": {
-          "description": " Threads that were active when the event occurred.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "required": [
-            "values"
-          ],
-          "properties": {
-            "values": {
-              "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Thread"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          }
         },
         "time_spent": {
           "description": " Time since the start of the transaction until the error occurred.",
@@ -1084,37 +1044,6 @@
         }
       ]
     },
-    "EventProcessingError": {
-      "description": " An event processing error.",
-      "anyOf": [
-        {
-          "type": "object",
-          "required": [
-            "type"
-          ],
-          "properties": {
-            "name": {
-              "description": " Affected key or deep path.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "type": {
-              "description": " The error kind.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "value": {
-              "description": " The original value causing this error."
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
     "EventType": {
       "description": "The type of an event.\n\nThe event type determines how Sentry handles the event and has an impact on processing, rate limiting, and quotas. There are three fundamental classes of event types:\n\n- **Error monitoring events** (`default`, `error`): Processed and grouped into unique issues based on their exception stack traces and error messages. - **Security events** (`csp`, `hpkp`, `expectct`, `expectstaple`): Derived from Browser security violation reports and grouped into unique issues based on the endpoint and violation. SDKs do not send such events. - **Transaction events** (`transaction`): Contain operation spans and collected into traces for performance monitoring.",
       "type": "string",
@@ -1153,6 +1082,17 @@
               ]
             },
             "stacktrace": {
+              "description": " Stack trace containing frames of this exception.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Stacktrace"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "raw_stacktrace": {
               "description": " Stack trace containing frames of this exception.",
               "anyOf": [
                 {
@@ -1404,7 +1344,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -2050,8 +1990,6 @@
     },
     "RawStacktrace": {
       "description": " A stack trace of a single thread.\n\n A stack trace contains a list of frames, each with various bits (most optional) describing the\n context of that frame. Frames should be sorted from oldest to newest.\n\n For the given example program written in Python:\n\n ```python\n def foo():\n     my_var = 'foo'\n     raise ValueError()\n\n def main():\n     foo()\n ```\n\n A minimalistic stack trace for the above program in the correct order:\n\n ```json\n {\n   \"frames\": [\n     {\"function\": \"main\"},\n     {\"function\": \"foo\"}\n   ]\n }\n ```\n\n The top frame fully symbolicated with five lines of source context:\n\n ```json\n {\n   \"frames\": [{\n     \"in_app\": true,\n     \"function\": \"myfunction\",\n     \"abs_path\": \"/real/file/name.py\",\n     \"filename\": \"file/name.py\",\n     \"lineno\": 3,\n     \"vars\": {\n       \"my_var\": \"'value'\"\n     },\n     \"pre_context\": [\n       \"def foo():\",\n       \"  my_var = 'foo'\",\n     ],\n     \"context_line\": \"  raise ValueError()\",\n     \"post_context\": [\n       \"\",\n       \"def main():\"\n     ],\n   }]\n }\n ```\n\n A minimal native stack trace with register values. Note that the `package` event attribute must\n be \"native\" for these frames to be symbolicated.\n\n ```json\n {\n   \"frames\": [\n     {\"instruction_addr\": \"0x7fff5bf3456c\"},\n     {\"instruction_addr\": \"0x7fff5bf346c0\"},\n   ],\n   \"registers\": {\n     \"rip\": \"0x00007ff6eef54be2\",\n     \"rsp\": \"0x0000003b710cd9e0\"\n   }\n }\n ```",
-      "anyOf": [
-        {
           "type": "object",
           "required": [
             "frames"
@@ -2118,8 +2056,6 @@
             }
           },
           "additionalProperties": false
-        }
-      ]
     },
     "RegVal": {
       "type": "string"
@@ -2377,11 +2313,7 @@
       ]
     },
     "Stacktrace": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/RawStacktrace"
-        }
-      ]
+      "$ref": "#/definitions/RawStacktrace"
     },
     "String": {
       "type": "string"
@@ -2479,67 +2411,6 @@
               }
             }
           ]
-        }
-      ]
-    },
-    "Thread": {
-      "description": " A process thread of an event.\n\n The Threads Interface specifies threads that were running at the time an event happened. These threads can also contain stack traces.\n\n An event may contain one or more threads in an attribute named `threads`.\n\n The following example illustrates the threads part of the event payload and omits other attributes for simplicity.\n\n ```json\n {\n   \"threads\": {\n     \"values\": [\n       {\n         \"id\": \"0\",\n         \"name\": \"main\",\n         \"crashed\": true,\n         \"stacktrace\": {}\n       }\n     ]\n   }\n }\n ```",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "crashed": {
-              "description": " A flag indicating whether the thread crashed. Defaults to `false`.",
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
-            "current": {
-              "description": " A flag indicating whether the thread was in the foreground. Defaults to `false`.",
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
-            "id": {
-              "description": " The ID of the thread. Typically a number or numeric string.\n\n Needs to be unique among the threads. An exception can set the `thread_id` attribute to cross-reference this thread.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/ThreadId"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "main": {
-              "description": " A flag indicating whether the thread was responsible for rendering the user interface.",
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
-            "name": {
-              "description": " Display name of this thread.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "stacktrace": {
-              "description": " Stack trace containing frames of this exception.\n\n The thread that crashed with an exception should not have a stack trace, but instead, the `thread_id` attribute should be set on the exception and Sentry will connect the two.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Stacktrace"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            }
-          },
-          "additionalProperties": false
         }
       ]
     },
