@@ -1,0 +1,9 @@
+# workaround for https://github.com/pypa/setuptools/issues/1801
+# since we use a custom package_dir in setup.py, `pip uninstall` of editable
+# installations was broken
+# This file's existence is the workaround:
+# https://github.com/pypa/setuptools/issues/1801#issuecomment-1284817405
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

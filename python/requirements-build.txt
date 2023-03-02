@@ -1,0 +1,3 @@
+jsonschema-gentypes==1.4.1
+# https://github.com/camptocamp/jsonschema-gentypes/issues/413
+requests

@@ -23,5 +23,6 @@ Schema = TypedDict(
         "type": Union[Literal["json"]],
         "compatibility_mode": Union[Literal["none"], Literal["backward"]],
         "schema": Union[JsonSchema],
+        "schema_filepath": str,
     },
 )
