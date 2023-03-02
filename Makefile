@@ -5,6 +5,8 @@ clean:
 
 python/sentry_kafka_schemas/schema_types: schemas/ topics/
 	pip install -r python/requirements-build.txt
+	# the script also imports the python library, so dependencies need to be preinstalled
+	pip install -r python/requirements.txt  
 	python python/generate_python_types.py
 
 build: python/sentry_kafka_schemas/schema_types
