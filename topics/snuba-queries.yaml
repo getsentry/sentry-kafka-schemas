@@ -3,6 +3,6 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: querylog.v1.schema.json
+    resource: snuba-queries.v1.schema.json
     examples:
-      - querylog/1/
+      - snuba-queries/1/
