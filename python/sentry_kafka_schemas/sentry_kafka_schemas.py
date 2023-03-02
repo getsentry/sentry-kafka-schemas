@@ -2,6 +2,7 @@ import os
 
 import rapidjson
 from typing import (
+    Iterable,
     Optional,
     MutableMapping,
     Sequence,
@@ -37,7 +38,7 @@ TopicSchema = TypedDict(
 TopicData = TypedDict("TopicData", {"version": int, "schemas": Sequence[TopicSchema]})
 
 
-def _list_topics() -> Sequence[str]:
+def _list_topics() -> Iterable[str]:
     """
     List all defined topic names.
 
@@ -45,7 +46,7 @@ def _list_topics() -> Sequence[str]:
     """
     for file in os.listdir(Path.joinpath(Path(__file__).parent, "topics")):
         assert file.endswith(".yaml")
-        yield file[:-len(".yaml")]
+        yield file[: -len(".yaml")]
 
 
 def _get_topic(topic: str) -> TopicData:
@@ -82,9 +83,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
         try:
             topic_data = _get_topic(topic)
 
-            topic_schemas = sorted(
-                topic_data["schemas"], key=lambda x: x["version"]
-            )
+            topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
 
             schema_metadata = None
             if version is None:
@@ -112,7 +111,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
             "type": schema_metadata["type"],
             "compatibility_mode": schema_metadata["compatibility_mode"],
             "schema": json_schema,
-            "schema_filepath": str(resource_path)
+            "schema_filepath": str(resource_path),
         }
 
         __TOPIC_TO_SCHEMA[schema_key] = schema
