@@ -21,8 +21,9 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
             if schema_data["type"] != "json":
                 continue
 
-            schema_tmp_typename = f"{topic_name.title()}_v{version}"
-            schema_tmp_module_name = schema_tmp_typename.lower()
+            schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
+            schema_tmp_module_name = schema_tmp_typename_base.lower()
+            schema_tmp_typename = schema_tmp_typename_base.title().replace("_", "")
             module_index[schema_tmp_typename] = schema_tmp_module_name, schema_data[
                 "schema"
             ].get("title", "Main")
