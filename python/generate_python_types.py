@@ -1,7 +1,5 @@
 import os
 import shutil
-import json
-import tempfile
 import subprocess
 
 import sentry_kafka_schemas

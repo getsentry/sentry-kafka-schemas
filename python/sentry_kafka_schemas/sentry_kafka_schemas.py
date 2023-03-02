@@ -11,7 +11,6 @@ from typing import (
     cast,
     Union,
     Literal,
-    Any,
 )
 from sentry_kafka_schemas.types import Schema
 from pathlib import Path
@@ -78,7 +77,6 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
     schema_key = (topic, version)
 
     if schema_key not in __TOPIC_TO_SCHEMA:
-        topic_path = Path.joinpath(Path(__file__).parent, "topics", f"{topic}.yaml")
 
         try:
             topic_data = _get_topic(topic)
