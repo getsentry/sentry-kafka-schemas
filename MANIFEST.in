@@ -1,2 +1,3 @@
+include python/requirements.txt
 recursive-include python/sentry_kafka_schemas/topics *
 recursive-include python/sentry_kafka_schemas/schemas *
