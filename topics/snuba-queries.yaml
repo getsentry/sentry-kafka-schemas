@@ -1,0 +1,8 @@
+topic: snuba-queries
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-queries.v1.schema.json
+    examples:
+      - snuba-queries/1/

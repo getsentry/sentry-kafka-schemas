@@ -1,0 +1,8 @@
+topic: snuba-generic-metrics
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-generic-metrics.v1.schema.json
+    examples:
+      - snuba-generic-metrics/1/
