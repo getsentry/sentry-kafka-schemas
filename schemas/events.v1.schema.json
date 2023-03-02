@@ -19,7 +19,6 @@
   ],
   "definitions": {
     "GroupInformation": {
-      "type": "object",
       "properties": {
         "group_states": {
           "type": "array",
@@ -45,7 +44,6 @@
       }
     },
     "GroupState": {
-      "type": "object",
       "properties": {
         "id": {
           "$comment": "yes, we have seen both types in prod, not sure where they come from",
@@ -63,7 +61,6 @@
       }
     },
     "InsertEventstream": {
-      "type": "object",
       "properties": {
         "data": {
           "$ref": "#/definitions/Event"
@@ -1635,7 +1632,6 @@
               ]
             },
             "params": {
-              "type": "object",
               "description": " Parameters to be interpolated into the log message. This can be an array of positional\n parameters as well as a mapping of named arguments to their values."
             }
           },
