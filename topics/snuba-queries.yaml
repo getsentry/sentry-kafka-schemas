@@ -1,4 +1,4 @@
-topic: querylog
+topic: snuba-queries
 schemas:
   - version: 1
     compatibility_mode: none
