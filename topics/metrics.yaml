@@ -1,8 +1,0 @@
-topic: metrics
-schemas:
-  - version: 1
-    compatibility_mode: none
-    type: json
-    resource: metrics.v1.schema.json
-    examples:
-      - metrics/1/

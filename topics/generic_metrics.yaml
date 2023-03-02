@@ -1,8 +1,0 @@
-topic: generic_metrics
-schemas:
-  - version: 1
-    compatibility_mode: none
-    type: json
-    resource: generic_metrics.v1.schema.json
-    examples:
-      - generic_metrics/1/
