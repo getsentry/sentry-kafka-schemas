@@ -72,7 +72,10 @@ pub fn get_schema(topic: &str, _version: Option<u16>) -> Result<Schema, SchemaEr
     let topic_path = format!("./topics/{}.yaml", topic);
     let topic_data = TopicData::load(&topic_path)?;
     // TODO: Respect version
-    let latest = topic_data.schemas.last().unwrap();
+    let latest = topic_data
+        .schemas
+        .last()
+        .ok_or(SchemaError::InvalidVersion)?;
     if latest.schema_type != SchemaType::Json {
         return Err(SchemaError::InvalidType);
     }
