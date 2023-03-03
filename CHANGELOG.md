@@ -1,5 +1,18 @@
 # Changelog and versioning
 
+## 0.0.3
+
+### Various fixes & improvements
+
+- fix(ci): Bump timeout of linter job (#28) by @untitaker
+- fix: Relax result_profile in querylog schema (#27) by @untitaker
+- feat: Implement `get_schema` in Rust (#26) by @lynnagara
+- test: Add more topic validation (#25) by @lynnagara
+- ref: Add Python types (#24) by @untitaker
+- feat: Add topic description (#23) by @lynnagara
+- fix: Fix all topic names (#22) by @lynnagara
+- test: Add check for topic name validity (#21) by @lynnagara
+
 ## 0.0.2
 
 ### Various fixes & improvements
