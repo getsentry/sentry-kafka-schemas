@@ -123,7 +123,7 @@
                     "type": "object"
                 },
                 "result_profile": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             },
             "required": [
