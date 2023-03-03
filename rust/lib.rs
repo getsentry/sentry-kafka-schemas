@@ -2,14 +2,14 @@ use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::fs::{read_to_string, File};
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
 enum SchemaType {
     #[serde(rename = "json")]
     Json,
 }
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
 enum CompatibilityMode {
     #[serde(rename = "none")]
@@ -24,6 +24,7 @@ pub enum SchemaError {
     TopicNotFound,
     InvalidVersion,
     InvalidType,
+    InvalidSchema,
 }
 
 impl fmt::Display for SchemaError {
@@ -32,6 +33,7 @@ impl fmt::Display for SchemaError {
             SchemaError::TopicNotFound => write!(f, "Topic not found"),
             SchemaError::InvalidVersion => write!(f, "Invalid version"),
             SchemaError::InvalidType => write!(f, "Invalid type"),
+            SchemaError::InvalidSchema => write!(f, "Invalid schema"),
         }
     }
 }
@@ -70,11 +72,11 @@ pub struct Schema {
 
 pub fn get_schema(topic: &str, _version: Option<u16>) -> Result<Schema, SchemaError> {
     let topic_path = format!("./topics/{}.yaml", topic);
-    let topic_data = TopicData::load(&topic_path)?;
+    let mut topic_data = TopicData::load(&topic_path)?;
     // TODO: Respect version
     let latest = topic_data
         .schemas
-        .last()
+        .pop()
         .ok_or(SchemaError::InvalidVersion)?;
     if latest.schema_type != SchemaType::Json {
         return Err(SchemaError::InvalidType);
@@ -85,9 +87,9 @@ pub fn get_schema(topic: &str, _version: Option<u16>) -> Result<Schema, SchemaEr
     Ok({
         Schema {
             version: latest.version,
-            schema_type: latest.schema_type.clone(),
-            compatibility_mode: latest.compatibility_mode.clone(),
-            schema: read_to_string(json_schema_path).unwrap(),
+            schema_type: latest.schema_type,
+            compatibility_mode: latest.compatibility_mode,
+            schema: read_to_string(json_schema_path).map_err(|_| SchemaError::InvalidSchema)?,
         }
     })
 }
