@@ -1,0 +1,92 @@
+{
+  "request": {
+    "id": "db4e2fc48df34d69be0ada66ab2ed2bd",
+    "body": {
+      "legacy": true,
+      "query": "redacted",
+      "dataset": "discover",
+      "app_id": "legacy",
+      "tenant_ids": {
+        "legacy": "legacy"
+      },
+      "parent_api": "/api/0/organizations/{organization_slug}/issues-count/"
+    },
+    "referrer": "search",
+    "team": "<unknown>",
+    "feature": "<unknown>",
+    "app_id": "legacy"
+  },
+  "dataset": "discover",
+  "entity": "discover_events",
+  "start_timestamp": 1676674553,
+  "end_timestamp": 1677884153,
+  "query_list": [
+    {
+      "sql": "redacted",
+      "sql_anonymized": "redacted",
+      "start_timestamp": 1676674553,
+      "end_timestamp": 1677884153,
+      "stats": {
+        "clickhouse_table": "errors_dist_ro",
+        "final": false,
+        "referrer": "search",
+        "sample": 1,
+        "totals_mode": "after_having_inclusive",
+        "merge_tree_max_rows_to_use_cache": 1048576,
+        "max_query_size": 524288,
+        "merge_tree_coarse_index_granularity": 8,
+        "max_execution_time": 30,
+        "max_threads": 10,
+        "merge_tree_min_rows_for_concurrent_read": 163840,
+        "max_streams_to_max_threads_ratio": 1,
+        "query_id": "3c369a12aedfa413840c5449a1573575",
+        "triggered_rate_limiter": "project_referrer"
+      },
+      "status": "rate-limited",
+      "trace_id": "095488ec34424e139d3c474992b21cc8",
+      "profile": {
+        "time_range": 14,
+        "table": "errors_dist_ro",
+        "all_columns": [
+          "errors_dist_ro._tags_hash_map",
+          "errors_dist_ro.deleted",
+          "errors_dist_ro.group_id",
+          "errors_dist_ro.project_id",
+          "errors_dist_ro.timestamp"
+        ],
+        "multi_level_condition": false,
+        "where_profile": {
+          "columns": [
+            "errors_dist_ro._tags_hash_map",
+            "errors_dist_ro.deleted",
+            "errors_dist_ro.group_id",
+            "errors_dist_ro.timestamp"
+          ],
+          "mapping_cols": []
+        },
+        "groupby_cols": [
+          "errors_dist_ro.group_id"
+        ],
+        "array_join_cols": []
+      },
+      "result_profile": null
+    }
+  ],
+  "status": "rate-limited",
+  "timing": {
+    "timestamp": 1677884153,
+    "duration_ms": 102,
+    "marks_ms": {
+      "cache_get": 2,
+      "cache_set": 2,
+      "get_configs": 0,
+      "prepare_query": 56,
+      "validate_schema": 40
+    },
+    "tags": {}
+  },
+  "projects": [
+    123123123
+  ],
+  "snql_anonymized": "redacted"
+}
