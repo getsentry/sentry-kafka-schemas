@@ -70,6 +70,9 @@ pub struct Schema {
     schema: String,
 }
 
+/// # Errors
+///
+/// Will return `Err` if `topic` or `version` is not found or if schema data is invalid.
 pub fn get_schema(topic: &str, _version: Option<u16>) -> Result<Schema, SchemaError> {
     let topic_path = format!("./topics/{}.yaml", topic);
     let mut topic_data = TopicData::load(&topic_path)?;
