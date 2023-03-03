@@ -17,9 +17,20 @@ def test_all_topics() -> None:
 
         with open(filename) as f:
             topic_data = safe_load(f)
+
+            # Check valid topic name
             topic_name = topic_data["topic"]
             assert topic_name == filename.stem
             assert valid_chars.match(topic_name)
             assert len(topic_name) <= 255
+
+            # Check description provided for topic
+            assert topic_data["description"]
+
+            # Check valid schema versions
+            topic_schemas = topic_data["schemas"]
+            for i in range(0, len(topic_schemas)):
+                assert topic_schemas[i]["version"] == i + 1
+
         # The schema can be loaded
         get_schema(filename.stem)
