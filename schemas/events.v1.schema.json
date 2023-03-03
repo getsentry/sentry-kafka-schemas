@@ -19,6 +19,7 @@
   ],
   "definitions": {
     "GroupInformation": {
+      "type": "object",
       "properties": {
         "group_states": {
           "type": "array",
@@ -44,6 +45,7 @@
       }
     },
     "GroupState": {
+      "type": "object",
       "properties": {
         "id": {
           "$comment": "yes, we have seen both types in prod, not sure where they come from",
@@ -61,6 +63,7 @@
       }
     },
     "InsertEventstream": {
+      "type": "object",
       "properties": {
         "data": {
           "$ref": "#/definitions/Event"
@@ -1410,7 +1413,8 @@
               ]
             },
             "id": {
-              "description": " The PCI identifier of the graphics device."
+              "description": " The PCI identifier of the graphics device.",
+              "type": ["null", "string"]
             },
             "max_texture_size": {
               "description": " Largest size of a texture that is supported by the graphics hardware.\n\n For Example: 16384",
@@ -1632,6 +1636,7 @@
               ]
             },
             "params": {
+              "type": ["object", "array", "null"],
               "description": " Parameters to be interpolated into the log message. This can be an array of positional\n parameters as well as a mapping of named arguments to their values."
             }
           },
@@ -2086,7 +2091,8 @@
               ]
             },
             "data": {
-              "description": " Request data in any format that makes sense.\n\n SDKs should discard large and binary bodies by default. Can be given as string or\n structural data of any format."
+              "description": " Request data in any format that makes sense.\n\n SDKs should discard large and binary bodies by default. Can be given as string or\n structural data of any format.",
+              "type": ["array", "object", "string", "integer", "null"]
             },
             "env": {
               "description": " Server environment data, such as CGI/WSGI.\n\n A dictionary containing environment information passed from the server. This is where\n information such as CGI/WSGI/Rack keys go that are not HTTP headers.\n\n Sentry will explicitly look for `REMOTE_ADDR` to extract an IP address.",
