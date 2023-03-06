@@ -98,8 +98,10 @@
         },
         "project_id": {
           "type": "integer"
-        }
+        },
+        "retention_days": {"type": "integer"}
       },
+      "additionalProperties": false,
       "required": [
         "data",
         "project_id",
@@ -117,6 +119,7 @@
       "title": "sentry_event",
       "additionalProperties": true,
       "properties": {
+        "type": {"type": "string"},
         "contexts": {
           "description": " Contexts describing the environment (e.g. device, os or browser).",
           "anyOf": [
