@@ -118,6 +118,7 @@
       "type": "object",
       "title": "sentry_event",
       "additionalProperties": true,
+      "required": ["received"],
       "properties": {
         "type": {"type": "string"},
         "contexts": {
@@ -164,29 +165,12 @@
           ]
         },
         "exception": {
-          "description": " One or multiple chained (nested) exceptions.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "required": [
-            "values"
-          ],
-          "properties": {
-            "values": {
-              "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Exception"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          }
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExceptionChain"
+            },
+            {"type": "null"}
+          ]
         },
         "extra": {
           "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
@@ -258,14 +242,7 @@
         },
         "received": {
           "description": " Timestamp when the event has been received by Sentry.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Timestamp"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "#/definitions/Timestamp"
         },
         "release": {
           "description": " The release version of the application.\n\n **Release versions must be unique across all projects in your organization.** This value\n can be the git SHA for the given project, or a product identifier with a semantic version.",
@@ -390,6 +367,12 @@
             "string",
             "null"
           ]
+        },
+        "hierarchical_hashes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -522,6 +505,7 @@
       ]
     },
     "ClientSdkInfo": {
+      "title": "client_sdk_info",
       "description": " The SDK Interface describes the Sentry SDK and its configuration used to capture and transmit an event.",
       "anyOf": [
         {
@@ -713,13 +697,6 @@
         }
       ]
     },
-    "ContextInner": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/Context"
-        }
-      ]
-    },
     "Contexts": {
       "description": " The Contexts Interface provides additional context data. Typically, this is data related to the\n current user and the environment. For example, the device or application version. Its canonical\n name is `contexts`.\n\n The `contexts` type can be used to define arbitrary contextual data on the event. It accepts an\n object of key/value pairs. The key is the “alias” of the context and can be freely chosen.\n However, as per policy, it should match the type of the context unless there are two values for\n a type. You can omit `type` if the key name is the type.\n\n Unknown data for the contexts is rendered as a key/value list.\n\n For more details about sending additional data with your event, see the [full documentation on\n Additional Data](https://docs.sentry.io/enriching-error-data/additional-data/).",
       "anyOf": [
@@ -728,7 +705,7 @@
           "additionalProperties": {
             "anyOf": [
               {
-                "$ref": "#/definitions/ContextInner"
+                "$ref": "#/definitions/Context"
               },
               {
                 "type": "null"
@@ -1074,6 +1051,29 @@
         "transaction",
         "default"
       ]
+    },
+    "ExceptionChain": {
+      "title": "sentry_exception_chain",
+      "description": " One or multiple chained (nested) exceptions.",
+      "type": "object",
+      "required": [
+        "values"
+      ],
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Exception"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
     },
     "Exception": {
       "description": " A single exception.\n\n Multiple values inside of an [event](#typedef-Event) represent chained exceptions and should be sorted oldest to newest. For example, consider this Python code snippet:\n\n ```python\n try:\n     raise Exception(\"random boring invariant was not met!\")\n except Exception as e:\n     raise ValueError(\"something went wrong, help!\") from e\n ```\n\n `Exception` would be described first in the values list, followed by a description of `ValueError`:\n\n ```json\n {\n   \"exception\": {\n     \"values\": [\n       {\"type\": \"Exception\": \"value\": \"random boring invariant was not met!\"},\n       {\"type\": \"ValueError\", \"value\": \"something went wrong, help!\"},\n     ]\n   }\n }\n ```",
@@ -2081,6 +2081,7 @@
       "type": "string"
     },
     "Request": {
+      "title": "sentry_request",
       "description": " Http request information.\n\n The Request interface contains information on a HTTP request related to the event. In client\n SDKs, this can be an outgoing request, or the request that rendered the current web page. On\n server SDKs, this could be the incoming web request that is being handled.\n\n The data variable should only contain the request body (not the query string). It can either be\n a dictionary (for standard HTTP requests) or a raw request body.\n\n ### Ordered Maps\n\n In the Request interface, several attributes can either be declared as string, object, or list\n of tuples. Sentry attempts to parse structured information from the string representation in\n such cases.\n\n Sometimes, keys can be declared multiple times, or the order of elements matters. In such\n cases, use the tuple representation over a plain object.\n\n Example of request headers as object:\n\n ```json\n {\n   \"content-type\": \"application/json\",\n   \"accept\": \"application/json, application/xml\"\n }\n ```\n\n Example of the same headers as list of tuples:\n\n ```json\n [\n   [\"content-type\", \"application/json\"],\n   [\"accept\", \"application/json\"],\n   [\"accept\", \"application/xml\"]\n ]\n ```\n\n Example of a fully populated request object:\n\n ```json\n {\n   \"request\": {\n     \"method\": \"POST\",\n     \"url\": \"http://absolute.uri/foo\",\n     \"query_string\": \"query=foobar&page=2\",\n     \"data\": {\n       \"foo\": \"bar\"\n     },\n     \"cookies\": \"PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1;\",\n     \"headers\": {\n       \"content-type\": \"text/html\"\n     },\n     \"env\": {\n       \"REMOTE_ADDR\": \"192.168.0.1\"\n     }\n   }\n }\n ```",
       "anyOf": [
         {
@@ -2387,10 +2388,7 @@
           "type": "array",
           "items": [
             {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "string"
             },
             {
               "type": [
@@ -2406,34 +2404,10 @@
     },
     "Tags": {
       "description": " Manual key/value tag pairs.",
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            },
-            {
-              "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/TagEntry"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
+      "type": "array",
+      "items": {
+          "$ref": "#/definitions/TagEntry"
+      }
     },
     "ThreadId": {
       "description": " Represents a thread id.",
@@ -2452,9 +2426,6 @@
       "anyOf": [
         {
           "type": "number"
-        },
-        {
-          "type": "string"
         }
       ]
     },
@@ -2655,6 +2626,7 @@
       ]
     },
     "User": {
+      "title": "sentry_user",
       "description": " Information about the user who triggered an event.\n\n ```json\n {\n   \"user\": {\n     \"id\": \"unique_id\",\n     \"username\": \"my_user\",\n     \"email\": \"foo@example.com\",\n     \"ip_address\": \"127.0.0.1\",\n     \"subscription\": \"basic\"\n   }\n }\n ```",
       "anyOf": [
         {
