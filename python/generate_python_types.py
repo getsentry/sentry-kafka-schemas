@@ -21,7 +21,6 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
-            schema_tmp_typename = schema_tmp_typename_base.title().replace("_", "")
             subprocess.check_call(
                 [
                     "jsonschema-gentypes",
@@ -35,7 +34,8 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
             )
 
     index_code_path = os.path.join(target_folder, "__init__.py")
-    with open(index_code_path, "w") as f:
+    with open(index_code_path, "w"):
+        # just touch file so it exists
         pass
 
 
