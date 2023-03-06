@@ -39,8 +39,16 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 
     index_code_path = os.path.join(target_folder, "__init__.py")
     with open(index_code_path, "w") as f:
+        # Avoid runtime errors due to Python version mismatches, and speed up
+        # imports by a bit.
+        f.write("import typing\n")
+        f.write("if typing.TYPE_CHECKING:\n")
         for type_name, (module_name, real_type_name) in module_index.items():
-            f.write(f"from .{module_name} import {real_type_name} as {type_name}\n")
+            f.write(f"    from .{module_name} import {real_type_name} as {type_name}\n")
+
+        f.write("else:\n")
+        for type_name in module_index:
+            f.write(f"    {type_name} = type\n")
 
         f.write(f"__all__ = {repr(list(module_index))}\n")
 
