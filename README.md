@@ -24,3 +24,28 @@ The yaml file of a topic has 2 keys:
    - `type`: Currently only `json` is supported
    - `resource`: Should match the file name in the `schemas` directory
    - `examples`: Should match the file names in the `examples` directory
+
+## Using Python types
+
+Python types are automatically generated under
+`sentry_kafka_schemas.schema_types`. A schema for version 1 of the topic
+`foo-bar` is exported under `sentry_kafka_schemas.schema_types.foo_bar_v1`.
+
+Use `title` attribute on your JSON schema and the various definitions to assign them a stable name.
+
+For example:
+
+```javascript
+{
+    "title": "main_schema",
+    "properties": {
+        "subfield": {"$ref": "#/definitions/SubSchema"}
+    },
+    "definitions": {
+        "SubSchema": {
+            "type": "object",
+            "title": "sub_schema"
+        }
+    }
+}
+```

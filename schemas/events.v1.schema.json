@@ -64,6 +64,7 @@
     },
     "InsertEventstream": {
       "type": "object",
+      "title": "insert_event_stream",
       "properties": {
         "data": {
           "$ref": "#/definitions/Event"
