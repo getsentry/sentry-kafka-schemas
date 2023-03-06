@@ -11,7 +11,7 @@
       "type": "string"
     },
     {
-      "$ref": "#/definitions/InsertEventstream"
+      "$ref": "#/definitions/InsertEvent"
     },
     {
       "$ref": "#/definitions/GroupInformation"
@@ -62,9 +62,9 @@
         }
       }
     },
-    "InsertEventstream": {
+    "InsertEvent": {
       "type": "object",
-      "title": "insert_event_stream",
+      "title": "insert_event",
       "properties": {
         "data": {
           "$ref": "#/definitions/Event"
@@ -99,11 +99,22 @@
         "project_id": {
           "type": "integer"
         }
-      }
+      },
+      "required": [
+        "data",
+        "project_id",
+        "datetime",
+        "event_id",
+        "message",
+        "primary_hash",
+        "platform",
+        "group_id"
+      ]
     },
     "Event": {
       "description": "The sentry v7 event structure.",
       "type": "object",
+      "title": "sentry_event",
       "additionalProperties": true,
       "properties": {
         "contexts": {
