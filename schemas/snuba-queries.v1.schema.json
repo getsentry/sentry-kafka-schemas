@@ -88,6 +88,7 @@
     "definitions": {
         "QueryMetadata": {
             "type": "object",
+            "title": "query_metadata",
             "properties": {
                 "sql": {
                     "type": "string"
@@ -119,9 +120,7 @@
                         "null"
                     ]
                 },
-                "profile": {
-                    "type": "object"
-                },
+                "profile": {"$ref": "#/definitions/ClickhouseQueryProfile"},
                 "result_profile": {
                     "type": ["object", "null"]
                 }
@@ -147,6 +146,7 @@
         },
         "ClickhouseQueryProfile": {
             "type": "object",
+            "title": "clickhouse_query_profile",
             "properties": {
                 "time_range": {
                     "type": [
@@ -185,7 +185,14 @@
                 "array_join_cols": {
                     "$ref": "#/definitions/ColumnList"
                 }
-            }
+            },
+            "required": [
+                "time_range",
+                "multi_level_condition",
+                "where_profile",
+                "groupby_cols",
+                "array_join_cols"
+            ]
         }
     }
 }
