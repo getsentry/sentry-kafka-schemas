@@ -3,6 +3,7 @@
   "$ref": "#/definitions/Main",
   "definitions": {
     "Main": {
+      "title": "metric",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -59,8 +60,7 @@
         "type",
         "use_case_id",
         "value"
-      ],
-      "title": "Main"
+      ]
     },
     "MappingMeta": {
       "type": "object",
