@@ -24,7 +24,9 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
             if schema_tmp_module_name in already_used_filenames:
-                raise RuntimeError(f"conflict: two schemas are ending up in module name {schema_tmp_module_name}")
+                raise RuntimeError(
+                    f"conflict: two schemas are ending up in module name {schema_tmp_module_name}"
+                )
 
             already_used_filenames.add(schema_tmp_module_name)
             subprocess.check_call(
