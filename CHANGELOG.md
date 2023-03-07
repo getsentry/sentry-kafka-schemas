@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.4
+
+### Various fixes & improvements
+
+- ref: Bump jsonschema-gentypes to fork (#29) by @untitaker
+
 ## 0.0.3
 
 ### Various fixes & improvements
