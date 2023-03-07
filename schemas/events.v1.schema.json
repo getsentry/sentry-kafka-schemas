@@ -2387,7 +2387,10 @@
           "type": "array",
           "items": [
             {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             {
               "type": [
