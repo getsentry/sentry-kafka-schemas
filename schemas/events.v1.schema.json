@@ -101,7 +101,6 @@
         },
         "retention_days": {"type": "integer"}
       },
-      "additionalProperties": false,
       "required": [
         "data",
         "project_id",
