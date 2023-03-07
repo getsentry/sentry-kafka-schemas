@@ -10,6 +10,8 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
     shutil.rmtree(target_folder, ignore_errors=True)
     os.makedirs(target_folder)
 
+    already_used_filenames = set()
+
     for topic_name in sentry_kafka_schemas.sentry_kafka_schemas._list_topics():
         print(f"generating schemas for {topic_name}")
         topic_meta = sentry_kafka_schemas.sentry_kafka_schemas._get_topic(topic_name)
@@ -21,6 +23,10 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
+            if schema_tmp_module_name in already_used_filenames:
+                raise RuntimeError(f"conflict: two schemas are ending up in module name {schema_tmp_module_name}")
+
+            already_used_filenames.add(schema_tmp_module_name)
             subprocess.check_call(
                 [
                     "jsonschema-gentypes",
