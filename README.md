@@ -36,6 +36,7 @@ Use `title` attribute on your JSON schema and the various definitions to assign 
 For example:
 
 ```javascript
+# a schema referenced from `topics/events.yaml, containing topic: events
 {
     "title": "main_schema",
     "properties": {
@@ -48,4 +49,16 @@ For example:
         }
     }
 }
+```
+
+Produces:
+
+```python
+# file: sentry_kafka_schemas/schema_types/events_v1.py
+
+class MainSchema(TypedDict, total=False):
+    subfield: SubSchema
+
+class SubSchema(TypedDict, total=False):
+    ...
 ```
