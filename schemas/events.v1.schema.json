@@ -1061,7 +1061,7 @@
       ],
       "properties": {
         "values": {
-          "type": "array",
+          "type": ["null", "array"],
           "items": {
             "anyOf": [
               {
