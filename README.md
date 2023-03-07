@@ -36,7 +36,7 @@ Use `title` attribute on your JSON schema and the various definitions to assign 
 For example:
 
 ```javascript
-# a schema referenced from `topics/events.yaml, containing topic: events
+// a schema referenced from `topics/events.yaml, containing topic: events
 {
     "title": "main_schema",
     "properties": {
