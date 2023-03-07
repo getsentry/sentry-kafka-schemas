@@ -4,6 +4,7 @@
   "definitions": {
     "Main": {
       "type": "object",
+      "title": "generic_metric",
       "additionalProperties": false,
       "properties": {
         "version": {"const": 2},
@@ -59,8 +60,7 @@
         "type",
         "use_case_id",
         "value"
-      ],
-      "title": "Main"
+      ]
     },
     "MappingMeta": {
       "type": "object",

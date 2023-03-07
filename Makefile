@@ -1,12 +1,14 @@
-.PHONY: install format type-checking tests types clean build
+.PHONY: install format type-checking tests types clean build install-build-requirements
 
 clean:
-	rm -rf python/sentry_kafka_schemas/schema_types/
+	rm -rf python/sentry_kafka_schemas/schema_types/ *.egg-info dist/
 
-python/sentry_kafka_schemas/schema_types: schemas/ topics/
+install-build-requirements:
 	pip install -r python/requirements-build.txt
 	# the script also imports the python library, so dependencies need to be preinstalled
 	pip install -r python/requirements.txt
+
+python/sentry_kafka_schemas/schema_types: schemas/ topics/ install-build-requirements
 	python python/generate_python_types.py
 
 build: python/sentry_kafka_schemas/schema_types

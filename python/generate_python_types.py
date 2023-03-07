@@ -10,7 +10,7 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
     shutil.rmtree(target_folder, ignore_errors=True)
     os.makedirs(target_folder)
 
-    module_index = {}
+    already_used_filenames = set()
 
     for topic_name in sentry_kafka_schemas.sentry_kafka_schemas._list_topics():
         print(f"generating schemas for {topic_name}")
@@ -23,10 +23,12 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
-            schema_tmp_typename = schema_tmp_typename_base.title().replace("_", "")
-            module_index[schema_tmp_typename] = schema_tmp_module_name, schema_data[
-                "schema"
-            ].get("title", "Main")
+            if schema_tmp_module_name in already_used_filenames:
+                raise RuntimeError(
+                    f"conflict: two schemas are ending up in module name {schema_tmp_module_name}"
+                )
+
+            already_used_filenames.add(schema_tmp_module_name)
             subprocess.check_call(
                 [
                     "jsonschema-gentypes",
@@ -34,15 +36,15 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
                     schema_data["schema_filepath"],
                     "--python",
                     os.path.join(target_folder, f"{schema_tmp_module_name}.py"),
+                    "--rewrite-import",
+                    "typing.Required:typing_extensions",
                 ]
             )
 
     index_code_path = os.path.join(target_folder, "__init__.py")
-    with open(index_code_path, "w") as f:
-        for type_name, (module_name, real_type_name) in module_index.items():
-            f.write(f"from .{module_name} import {real_type_name} as {type_name}\n")
-
-        f.write(f"__all__ = {repr(list(module_index))}\n")
+    with open(index_code_path, "w"):
+        # just touch file so it exists
+        pass
 
 
 if __name__ == "__main__":
