@@ -40,7 +40,7 @@ class Example:
 
     _examples_basepath: Path
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         relpath = str(self.path)[len(str(self._examples_basepath)) :]
         return f"<Example path=...{relpath}>"
 
