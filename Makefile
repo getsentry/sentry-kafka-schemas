@@ -20,17 +20,17 @@ install: python/sentry_kafka_schemas/schema_types
 	pip install -r python/requirements-test.txt
 
 format:
-	black tests/ python/
+	black python/
 
 type-checking:
-	mypy tests/ python/ --strict --config-file python/mypy.ini
+	mypy python/ --strict --config-file python/mypy.ini
 
 types: type-checking
 
 lint:
-	flake8 tests/ python/
-	black --check tests/ python/
+	flake8 python/
+	black --check python/
 	cargo clippy -- -W clippy::pedantic
 
 tests:
-	pytest tests/ python/ -vv
+	pytest python/ -vv

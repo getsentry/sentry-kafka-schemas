@@ -1,33 +1,22 @@
 from typing import Iterator, Tuple, Any
 import pytest
-import os
 import rapidjson
 import fastjsonschema
 import jsonschema
-from yaml import safe_load
+
+import sentry_kafka_schemas
+import sentry_kafka_schemas.sentry_kafka_schemas
 
 
 def get_all_schemas() -> Iterator[Tuple[Any, Any]]:
-    for topic in os.listdir("topics/"):
-        assert topic.endswith(".yaml")
-        with open(os.path.join("topics/", topic)) as f:
-            topic_meta = safe_load(f)
-
-            for schema in topic_meta["schemas"]:
-                assert isinstance(schema["version"], int)
-                assert schema["type"] == "json"
-
-                jsonschema_path = os.path.join("schemas/", schema["resource"])
-
-                for example in schema["examples"]:
-                    example_path = os.path.join("examples/", example)
-                    if os.path.isfile(example_path):
-                        yield jsonschema_path, example_path
-                    else:
-                        for example_subpath in os.listdir(example_path):
-                            yield jsonschema_path, os.path.join(
-                                example_path, example_subpath
-                            )
+    for topic in sentry_kafka_schemas.sentry_kafka_schemas._list_topics():
+        for schema_raw in sentry_kafka_schemas.sentry_kafka_schemas._get_topic(topic)[
+            "schemas"
+        ]:
+            version = schema_raw["version"]
+            schema = sentry_kafka_schemas.get_schema(topic, version=version)
+            for x in sentry_kafka_schemas.iter_examples(topic, version=version):
+                yield schema["schema_filepath"], x
 
 
 def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
