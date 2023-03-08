@@ -62,3 +62,6 @@ class MainSchema(TypedDict, total=False):
 class SubSchema(TypedDict, total=False):
     ...
 ```
+
+`title` can be added at any level, not just within `definitions`, to produce
+types. Use that power tastefully!
