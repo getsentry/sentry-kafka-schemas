@@ -1,7 +1,9 @@
 import os
+import dataclasses
 
 import rapidjson
 from typing import (
+    Any,
     Iterable,
     Optional,
     MutableMapping,
@@ -12,7 +14,7 @@ from typing import (
     Union,
     Literal,
 )
-from sentry_kafka_schemas.types import Schema
+from sentry_kafka_schemas.types import Schema, Example
 from pathlib import Path
 from yaml import safe_load
 
@@ -126,7 +128,7 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
     return cached_schema
 
 
-def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Path]:
+def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example]:
     """
     Yield filepaths to all example payloads for a specific schema version, or
     the latest version if no version is provided.
@@ -142,8 +144,13 @@ def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Path]:
     for example_entry in schema["examples"]:
         example_path = Path.joinpath(_EXAMPLES_PATH, example_entry)
         if os.path.isfile(example_path):
-            with open(example_path) as f:
-                yield rapidjson.load(f)
+            yield Example(
+                _examples_basepath=_EXAMPLES_PATH, schema=schema, path=example_path
+            )
         else:
             for example_subpath in os.listdir(example_path):
-                yield Path.joinpath(example_path, example_subpath)
+                yield Example(
+                    _examples_basepath=_EXAMPLES_PATH,
+                    schema=schema,
+                    path=Path.joinpath(example_path, example_subpath),
+                )

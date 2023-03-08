@@ -1,5 +1,9 @@
 from typing import Any, Literal, Mapping, Sequence, TypedDict, Union
 
+import rapidjson
+import dataclasses
+from pathlib import Path
+
 __all__ = ["Schema"]
 
 JsonSchema = TypedDict(
@@ -27,3 +31,19 @@ Schema = TypedDict(
         "examples": Sequence[str],
     },
 )
+
+
+@dataclasses.dataclass(frozen=True)
+class Example:
+    schema: Schema
+    path: Path
+
+    _examples_basepath: Path
+
+    def __repr__(self):
+        relpath = str(self.path)[len(str(self._examples_basepath)) :]
+        return f"<Example path=...{relpath}>"
+
+    def load(self) -> Any:
+        with open(self.path) as f:
+            return rapidjson.load(f)

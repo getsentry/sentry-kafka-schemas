@@ -4,19 +4,17 @@ import rapidjson
 import fastjsonschema
 import jsonschema
 
-import sentry_kafka_schemas
-import sentry_kafka_schemas.sentry_kafka_schemas
+from sentry_kafka_schemas.sentry_kafka_schemas import _list_topics, _get_topic
+from sentry_kafka_schemas.types import Example
+from sentry_kafka_schemas import get_schema, iter_examples
 
 
-def get_all_schemas() -> Iterator[Tuple[Any, Any]]:
-    for topic in sentry_kafka_schemas.sentry_kafka_schemas._list_topics():
-        for schema_raw in sentry_kafka_schemas.sentry_kafka_schemas._get_topic(topic)[
-            "schemas"
-        ]:
+def get_all_examples() -> Iterator[Example]:
+    for topic in _list_topics():
+        for schema_raw in _get_topic(topic)["schemas"]:
             version = schema_raw["version"]
-            schema = sentry_kafka_schemas.get_schema(topic, version=version)
-            for x in sentry_kafka_schemas.iter_examples(topic, version=version):
-                yield schema["schema_filepath"], x
+            schema = get_schema(topic, version=version)
+            yield from iter_examples(topic, version=version)
 
 
 def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
@@ -30,21 +28,18 @@ def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
     raise e
 
 
-@pytest.mark.parametrize("jsonschema_path,example_path", get_all_schemas())
+@pytest.mark.parametrize("example", get_all_examples(), ids=str)
 @pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema"])
-def test_examples(
-    jsonschema_path: str, example_path: str, jsonschema_library: str
-) -> None:
-    with open(jsonschema_path) as f:
-        schema = rapidjson.load(f)
+def test_examples(example: Example, jsonschema_library: str) -> None:
+    schema = example.schema["schema"]
 
-    with open(example_path) as f:
-        example = rapidjson.load(f)
+    with open(example.path) as f:
+        example_data = rapidjson.load(f)
 
     if jsonschema_library == "fastjsonschema":
-        fastjsonschema.compile(schema)(example)
+        fastjsonschema.compile(schema)(example_data)
     elif jsonschema_library == "jsonschema":
         try:
-            jsonschema.validate(example, schema)
+            jsonschema.validate(example_data, schema)
         except jsonschema.ValidationError as e:
             _get_most_specific_jsonschema_error(e)
