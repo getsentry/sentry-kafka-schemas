@@ -143,12 +143,11 @@ def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example
         example_path = Path.joinpath(_EXAMPLES_PATH, example_entry)
         if os.path.isfile(example_path):
             yield Example(
-                _examples_basepath=_EXAMPLES_PATH, schema=schema, path=example_path
+                _examples_basepath=_EXAMPLES_PATH, path=example_path,
             )
         else:
             for example_subpath in os.listdir(example_path):
                 yield Example(
                     _examples_basepath=_EXAMPLES_PATH,
-                    schema=schema,
                     path=Path.joinpath(example_path, example_subpath),
                 )

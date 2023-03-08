@@ -35,7 +35,6 @@ Schema = TypedDict(
 
 @dataclasses.dataclass(frozen=True)
 class Example:
-    schema: Schema
     path: Path
 
     _examples_basepath: Path
