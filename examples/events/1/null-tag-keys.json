@@ -1,0 +1,72 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": 123123123,
+    "group_ids": [
+      123123123
+    ],
+    "event_id": "119b2902bae948b3a05368f184a0b4b8",
+    "organization_id": 123123123,
+    "project_id": 123123123,
+    "message": "redacted",
+    "title": "redacted",
+    "platform": "java",
+    "datetime": "2023-03-07T17:24:09.987000Z",
+    "data": {
+      "event_id": "119b2902bae948b3a05368f184a0b4b8",
+      "level": "fatal",
+      "version": "7",
+      "type": "error",
+      "logger": "",
+      "platform": "java",
+      "timestamp": 1678209849.987,
+      "received": 1678209850.169863,
+      "release": "redacted",
+      "environment": "production",
+      "contexts": {},
+      "tags": [
+        [
+          null,
+          "redacted"
+        ]
+      ],
+      "errors": [
+        {
+          "type": "value_too_long",
+          "name": "tags.0.0"
+        }
+      ],
+      "key_id": "123123123",
+      "project": 123123123,
+      "fingerprint": [
+        "{{ default }}"
+      ],
+      "hashes": [
+        "f5174f5bbe71742b14e3c728ed189a43"
+      ],
+      "_ref": 4504057827688448,
+      "_ref_version": 2,
+      "nodestore_insert": 1678209852.164581
+    },
+    "primary_hash": "f5174f5bbe71742b14e3c728ed189a43",
+    "retention_days": 90,
+    "occurrence_id": null,
+    "occurrence_data": {}
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_errors",
+    "skip_consume": false,
+    "group_states": [
+      {
+        "id": 123123123,
+        "is_new": false,
+        "is_regression": false,
+        "is_new_group_environment": false
+      }
+    ]
+  }
+]
