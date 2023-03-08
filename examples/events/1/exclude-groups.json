@@ -1,0 +1,8 @@
+[
+    2,
+    "exclude_groups",
+    {
+        "project_id": 2,
+        "group_ids": [1]
+    }
+]

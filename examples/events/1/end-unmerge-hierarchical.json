@@ -1,0 +1,12 @@
+[
+    2,
+    "end_unmerge_hierarchical",
+    {
+        "project_id": 123,
+        "previous_group_id": 1,
+        "new_group_id": 2,
+        "hierarchical_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "primary_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "datetime": "2023-03-08T16:14:18.591918Z"
+    }
+]
