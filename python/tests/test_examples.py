@@ -1,19 +1,17 @@
-from typing import Iterator, Tuple, Any
+from typing import Iterator
 import pytest
-import rapidjson
 import fastjsonschema
 import jsonschema
 
 from sentry_kafka_schemas.sentry_kafka_schemas import _list_topics, _get_topic
 from sentry_kafka_schemas.types import Example
-from sentry_kafka_schemas import get_schema, iter_examples
+from sentry_kafka_schemas import iter_examples
 
 
 def get_all_examples() -> Iterator[Example]:
     for topic in _list_topics():
         for schema_raw in _get_topic(topic)["schemas"]:
             version = schema_raw["version"]
-            schema = get_schema(topic, version=version)
             yield from iter_examples(topic, version=version)
 
 
@@ -32,9 +30,7 @@ def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
 @pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema"])
 def test_examples(example: Example, jsonschema_library: str) -> None:
     schema = example.schema["schema"]
-
-    with open(example.path) as f:
-        example_data = rapidjson.load(f)
+    example_data = example.load()
 
     if jsonschema_library == "fastjsonschema":
         fastjsonschema.compile(schema)(example_data)

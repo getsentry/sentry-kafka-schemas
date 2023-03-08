@@ -1,9 +1,7 @@
 import os
-import dataclasses
 
 import rapidjson
 from typing import (
-    Any,
     Iterable,
     Optional,
     MutableMapping,
