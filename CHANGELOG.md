@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 0.0.5
+
+### Various fixes & improvements
+
+- feat: Add basic iter_examples function (#33) by @untitaker
+- fix: Enforce minimum required on typing-extensions (#34) by @untitaker
+- fix(eventstream): Add all other message types (#32) by @untitaker
+- fix: Fix event schema wrt nullable tag keys (#31) by @untitaker
+- fix: Add more typing docs (#30) by @untitaker
+
 ## 0.0.4
 
 ### Various fixes & improvements
