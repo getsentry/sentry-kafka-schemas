@@ -1,0 +1,12 @@
+[
+  2,
+  "start_delete_groups",
+  {
+    "transaction_id": "b8b7a156abe94e2c8467841f10181496",
+    "project_id": 5855345,
+    "group_ids": [
+      3938422001
+    ],
+    "datetime": "2023-03-08T12:20:49.853676Z"
+  }
+]
