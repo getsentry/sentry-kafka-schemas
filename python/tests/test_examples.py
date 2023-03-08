@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import Iterator, Tuple
 import pytest
 import fastjsonschema
 import jsonschema
@@ -12,7 +12,7 @@ from sentry_kafka_schemas.types import Example
 from sentry_kafka_schemas import iter_examples
 
 
-def get_all_examples() -> Iterator[Example]:
+def get_all_examples() -> Iterator[Tuple[str, int, Example]]:
     for topic in _list_topics():
         for schema_raw in _get_topic(topic)["schemas"]:
             version = schema_raw["version"]
