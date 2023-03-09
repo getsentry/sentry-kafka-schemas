@@ -32,7 +32,7 @@ type-checking:
 types: type-checking
 .PHONY: types
 
-lint: lint-rust lint-python
+lint: lint-python
 .PHONY: lint
 
 lint-python:
