@@ -33,7 +33,7 @@ jobs:
           make install
       - name: Run linter
         run: |
-          make lint
+          make lint-python
   typing:
     name: "Type checking"
     runs-on: ubuntu-latest
