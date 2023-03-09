@@ -69,7 +69,9 @@
         ],
         "array_join_cols": []
       },
-      "result_profile": null
+      "result_profile": null,
+      "request_status": "table-rate-limited",
+      "slo": "against"
     }
   ],
   "status": "rate-limited",

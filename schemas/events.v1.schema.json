@@ -2707,7 +2707,8 @@
           ],
           "maxItems": 2,
           "minItems": 2
-        }
+        },
+        {"type": "null"}
       ]
     },
     "Tags": {

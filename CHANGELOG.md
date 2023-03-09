@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.6
+
+### Various fixes & improvements
+
+- fix(querylog) Add SLO related fields to the schema (#35) by @evanh
+
 ## 0.0.5
 
 ### Various fixes & improvements
