@@ -7,8 +7,18 @@ on:
   pull_request:
 
 jobs:
-  linting:
-    name: "Run linters"
+  lint-rust:
+    name: "Linters (Rust)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout code
+      - name: Run linter
+        run: |
+          make lint-rust
+  lint-python:
+    name: "Linters (Python)"
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -23,7 +33,7 @@ jobs:
           make install
       - name: Run linter
         run: |
-          make lint format
+          make lint-python
   typing:
     name: "Type checking"
     runs-on: ubuntu-latest

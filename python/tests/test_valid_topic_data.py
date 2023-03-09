@@ -8,7 +8,7 @@ import re
 def test_all_topics() -> None:
     # `.` is technically also valid in Kafka but we don't allow it
     # at Sentry since it can collide with `_`
-    valid_chars = re.compile("^[a-zA-Z0-9\-\_]+$")
+    valid_chars = re.compile(r"^[a-zA-Z0-9\-\_]+$")
 
     topics_dir = Path.joinpath(Path(__file__).parents[2], "topics")
     for filename in topics_dir.iterdir():
