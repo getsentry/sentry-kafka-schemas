@@ -29,16 +29,16 @@ type-checking:
 	mypy python/ --strict --config-file python/mypy.ini
 .PHONY: type-checking
 
-types: type-checking
-.PHONY: types
-
 lint: lint-rust lint-python
 .PHONY: lint
 
-lint-python:
+lint-python: lint-python-format type-checking
 	flake8 python/
-	black --check python/
 .PHONY: lint-python
+
+lint-python-format: 
+	black --check python/
+.PHONY: lint-format-python
 
 lint-rust:
 	cargo clippy -- -W clippy::pedantic
