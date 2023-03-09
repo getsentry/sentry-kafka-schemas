@@ -45,5 +45,5 @@ lint-rust:
 .PHONY: lint-rust
 
 tests:
-	pytest python/ -vv
+	pytest -n auto python/ -vv
 .PHONY: tests
