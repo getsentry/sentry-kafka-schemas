@@ -69,8 +69,7 @@
         "^[chdfr]$": {
           "$ref": "#/definitions/IntToString"
         }
-      },
-      "title": "MappingMeta"
+      }
     },
     "IntToInt": {
       "type": "object",
@@ -78,8 +77,7 @@
         "^[0-9]$": {
           "type": "integer"
         }
-      },
-      "title": "IntToInt"
+      }
     },
     "IntToString": {
       "type": "object",
@@ -87,8 +85,7 @@
         "^[0-9]$": {
           "type": "string"
         }
-      },
-      "title": "IntToString"
+      }
     }
   }
 }
