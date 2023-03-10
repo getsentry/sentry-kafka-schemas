@@ -120,9 +120,14 @@
                         "null"
                     ]
                 },
-                "profile": {"$ref": "#/definitions/ClickhouseQueryProfile"},
+                "profile": {
+                    "$ref": "#/definitions/ClickhouseQueryProfile"
+                },
                 "result_profile": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 },
                 "request_status": {
                     "type": "string"
@@ -172,6 +177,7 @@
                     "type": "boolean"
                 },
                 "where_profile": {
+                    "title": "clickhouse_query_profile_where_profile",
                     "type": "object",
                     "properties": {
                         "columns": {
