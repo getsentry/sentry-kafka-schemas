@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.0.7
+
+### Various fixes & improvements
+
+- feat: Generate type for where profile (#39) by @lynnagara
+- feat: Add basic linting for jsonschema naming conventions (#36) by @untitaker
+- fix: Split out linting for Rust (#38) by @untitaker
+- fix: Another instance of nullable tags (#37) by @untitaker
+
 ## 0.0.6
 
 ### Various fixes & improvements
