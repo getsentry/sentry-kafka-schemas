@@ -2922,17 +2922,7 @@
     },
     "TransactionSource": {
       "description": "Describes how the name of the transaction was determined.",
-      "type": "string",
-      "enum": [
-        "custom",
-        "url",
-        "route",
-        "view",
-        "component",
-        "sanitized",
-        "task",
-        "unknown"
-      ]
+      "type": "string"
     },
     "User": {
       "title": "sentry_user",

@@ -1,0 +1,76 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": 123,
+    "group_ids": [
+      123
+    ],
+    "event_id": "ce16ee7fe48c4a258049e0f6b122e5d6",
+    "organization_id": 122,
+    "project_id": 122,
+    "message": "hello",
+    "platform": "python",
+    "datetime": "2023-03-13T17:34:49.328086Z",
+    "data": {
+      "event_id": "ce16ee7fe48c4a258049e0f6b122e5d6",
+      "level": "error",
+      "version": "7",
+      "type": "error",
+      "transaction": "redacted",
+      "transaction_info": {
+        "source": "customer used before_send to redact this value"
+      },
+      "logger": "",
+      "platform": "python",
+      "timestamp": 1678728889.328086,
+      "received": 1678728889.383191,
+      "environment": "production",
+      "ingest_path": [
+        {
+          "version": "23.2.0",
+          "public_key": "deadbeef"
+        }
+      ],
+      "key_id": "122",
+      "project": 122,
+      "grouping_config": {
+        "enhancements": "eJybzDRxY3J-bm5-npWRgaGlroGxrpHxBABcYgcZ",
+        "id": "newstyle:2019-10-29"
+      },
+      "_metrics": {
+        "bytes.ingested.event": 10249,
+        "bytes.stored.event": 12209
+      },
+      "fingerprint": [
+        "{{ default }}"
+      ],
+      "hashes": [
+        "ba0d38e4ad7e080a9c2d7a8c134f0b50"
+      ],
+      "culprit": "nylas_pages.handle_webhook",
+      "_ref": 232684,
+      "_ref_version": 2,
+      "nodestore_insert": 1678728891.60629
+    },
+    "primary_hash": "ba0d38e4ad7e080a9c2d7a8c134f0b50",
+    "retention_days": 90,
+    "occurrence_id": null,
+    "occurrence_data": {}
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_errors",
+    "skip_consume": false,
+    "group_states": [
+      {
+        "id": 122,
+        "is_new": false,
+        "is_regression": false,
+        "is_new_group_environment": false
+      }
+    ]
+  }
+]
