@@ -73,7 +73,10 @@
             "type": "string"
         },
         "organization": {
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         }
     },
     "required": [
