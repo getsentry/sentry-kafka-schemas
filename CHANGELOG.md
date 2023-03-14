@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.0.8
+
+### Various fixes & improvements
+
+- fix(tests): Broken Organization ID test (#43) by @rahul-kumar-saini
+- fix(slo) Add the request_status / slo fields to the top level (#42) by @evanh
+- feat(Querylog): Organization ID Field (#41) by @rahul-kumar-saini
+- fix: Relax TransactionSource definition (#40) by @untitaker
+
 ## 0.0.7
 
 ### Various fixes & improvements
