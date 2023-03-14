@@ -71,6 +71,9 @@
         },
         "snql_anonymized": {
             "type": "string"
+        },
+        "organization": {
+            "type": "integer"
         }
     },
     "required": [
