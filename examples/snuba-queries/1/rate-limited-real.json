@@ -75,6 +75,8 @@
     }
   ],
   "status": "rate-limited",
+  "request_status": "table-rate-limited",
+  "slo": "against",
   "timing": {
     "timestamp": 1677884153,
     "duration_ms": 102,

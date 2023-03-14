@@ -73,6 +73,8 @@
         }
     ],
     "status": "success",
+    "request_status": "success",
+    "slo": "for",
     "timing": {
         "timestamp": 1675890758,
         "duration_ms": 55,
