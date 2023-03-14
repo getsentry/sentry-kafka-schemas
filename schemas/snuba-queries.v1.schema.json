@@ -39,6 +39,12 @@
         "status": {
             "type": "string"
         },
+        "request_status": {
+            "type": "string"
+        },
+        "slo": {
+            "type": "string"
+        },
         "projects": {
             "type": "array",
             "items": {
@@ -86,6 +92,8 @@
         "start_timestamp",
         "end_timestamp",
         "status",
+        "request_status",
+        "slo",
         "projects",
         "query_list",
         "timing"
