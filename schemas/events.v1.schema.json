@@ -477,7 +477,7 @@
             {"type": "null"}
           ]
         },
-        "thread": {
+        "threads": {
           "anyOf": [
             {
               "$ref": "#/definitions/ThreadChain"
@@ -1492,7 +1492,7 @@
       ]
     },
     "Thread": {
-      "description": " A single thread.\n\n The Threads Interface specifies threads that were running at the time an event happened. These threads can also contain stack traces.\n These threads can also contain stack traces.",
+      "description": " A single thread.\n\n The Threads Interface specifies threads that were running at the time an event happened.\n These threads can also contain stack traces.",
       "anyOf": [
         {
           "type": "object",
