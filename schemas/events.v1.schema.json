@@ -1492,7 +1492,7 @@
       ]
     },
     "Thread": {
-      "description": " A single thread.\n\n The Threads Interface specifies threads that were running at the time an event happened. These threads can also contain stack traces.",
+      "description": " A single thread.\n\n The Threads Interface specifies threads that were running at the time an event happened. These threads can also contain stack traces.\n These threads can also contain stack traces.",
       "anyOf": [
         {
           "type": "object",
@@ -1509,7 +1509,7 @@
               ]
             },
             "main": {
-              "description": " If applicable, a flag indicating whether the thread was responsible for rendering the user interface\n On mobile platforms this is oftentimes referred to as the `main thread` or `ui thread`.",
+              "description": " If applicable, a flag indicating whether the thread was responsible for rendering the user interface.\n\n On mobile platforms this is oftentimes referred to as the `main thread` or `ui thread`.",
               "type": [
                 "boolean",
                 "null"
