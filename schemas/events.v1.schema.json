@@ -1392,6 +1392,9 @@
       "title": "sentry_thread_chain",
       "description": " One or multiple threads.",
       "type": "object",
+      "required": [
+        "values"
+      ],
       "properties": {
         "values": {
           "type": ["null", "array"],
