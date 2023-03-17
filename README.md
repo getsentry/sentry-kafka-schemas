@@ -65,3 +65,17 @@ class SubSchema(TypedDict, total=False):
 
 `title` can be added at any level, not just within `definitions`, to produce
 types. Use that power tastefully!
+
+## Release process and development install
+
+For releasing a new stable version from main branch, go to
+[Actions](https://github.com/getsentry/sentry-kafka-schemas/actions) and
+trigger a new workflow for the `Release` workflow.
+
+Most likely you are working on a PR to Snuba or Sentry where you already want
+to use those types. You can do that by running `make build` in this repo, then
+running `pip install -e ~/projects/sentry-kafka-schemas/`.
+
+You need to re-run `make build` to update types -- they do not automatically
+change with schema changes even if you install this package in development
+mode.
