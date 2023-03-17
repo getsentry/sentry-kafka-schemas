@@ -79,3 +79,7 @@ running `pip install -e ~/projects/sentry-kafka-schemas/`.
 You need to re-run `make build` to update types -- they do not automatically
 change with schema changes even if you install this package in development
 mode.
+
+To stop using a development version of this repo in whichever service you're
+working on, you can reinstall Python dependencies in that repo. Most likely the
+command is `make install-py-dev`.
