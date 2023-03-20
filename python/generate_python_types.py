@@ -36,8 +36,6 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
                     schema_data["schema_filepath"],
                     "--python",
                     os.path.join(target_folder, f"{schema_tmp_module_name}.py"),
-                    "--rewrite-import",
-                    "typing.Required:typing_extensions",
                 ]
             )
 
