@@ -1,0 +1,78 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": 123123,
+    "group_ids": [
+      123123
+    ],
+    "event_id": "dbec5c8cbcde450ca84ec0ee848e4f13",
+    "organization_id": 123123,
+    "project_id": 123123,
+    "message": "redacted",
+    "platform": "other",
+    "datetime": "2023-03-20T12:36:36.051000Z",
+    "data": {
+      "event_id": "dbec5c8cbcde450ca84ec0ee848e4f13",
+      "level": "error",
+      "version": "5",
+      "type": "error",
+      "logentry": {
+        "formatted": "Authentication failed, token expired!",
+        "message": null,
+        "params": null
+      },
+      "logger": "",
+      "modules": {
+        "my.package": "1.0.0"
+      },
+      "platform": "other",
+      "timestamp": 1679315796.051,
+      "received": 1679315856.052579,
+      "release": "3.0.2",
+      "environment": "production",
+      "sdk": {
+        "name": "sentry-java",
+        "version": "1.4.0-3ded0",
+        "client_ip": "1.1.1.1",
+        "integrations": null,
+        "packages": null
+      },
+      "fingerprint": [
+        "{{ default }}"
+      ],
+      "hashes": [
+        "2fa1891207dfe47975e73c8d82648d02",
+        "16bcfa056ee73de2bc7846c8358f619d"
+      ],
+      "culprit": "redacted",
+      "title": "redacted",
+      "location": "redacted",
+      "_ref": 4504870900858880,
+      "_ref_version": 2,
+      "_metrics": {
+        "bytes.stored.event": 30169
+      },
+      "nodestore_insert": 1679315856.750589
+    },
+    "primary_hash": "2fa1891207dfe47975e73c8d82648d02",
+    "retention_days": 90,
+    "occurrence_id": null,
+    "occurrence_data": {}
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_errors",
+    "skip_consume": true,
+    "group_states": [
+      {
+        "id": 123123,
+        "is_new": false,
+        "is_regression": false,
+        "is_new_group_environment": false
+      }
+    ]
+  }
+]
