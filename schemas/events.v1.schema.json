@@ -477,6 +477,14 @@
             {"type": "null"}
           ]
         },
+        "threads": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ThreadChain"
+            },
+            {"type": "null"}
+          ]
+        },
         "extra": {
           "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
           "type": [
@@ -1380,6 +1388,29 @@
         }
       }
     },
+    "ThreadChain": {
+      "title": "sentry_thread_chain",
+      "description": " One or multiple threads.",
+      "type": "object",
+      "required": [
+        "values"
+      ],
+      "properties": {
+        "values": {
+          "type": ["null", "array"],
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Thread"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
     "Exception": {
       "description": " A single exception.\n\n Multiple values inside of an [event](#typedef-Event) represent chained exceptions and should be sorted oldest to newest. For example, consider this Python code snippet:\n\n ```python\n try:\n     raise Exception(\"random boring invariant was not met!\")\n except Exception as e:\n     raise ValueError(\"something went wrong, help!\") from e\n ```\n\n `Exception` would be described first in the values list, followed by a description of `ValueError`:\n\n ```json\n {\n   \"exception\": {\n     \"values\": [\n       {\"type\": \"Exception\": \"value\": \"random boring invariant was not met!\"},\n       {\"type\": \"ValueError\", \"value\": \"something went wrong, help!\"},\n     ]\n   }\n }\n ```",
       "anyOf": [
@@ -1457,6 +1488,35 @@
             }
           },
           "additionalProperties": false
+        }
+      ]
+    },
+    "Thread": {
+      "description": " A single thread.\n\n The Threads Interface specifies threads that were running at the time an event happened.\n These threads can also contain stack traces.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "description": " An optional value that refers to a [thread](#typedef-Thread).",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/ThreadId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "main": {
+              "description": " If applicable, a flag indicating whether the thread was responsible for rendering the user interface.\n\n On mobile platforms this is oftentimes referred to as the `main thread` or `ui thread`.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": true
         }
       ]
     },

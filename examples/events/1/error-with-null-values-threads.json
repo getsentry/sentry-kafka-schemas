@@ -1,0 +1,479 @@
+[
+    2,
+    "insert",
+    {
+      "data": {
+        "event_id": "ced998ed44fa4cfc9211f48f248f3ce5",
+        "project": 5428559,
+        "release": "io.sentry.samples.android@6.16.0+2",
+        "dist": "2",
+        "platform": "java",
+        "message": "",
+        "datetime": "2023-03-17T13:34:59+00:00",
+        "tags": [
+          [
+            "device",
+            "sdk_gphone64_arm64"
+          ],
+          [
+            "device.family",
+            "sdk_gphone64_arm64"
+          ],
+          [
+            "environment",
+            "debug"
+          ],
+          [
+            "isSideLoaded",
+            "true"
+          ],
+          [
+            "level",
+            "error"
+          ],
+          [
+            "os",
+            "Android 13"
+          ],
+          [
+            "os.name",
+            "Android"
+          ],
+          [
+            "os.rooted",
+            "no"
+          ],
+          [
+            "dist",
+            "2"
+          ],
+          [
+            "release",
+            "io.sentry.samples.android@6.16.0+2"
+          ],
+          [
+            "user",
+            "id:b7478c1e-a9ba-4e5a-bc65-364142284f89"
+          ],
+          [
+            "transaction",
+            "MainActivity.capture_exception"
+          ]
+        ],
+        "_metrics": {
+          "bytes.ingested.event": 22219,
+          "bytes.ingested.event.attachment": 125499,
+          "bytes.stored.event": 61436,
+          "bytes.stored.event.attachment": 125499
+        },
+        "breadcrumbs": {
+          "values": [
+            {
+              "timestamp": 1679060096.044,
+              "type": "session",
+              "category": "app.lifecycle",
+              "level": "info",
+              "data": {
+                "state": "session.start"
+              }
+            },
+            {
+              "timestamp": 1679060096.082,
+              "type": "navigation",
+              "category": "ui.lifecycle",
+              "level": "info",
+              "data": {
+                "screen": "MainActivity",
+                "state": "created"
+              }
+            },
+            {
+              "timestamp": 1679060096.138,
+              "type": "navigation",
+              "category": "ui.lifecycle",
+              "level": "info",
+              "data": {
+                "screen": "MainActivity",
+                "state": "started"
+              }
+            },
+            {
+              "timestamp": 1679060096.139,
+              "type": "navigation",
+              "category": "app.lifecycle",
+              "level": "info",
+              "data": {
+                "state": "foreground"
+              }
+            },
+            {
+              "timestamp": 1679060096.139,
+              "type": "navigation",
+              "category": "ui.lifecycle",
+              "level": "info",
+              "data": {
+                "screen": "MainActivity",
+                "state": "resumed"
+              }
+            },
+            {
+              "timestamp": 1679060099.782,
+              "type": "user",
+              "category": "ui.click",
+              "level": "info",
+              "data": {
+                "view.class": "androidx.appcompat.widget.AppCompatButton",
+                "view.id": "capture_exception"
+              }
+            }
+          ]
+        },
+        "contexts": {
+          "app": {
+            "app_start_time": "2023-03-17T13:34:55.990Z",
+            "app_identifier": "io.sentry.samples.android",
+            "app_name": "Sentry sample",
+            "app_version": "6.16.0",
+            "app_build": "2",
+            "in_foreground": true,
+            "permissions": {
+              "ACCESS_NETWORK_STATE": "granted",
+              "CAMERA": "not_granted",
+              "FOREGROUND_SERVICE": "granted",
+              "INTERNET": "granted",
+              "READ_EXTERNAL_STORAGE": "not_granted",
+              "READ_PHONE_STATE": "not_granted",
+              "WRITE_EXTERNAL_STORAGE": "not_granted"
+            },
+            "type": "app"
+          },
+          "device": {
+            "name": "sdk_gphone64_arm64",
+            "family": "sdk_gphone64_arm64",
+            "model": "sdk_gphone64_arm64",
+            "model_id": "TE1A.220922.021",
+            "battery_level": 100.0,
+            "orientation": "portrait",
+            "manufacturer": "Google",
+            "brand": "google",
+            "screen_density": 2.625,
+            "screen_dpi": 420,
+            "online": true,
+            "charging": false,
+            "low_memory": false,
+            "simulator": true,
+            "memory_size": 2057527296,
+            "free_memory": 641314816,
+            "storage_size": 6228115456,
+            "free_storage": 5105745920,
+            "boot_time": "2023-03-17T11:15:57.308Z",
+            "timezone": "Europe/Vienna",
+            "archs": [
+              "arm64-v8a"
+            ],
+            "battery_temperature": 25.0,
+            "connection_type": "wifi",
+            "id": "b7478c1e-a9ba-4e5a-bc65-364142284f89",
+            "language": "en",
+            "locale": "en_US",
+            "screen_height_pixels": 2201,
+            "screen_width_pixels": 1080,
+            "type": "device"
+          },
+          "os": {
+            "name": "Android",
+            "version": "13",
+            "build": "sdk_gphone64_arm64-userdebug 13 TE1A.220922.021 9526604 dev-keys",
+            "kernel_version": "5.15.41-android13-8-00055-g4f5025129fe8-ab8949913",
+            "rooted": false,
+            "type": "os"
+          },
+          "trace": {
+            "trace_id": "1da660e88c01430b85fe68537ed5838b",
+            "span_id": "d95788e2076d497a",
+            "op": "ui.action.click",
+            "status": "unknown",
+            "client_sample_rate": 1.0,
+            "type": "trace"
+          }
+        },
+        "culprit": "MainActivity.capture_exception",
+        "environment": "debug",
+        "exception": {
+          "values": [
+            {
+              "type": "Exception",
+              "value": "Some exception.",
+              "module": "java.lang",
+              "stacktrace": {
+                "frames": [
+                  {
+                    "function": "main",
+                    "module": "com.android.internal.os.ZygoteInit",
+                    "filename": "ZygoteInit.java",
+                    "abs_path": "ZygoteInit.java",
+                    "lineno": 936,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "run",
+                    "module": "com.android.internal.os.RuntimeInit$MethodAndArgsCaller",
+                    "filename": "RuntimeInit.java",
+                    "abs_path": "RuntimeInit.java",
+                    "lineno": 548,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "invoke",
+                    "module": "java.lang.reflect.Method",
+                    "filename": "Method.java",
+                    "abs_path": "Method.java",
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "main",
+                    "module": "android.app.ActivityThread",
+                    "filename": "ActivityThread.java",
+                    "abs_path": "ActivityThread.java",
+                    "lineno": 7872,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "loop",
+                    "module": "android.os.Looper",
+                    "filename": "Looper.java",
+                    "abs_path": "Looper.java",
+                    "lineno": 288,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "loopOnce",
+                    "module": "android.os.Looper",
+                    "filename": "Looper.java",
+                    "abs_path": "Looper.java",
+                    "lineno": 201,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "dispatchMessage",
+                    "module": "android.os.Handler",
+                    "filename": "Handler.java",
+                    "abs_path": "Handler.java",
+                    "lineno": 99,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "handleCallback",
+                    "module": "android.os.Handler",
+                    "filename": "Handler.java",
+                    "abs_path": "Handler.java",
+                    "lineno": 942,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "run",
+                    "module": "android.view.View$PerformClick",
+                    "filename": "View.java",
+                    "abs_path": "View.java",
+                    "lineno": 29334,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "-$$Nest$mperformClickInternal",
+                    "module": "android.view.View",
+                    "lineno": 0,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "performClickInternal",
+                    "module": "android.view.View",
+                    "filename": "View.java",
+                    "abs_path": "View.java",
+                    "lineno": 7483,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "performClick",
+                    "module": "android.view.View",
+                    "filename": "View.java",
+                    "abs_path": "View.java",
+                    "lineno": 7506,
+                    "in_app": false,
+                    "data": {
+                      "orig_in_app": -1
+                    }
+                  },
+                  {
+                    "function": "onClick",
+                    "module": "io.sentry.samples.android.MainActivity$$ExternalSyntheticLambda7",
+                    "lineno": 0,
+                    "in_app": true
+                  },
+                  {
+                    "function": "lambda$onCreate$6",
+                    "module": "io.sentry.samples.android.MainActivity",
+                    "filename": "MainActivity.java",
+                    "abs_path": "MainActivity.java",
+                    "lineno": 107,
+                    "in_app": true
+                  }
+                ]
+              },
+              "thread_id": 2
+            }
+          ]
+        },
+        "fingerprint": [
+          "{{ default }}"
+        ],
+        "grouping_config": {
+          "enhancements": "eJybzDRxY3J-bm5-npWRgaGlroGxrpHxxEkT1-Zm5usVp-aVFFXqaWlNZAQAKGsOFg",
+          "id": "newstyle:2019-10-29"
+        },
+        "hashes": [
+          "7956a3c218a27566572b64cad9f2b3e7",
+          "507662f072d47719837844a6f3f579c4"
+        ],
+        "ingest_path": [
+          {
+            "version": "23.3.0",
+            "public_key": "XE7QiyuNlja9PZ7I9qJlwQotzecWrUIN91BAO7Q5R38"
+          }
+        ],
+        "key_id": "1336851",
+        "level": "error",
+        "location": "MainActivity.java",
+        "logger": "",
+        "metadata": {
+          "display_title_with_tree_label": false,
+          "filename": "MainActivity.java",
+          "function": "lambda$onCreate$6",
+          "type": "Exception",
+          "value": "Some exception."
+        },
+        "nodestore_insert": 1679060109.558613,
+        "received": 1679060103.68783,
+        "sdk": {
+          "name": "sentry.java.android",
+          "version": "6.16.0",
+          "integrations": [
+            "ComposeUserInteraction",
+            "UncaughtExceptionHandler",
+            "ShutdownHook",
+            "Ndk",
+            "AppLifecycle",
+            "Anr",
+            "ActivityLifecycle",
+            "UserInteraction",
+            "FragmentLifecycle",
+            "Timber",
+            "AppComponentsBreadcrumbs",
+            "SystemEventsBreadcrumbs",
+            "TempSensorBreadcrumbs"
+          ],
+          "packages": [
+            {
+              "name": "maven:io.sentry:sentry",
+              "version": "6.16.0"
+            },
+            {
+              "name": "maven:io.sentry:sentry-android-core",
+              "version": "6.16.0"
+            },
+            {
+              "name": "maven:io.sentry:sentry-compose",
+              "version": "6.16.0"
+            },
+            {
+              "name": "maven:io.sentry:sentry-android-ndk",
+              "version": "6.16.0"
+            },
+            {
+              "name": "maven:io.sentry:sentry-android-fragment",
+              "version": "6.16.0"
+            },
+            {
+              "name": "maven:io.sentry:sentry-android-timber",
+              "version": "6.16.0"
+            }
+          ]
+        },
+        "threads": {
+          "values": null
+        },
+        "timestamp": 1679060099.815,
+        "title": "Exception: Some exception.",
+        "transaction": "MainActivity.capture_exception",
+        "type": "error",
+        "user": {
+          "id": "b7478c1e-a9ba-4e5a-bc65-364142284f89",
+          "ip_address": "84.115.213.8",
+          "geo": {
+            "country_code": "AT",
+            "city": "Vienna",
+            "region": "Austria"
+          }
+        },
+        "version": "7"
+      },
+      "datetime": "2023-02-27T15:40:12.223000Z",
+      "event_id": "9cdc4c32dff14fbbb012b0aa9e908126",
+      "group_id": 124,
+      "group_ids": [
+        124
+      ],
+      "message": "hello world",
+      "organization_id": 123,
+      "platform": "javascript",
+      "primary_hash": "061cf02b26374d108694d6643a7a2f4e",
+      "project_id": 6036610
+    },
+    {
+      "group_states": [
+        {
+          "id": "124",
+          "is_new": false,
+          "is_new_group_environment": false,
+          "is_regression": false
+        }
+      ],
+      "is_new": false,
+      "is_new_group_environment": false,
+      "is_regression": false,
+      "queue": "post_process_errors",
+      "skip_consume": false
+    }
+  ]
