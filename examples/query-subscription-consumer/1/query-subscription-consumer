@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "payload": {
+    "subscription_id": "1234", 
+    "result": {
+      "data": [
+        {
+          "hello": 50,
+        }
+      ]
+    }, 
+  "request": {
+    "some": "data", 
+    "query": "MATCH (metrics_counters) SELECT sum(value) AS value BY\ntags[3] WHERE org_id = 1 AND project_id IN tuple(1) AND metric_id = 16\nAND tags[3] INtuple(13, 4)"
+  }, 
+  "entity": "metrics_counters", 
+  "timestamp": 1677512412,
+  }
+}
