@@ -33,9 +33,14 @@ def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
 
 
 @pytest.mark.parametrize("topic,version,example", get_all_examples(), ids=str)
-@pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"])
+@pytest.mark.parametrize(
+    "jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"]
+)
 def test_examples(
-    topic: str, version: int, example: Example, jsonschema_library: str,
+    topic: str,
+    version: int,
+    example: Example,
+    jsonschema_library: str,
 ) -> None:
     schema = get_schema(topic, version=version)["schema"]
     example_data = example.load()
@@ -48,7 +53,7 @@ def test_examples(
             jsonschema.validate(example_data, schema)
         except jsonschema.ValidationError as e:
             _get_most_specific_jsonschema_error(e)
-    elif jsonschema_library == 'rapidjson':
+    elif jsonschema_library == "rapidjson":
         compiled = rapidjson.Validator(rapidjson.dumps(schema))
         raw_example_data = rapidjson.dumps(example_data)
         compiled(raw_example_data)
