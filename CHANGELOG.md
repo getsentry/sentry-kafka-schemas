@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.9
+
+### Various fixes & improvements
+
+- feat: Add threads to events schema (#45) by @marandaneto
+
 ## 0.0.8
 
 ### Various fixes & improvements
