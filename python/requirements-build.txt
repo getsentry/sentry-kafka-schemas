@@ -1,1 +1,1 @@
-jsonschema-gentypes @ https://github.com/getsentry/jsonschema-gentypes/archive/f67e1b8b0cf6331cd13c1a0396c981f934f05e10.zip
+jsonschema-gentypes==1.5.0
