@@ -5,20 +5,20 @@
     "result": {
       "data": [
         {
-          "count": 0
+          "count": 0,
         }
       ], 
       "meta": [
         {
           "name": "count", 
-          "type": "UInt64"
+          "type": "UInt64",
         }
       ], 
       "profile": {
         "bytes": 64, 
         "blocks": 1, 
         "rows": 1, 
-        "elapsed": 0.11267709732055664
+        "elapsed": 0.11267709732055664,
       }, 
       "trace_output": ""
     },
@@ -28,7 +28,7 @@
       "organization_id": "<subscriptions>", 
       "referrer": "subscriptions_executor",
     }
-  } 
+  },
   "entity": "metrics_counters", 
   "timestamp": 1677512412,
   }
