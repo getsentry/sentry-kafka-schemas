@@ -14,6 +14,7 @@
           "anyOf": [
             {
               "type": "object",
+              "title": "payload_v3",
               "additionalProperties": false,
               "properties": {
                 "subscription_id": {"type": "string", "minLength": 1},
@@ -40,6 +41,7 @@
             },
             {
               "type": "object",
+              "title": "payload_v2",
               "additionalProperties": false,
               "properties": {
                 "subscription_id": {"type": "string", "minLength": 1},
