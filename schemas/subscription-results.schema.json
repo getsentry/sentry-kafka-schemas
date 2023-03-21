@@ -3,7 +3,7 @@
   "$ref": "#/definitions/Main",
   "definitions": {
     "Main": {
-      "title": "subscription-wrapper-schema",
+      "title": "subscription-results",
       "type": "object",
       "additionalProperties": false,
       "properties": {
