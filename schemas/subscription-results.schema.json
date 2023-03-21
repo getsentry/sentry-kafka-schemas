@@ -115,11 +115,11 @@
                   }
                ]
             }
-         }
-      },
+         },
       "required":[
          "version",
          "payload"
       ]
+      }
    }
 }
