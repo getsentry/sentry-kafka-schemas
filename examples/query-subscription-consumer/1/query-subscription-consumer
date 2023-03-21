@@ -1,18 +1,34 @@
 {
   "version": 3,
   "payload": {
-    "subscription_id": "1234", 
+    "subscription_id": "0/73fb573ac29811ed8dbb0242ac120006", 
     "result": {
       "data": [
         {
-          "hello": 50,
+          "count": 0
         }
-      ]
-    }, 
+      ], 
+      "meta": [
+        {
+          "name": "count", 
+          "type": "UInt64"
+        }
+      ], 
+      "profile": {
+        "bytes": 64, 
+        "blocks": 1, 
+        "rows": 1, 
+        "elapsed": 0.11267709732055664
+      }, 
+      "trace_output": ""
+    },
   "request": {
-    "some": "data", 
-    "query": "MATCH (metrics_counters) SELECT sum(value) AS value BY\ntags[3] WHERE org_id = 1 AND project_id IN tuple(1) AND metric_id = 16\nAND tags[3] INtuple(13, 4)"
-  }, 
+    "query": "MATCH (events) SELECT count() AS `count` WHERE type = \'error\' AND project_id IN array(4551586472787969)", 
+    "tenant_ids": {
+      "organization_id": "<subscriptions>", 
+      "referrer": "subscriptions_executor"
+    }
+  } 
   "entity": "metrics_counters", 
   "timestamp": 1677512412,
   }

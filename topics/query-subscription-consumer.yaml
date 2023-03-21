@@ -1,5 +1,5 @@
-topic: query-subscription-consumer
-description: Metric alert consumer
+topic: events-subscription-results
+description: Metric alert events consumer
 schemas:
   - version: 1
     compatibility_mode: none
