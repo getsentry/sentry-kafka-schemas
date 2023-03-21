@@ -26,7 +26,7 @@
     "query": "MATCH (events) SELECT count() AS `count` WHERE type = \'error\' AND project_id IN array(4551586472787969)", 
     "tenant_ids": {
       "organization_id": "<subscriptions>", 
-      "referrer": "subscriptions_executor"
+      "referrer": "subscriptions_executor",
     }
   } 
   "entity": "metrics_counters", 
