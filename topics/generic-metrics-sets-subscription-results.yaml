@@ -1,0 +1,9 @@
+topic: generic-metrics-sets-subscription-results
+description: Generic Metrics Sets Subscription Results
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: subscription-results.schema.json
+    examples:
+      - subscription-results/1/ 

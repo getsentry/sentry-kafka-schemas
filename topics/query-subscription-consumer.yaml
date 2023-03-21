@@ -1,9 +1,0 @@
-topic: events-subscription-results
-description: Metric alert events consumer
-schemas:
-  - version: 1
-    compatibility_mode: none
-    type: json
-    resource: query-subscription-consumer.schema.json
-    examples:
-      - query-subscription-consumer/1/
