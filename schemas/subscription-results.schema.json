@@ -56,7 +56,7 @@
                         }
                      },
                      "required":[
-                        "subscriptionId",
+                        "subscription_id",
                         "request",
                         "result",
                         "timestamp",
@@ -107,7 +107,7 @@
                         }
                      },
                      "required":[
-                        "subscriptionId",
+                        "subscription_id",
                         "request",
                         "result",
                         "timestamp"
