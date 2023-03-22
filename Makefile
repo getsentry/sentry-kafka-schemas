@@ -6,6 +6,7 @@ install-build-requirements:
 	pip install -r python/requirements-build.txt
 	# the script also imports the python library, so dependencies need to be preinstalled
 	pip install -r python/requirements.txt
+	yarn
 .PHONY: install-build-requirements
 
 python/sentry_kafka_schemas/schema_types: schemas/ topics/ install-build-requirements
@@ -23,6 +24,8 @@ install: python/sentry_kafka_schemas/schema_types
 
 format:
 	black python/
+	cargo fmt
+	yarn prettier --write .
 .PHONY: format
 
 type-checking:
@@ -37,7 +40,6 @@ lint: lint-python
 
 lint-python:
 	flake8 python/
-	black --check python/
 .PHONY: lint-python
 
 lint-rust:

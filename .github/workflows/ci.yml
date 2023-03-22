@@ -7,6 +7,18 @@ on:
   pull_request:
 
 jobs:
+  format:
+    name: "Code formatting"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - run: make format
+      - uses: getsentry/action-github-commit@bec0adb2924f8c19a9f84c18c83d375caf02ca38 # main
+        if: github.ref != 'refs/heads/master'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: git diff --quiet || (echo '::error ::lint produced file changes, run linter locally and try again' && exit 1)
   lint-rust:
     name: "Linters (Rust)"
     runs-on: ubuntu-latest

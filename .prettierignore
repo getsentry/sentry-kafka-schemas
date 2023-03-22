@@ -1,0 +1,5 @@
+python/sentry_kafka_schemas/schema_types
+.mypy_cache
+build/
+.venv/
+target/
