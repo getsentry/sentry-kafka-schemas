@@ -47,7 +47,7 @@
                            ]
                         },
                         "timestamp":{
-                           "type":"string",
+                           "type":"integer",
                            "format":"date-time"
                         },
                         "entity":{
@@ -98,7 +98,7 @@
                            ]
                         },
                         "timestamp":{
-                           "type":"string",
+                           "type":"integer",
                            "format":"date-time"
                         },
                         "entity":{
