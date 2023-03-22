@@ -13,14 +13,26 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
+
+      - name: Internal github app token
+        id: token
+        uses: getsentry/action-github-app-token@97c9e23528286821f97fba885c1b1123284b29cc # v2.0.0
+        continue-on-error: true
+        with:
+          app_id: ${{ secrets.SENTRY_INTERNAL_APP_ID }}
+          private_key: ${{ secrets.SENTRY_INTERNAL_APP_PRIVATE_KEY }}
+
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
+
       - run: make install format
+
       - uses: getsentry/action-github-commit@bec0adb2924f8c19a9f84c18c83d375caf02ca38 # main
         if: github.ref != 'refs/heads/master'
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ steps.token.outputs.token }}
+
       - run: git diff --quiet || (echo '::error ::lint produced file changes, run linter locally and try again' && exit 1)
   lint-rust:
     name: "Linters (Rust)"
