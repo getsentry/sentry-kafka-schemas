@@ -39,6 +39,7 @@ For example:
 // a schema referenced from `topics/events.yaml, containing topic: events
 {
     "title": "main_schema",
+    "description": "Some additional information about the schema."
     "properties": {
         "subfield": {"$ref": "#/definitions/SubSchema"}
     },
@@ -57,6 +58,8 @@ Produces:
 # file: sentry_kafka_schemas/schema_types/events_v1.py
 
 class MainSchema(TypedDict, total=False):
+    """Some additional information about the schema."""
+
     subfield: SubSchema
 
 class SubSchema(TypedDict, total=False):
