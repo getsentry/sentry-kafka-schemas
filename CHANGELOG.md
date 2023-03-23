@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.0.10
+
+### Various fixes & improvements
+
+- feat(querylog): Improve schema (#53) by @lynnagara
+- build: pyyaml>=5.4,<7.0 (#52) by @lynnagara
+- doc: Add info on how to add a docstring to types (#50) by @untitaker
+- fix: Accept client_ip in sdk_info (#48) by @untitaker
+- ref: Bump jsonschema-gentypes (#47) by @untitaker
+- doc: Add information about releasing this package (#46) by @untitaker
+- feat: Add rapidjson to testmatrix (#44) by @untitaker
+
 ## 0.0.9
 
 ### Various fixes & improvements
