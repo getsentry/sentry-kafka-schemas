@@ -15,6 +15,21 @@
                 },
                 "referrer": {
                     "type": "string"
+                },
+                "app_id": {
+                    "type": "string"
+                },
+                "team": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "feature": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             }
         },
@@ -67,10 +82,16 @@
                     "type": "integer"
                 },
                 "marks_ms": {
-                    "type": "object"
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
                 },
                 "tags": {
-                    "type": "object"
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             },
             "additionalProperties": false
