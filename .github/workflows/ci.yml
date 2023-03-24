@@ -29,7 +29,7 @@ jobs:
       - run: make install format
 
       - uses: getsentry/action-github-commit@bec0adb2924f8c19a9f84c18c83d375caf02ca38 # main
-        if: github.ref != 'refs/heads/main'
+        if: github.event_name == 'pull_request'
         with:
           github-token: ${{ steps.token.outputs.token }}
 
