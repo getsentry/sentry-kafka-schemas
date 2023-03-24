@@ -64,9 +64,7 @@
           ],
           "mapping_cols": []
         },
-        "groupby_cols": [
-          "errors_dist_ro.group_id"
-        ],
+        "groupby_cols": ["errors_dist_ro.group_id"],
         "array_join_cols": []
       },
       "result_profile": null,
@@ -89,8 +87,6 @@
     },
     "tags": {}
   },
-  "projects": [
-    123123123
-  ],
+  "projects": [123123123],
   "snql_anonymized": "redacted"
 }
