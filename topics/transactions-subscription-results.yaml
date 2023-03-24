@@ -1,0 +1,9 @@
+topic: transactions-subscription-results
+description: Transactions Subscription Results
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: subscription-results.v1.schema.json
+    examples:
+      - subscription-results/1/
