@@ -7,7 +7,7 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "version": {"const": 1},
+        "version": { "const": 1 },
         "use_case_id": {
           "type": "string"
         },
