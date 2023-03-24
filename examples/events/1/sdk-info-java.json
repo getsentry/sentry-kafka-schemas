@@ -3,9 +3,7 @@
   "insert",
   {
     "group_id": 123123,
-    "group_ids": [
-      123123
-    ],
+    "group_ids": [123123],
     "event_id": "dbec5c8cbcde450ca84ec0ee848e4f13",
     "organization_id": 123123,
     "project_id": 123123,
@@ -38,9 +36,7 @@
         "integrations": null,
         "packages": null
       },
-      "fingerprint": [
-        "{{ default }}"
-      ],
+      "fingerprint": ["{{ default }}"],
       "hashes": [
         "2fa1891207dfe47975e73c8d82648d02",
         "16bcfa056ee73de2bc7846c8358f619d"

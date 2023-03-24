@@ -8,3 +8,4 @@
 /build
 /target
 /python/sentry_kafka_schemas/schema_types/
+node_modules/

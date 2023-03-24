@@ -3,319 +3,299 @@
   "title": "event_stream_message",
   "description": "The snuba eventstream message.",
   "anyOf": [
-    {"$ref": "#/definitions/InsertEventMessage"},
-    {"$ref": "#/definitions/StartDeleteGroupsMessage"},
-    {"$ref": "#/definitions/StartMergeMessage"},
-    {"$ref": "#/definitions/StartUnmergeMessage"},
-    {"$ref": "#/definitions/StartUnmergeHierarchicalMessage"},
-    {"$ref": "#/definitions/StartDeleteTagMessage"},
-    {"$ref": "#/definitions/EndDeleteGroupsMessage"},
-    {"$ref": "#/definitions/EndMergeMessage"},
-    {"$ref": "#/definitions/EndUnmergeMessage"},
-    {"$ref": "#/definitions/EndUnmergeHierarchicalMessage"},
-    {"$ref": "#/definitions/EndDeleteTagMessage"},
-    {"$ref": "#/definitions/TombstoneEventsMessage"},
-    {"$ref": "#/definitions/ReplaceGroupMessage"},
-    {"$ref": "#/definitions/ExcludeGroupsMessage"}
+    { "$ref": "#/definitions/InsertEventMessage" },
+    { "$ref": "#/definitions/StartDeleteGroupsMessage" },
+    { "$ref": "#/definitions/StartMergeMessage" },
+    { "$ref": "#/definitions/StartUnmergeMessage" },
+    { "$ref": "#/definitions/StartUnmergeHierarchicalMessage" },
+    { "$ref": "#/definitions/StartDeleteTagMessage" },
+    { "$ref": "#/definitions/EndDeleteGroupsMessage" },
+    { "$ref": "#/definitions/EndMergeMessage" },
+    { "$ref": "#/definitions/EndUnmergeMessage" },
+    { "$ref": "#/definitions/EndUnmergeHierarchicalMessage" },
+    { "$ref": "#/definitions/EndDeleteTagMessage" },
+    { "$ref": "#/definitions/TombstoneEventsMessage" },
+    { "$ref": "#/definitions/ReplaceGroupMessage" },
+    { "$ref": "#/definitions/ExcludeGroupsMessage" }
   ],
   "definitions": {
     "SnubaDatetime": {
-        "type": "string"
+      "type": "string"
     },
     "StartMergeMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "start_merge"},
+        { "const": 2 },
+        { "const": "start_merge" },
         {
-            "type": "object",
-            "title": "start_merge_message_body",
-            "properties": {
-                "transaction_id": {"type": "string"},
-                "project_id": {"type": "integer"},
-                "previous_group_ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "new_group_id": {"type": "integer"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "title": "start_merge_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer" },
+            "previous_group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "previous_group_ids",
-                "new_group_id",
-                "datetime"
-            ]
+            "new_group_id": { "type": "integer" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": [
+            "project_id",
+            "previous_group_ids",
+            "new_group_id",
+            "datetime"
+          ]
         }
       ]
     },
     "EndMergeMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "end_merge"},
+        { "const": 2 },
+        { "const": "end_merge" },
         {
-            "type": "object",
-            "title": "end_merge_message_body",
-            "properties": {
-                "transaction_id": {"type": "string"},
-                "project_id": {"type": "integer"},
-                "previous_group_ids": {
-                    "type": "array",
-                    "items": {"type": "integer"}
-                },
-                "new_group_id": {"type": "integer"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "title": "end_merge_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer" },
+            "previous_group_ids": {
+              "type": "array",
+              "items": { "type": "integer" }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "previous_group_ids",
-                "new_group_id",
-                "datetime"
-            ]
+            "new_group_id": { "type": "integer" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": [
+            "project_id",
+            "previous_group_ids",
+            "new_group_id",
+            "datetime"
+          ]
         }
       ]
     },
     "StartDeleteGroupsMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "start_delete_groups"},
+        { "const": 2 },
+        { "const": "start_delete_groups" },
         {
-            "type": "object",
-            "properties": {
-                "transaction_id": {"type": "string"},
-                "project_id": {"type": "integer"},
-                "group_ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer" },
+            "group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "group_ids",
-                "datetime"
-            ]
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": ["project_id", "group_ids", "datetime"]
         }
       ]
     },
     "EndDeleteGroupsMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "end_delete_groups"},
+        { "const": 2 },
+        { "const": "end_delete_groups" },
         {
-            "type": "object",
-            "title": "end_delete_groups_message_body",
-            "properties": {
-                "transaction_id": {"type": "string"},
-                "project_id": {"type": "integer"},
-                "group_ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "title": "end_delete_groups_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer" },
+            "group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "group_ids",
-                "datetime"
-            ]
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": ["project_id", "group_ids", "datetime"]
         }
       ]
     },
     "StartUnmergeMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "start_unmerge"},
-        {"type": "object"}
+        { "const": 2 },
+        { "const": "start_unmerge" },
+        { "type": "object" }
       ]
     },
     "StartUnmergeHierarchicalMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "start_unmerge_hierarchical"},
-        {"type": "object"}
+        { "const": 2 },
+        { "const": "start_unmerge_hierarchical" },
+        { "type": "object" }
       ]
     },
     "StartDeleteTagMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "start_delete_tag"},
-        {"type": "object"}
+        { "const": 2 },
+        { "const": "start_delete_tag" },
+        { "type": "object" }
       ]
     },
     "EndUnmergeMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "end_unmerge"},
+        { "const": 2 },
+        { "const": "end_unmerge" },
         {
-            "type": "object",
-            "title": "end_unmerge_message_body",
-            "properties": {
-                "project_id": {"type": "integer"},
-                "previous_group_id": {"type": "integer"},
-                "new_group_id": {"type": "integer"},
-                "hashes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "title": "end_unmerge_message_body",
+          "properties": {
+            "project_id": { "type": "integer" },
+            "previous_group_id": { "type": "integer" },
+            "new_group_id": { "type": "integer" },
+            "hashes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "previous_group_id",
-                "new_group_id",
-                "hashes",
-                "datetime"
-            ]
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": [
+            "project_id",
+            "previous_group_id",
+            "new_group_id",
+            "hashes",
+            "datetime"
+          ]
         }
       ]
     },
     "EndUnmergeHierarchicalMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "end_unmerge_hierarchical"},
+        { "const": 2 },
+        { "const": "end_unmerge_hierarchical" },
         {
-            "type": "object",
-            "title": "end_unmerge_hierarchical_message_body",
-            "properties": {
-                "project_id": {"type": "integer"},
-                "previous_group_id": {"type": "integer"},
-                "new_group_id": {"type": "integer"},
-                "primary_hash": {"type": "string"},
-                "hierarchical_hash": {"type": "string"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
-            },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "previous_group_id",
-                "new_group_id",
-                "primary_hash",
-                "hierarchical_hash",
-                "datetime"
-            ]
+          "type": "object",
+          "title": "end_unmerge_hierarchical_message_body",
+          "properties": {
+            "project_id": { "type": "integer" },
+            "previous_group_id": { "type": "integer" },
+            "new_group_id": { "type": "integer" },
+            "primary_hash": { "type": "string" },
+            "hierarchical_hash": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": [
+            "project_id",
+            "previous_group_id",
+            "new_group_id",
+            "primary_hash",
+            "hierarchical_hash",
+            "datetime"
+          ]
         }
       ]
     },
     "EndDeleteTagMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "end_delete_tag"},
+        { "const": 2 },
+        { "const": "end_delete_tag" },
         {
-            "type": "object",
-            "title": "end_delete_tag_message_body",
-            "properties": {
-                "tag": {"type": "string"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"},
-                "project_id": {"type": "integer"}
-            },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "tag",
-                "datetime"
-            ]
+          "type": "object",
+          "title": "end_delete_tag_message_body",
+          "properties": {
+            "tag": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" },
+            "project_id": { "type": "integer" }
+          },
+          "additionalProperties": false,
+          "required": ["project_id", "tag", "datetime"]
         }
       ]
     },
     "TombstoneEventsMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "tombstone_events"},
+        { "const": 2 },
+        { "const": "tombstone_events" },
         {
-            "type": "object",
-            "title": "tombstone_events_message_body",
-            "properties": {
-                "project_id": {"type": "integer"},
-                "event_ids": {
-                    "type": "array",
-                    "items": {"type": "string"}
-                },
-                "old_primary_hash": {"type": "string"},
-                "from_timestamp": {"type": "string"},
-                "to_timestamp": {"type": "string"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"}
+          "type": "object",
+          "title": "tombstone_events_message_body",
+          "properties": {
+            "project_id": { "type": "integer" },
+            "event_ids": {
+              "type": "array",
+              "items": { "type": "string" }
             },
-            "additionalProperties": false,
-            "required": [
-                "project_id",
-                "event_ids",
-                "datetime"
-            ]
+            "old_primary_hash": { "type": "string" },
+            "from_timestamp": { "type": "string" },
+            "to_timestamp": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": false,
+          "required": ["project_id", "event_ids", "datetime"]
         }
       ]
     },
     "ReplaceGroupMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "replace_group"},
+        { "const": 2 },
+        { "const": "replace_group" },
         {
-            "type": "object",
-            "title": "replace_group_message_body",
-            "properties": {
-                "event_ids": {"type": "array", "items": {"type": "string"}},
-                "project_id": {"type": "integer"},
-                "from_timestamp": {"type": "string"},
-                "to_timestamp": {"type": "string"},
-                "transaction_id": {"type": "string"},
-                "datetime": {"$ref": "#/definitions/SnubaDatetime"},
-                "new_group_id": {"type": "integer"}
-            },
-            "additionalProperties": false,
-            "required": [
-                "event_ids",
-                "project_id",
-                "new_group_id"
-            ]
+          "type": "object",
+          "title": "replace_group_message_body",
+          "properties": {
+            "event_ids": { "type": "array", "items": { "type": "string" } },
+            "project_id": { "type": "integer" },
+            "from_timestamp": { "type": "string" },
+            "to_timestamp": { "type": "string" },
+            "transaction_id": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" },
+            "new_group_id": { "type": "integer" }
+          },
+          "additionalProperties": false,
+          "required": ["event_ids", "project_id", "new_group_id"]
         }
       ]
     },
     "ExcludeGroupsMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "exclude_groups"},
+        { "const": 2 },
+        { "const": "exclude_groups" },
         {
-            "type": "object",
-            "title": "exclude_groups_message_body",
-            "properties": {
-                "project_id": {"type": "integer"},
-                "group_ids": {"type": "array", "items": {"type": "integer"}}
-            },
-            "additionalProperties": false,
-            "required": ["project_id", "group_ids"]
+          "type": "object",
+          "title": "exclude_groups_message_body",
+          "properties": {
+            "project_id": { "type": "integer" },
+            "group_ids": { "type": "array", "items": { "type": "integer" } }
+          },
+          "additionalProperties": false,
+          "required": ["project_id", "group_ids"]
         }
       ]
     },
     "InsertEventMessage": {
       "type": "array",
       "items": [
-        {"const": 2},
-        {"const": "insert"},
+        { "const": 2 },
+        { "const": "insert" },
         {
           "$ref": "#/definitions/InsertEvent"
         },
@@ -405,7 +385,7 @@
         "project_id": {
           "type": "integer"
         },
-        "retention_days": {"type": "integer"}
+        "retention_days": { "type": "integer" }
       },
       "required": [
         "data",
@@ -425,7 +405,7 @@
       "additionalProperties": true,
       "required": ["received"],
       "properties": {
-        "type": {"type": "string"},
+        "type": { "type": "string" },
         "contexts": {
           "description": " Contexts describing the environment (e.g. device, os or browser).",
           "anyOf": [
@@ -439,24 +419,15 @@
         },
         "culprit": {
           "description": " Custom culprit of the event.\n\n This field is deprecated and shall not be set by client SDKs.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "dist": {
           "description": " Program's distribution identifier.\n\n The distribution of the application.\n\n Distributions are used to disambiguate build or deployment variants of the same release of\n an application. For example, the dist can be the build number of an XCode build or the\n version code of an Android build.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "environment": {
           "description": " The environment name, such as `production` or `staging`.\n\n ```json\n { \"environment\": \"production\" }\n ```",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "event_id": {
           "description": " Unique identifier of this event.\n\n Hexadecimal string representing a uuid4 value. The length is exactly 32 characters. Dashes\n are not allowed. Has to be lowercase.\n\n Even though this field is backfilled on the server with a new uuid4, it is strongly\n recommended to generate that uuid4 clientside. There are some features like user feedback\n which are easier to implement that way, and debugging in case events get lost in your\n Sentry installation is also easier.\n\n Example:\n\n ```json\n {\n   \"event_id\": \"fc6d8c0c43fc4630ad850ee518f1b9d0\"\n }\n ```",
@@ -474,7 +445,7 @@
             {
               "$ref": "#/definitions/ExceptionChain"
             },
-            {"type": "null"}
+            { "type": "null" }
           ]
         },
         "threads": {
@@ -482,15 +453,12 @@
             {
               "$ref": "#/definitions/ThreadChain"
             },
-            {"type": "null"}
+            { "type": "null" }
           ]
         },
         "extra": {
           "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "additionalProperties": true
         },
         "fingerprint": {
@@ -528,30 +496,18 @@
         },
         "logger": {
           "description": " Logger that created the event.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "modules": {
           "description": " Name and versions of all installed modules/packages/dependencies in the current\n environment/application.\n\n ```json\n { \"django\": \"3.0.0\", \"celery\": \"4.2.1\" }\n ```\n\n In Python this is a list of installed packages as reported by `pkg_resources` together with\n their reported version string.\n\n This is primarily used for suggesting to enable certain SDK integrations from within the UI\n and for making informed decisions on which frameworks to support in future development\n efforts.",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "additionalProperties": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": ["string", "null"]
           }
         },
         "platform": {
           "description": " Platform identifier of this event (defaults to \"other\").\n\n A string representing the platform the SDK is submitting from. This will be used by the\n Sentry interface to customize various components in the interface, but also to enter or\n skip stacktrace processing.\n\n Acceptable values are: `as3`, `c`, `cfml`, `cocoa`, `csharp`, `elixir`, `haskell`, `go`,\n `groovy`, `java`, `javascript`, `native`, `node`, `objc`, `other`, `perl`, `php`, `python`,\n `ruby`",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "received": {
           "description": " Timestamp when the event has been received by Sentry.",
@@ -559,10 +515,7 @@
         },
         "release": {
           "description": " The release version of the application.\n\n **Release versions must be unique across all projects in your organization.** This value\n can be the git SHA for the given project, or a product identifier with a semantic version.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "request": {
           "description": " Information about a web request that occurred during the event.",
@@ -588,10 +541,7 @@
         },
         "server_name": {
           "description": " Server or device name the event was generated on.\n\n This is supposed to be a hostname.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "stacktrace": {
           "description": " Event stacktrace.\n\n DEPRECATED: Prefer `threads` or `exception` depending on which is more appropriate.",
@@ -617,10 +567,7 @@
         },
         "time_spent": {
           "description": " Time since the start of the transaction until the error occurred.",
-          "type": [
-            "integer",
-            "null"
-          ],
+          "type": ["integer", "null"],
           "minimum": 0
         },
         "timestamp": {
@@ -636,10 +583,7 @@
         },
         "transaction": {
           "description": " Transaction name of the event.\n\n For example, in a web app, this might be the route name (`\"/users/<username>/\"` or\n `UserView`), in a task queue it might be the function + module name.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "transaction_info": {
           "description": " Additional information about the name of the transaction.",
@@ -676,10 +620,7 @@
         },
         "version": {
           "description": " Version",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "hierarchical_hashes": {
           "type": "array",
@@ -700,67 +641,40 @@
           "properties": {
             "app_build": {
               "description": " Internal build ID as it appears on the platform.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "app_identifier": {
               "description": " Version-independent application identifier, often a dotted bundle ID.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "app_memory": {
               "description": " Amount of memory used by the application in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "app_name": {
               "description": " Application name as it appears on the platform.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "app_start_time": {
               "description": " Start time of the app.\n\n Formatted UTC timestamp when the user started the application.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "app_version": {
               "description": " Application version as it appears on the platform.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "build_type": {
               "description": " String identifying the kind of build. For example, `testflight`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "device_app_hash": {
               "description": " Application-specific device identifier.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "in_foreground": {
               "description": " A flag indicating whether the app is in foreground or not. An app is in foreground when it's visible to the user.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             }
           },
           "additionalProperties": false
@@ -775,17 +689,11 @@
           "properties": {
             "name": {
               "description": " Display name of the browser application.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "version": {
               "description": " Version string of the browser.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -800,17 +708,11 @@
           "properties": {
             "name": {
               "description": " Optional name of the errno constant.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "number": {
               "description": " The error code as specified by ISO C99, POSIX.1-2001 or POSIX.1-2008.",
-              "type": [
-                "integer",
-                "null"
-              ]
+              "type": ["integer", "null"]
             }
           },
           "additionalProperties": false
@@ -823,37 +725,22 @@
       "anyOf": [
         {
           "type": "object",
-          "required": [
-            "name",
-            "version"
-          ],
+          "required": ["name", "version"],
           "properties": {
             "integrations": {
               "description": " List of integrations that are enabled in the SDK. _Optional._\n\n The list should have all enabled integrations, including default integrations. Default\n integrations are included because different SDK releases may contain different default\n integrations.",
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": ["array", "null"],
               "items": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": ["string", "null"]
               }
             },
             "name": {
               "description": " Unique SDK name. _Required._\n\n The name of the SDK. The format is `entity.ecosystem[.flavor]` where entity identifies the\n developer of the SDK, ecosystem refers to the programming language or platform where the\n SDK is to be used and the optional flavor is used to identify standalone SDKs that are part\n of a major ecosystem.\n\n Official Sentry SDKs use the entity `sentry`, as in `sentry.python` or\n `sentry.javascript.react-native`. Please use a different entity for your own SDKs.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "packages": {
               "description": " List of installed and loaded SDK packages. _Optional._\n\n A list of packages that were installed as part of this SDK or the activated integrations.\n Each package consists of a name in the format `source:identifier` and `version`. If the\n source is a Git repository, the `source` should be `git`, the identifier should be a\n checkout link and the version should be a Git reference (branch, tag or SHA).",
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": ["array", "null"],
               "items": {
                 "anyOf": [
                   {
@@ -867,10 +754,7 @@
             },
             "version": {
               "description": " The version of the SDK. _Required._\n\n It should have the [Semantic Versioning](https://semver.org/) format `MAJOR.MINOR.PATCH`,\n without any prefix (no `v` or anything else in front of the major version number).\n\n Examples: `0.1.0`, `1.0.0`, `4.3.12`",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": true
@@ -885,17 +769,11 @@
           "properties": {
             "name": {
               "description": " Name of the package.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "version": {
               "description": " Version of the package.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -910,52 +788,31 @@
           "properties": {
             "cloud.account.id": {
               "description": " The cloud account ID the resource is assigned to.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "cloud.availability_zone": {
               "description": " The zone where the resource is running.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "cloud.platform": {
               "description": " The cloud platform in use.\n The prefix of the service SHOULD match the one specified in cloud_provider.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "cloud.provider": {
               "description": " Name of the cloud provider.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "cloud.region": {
               "description": " The geographical region the resource is running.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "host.id": {
               "description": " Unique host ID.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "host.type": {
               "description": " Machine type of the host.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -1036,31 +893,19 @@
             {
               "type": "object",
               "additionalProperties": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": ["string", "null"]
               }
             },
             {
               "type": "array",
               "items": {
-                "type": [
-                  "array",
-                  "null"
-                ],
+                "type": ["array", "null"],
                 "items": [
                   {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
+                    "type": ["string", "null"]
                   },
                   {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
+                    "type": ["string", "null"]
                   }
                 ],
                 "maxItems": 2,
@@ -1079,264 +924,156 @@
           "properties": {
             "arch": {
               "description": " Native cpu architecture of the device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "battery_level": {
               "description": " Current battery level in %.\n\n If the device has a battery, this can be a floating point value defining the battery level\n (in the range 0-100).",
-              "type": [
-                "number",
-                "null"
-              ]
+              "type": ["number", "null"]
             },
             "battery_status": {
               "description": " Status of the device's battery.\n\n For example, `Unknown`, `Charging`, `Discharging`, `NotCharging`, `Full`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "boot_time": {
               "description": " Indicator when the device was booted.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "brand": {
               "description": " Brand of the device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "charging": {
               "description": " Whether the device was charging or not.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "cpu_description": {
               "description": " CPU description.\n\n For example, Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "device_type": {
               "description": " Kind of device the application is running on.\n\n For example, `Unknown`, `Handheld`, `Console`, `Desktop`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "device_unique_identifier": {
               "description": " Unique device identifier.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "external_free_storage": {
               "description": " Free size of the attached external storage in bytes (eg: android SDK card).",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "external_storage_size": {
               "description": " Total size of the attached external storage in bytes (eg: android SDK card).",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "family": {
               "description": " Family of the device model.\n\n This is usually the common part of model names across generations. For instance, `iPhone`\n would be a reasonable family, so would be `Samsung Galaxy`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "free_memory": {
               "description": " How much memory is still available in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "free_storage": {
               "description": " How much storage is free in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "low_memory": {
               "description": " Whether the device was low on memory.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "manufacturer": {
               "description": " Manufacturer of the device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "memory_size": {
               "description": " Total memory available in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "model": {
               "description": " Device model.\n\n This, for example, can be `Samsung Galaxy S3`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "model_id": {
               "description": " Device model (internal identifier).\n\n An internal hardware revision to identify the device exactly.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "name": {
               "description": " Name of the device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "online": {
               "description": " Whether the device was online or not.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "orientation": {
               "description": " Current screen orientation.\n\n This can be a string `portrait` or `landscape` to define the orientation of a device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "processor_count": {
               "description": " Number of \"logical processors\".\n\n For example, 8.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "processor_frequency": {
               "description": " Processor frequency in MHz.\n\n Note that the actual CPU frequency might vary depending on current load and\n power conditions, especially on low-powered devices like phones and laptops.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "screen_density": {
               "description": " Device screen density.",
-              "type": [
-                "number",
-                "null"
-              ]
+              "type": ["number", "null"]
             },
             "screen_dpi": {
               "description": " Screen density as dots-per-inch.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "screen_resolution": {
               "description": " Device screen resolution.\n\n (e.g.: 800x600, 3040x1444)",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "simulator": {
               "description": " Simulator/prod indicator.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "storage_size": {
               "description": " Total storage size of the device in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "supports_accelerometer": {
               "description": " Whether the accelerometer is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_audio": {
               "description": " Whether audio is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_gyroscope": {
               "description": " Whether the gyroscope is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_location_service": {
               "description": " Whether location support is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_vibration": {
               "description": " Whether vibration is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "timezone": {
               "description": " Timezone of the device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "usable_memory": {
               "description": " How much memory is usable for the app in bytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             }
           },
@@ -1369,9 +1106,7 @@
       "title": "sentry_exception_chain",
       "description": " One or multiple chained (nested) exceptions.",
       "type": "object",
-      "required": [
-        "values"
-      ],
+      "required": ["values"],
       "properties": {
         "values": {
           "type": ["null", "array"],
@@ -1392,9 +1127,7 @@
       "title": "sentry_thread_chain",
       "description": " One or multiple threads.",
       "type": "object",
-      "required": [
-        "values"
-      ],
+      "required": ["values"],
       "properties": {
         "values": {
           "type": ["null", "array"],
@@ -1430,10 +1163,7 @@
             },
             "module": {
               "description": " The optional module, or package which the exception type lives in.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "stacktrace": {
               "description": " Stack trace containing frames of this exception.",
@@ -1470,10 +1200,7 @@
             },
             "type": {
               "description": " Exception type, e.g. `ValueError`.\n\n At least one of `type` or `value` is required, otherwise the exception is discarded.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "value": {
               "description": " Human readable display value.\n\n At least one of `type` or `value` is required, otherwise the exception is discarded.",
@@ -1510,10 +1237,7 @@
             },
             "main": {
               "description": " If applicable, a flag indicating whether the thread was responsible for rendering the user interface.\n\n On mobile platforms this is oftentimes referred to as the `main thread` or `ui thread`.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             }
           },
           "additionalProperties": true
@@ -1550,31 +1274,22 @@
             },
             "addr_mode": {
               "description": " Defines the addressing mode for addresses.\n\n This can be:\n - `\"abs\"` (the default): `instruction_addr` is absolute.\n - `\"rel:$idx\"`: `instruction_addr` is relative to the `debug_meta.image` identified by its index in the list.\n - `\"rel:$uuid\"`: `instruction_addr` is relative to the `debug_meta.image` identified by its `debug_id`.\n\n If one of the `\"rel:XXX\"` variants is given together with `function_id`, the `instruction_addr` is relative\n to the uniquely identified function in the references `debug_meta.image`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "colno": {
               "description": " Column number within the source file, starting at 1.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "context_line": {
               "description": " Source code of the current line (`lineno`).",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "filename": {
               "description": " The source file name (basename only).",
               "anyOf": [
                 {
-                    "type": "string"
+                  "type": "string"
                 },
                 {
                   "type": "null"
@@ -1583,10 +1298,7 @@
             },
             "function": {
               "description": " Name of the frame's function. This might include the name of a class.\n\n This function name may be shortened or demangled. If not, Sentry will demangle and shorten\n it for some platforms. The original function name will be stored in `raw_function`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "function_id": {
               "description": " (.NET) The function id / index that uniquely identifies a function inside a module.\n\n This is the `MetadataToken` of a .NET `MethodBase`.",
@@ -1612,10 +1324,7 @@
             },
             "in_app": {
               "description": " Override whether this frame should be considered part of application code, or part of\n libraries/frameworks/dependencies.\n\n Setting this attribute to `false` causes the frame to be hidden/collapsed by default and\n mostly ignored during issue grouping.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "instruction_addr": {
               "description": " (C/C++/Native) An optional instruction address for symbolication.\n\n This should be a string with a hexadecimal number that includes a 0x prefix.\n If this is set and a known image is defined in the\n [Debug Meta Interface]({%- link _documentation/development/sdk-dev/event-payloads/debugmeta.md -%}),\n then symbolication can take place.",
@@ -1630,79 +1339,46 @@
             },
             "lineno": {
               "description": " Line number within the source file, starting at 1.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "module": {
               "description": " Name of the module the frame is contained in.\n\n Note that this might also include a class name if that is something the\n language natively considers to be part of the stack (for instance in Java).",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "package": {
               "description": " Name of the package that contains the frame.\n\n For instance this can be a dylib for native languages, the name of the jar\n or .NET assembly.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "platform": {
               "description": " Which platform this frame is from.\n\n This can override the platform for a single frame. Otherwise, the platform of the event is\n assumed. This can be used for multi-platform stack traces, such as in React Native.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "post_context": {
               "description": " Source code of the lines after `lineno`.",
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": ["array", "null"],
               "items": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": ["string", "null"]
               }
             },
             "pre_context": {
               "description": " Source code leading up to `lineno`.",
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": ["array", "null"],
               "items": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+                "type": ["string", "null"]
               }
             },
             "raw_function": {
               "description": " A raw (but potentially truncated) function value.\n\n The original function name, if the function name is shortened or demangled. Sentry shows the\n raw function when clicking on the shortened one in the UI.\n\n If this has the same value as `function` it's best to be omitted.  This exists because on\n many platforms the function itself contains additional information like overload specifies\n or a lot of generics which can make it exceed the maximum limit we provide for the field.\n In those cases then we cannot reliably trim down the function any more at a later point\n because the more valuable information has been removed.\n\n The logic to be applied is that an intelligently trimmed function name should be stored in\n `function` and the value before trimming is stored in this field instead.  However also this\n field will be capped at 256 characters at the moment which often means that not the entire\n original value can be stored.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "stack_start": {
               "description": " Marks this frame as the bottom of a chained stack trace.\n\n Stack traces from asynchronous code consist of several sub traces that are chained together\n into one large list. This flag indicates the root function of a chained stack trace.\n Depending on the runtime and thread, this is either the `main` function or a thread base\n stub.\n\n This field should only be specified when true.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "symbol": {
               "description": " Potentially mangled name of the symbol as it appears in an executable.\n\n This is different from a function name by generally being the mangled\n name that appears natively in the binary.  This is relevant for languages\n like Swift, C++ or Rust.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "symbol_addr": {
               "description": " (C/C++/Native) Start address of the frame's function.\n\n We use the instruction address for symbolication, but this can be used to calculate\n an instruction offset automatically.",
@@ -1748,24 +1424,15 @@
           "properties": {
             "city": {
               "description": " Human readable city name.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "country_code": {
               "description": " Two-letter country code (ISO 3166-1 alpha-2).",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "region": {
               "description": " Human readable region name or code.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -1780,17 +1447,11 @@
           "properties": {
             "api_type": {
               "description": " The device low-level API type.\n\n Examples: `\"Apple Metal\"` or `\"Direct3D11\"`",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "graphics_shader_level": {
               "description": " Approximate \"shader capability\" level of the graphics device.\n\n For Example: Shader Model 2.0, OpenGL ES 3.0, Metal / OpenGL ES 3.1, 27 (unknown)",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "id": {
               "description": " The PCI identifier of the graphics device.",
@@ -1798,89 +1459,53 @@
             },
             "max_texture_size": {
               "description": " Largest size of a texture that is supported by the graphics hardware.\n\n For Example: 16384",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "memory_size": {
               "description": " The total GPU memory available in Megabytes.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "multi_threaded_rendering": {
               "description": " Whether the GPU has multi-threaded rendering or not.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "name": {
               "description": " The name of the graphics device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "npot_support": {
               "description": " The Non-Power-Of-Two support.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "supports_compute_shaders": {
               "description": " Whether compute shaders are available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_draw_call_instancing": {
               "description": " Whether GPU draw call instancing is supported.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_geometry_shaders": {
               "description": " Whether geometry shaders are available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "supports_ray_tracing": {
               "description": " Whether ray tracing is available on the device.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "vendor_id": {
               "description": " The PCI vendor identifier of the graphics device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "vendor_name": {
               "description": " The vendor name as reported by the graphics device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "version": {
               "description": " The Version of the graphics device.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -1924,10 +1549,7 @@
             {
               "type": "array",
               "items": {
-                "type": [
-                  "array",
-                  "null"
-                ],
+                "type": ["array", "null"],
                 "items": [
                   {
                     "anyOf": [
@@ -1961,12 +1583,7 @@
     "InstructionAddrAdjustment": {
       "description": "Controls the mechanism by which the `instruction_addr` of a [`Stacktrace`] [`Frame`] is adjusted.\n\nThe adjustment tries to transform *return addresses* to *call addresses* for symbolication. Typically, this adjustment needs to be done for all frames but the first, as the first frame is usually taken directly from the cpu context of a hardware exception or a suspended thread and the stack trace is created from that.\n\nWhen the stack walking implementation truncates frames from the top, `\"all\"` frames should be adjusted. In case the stack walking implementation already does the adjustment when producing stack frames, `\"none\"` should be used here.",
       "type": "string",
-      "enum": [
-        "auto",
-        "all_but_first",
-        "all",
-        "none"
-      ]
+      "enum": ["auto", "all_but_first", "all", "none"]
     },
     "JsonLenientString": {
       "description": " A \"into-string\" type of value. All non-string values are serialized as JSON.",
@@ -1979,13 +1596,7 @@
     "Level": {
       "description": "Severity level of an event or breadcrumb.",
       "type": "string",
-      "enum": [
-        "debug",
-        "info",
-        "warning",
-        "error",
-        "fatal"
-      ]
+      "enum": ["debug", "info", "warning", "error", "fatal"]
     },
     "LogEntry": {
       "description": " A log entry message.\n\n A log message is similar to the `message` attribute on the event itself but\n can additionally hold optional parameters.\n\n ```json\n {\n   \"message\": {\n     \"message\": \"My raw message with interpreted strings like %s\",\n     \"params\": [\"this\"]\n   }\n }\n ```\n\n ```json\n {\n   \"message\": {\n     \"message\": \"My raw message with interpreted strings like {foo}\",\n     \"params\": {\"foo\": \"this\"}\n   }\n }\n ```",
@@ -2032,32 +1643,20 @@
           "properties": {
             "code": {
               "description": " The mach exception code.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "exception": {
               "description": " The mach exception type.",
-              "type": [
-                "integer",
-                "null"
-              ]
+              "type": ["integer", "null"]
             },
             "name": {
               "description": " Optional name of the mach exception.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "subcode": {
               "description": " The mach exception subcode.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             }
           },
@@ -2070,38 +1669,24 @@
       "anyOf": [
         {
           "type": "object",
-          "required": [
-            "type"
-          ],
+          "required": ["type"],
           "properties": {
             "data": {
               "description": " Arbitrary extra data that might help the user understand the error thrown by this mechanism.",
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": true
             },
             "description": {
               "description": " Optional human-readable description of the error mechanism.\n\n May include a possible hint on how to solve this error.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "handled": {
               "description": " Flag indicating whether this exception was handled.\n\n This is a best-effort guess at whether the exception was handled by user code or not. For\n example:\n\n - Exceptions leading to a 500 Internal Server Error or to a hard process crash are\n   `handled=false`, as the SDK typically has an integration that automatically captures the\n   error.\n\n - Exceptions captured using `capture_exception` (called from user code) are `handled=true`\n   as the user explicitly captured the exception (and therefore kind of handled it)",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "help_link": {
               "description": " Link to online resources describing this error.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "meta": {
               "description": " Operating system or runtime meta information.",
@@ -2116,17 +1701,11 @@
             },
             "synthetic": {
               "description": " If this is set then the exception is not a real exception but some\n form of synthetic error for instance from a signal handler, a hard\n segfault or similar where type and value are not useful for grouping\n or display purposes.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "type": {
               "description": " Mechanism type (required).\n\n Required unique identifier of this mechanism determining rendering and processing of the\n mechanism data.\n\n In the Python SDK this is merely the name of the framework integration that produced the\n exception, while for native it is e.g. `\"minidump\"` or `\"applecrashreport\"`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -2212,17 +1791,11 @@
           "properties": {
             "code": {
               "description": " The error code.",
-              "type": [
-                "integer",
-                "null"
-              ]
+              "type": ["integer", "null"]
             },
             "domain": {
               "description": " A string containing the error domain.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -2237,45 +1810,27 @@
           "properties": {
             "build": {
               "description": " Internal build number of the operating system.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "kernel_version": {
               "description": " Current kernel version.\n\n This is typically the entire output of the `uname` syscall.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "name": {
               "description": " Name of the operating system.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "raw_description": {
               "description": " Unprocessed operating system info.\n\n An unprocessed description string obtained by the operating system. For some well-known\n runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are\n not explicitly given.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "rooted": {
               "description": " Indicator if the OS is rooted (mobile mostly).",
-              "type": [
-                "boolean",
-                "null"
-              ]
+              "type": ["boolean", "null"]
             },
             "version": {
               "description": " Version of the operating system.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -2290,18 +1845,12 @@
           "properties": {
             "attributes": {
               "description": " Attributes of the OpenTelemetry span that maps to a Sentry event.\n\n <https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/trace/v1/trace.proto#L174-L186>",
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": true
             },
             "resource": {
               "description": " Information about an OpenTelemetry resource.\n\n <https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/resource/v1/resource.proto>",
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": true
             }
           },
@@ -2317,31 +1866,19 @@
           "properties": {
             "code": {
               "description": " An optional signal code present on Apple systems.",
-              "type": [
-                "integer",
-                "null"
-              ]
+              "type": ["integer", "null"]
             },
             "code_name": {
               "description": " Optional name of the errno constant.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "name": {
               "description": " Optional name of the errno constant.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "number": {
               "description": " The POSIX signal number.",
-              "type": [
-                "integer",
-                "null"
-              ]
+              "type": ["integer", "null"]
             }
           },
           "additionalProperties": false
@@ -2353,9 +1890,7 @@
       "anyOf": [
         {
           "type": "object",
-          "required": [
-            "profile_id"
-          ],
+          "required": ["profile_id"],
           "properties": {
             "profile_id": {
               "description": " The profile ID.",
@@ -2375,72 +1910,58 @@
     },
     "RawStacktrace": {
       "description": " A stack trace of a single thread.\n\n A stack trace contains a list of frames, each with various bits (most optional) describing the\n context of that frame. Frames should be sorted from oldest to newest.\n\n For the given example program written in Python:\n\n ```python\n def foo():\n     my_var = 'foo'\n     raise ValueError()\n\n def main():\n     foo()\n ```\n\n A minimalistic stack trace for the above program in the correct order:\n\n ```json\n {\n   \"frames\": [\n     {\"function\": \"main\"},\n     {\"function\": \"foo\"}\n   ]\n }\n ```\n\n The top frame fully symbolicated with five lines of source context:\n\n ```json\n {\n   \"frames\": [{\n     \"in_app\": true,\n     \"function\": \"myfunction\",\n     \"abs_path\": \"/real/file/name.py\",\n     \"filename\": \"file/name.py\",\n     \"lineno\": 3,\n     \"vars\": {\n       \"my_var\": \"'value'\"\n     },\n     \"pre_context\": [\n       \"def foo():\",\n       \"  my_var = 'foo'\",\n     ],\n     \"context_line\": \"  raise ValueError()\",\n     \"post_context\": [\n       \"\",\n       \"def main():\"\n     ],\n   }]\n }\n ```\n\n A minimal native stack trace with register values. Note that the `package` event attribute must\n be \"native\" for these frames to be symbolicated.\n\n ```json\n {\n   \"frames\": [\n     {\"instruction_addr\": \"0x7fff5bf3456c\"},\n     {\"instruction_addr\": \"0x7fff5bf346c0\"},\n   ],\n   \"registers\": {\n     \"rip\": \"0x00007ff6eef54be2\",\n     \"rsp\": \"0x0000003b710cd9e0\"\n   }\n }\n ```",
-          "type": "object",
-          "required": [
-            "frames"
-          ],
-          "properties": {
-            "frames": {
-              "description": " Required. A non-empty list of stack frames. The list is ordered from caller to callee, or\n oldest to youngest. The last frame is the one creating the exception.",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/Frame"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+      "type": "object",
+      "required": ["frames"],
+      "properties": {
+        "frames": {
+          "description": " Required. A non-empty list of stack frames. The list is ordered from caller to callee, or\n oldest to youngest. The last frame is the one creating the exception.",
+          "type": ["array", "null"],
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Frame"
+              },
+              {
+                "type": "null"
               }
+            ]
+          }
+        },
+        "instruction_addr_adjustment": {
+          "description": " Optional. A flag that indicates if, and how, `instruction_addr` values need to be adjusted\n before they are symbolicated.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InstructionAddrAdjustment"
             },
-            "instruction_addr_adjustment": {
-              "description": " Optional. A flag that indicates if, and how, `instruction_addr` values need to be adjusted\n before they are symbolicated.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/InstructionAddrAdjustment"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "lang": {
-              "description": " The language of the stacktrace.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "registers": {
-              "description": " Register values of the thread (top frame).\n\n A map of register names and their values. The values should contain the actual register\n values of the thread, thus mapping to the last frame in the list.",
-              "type": [
-                "object",
-                "null"
-              ],
-              "additionalProperties": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/RegVal"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            },
-            "snapshot": {
-              "description": " Indicates that this stack trace is a snapshot triggered by an external signal.\n\n If this field is `false`, then the stack trace points to the code that caused this stack\n trace to be created. This can be the location of a raised exception, as well as an exception\n or signal handler.\n\n If this field is `true`, then the stack trace was captured as part of creating an unrelated\n event. For example, a thread other than the crashing thread, or a stack trace computed as a\n result of an external kill signal.",
-              "type": [
-                "boolean",
-                "null"
-              ]
+            {
+              "type": "null"
             }
-          },
-          "additionalProperties": false
+          ]
+        },
+        "lang": {
+          "description": " The language of the stacktrace.",
+          "type": ["string", "null"]
+        },
+        "registers": {
+          "description": " Register values of the thread (top frame).\n\n A map of register names and their values. The values should contain the actual register\n values of the thread, thus mapping to the last frame in the list.",
+          "type": ["object", "null"],
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/RegVal"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "snapshot": {
+          "description": " Indicates that this stack trace is a snapshot triggered by an external signal.\n\n If this field is `false`, then the stack trace points to the code that caused this stack\n trace to be created. This can be the location of a raised exception, as well as an exception\n or signal handler.\n\n If this field is `true`, then the stack trace was captured as part of creating an unrelated\n event. For example, a thread other than the crashing thread, or a stack trace computed as a\n result of an external kill signal.",
+          "type": ["boolean", "null"]
+        }
+      },
+      "additionalProperties": false
     },
     "RegVal": {
       "type": "string"
@@ -2454,10 +1975,7 @@
           "properties": {
             "body_size": {
               "description": " HTTP request body size.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "cookies": {
@@ -2477,18 +1995,12 @@
             },
             "env": {
               "description": " Server environment data, such as CGI/WSGI.\n\n A dictionary containing environment information passed from the server. This is where\n information such as CGI/WSGI/Rack keys go that are not HTTP headers.\n\n Sentry will explicitly look for `REMOTE_ADDR` to extract an IP address.",
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": true
             },
             "fragment": {
               "description": " The fragment of the request URL.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "headers": {
               "description": " A dictionary of submitted headers.\n\n If a header appears multiple times it, needs to be merged according to the HTTP standard\n for header merging. Header names are treated case-insensitively by Sentry.",
@@ -2503,17 +2015,11 @@
             },
             "inferred_content_type": {
               "description": " The inferred content type of the request payload.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "method": {
               "description": " HTTP request method.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "query_string": {
               "description": " The query string component of the URL.\n\n Can be given as unparsed string, dictionary, or list of tuples.\n\n If the query string is not declared and part of the `url`, Sentry moves it to the\n query string.",
@@ -2528,31 +2034,19 @@
                         {
                           "type": "object",
                           "additionalProperties": {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
+                            "type": ["string", "null"]
                           }
                         },
                         {
                           "type": "array",
                           "items": {
-                            "type": [
-                              "array",
-                              "null"
-                            ],
+                            "type": ["array", "null"],
                             "items": [
                               {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
+                                "type": ["string", "null"]
                               },
                               {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
+                                "type": ["string", "null"]
                               }
                             ],
                             "maxItems": 2,
@@ -2570,10 +2064,7 @@
             },
             "url": {
               "description": " The URL of the request if available.\n\nThe query string can be declared either as part of the `url`, or separately in `query_string`.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -2588,10 +2079,7 @@
           "properties": {
             "body_size": {
               "description": " HTTP response body size.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "cookies": {
@@ -2618,10 +2106,7 @@
             },
             "status_code": {
               "description": " HTTP status code.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             }
           },
@@ -2637,31 +2122,19 @@
           "properties": {
             "build": {
               "description": " Application build string, if it is separate from the version.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "name": {
               "description": " Runtime name.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "raw_description": {
               "description": " Unprocessed runtime info.\n\n An unprocessed description string obtained by the runtime. For some well-known runtimes,\n Sentry will attempt to parse `name` and `version` from this string, if they are not\n explicitly given.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "version": {
               "description": " Runtime version string.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
@@ -2713,33 +2186,21 @@
           "properties": {
             "sdk_name": {
               "description": " The internal name of the SDK.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "version_major": {
               "description": " The major version of the SDK as integer or 0.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "version_minor": {
               "description": " The minor version of the SDK as integer or 0.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "version_patchlevel": {
               "description": " The patch version of the SDK as integer or 0.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             }
           },
@@ -2753,29 +2214,23 @@
           "type": "array",
           "items": [
             {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           ],
           "maxItems": 2,
           "minItems": 2
         },
-        {"type": "null"}
+        { "type": "null" }
       ]
     },
     "Tags": {
       "description": " Manual key/value tag pairs.",
       "type": "array",
       "items": {
-          "$ref": "#/definitions/TagEntry"
+        "$ref": "#/definitions/TagEntry"
       }
     },
     "ThreadId": {
@@ -2803,31 +2258,19 @@
       "anyOf": [
         {
           "type": "object",
-          "required": [
-            "span_id",
-            "trace_id"
-          ],
+          "required": ["span_id", "trace_id"],
           "properties": {
             "client_sample_rate": {
               "description": " The client-side sample rate as reported in the envelope's `trace.sample_rate` header.\n\n The server takes this field from envelope headers and writes it back into the event. Clients\n should not ever send this value.",
-              "type": [
-                "number",
-                "null"
-              ]
+              "type": ["number", "null"]
             },
             "exclusive_time": {
               "description": " The amount of time in milliseconds spent in this transaction span,\n excluding its immediate child spans.",
-              "type": [
-                "number",
-                "null"
-              ]
+              "type": ["number", "null"]
             },
             "op": {
               "description": " Span type (see `OperationType` docs).",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "parent_span_id": {
               "description": " The ID of the span enclosing this span.",
@@ -2894,10 +2337,7 @@
           "properties": {
             "changes": {
               "description": " A list of changes prior to the final transaction name.\n\n This list must be empty if the transaction name is set at the beginning of the transaction\n and never changed. There is no placeholder entry for the initial transaction name.",
-              "type": [
-                "array",
-                "null"
-              ],
+              "type": ["array", "null"],
               "items": {
                 "anyOf": [
                   {
@@ -2911,17 +2351,11 @@
             },
             "original": {
               "description": " The unmodified transaction name as obtained by the source.\n\n This value will only be set if the transaction name was modified during event processing.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "propagations": {
               "description": " The total number of propagations during the transaction.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "source": {
@@ -2947,10 +2381,7 @@
           "properties": {
             "propagations": {
               "description": " The number of propagations from the start of the transaction to this change.",
-              "type": [
-                "integer",
-                "null"
-              ],
+              "type": ["integer", "null"],
               "minimum": 0
             },
             "source": {
@@ -2993,18 +2424,12 @@
           "properties": {
             "data": {
               "description": " Additional arbitrary fields, as stored in the database (and sometimes as sent by clients).\n All data from `self.other` should end up here after store normalization.",
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "additionalProperties": true
             },
             "email": {
               "description": " Email address of the user.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "geo": {
               "description": " Approximate geographical location of the end user or device.",
@@ -3019,10 +2444,7 @@
             },
             "id": {
               "description": " Unique identifier of the user.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "ip_address": {
               "description": " Remote IP address of the user. Defaults to \"{{auto}}\".",
@@ -3037,24 +2459,15 @@
             },
             "name": {
               "description": " Human readable name of the user.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "segment": {
               "description": " The user segment, for apps that divide users in user segments.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "username": {
               "description": " Username of the user.",
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
