@@ -3,9 +3,7 @@
   "insert",
   {
     "group_id": 123,
-    "group_ids": [
-      123
-    ],
+    "group_ids": [123],
     "event_id": "ce16ee7fe48c4a258049e0f6b122e5d6",
     "organization_id": 122,
     "project_id": 122,
@@ -42,12 +40,8 @@
         "bytes.ingested.event": 10249,
         "bytes.stored.event": 12209
       },
-      "fingerprint": [
-        "{{ default }}"
-      ],
-      "hashes": [
-        "ba0d38e4ad7e080a9c2d7a8c134f0b50"
-      ],
+      "fingerprint": ["{{ default }}"],
+      "hashes": ["ba0d38e4ad7e080a9c2d7a8c134f0b50"],
       "culprit": "nylas_pages.handle_webhook",
       "_ref": 232684,
       "_ref_version": 2,

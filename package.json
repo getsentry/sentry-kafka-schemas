@@ -1,0 +1,16 @@
+{
+  "name": "sentry-kafka-schemas",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Kafka topics and schemas for Sentry",
+  "repository": "https://github.com/getsentry/sentry-kafka-schemas",
+  "author": "oss@sentry.io",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.8.6"
+  },
+  "volta": {
+    "node": "18.15.0",
+    "yarn": "1.22.19"
+  }
+}

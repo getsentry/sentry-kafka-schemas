@@ -3,9 +3,7 @@
   "insert",
   {
     "group_id": 123123123,
-    "group_ids": [
-      123123123
-    ],
+    "group_ids": [123123123],
     "event_id": "119b2902bae948b3a05368f184a0b4b8",
     "organization_id": 123123123,
     "project_id": 123123123,
@@ -25,13 +23,7 @@
       "release": "redacted",
       "environment": "production",
       "contexts": {},
-      "tags": [
-        null,
-        [
-          null,
-          "redacted"
-        ]
-      ],
+      "tags": [null, [null, "redacted"]],
       "errors": [
         {
           "type": "value_too_long",
@@ -40,12 +32,8 @@
       ],
       "key_id": "123123123",
       "project": 123123123,
-      "fingerprint": [
-        "{{ default }}"
-      ],
-      "hashes": [
-        "f5174f5bbe71742b14e3c728ed189a43"
-      ],
+      "fingerprint": ["{{ default }}"],
+      "hashes": ["f5174f5bbe71742b14e3c728ed189a43"],
       "_ref": 4504057827688448,
       "_ref_version": 2,
       "nodestore_insert": 1678209852.164581

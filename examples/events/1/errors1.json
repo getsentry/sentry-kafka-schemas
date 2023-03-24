@@ -17,9 +17,7 @@
     "datetime": "2023-02-27T15:40:12.223000Z",
     "event_id": "9cdc4c32dff14fbbb012b0aa9e908126",
     "group_id": 124,
-    "group_ids": [
-      124
-    ],
+    "group_ids": [124],
     "message": "hello world",
     "organization_id": 123,
     "platform": "javascript",
