@@ -45,8 +45,7 @@
                      ]
                   },
                   "timestamp":{
-                     "type":"string",
-                     "format":"date-time"
+                     "type":"string"
                   },
                   "entity":{
                      "type":"string",
