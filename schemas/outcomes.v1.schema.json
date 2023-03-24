@@ -1,45 +1,45 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Generated schema for Root",
-    "type": "object",
-    "properties": {
-      "timestamp": {
-        "type": "string"
-      },
-      "org_id": {
-        "type": ["integer", "null"]
-      },
-      "project_id": {
-        "type": ["integer", "null"]
-      },
-      "key_id": {
-        "type": ["string", "null"]
-      },
-      "outcome": {
-        "type": "integer"
-      },
-      "reason": {
-        "type": ["string", "null"]
-      },
-      "event_id": {
-        "type": ["string", "null"]
-      },
-      "category": {
-        "type": ["integer", "null"]
-      },
-      "quantity": {
-        "type": ["integer", "null"]
-      }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string"
     },
-    "required": [
-      "timestamp",
-      "org_id",
-      "project_id",
-      "key_id",
-      "outcome",
-      "reason",
-      "event_id",
-      "category",
-      "quantity"
-    ]
-  }
+    "org_id": {
+      "type": ["integer", "null"]
+    },
+    "project_id": {
+      "type": ["integer", "null"]
+    },
+    "key_id": {
+      "type": ["string", "null"]
+    },
+    "outcome": {
+      "type": "integer"
+    },
+    "reason": {
+      "type": ["string", "null"]
+    },
+    "event_id": {
+      "type": ["string", "null"]
+    },
+    "category": {
+      "type": ["integer", "null"]
+    },
+    "quantity": {
+      "type": ["integer", "null"]
+    }
+  },
+  "required": [
+    "timestamp",
+    "org_id",
+    "project_id",
+    "key_id",
+    "outcome",
+    "reason",
+    "event_id",
+    "category",
+    "quantity"
+  ]
+}
