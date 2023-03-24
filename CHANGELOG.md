@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.11
+
+### Various fixes & improvements
+
+- fix: Do not attempt to push formatting changes into release branch (#54) by @untitaker
+- feat(metric alerts): Add schema, topic, and example (#49) by @ceorourke
+- ref: Add autoformatting for JSON (#51) by @untitaker
+
 ## 0.0.10
 
 ### Various fixes & improvements
