@@ -8,24 +8,24 @@
       "additionalProperties": false,
       "properties": {
         "org_id": {
-        "description": "The organization for which this metric is being sent.",
+          "description": "The organization for which this metric is being sent.",
           "type": "integer"
         },
         "project_id": {
-            "description": "The project for which this metric is being sent.",
+          "description": "The project for which this metric is being sent.",
           "type": "integer"
         },
         "name": {
-            "description": "The metric name. Relay sometimes calls this an MRI and makes assumptions about its string shape, and those assumptions also exist in certain queries. The rest of the ingestion pipeline treats it as an opaque string.",
+          "description": "The metric name. Relay sometimes calls this an MRI and makes assumptions about its string shape, and those assumptions also exist in certain queries. The rest of the ingestion pipeline treats it as an opaque string.",
           "type": "string"
         },
         "type": {
-            "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
-            "type": "string",
-            "pattern": "^[cds]$"
+          "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
+          "type": "string",
+          "pattern": "^[cds]$"
         },
         "timestamp": {
-            "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
+          "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
           "type": "integer"
         },
         "tags": {
@@ -45,8 +45,8 @@
           ]
         },
         "width": {
-            "description": "DEAD PARAMETER -- downstream consumers do not use this, but relay sends it anyway. should remove or actually use",
-            "type": "integer"
+          "description": "DEAD PARAMETER -- downstream consumers do not use this, but relay sends it anyway. should remove or actually use",
+          "type": "integer"
         },
         "retention_days": {
           "type": "integer"
@@ -66,7 +66,7 @@
     "StringToString": {
       "type": "object",
       "additionalProperties": {
-          "type": "string"
+        "type": "string"
       }
     }
   }
