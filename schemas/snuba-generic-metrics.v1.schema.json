@@ -82,11 +82,8 @@
     },
     "StringToString": {
       "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^.*$": {
+      "additionalProperties": {
           "type": "string"
-        }
       }
     }
   }
