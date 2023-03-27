@@ -1,5 +1,5 @@
 [package]
-name = "sentry_kafka_schemas"
+name = "sentry-kafka-schemas"
 authors = ["Sentry <oss@sentry.io>"]
 description = "Kafka topics and schemas for Sentry"
 license-file = "./LICENSE"
