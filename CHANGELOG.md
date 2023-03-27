@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.13
+
+### Various fixes & improvements
+
+- fix(outcomes): Add code owner for outcomes (#62) by @john-z-yang
+- fix: Remove Cargo.lock (#61) by @untitaker
+- ref(outcomes): Add outcomes schema (#55) by @john-z-yang
+
 ## 0.0.12
 
 ### Various fixes & improvements
