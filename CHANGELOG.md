@@ -1,5 +1,22 @@
 # Changelog and versioning
 
+## 0.0.13
+
+### Various fixes & improvements
+
+- fix(outcomes): Add code owner for outcomes (#62) by @john-z-yang
+- fix: Remove Cargo.lock (#61) by @untitaker
+- ref(outcomes): Add outcomes schema (#55) by @john-z-yang
+
+## 0.0.12
+
+### Various fixes & improvements
+
+- feat: Define codeowner for ingest-metrics (#60) by @lynnagara
+- feat: Schema ownership (#59) by @lynnagara
+- feat: Add ingest-metrics topic (#56) by @untitaker
+- feat: Implement versions for get_schema in Rust (#57) by @untitaker
+
 ## 0.0.11
 
 ### Various fixes & improvements

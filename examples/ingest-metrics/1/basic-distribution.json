@@ -1,0 +1,10 @@
+{
+  "name": "d:transactions/duration@millisecond",
+  "org_id": 1,
+  "retention_days": 90,
+  "project_id": 42,
+  "tags": {},
+  "type": "d",
+  "value": [1.0, 2.0, 3.0],
+  "timestamp": 666666666666
+}

@@ -4,26 +4,28 @@
   "definitions": {
     "Main": {
       "type": "object",
-      "title": "generic_metric",
+      "title": "ingest_metric",
       "additionalProperties": false,
       "properties": {
-        "version": { "const": 2 },
-        "use_case_id": {
-          "type": "string"
-        },
         "org_id": {
+          "description": "The organization for which this metric is being sent.",
           "type": "integer"
         },
         "project_id": {
+          "description": "The project for which this metric is being sent.",
           "type": "integer"
         },
-        "metric_id": {
-          "type": "integer"
-        },
-        "type": {
+        "name": {
+          "description": "The metric name. Relay sometimes calls this an MRI and makes assumptions about its string shape, and those assumptions also exist in certain queries. The rest of the ingestion pipeline treats it as an opaque string.",
           "type": "string"
         },
+        "type": {
+          "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
+          "type": "string",
+          "pattern": "^[cds]$"
+        },
         "timestamp": {
+          "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
           "type": "integer"
         },
         "tags": {
@@ -42,43 +44,24 @@
             }
           ]
         },
-        "retention_days": {
+        "width": {
+          "description": "DEAD PARAMETER -- downstream consumers do not use this, but relay sends it anyway. should remove or actually use",
           "type": "integer"
         },
-        "mapping_meta": {
-          "$ref": "#/definitions/MappingMeta"
+        "retention_days": {
+          "type": "integer"
         }
       },
       "required": [
-        "mapping_meta",
-        "metric_id",
+        "name",
         "org_id",
         "project_id",
         "retention_days",
         "tags",
         "timestamp",
         "type",
-        "use_case_id",
         "value"
       ]
-    },
-    "MappingMeta": {
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[chdfr]$": {
-          "$ref": "#/definitions/IntToString"
-        }
-      }
-    },
-    "IntToString": {
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[0-9]$": {
-          "type": "string"
-        }
-      }
     },
     "StringToString": {
       "type": "object",

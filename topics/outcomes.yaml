@@ -1,0 +1,9 @@
+topic: outcomes
+description: Outcomes for events sent to sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: outcomes.v1.schema.json
+    examples:
+      - outcomes/1/

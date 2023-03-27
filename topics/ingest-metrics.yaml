@@ -1,0 +1,9 @@
+topic: ingest-metrics
+description: Both release health and performance metrics (before indexer)
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: ingest-metrics.v1.schema.json
+    examples:
+      - ingest-metrics/1/
