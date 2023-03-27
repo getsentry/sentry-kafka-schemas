@@ -73,7 +73,7 @@ pub struct Schema {
 
 /// Returns the schema for a topic. If version is passed, return the schema for
 /// the specified version, otherwise the latest version is returned.
-/// 
+///
 /// Only JSON schemas are currently supported.
 ///
 /// # Errors
@@ -84,7 +84,8 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
     let mut topic_data = TopicData::load(&topic_path)?;
     topic_data.schemas.sort_by_key(|x| x.version);
     let schema_metadata = if let Some(version) = version {
-        topic_data.schemas
+        topic_data
+            .schemas
             .into_iter()
             .find(|x| x.version == version)
             .ok_or(SchemaError::TopicNotFound)?
@@ -99,7 +100,8 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         return Err(SchemaError::InvalidType);
     }
 
-    let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("schemas/{}.yaml", schema_metadata.resource));
+    let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join(format!("schemas/{}.yaml", schema_metadata.resource));
 
     Ok({
         Schema {
