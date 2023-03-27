@@ -1,1 +1,18 @@
+# Search and storage is the default owner
 * @getsentry/owners-snuba
+
+# Topics consumed by Snuba
+/topics/events.yaml                                        @getsentry/owners-snuba
+/topics/snuba-metrics.yaml                                 @getsentry/owners-snuba
+/topics/snuba-generic-metrics.yaml                         @getsentry/owners-snuba
+
+# Internal Snuba topics
+/topics/snuba-queries.yaml                                 @getsentry/owners-snuba
+
+# Subscription results published by Snuba for Sentry's result consumer
+/topics/events-subscription-results.yaml                  @getsentry/owners-snuba @getsentry/workflow
+/topics/transactions-subscription-results.yaml            @getsentry/owners-snuba @getsentry/workflow
+/topics/sessions-subscription-results.yaml                @getsentry/owners-snuba @getsentry/workflow
+/topics/metrics-subscription-results.yaml                 @getsentry/owners-snuba @getsentry/workflow
+/schemas/subscription-result.v1.schema.json               @getsentry/owners-snuba @getsentry/workflow
+/examples/subscription-results/                            @getsentry/owners-snuba @getsentry/workflow
