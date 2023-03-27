@@ -2,7 +2,7 @@
 * @getsentry/owners-snuba
 
 # Ingest topics
-topics/ingest-metrics.yaml                                 @getsentry/owners-ingest @getsentry/owners-snuba
+/topics/ingest-metrics.yaml                                @getsentry/owners-ingest @getsentry/owners-snuba
 
 # Topics consumed by Snuba
 /topics/events.yaml                                        @getsentry/owners-snuba
