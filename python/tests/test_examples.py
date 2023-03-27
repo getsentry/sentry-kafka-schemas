@@ -32,6 +32,11 @@ def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
     raise e
 
 
+def test_file_extension() -> None:
+    for example in get_all_examples():
+        assert example[2].path.name.endswith(".json")
+
+
 @pytest.mark.parametrize("topic,version,example", get_all_examples(), ids=str)
 @pytest.mark.parametrize(
     "jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"]
