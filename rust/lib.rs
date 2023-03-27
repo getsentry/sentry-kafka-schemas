@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::fs::{read_to_string, File};
+use std::path::Path;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -55,7 +56,7 @@ struct TopicData {
 }
 
 impl TopicData {
-    fn load(path: &str) -> Result<Self, SchemaError> {
+    fn load(path: &Path) -> Result<Self, SchemaError> {
         let f = File::open(path).map_err(|_| SchemaError::TopicNotFound)?;
         serde_yaml::from_reader(f).map_err(|_| SchemaError::TopicNotFound)
     }
@@ -70,28 +71,43 @@ pub struct Schema {
     schema: String,
 }
 
+/// Returns the schema for a topic. If version is passed, return the schema for
+/// the specified version, otherwise the latest version is returned.
+///
+/// Only JSON schemas are currently supported.
+///
 /// # Errors
 ///
 /// Will return `Err` if `topic` or `version` is not found or if schema data is invalid.
-pub fn get_schema(topic: &str, _version: Option<u16>) -> Result<Schema, SchemaError> {
-    let topic_path = format!("./topics/{topic}.yaml");
+pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaError> {
+    let topic_path = Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("topics/{topic}.yaml"));
     let mut topic_data = TopicData::load(&topic_path)?;
-    // TODO: Respect version
-    let latest = topic_data
-        .schemas
-        .pop()
-        .ok_or(SchemaError::InvalidVersion)?;
-    if latest.schema_type != SchemaType::Json {
+    topic_data.schemas.sort_by_key(|x| x.version);
+    let schema_metadata = if let Some(version) = version {
+        topic_data
+            .schemas
+            .into_iter()
+            .find(|x| x.version == version)
+            .ok_or(SchemaError::TopicNotFound)?
+    } else {
+        topic_data
+            .schemas
+            .pop()
+            .ok_or(SchemaError::InvalidVersion)?
+    };
+
+    if schema_metadata.schema_type != SchemaType::Json {
         return Err(SchemaError::InvalidType);
     }
 
-    let json_schema_path = format!("./schemas/{}", latest.resource);
+    let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join(format!("schemas/{}.yaml", schema_metadata.resource));
 
     Ok({
         Schema {
-            version: latest.version,
-            schema_type: latest.schema_type,
-            compatibility_mode: latest.compatibility_mode,
+            version: schema_metadata.version,
+            schema_type: schema_metadata.schema_type,
+            compatibility_mode: schema_metadata.compatibility_mode,
             schema: read_to_string(json_schema_path).map_err(|_| SchemaError::InvalidSchema)?,
         }
     })
