@@ -86,3 +86,8 @@ mode.
 To stop using a development version of this repo in whichever service you're
 working on, you can reinstall Python dependencies in that repo. Most likely the
 command is `make install-py-dev`.
+
+## Schema ownership
+
+All topics definitions, schemas and examples should have a defined owner or multiple owners if shared.
+The CODEOWNERS file should be updated with this information whenever new schemas and topics are added.
