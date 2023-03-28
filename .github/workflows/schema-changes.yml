@@ -17,7 +17,16 @@ jobs:
         name: Checkout HEAD of code that may have migration changes
         with:
           clean: false
-      - run: cargo install json-schema-diff --version 0.1.1 --features build-binary
+
+      - name: Cache json-schema-diff
+        id: cache-json-schema-diff-bin
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/bin/json-schema-diff
+          key: ${{ runner.os }}-json-schema-diff-bin
+      - name: Download and build json-schema-diff
+        if: steps.cache-json-schema-diff-bin.outputs.cache-hit != 'true'
+        run: cargo install json-schema-diff --version 0.1.1 --features build-binary
       - name: Generate schema diff
         uses: getsentry/action-migrations@v1.0.8
         with:
