@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.0.14
+
+### Various fixes & improvements
+
+- ref(subscription results): Make version a const (#63) by @ceorourke
+- feat(examples): Ensure all examples are json (#58) by @lynnagara
+
 ## 0.0.13
 
 ### Various fixes & improvements
