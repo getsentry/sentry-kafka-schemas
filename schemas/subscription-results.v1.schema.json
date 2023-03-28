@@ -3,7 +3,7 @@
   "$ref": "#/definitions/Main",
   "definitions": {
     "Main": {
-      "title": "subscription_results",
+      "title": "subscription_result",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -27,17 +27,37 @@
               "properties": {
                 "data": {
                   "type": "array",
-                  "minItems": 0,
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "meta": {
+                  "type": "array",
                   "items": {
                     "type": "object",
-                    "minProperties": 1,
-                    "additionalProperties": {
-                      "type": ["number", "null"]
-                    }
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   }
+                },
+                "totals": {
+                  "type": "object"
+                },
+                "profile": {
+                  "type": ["object", "null"]
+                },
+                "trace_output": {
+                  "type": "string"
                 }
               },
-              "required": ["data"]
+              "required": ["data", "meta"],
+              "additionalProperties": true
             },
             "timestamp": {
               "type": "string"

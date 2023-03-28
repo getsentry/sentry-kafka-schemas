@@ -23,13 +23,13 @@ install: python/sentry_kafka_schemas/schema_types
 .PHONY: install
 
 format:
-	black python/
+	black python/ scripts/
 	cargo fmt
 	yarn prettier --write .
 .PHONY: format
 
 type-checking:
-	mypy python/ --strict --config-file python/mypy.ini
+	mypy scripts/ python/ --strict --config-file python/mypy.ini
 .PHONY: type-checking
 
 types: type-checking
@@ -39,7 +39,7 @@ lint: lint-python
 .PHONY: lint
 
 lint-python:
-	flake8 python/
+	flake8 python/ scripts/
 .PHONY: lint-python
 
 lint-rust:
