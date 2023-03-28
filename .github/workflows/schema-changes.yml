@@ -27,4 +27,4 @@ jobs:
           migration: "schemas"
           cmd: python ./scripts/json_schema_changes.py
       - name: dry run
-        run: python ./scripts/json_schema_changes.py
+        run: python ./scripts/json_schema_changes.py || [ "$?" = 2 ]
