@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.0.17
+
+### Various fixes & improvements
+
+- feat: Release rust library (#68) by @untitaker
+- feat: Add CI to detect breaking changes (#67) by @untitaker
+
 ## 0.0.16
 
 ### Various fixes & improvements
