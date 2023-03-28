@@ -1,0 +1,28 @@
+name: json-schema-diff
+
+on:
+  pull_request:
+
+jobs:
+  post_changes:
+    name: Post new JSON schema changes from migrations
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout master for diffing
+        with:
+          ref: master
+      - uses: actions/checkout@v3
+        name: Checkout HEAD of code that may have migration changes
+        with:
+          clean: false
+      - run: cargo install json-schema-diff --version 0.1.0 --features build-binary
+      - name: dry run
+        run: ./scripts/json-schema-changes.bash
+      - name: Generate schema diff
+        uses: getsentry/action-migrations@v1.0.8
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          migration: ""
+          cmd: python ./scripts/json_schema_changes.py
