@@ -66,10 +66,17 @@ def main() -> None:
         sys.exit(2)
 
 
+_CHANGE_PRINTERS = {
+    "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['TypeRemoved']['removed']} is no longer allowed",
+}
+
+
 def print_change(change: Mapping[str, Any]) -> None:
     change = dict(change)
     change.pop("is_breaking")
-    print(json.dumps(change))
+
+    printer = _CHANGE_PRINTERS.get(next(iter(change['change'])), lambda change: json.dumps)
+    print(printer(change))
 
 
 if __name__ == "__main__":
