@@ -35,5 +35,5 @@ jobs:
           # a nonempty string to get any results
           migration: "schemas"
           cmd: python ./scripts/json_schema_changes.py || [ "$?" = 2 ]
-      - name: dry run
+      - name: Fail if any breaking changes found
         run: python ./scripts/json_schema_changes.py
