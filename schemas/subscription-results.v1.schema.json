@@ -8,7 +8,7 @@
       "additionalProperties": false,
       "properties": {
         "version": {
-          "type": "integer"
+          "const": 3
         },
         "payload": {
           "type": "object",
