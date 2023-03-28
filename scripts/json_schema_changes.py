@@ -63,7 +63,7 @@ def main() -> None:
     for change in non_breaking_changes:
         print_change(change)
 
-    if breaking_changes:
+    if breaking_changes and '--no-exit-code' not in sys.argv:
         sys.exit(2)
 
 
