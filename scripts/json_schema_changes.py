@@ -68,6 +68,7 @@ def main() -> None:
 
 _CHANGE_PRINTERS = {
     "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['TypeRemoved']['removed']} is no longer allowed",
+    "PropertyRemove": lambda change: f"Removed the property {change['path']}, so it is no longer accepted. Maybe use additionalProperties?"
 }
 
 
@@ -75,8 +76,12 @@ def print_change(change: Mapping[str, Any]) -> None:
     change = dict(change)
     change.pop("is_breaking")
 
-    printer = _CHANGE_PRINTERS.get(next(iter(change['change'])), lambda change: json.dumps)
-    print(printer(change))
+    printer = _CHANGE_PRINTERS.get(next(iter(change['change'])))
+    if printer:
+        print(f"// {printer(change)}")
+
+    print(json.dumps(change))
+    print()
 
 
 if __name__ == "__main__":
