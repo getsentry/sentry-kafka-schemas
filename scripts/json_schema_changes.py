@@ -79,7 +79,7 @@ def print_change(change: Mapping[str, Any]) -> None:
 
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
     if printer:
-        print(f"// {printer(change)}")
+        print(f"## {printer(change)}")
 
     print(json.dumps(change))
     print()
