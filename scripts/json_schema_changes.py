@@ -5,7 +5,7 @@ import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 
 def main() -> None:
@@ -67,13 +67,16 @@ def main() -> None:
         sys.exit(2)
 
 
-_CHANGE_PRINTERS = {
+Change = Mapping[str, Any]
+
+
+_CHANGE_PRINTERS: Mapping[str, Callable[[Change], str]] = {
     "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed",
     "PropertyRemove": lambda change: f"Removed the property {change['path']}, so it is no longer accepted. Maybe use additionalProperties?",
 }
 
 
-def print_change(change: Mapping[str, Any]) -> None:
+def print_change(change: Change) -> None:
     change = dict(change)
     change.pop("is_breaking")
 
