@@ -26,9 +26,6 @@ def main() -> None:
     non_breaking_changes = []
 
     for filename in lines:
-        print(f"# {filename}")
-        print()
-
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
                 ["git", "show", f"origin/main:{filename}"]
@@ -41,6 +38,7 @@ def main() -> None:
             ).splitlines():
 
                 change = json.loads(raw_change)
+                change['filename'] = filename
                 if change["is_breaking"]:
                     breaking_changes.append(change)
                 else:
@@ -82,7 +80,7 @@ def print_change(change: Change) -> None:
 
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
     if printer:
-        print(f"## {printer(change)}")
+        print(f"# {printer(change)}")
 
     print(json.dumps(change))
     print()
