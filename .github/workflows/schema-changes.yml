@@ -34,6 +34,6 @@ jobs:
           # i have no clue what this parameter is for, but i have to set it to
           # a nonempty string to get any results
           migration: "schemas"
-          cmd: python ./scripts/json_schema_changes.py
+          cmd: python ./scripts/json_schema_changes.py || [ "$?" = 2 ]
       - name: dry run
-        run: python ./scripts/json_schema_changes.py || [ "$?" = 2 ]
+        run: python ./scripts/json_schema_changes.py
