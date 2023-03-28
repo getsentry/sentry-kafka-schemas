@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.16
+
+### Various fixes & improvements
+
+- fix: Subscription result schema (#65) by @lynnagara
+
 ## 0.0.15
 
 ### Various fixes & improvements
