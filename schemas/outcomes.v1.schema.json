@@ -7,7 +7,7 @@
       "type": "string"
     },
     "org_id": {
-      "type": ["integer", "null"]
+      "type": ["integer"]
     },
     "project_id": {
       "type": ["integer", "null"]
