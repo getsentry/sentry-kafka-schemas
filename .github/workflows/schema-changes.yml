@@ -18,11 +18,11 @@ jobs:
         with:
           clean: false
       - run: cargo install json-schema-diff --version 0.1.1 --features build-binary
-      - name: dry run
-        run: python ./scripts/json_schema_changes.py
       - name: Generate schema diff
         uses: getsentry/action-migrations@v1.0.8
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           migration: ""
           cmd: python ./scripts/json_schema_changes.py
+      - name: dry run
+        run: python ./scripts/json_schema_changes.py
