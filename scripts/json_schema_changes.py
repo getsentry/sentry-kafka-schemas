@@ -46,9 +46,7 @@ def main() -> None:
                 else:
                     non_breaking_changes.append(change)
 
-    if not breaking_changes:
-        print("no breaking changes found")
-    else:
+    if breaking_changes:
         print("!!! WARNING: changes considered breaking:")
         print()
         for change in breaking_changes:
@@ -59,7 +57,8 @@ def main() -> None:
         if non_breaking_changes:
             print("other changes:")
 
-    print()
+    if non_breaking_changes:
+        print()
 
     for change in non_breaking_changes:
         print_change(change)
