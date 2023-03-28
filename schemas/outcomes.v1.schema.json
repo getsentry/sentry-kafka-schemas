@@ -31,5 +31,5 @@
       "type": ["integer", "null"]
     }
   },
-  "required": ["timestamp", "org_id", "outcome"]
+  "required": ["timestamp", "outcome"]
 }
