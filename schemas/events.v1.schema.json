@@ -1991,7 +1991,14 @@
             },
             "data": {
               "description": " Request data in any format that makes sense.\n\n SDKs should discard large and binary bodies by default. Can be given as string or\n structural data of any format.",
-              "type": ["array", "object", "string", "integer", "null", "boolean"]
+              "type": [
+                "array",
+                "object",
+                "string",
+                "integer",
+                "null",
+                "boolean"
+              ]
             },
             "env": {
               "description": " Server environment data, such as CGI/WSGI.\n\n A dictionary containing environment information passed from the server. This is where\n information such as CGI/WSGI/Rack keys go that are not HTTP headers.\n\n Sentry will explicitly look for `REMOTE_ADDR` to extract an IP address.",
