@@ -17,7 +17,7 @@ jobs:
         name: Checkout HEAD of code that may have migration changes
         with:
           clean: false
-      - run: cargo install json-schema-diff --version 0.1.0 --features build-binary
+      - run: cargo install json-schema-diff --version 0.1.1 --features build-binary
       - name: dry run
         run: ./scripts/json-schema-changes.bash
       - name: Generate schema diff
