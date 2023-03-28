@@ -23,7 +23,7 @@ def main() -> None:
     lines = process_output.decode("utf8").splitlines()
 
     breaking_changes = []
-    changes = []
+    non_breaking_changes = []
 
     for filename in lines:
         print(f"# {filename}")
@@ -43,7 +43,8 @@ def main() -> None:
                 change = json.loads(raw_change)
                 if change["is_breaking"]:
                     breaking_changes.append(change)
-                changes.append(change)
+                else:
+                    non_breaking_changes.append(change)
 
     if not breaking_changes:
         print("no breaking changes found")
@@ -58,7 +59,7 @@ def main() -> None:
 
     print()
 
-    for change in changes:
+    for change in non_breaking_changes:
         print_change(change)
 
     if breaking_changes:
