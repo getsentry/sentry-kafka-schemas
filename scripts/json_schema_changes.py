@@ -30,7 +30,7 @@ def main():
 
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
-                ["git", "show", f"main:{filename}"]
+                ["git", "show", f"origin/main:{filename}"]
             )
             old_file.write(old_file_contents)
             old_file.flush()
