@@ -55,7 +55,9 @@ def main() -> None:
             print_change(change)
 
         print()
-        print("other changes:")
+
+        if non_breaking_changes:
+            print("other changes:")
 
     print()
 
@@ -67,8 +69,8 @@ def main() -> None:
 
 
 _CHANGE_PRINTERS = {
-    "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['TypeRemoved']['removed']} is no longer allowed",
-    "PropertyRemove": lambda change: f"Removed the property {change['path']}, so it is no longer accepted. Maybe use additionalProperties?",
+    "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed",
+    "PropertyRemove": lambda change: f"Removed the property {change['path']}, so it is no longer accepted. Maybe use additionalProperties?"
 }
 
 
