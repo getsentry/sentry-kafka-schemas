@@ -5,9 +5,10 @@ import sys
 import subprocess
 import tempfile
 import json
+from typing import Any, Mapping
 
 
-def main():
+def main() -> None:
     process_output = subprocess.check_output(
         [
             "git",
@@ -35,11 +36,11 @@ def main():
             old_file.write(old_file_contents)
             old_file.flush()
 
-            for change in subprocess.check_output(
+            for raw_change in subprocess.check_output(
                 ["json-schema-diff", old_file.name, filename]
             ).splitlines():
 
-                change = json.loads(change)
+                change = json.loads(raw_change)
                 if change["is_breaking"]:
                     breaking_changes.append(change)
                 changes.append(change)
@@ -64,7 +65,7 @@ def main():
         sys.exit(2)
 
 
-def print_change(change):
+def print_change(change: Mapping[str, Any]) -> None:
     change = dict(change)
     change.pop("is_breaking")
     print(json.dumps(change))
