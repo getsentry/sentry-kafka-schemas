@@ -10,6 +10,8 @@ Currently only jsonschema is supported. The jsonschema should be placed directly
 
 Example messages can be placed in the `examples` directory and referenced from the relevant topic/version.
 
+Example messages must be stripped of **all** customer related data. This also includes things like organization and project IDs, which should be replaced with something like `project_id: 1` or `org_id: 1`.
+
 ## Defining topics
 
 Each topic is a yaml file in the topics directory. This topic name is a "logical" topic name as many services in Sentry support overriding the default name to a different physical topic name if desired. Topic names must be unique in Sentry: the same name cannot be used for different types of data.
