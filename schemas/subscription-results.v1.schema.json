@@ -50,19 +50,13 @@
                   "type": "object"
                 },
                 "profile": {
-                  "type": [
-                    "object",
-                    "null"
-                  ]
+                  "type": ["object", "null"]
                 },
                 "trace_output": {
                   "type": "string"
                 }
               },
-              "required": [
-                "data",
-                "meta"
-              ],
+              "required": ["data", "meta"],
               "additionalProperties": true
             },
             "timestamp": {
@@ -82,10 +76,7 @@
           ]
         }
       },
-      "required": [
-        "version",
-        "payload"
-      ]
+      "required": ["version", "payload"]
     }
   }
 }
