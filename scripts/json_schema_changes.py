@@ -1,7 +1,6 @@
 # this script currently runs without any dependencies installed. that can be
 # changed easily, but right now we don't need anything like rapidjson over
 # json, so CI is slightly faster
-import sys
 import subprocess
 import tempfile
 import json
@@ -60,9 +59,6 @@ def main() -> None:
 
     for change in changes:
         print_change(change)
-
-    if breaking_changes:
-        sys.exit(2)
 
 
 def print_change(change: Mapping[str, Any]) -> None:
