@@ -13,7 +13,7 @@
       "type": ["integer", "null"]
     },
     "key_id": {
-      "type": ["string", "null"]
+      "type": ["integer", "null"]
     },
     "outcome": {
       "type": "integer"
@@ -31,15 +31,5 @@
       "type": ["integer", "null"]
     }
   },
-  "required": [
-    "timestamp",
-    "org_id",
-    "project_id",
-    "key_id",
-    "outcome",
-    "reason",
-    "event_id",
-    "category",
-    "quantity"
-  ]
+  "required": ["timestamp", "org_id", "outcome"]
 }
