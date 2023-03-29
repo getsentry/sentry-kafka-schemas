@@ -2,6 +2,7 @@
 name = "sentry-kafka-schemas"
 authors = ["Sentry <oss@sentry.io>"]
 description = "Kafka topics and schemas for Sentry"
+repository = "https://github.com/getsentry/sentry-kafka-schemas"
 license-file = "./LICENSE"
 version = "0.0.17"
 edition = "2021"
@@ -12,6 +13,8 @@ edition = "2021"
 path = "rust/lib.rs"
 
 [dependencies]
+# The code generated via ./rust_codegen/ relies on this
+schemafy_core = "0.6.0"
 serde = { version = "1.0", features = ["derive"]}
 serde_json = "1.0"
 serde_yaml = "0.9"

@@ -1,18 +1,20 @@
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::fs::{read_to_string, File};
-use std::path::Path;
+use std::path::{Path, PathBuf};
+
+pub mod schema_types;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
-enum SchemaType {
+pub enum SchemaType {
     #[serde(rename = "json")]
     Json,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
-enum CompatibilityMode {
+pub enum CompatibilityMode {
     #[serde(rename = "none")]
     None,
     #[serde(rename = "backward")]
@@ -64,11 +66,12 @@ impl TopicData {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Schema {
-    version: u16,
-    schema_type: SchemaType,
-    compatibility_mode: CompatibilityMode,
+    pub version: u16,
+    pub schema_type: SchemaType,
+    pub compatibility_mode: CompatibilityMode,
     // TODO: Actually parse the json schema
-    schema: String,
+    pub schema: String,
+    pub schema_filepath: PathBuf,
 }
 
 /// Returns the schema for a topic. If version is passed, return the schema for
@@ -109,6 +112,7 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
             schema_type: schema_metadata.schema_type,
             compatibility_mode: schema_metadata.compatibility_mode,
             schema: read_to_string(json_schema_path).map_err(|_| SchemaError::InvalidSchema)?,
+            schema_filepath: json_schema_path.to_owned(),
         }
     })
 }
