@@ -3,10 +3,10 @@
 .pytest_cache
 .venv
 .DS_Store
-Cargo.lock
+/Cargo.lock
 *.egg-info/
 /dist
 /build
-/target
+target
 /python/sentry_kafka_schemas/schema_types/
 node_modules/

@@ -10,7 +10,6 @@
   },
   "timestamp": 1111111111111111,
   "retention_days": 90,
-  "width": 1,
   "type": "c",
   "value": 1
 }

@@ -2,16 +2,45 @@
 name = "sentry-kafka-schemas"
 authors = ["Sentry <oss@sentry.io>"]
 description = "Kafka topics and schemas for Sentry"
+repository = "https://github.com/getsentry/sentry-kafka-schemas"
 license-file = "./LICENSE"
 version = "0.0.19"
 edition = "2021"
+
+build = "rust/build.rs"
+include = ["/rust/*.rs", "/Cargo.toml", "/schemas/**", "/topics/**", "/README.md", "/LICENSE"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 path = "rust/lib.rs"
 
+[[bin]]
+# register build.rs as binary so people can view generated code directly as well
+# https://stackoverflow.com/a/53728256/1544347
+name = "generate-schema-types"
+path = "rust/build.rs"
+required-features = ["build_deps"]
+
+[features]
+build_deps = ["prettyplease", "schemars", "syn", "typify"]
+
 [dependencies]
 serde = { version = "1.0", features = ["derive"]}
 serde_json = "1.0"
 serde_yaml = "0.9"
+regress = "0.5.0"  # required by generated code
+
+# redeclare all build-dependencies here so that the build.rs can be used
+# standalone to view types
+prettyplease = { version = "0.2.4", optional = true }
+schemars = { version = "0.8.0", optional = true }
+syn = { version = "2.0.11", optional = true }
+typify = { version = "0.0.11", optional = true }
+
+[build-dependencies]
+prettyplease = "0.2.4"
+schemars = "0.8.0"
+serde_json = "1.0"
+syn = "2.0.11"
+typify = "0.0.11"
