@@ -3,10 +3,7 @@ use std::fmt;
 use std::fs::{read_to_string, File};
 use std::path::{Path, PathBuf};
 
-// If this file is missing, run `make rust/schema_types.rs`
-//
-// Generally this file should be built automatically, and it should also be vendored in the crate
-// on crates.io
+// This file is supposed to be auto-generated via rust/build.rs
 pub mod schema_types {
     include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
 }
