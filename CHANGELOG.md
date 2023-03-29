@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.18
+
+### Various fixes & improvements
+
+- fix(outcomes): Update outcome schema (#69) by @john-z-yang
+- fix: Remove incorrect property from subscription result schema (#72) by @lynnagara
+- docs: Clarify that example messages must be stripped of sensitive data (#71) by @lynnagara
+
 ## 0.0.17
 
 ### Various fixes & improvements
