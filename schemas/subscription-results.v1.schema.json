@@ -46,9 +46,6 @@
                     "additionalProperties": false
                   }
                 },
-                "totals": {
-                  "type": "object"
-                },
                 "profile": {
                   "type": ["object", "null"]
                 },
