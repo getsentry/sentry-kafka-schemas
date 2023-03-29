@@ -1,7 +1,7 @@
 use std::path::Path;
 
-use typify::{TypeSpace, TypeSpaceSettings};
 use schemars::schema::Schema;
+use typify::{TypeSpace, TypeSpaceSettings};
 
 fn generate_schema(schema_path: &str, output_module: &str) -> String {
     println!("cargo:rerun-if-changed={schema_path}");
@@ -14,32 +14,32 @@ fn generate_schema(schema_path: &str, output_module: &str) -> String {
     // TODO: when typify 0.12 is released, replace this entire block with add_root_schema
     // see https://github.com/oxidecomputer/typify/pull/236/files
     {
-        type_space
-            .add_ref_types(schema.definitions)
-            .unwrap();
+        type_space.add_ref_types(schema.definitions).unwrap();
 
-        type_space
-            .add_type(&Schema::Object(schema.schema))
-            .unwrap();
+        type_space.add_type(&Schema::Object(schema.schema)).unwrap();
     }
 
     let code = prettyplease::unparse(&syn::parse2::<syn::File>(type_space.to_stream()).unwrap());
 
-    format!("pub mod {output_module} {{
+    format!(
+        "pub mod {output_module} {{
     use serde::{{Deserialize, Serialize}};
     {code}
-    }}")
+    }}"
+    )
 }
 
 fn main() {
     let mut module_code = String::new();
-    module_code.push_str(
-        &generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1")
-    );
+    module_code.push_str(&generate_schema(
+        "schemas/ingest-metrics.v1.schema.json",
+        "ingest_metrics_v1",
+    ));
 
     if let Ok(target_dir) = std::env::var("OUT_DIR") {
         println!("cargo:rerun-if-changed=build.rs");
-        std::fs::write(Path::new(&target_dir).join("schema_types.rs"), module_code).expect("Failed to write schema_types.rs");
+        std::fs::write(Path::new(&target_dir).join("schema_types.rs"), module_code)
+            .expect("Failed to write schema_types.rs");
     } else {
         println!("{module_code}");
     }
