@@ -8,8 +8,7 @@ version = "0.0.17"
 edition = "2021"
 
 build = "rust/build.rs"
-exclude = ["./rust_codegen/"]
-include = ["./rust/schema_types.rs"]
+include = ["/rust/*.rs", "/Cargo.toml", "/schemas/**", "/topics/**", "/README.md", "/LICENSE"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
