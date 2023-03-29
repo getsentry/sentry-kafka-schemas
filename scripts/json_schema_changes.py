@@ -25,6 +25,9 @@ def main() -> None:
     breaking_changes = []
     non_breaking_changes = []
 
+    if not lines:
+        return
+
     for filename in lines:
         print(f"# {filename}")
         print()
@@ -62,6 +65,18 @@ def main() -> None:
 
     for change in non_breaking_changes:
         print_change(change)
+
+    if not non_breaking_changes and not breaking_changes:
+        print(
+            """\
+There were changes to the JSON schema file, but we couldn't categorize any of
+them. Therefore we don't know whether this change is safe to make.
+
+This might be a gap in linting. Want to take a look at
+https://github.com/getsentry/json-schema-diff/ and figure it out?"""
+        )
+        if "--no-exit-code" not in sys.argv:
+            sys.exit(2)
 
     if breaking_changes and "--no-exit-code" not in sys.argv:
         sys.exit(2)
