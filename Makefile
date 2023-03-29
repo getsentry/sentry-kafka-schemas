@@ -16,6 +16,10 @@ rust/schema_types.rs:
 	cargo run --manifest-path rust_codegen/Cargo.toml
 .PHONY: rust/schema_types.rs
 
+view-rust-types:
+	cargo run --features build_deps --bin generate-schema-types
+.PHONY: view-rust-types
+
 build: python/sentry_kafka_schemas/schema_types
 	pip install wheel
 	python setup.py sdist bdist_wheel

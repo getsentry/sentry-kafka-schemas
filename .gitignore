@@ -9,5 +9,4 @@
 /build
 target
 /python/sentry_kafka_schemas/schema_types/
-/rust/schema_types.rs
 node_modules/
