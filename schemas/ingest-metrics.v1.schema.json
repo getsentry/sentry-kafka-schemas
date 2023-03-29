@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/Main",
+  "$ref": "#/definitions/IngestMetric",
   "definitions": {
-    "Main": {
+    "IngestMetric": {
       "type": "object",
       "title": "ingest_metric",
       "additionalProperties": false,
@@ -22,31 +22,32 @@
         "type": {
           "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
           "type": "string",
-          "pattern": "^[cds]$"
+          "enum": ["c", "d", "s"]
         },
         "timestamp": {
           "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
           "type": "integer"
         },
         "tags": {
-          "$ref": "#/definitions/StringToString"
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
         },
         "value": {
           "anyOf": [
             {
-              "type": "integer"
+            "title": "number_metric_value",
+              "type": "number"
             },
             {
+                "title": "numbers_metric_value",
               "type": "array",
               "items": {
                 "type": "number"
               }
             }
           ]
-        },
-        "width": {
-          "description": "DEAD PARAMETER -- downstream consumers do not use this, but relay sends it anyway. should remove or actually use",
-          "type": "integer"
         },
         "retention_days": {
           "type": "integer"
@@ -62,12 +63,6 @@
         "type",
         "value"
       ]
-    },
-    "StringToString": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
     }
   }
 }
