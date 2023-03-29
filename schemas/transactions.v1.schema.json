@@ -1,0 +1,898 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": [
+    { "const": 2 },
+    { "const": 2 },
+    {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "null"
+        },
+        "group_ids": {
+          "type": "array",
+          "items": {}
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "organization_id": {
+          "type": "integer"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "datetime": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "event_id": {
+              "type": "string"
+            },
+            "level": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "transaction": {
+              "type": "string"
+            },
+            "transaction_info": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                }
+              },
+              "required": ["source"]
+            },
+            "logger": {
+              "type": "string"
+            },
+            "platform": {
+              "type": "string"
+            },
+            "timestamp": {
+              "type": "number"
+            },
+            "start_timestamp": {
+              "type": "number"
+            },
+            "received": {
+              "type": "number"
+            },
+            "release": {
+              "type": "string"
+            },
+            "environment": {
+              "type": "string"
+            },
+            "contexts": {
+              "type": "object",
+              "properties": {
+                "runtime": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "build": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["name", "version", "build", "type"]
+                },
+                "trace": {
+                  "type": "object",
+                  "properties": {
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "trace_id",
+                    "span_id",
+                    "parent_span_id",
+                    "op",
+                    "status",
+                    "exclusive_time",
+                    "type",
+                    "hash"
+                  ]
+                }
+              },
+              "required": ["runtime", "trace"]
+            },
+            "tags": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              ]
+            },
+            "extra": {
+              "type": "object",
+              "properties": {
+                "celery-job": {
+                  "type": "object",
+                  "properties": {
+                    "args": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "kwargs": {
+                      "type": "object"
+                    },
+                    "task_name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["args", "kwargs", "task_name"]
+                },
+                "sys.argv": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": ["celery-job", "sys.argv"]
+            },
+            "sdk": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "integrations": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "packages": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["name", "version"]
+                    }
+                  ]
+                }
+              },
+              "required": ["name", "version", "integrations", "packages"]
+            },
+            "key_id": {
+              "type": "string"
+            },
+            "project": {
+              "type": "integer"
+            },
+            "grouping_config": {
+              "type": "object",
+              "properties": {
+                "enhancements": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": ["enhancements", "id"]
+            },
+            "spans": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "start_timestamp": {
+                      "type": "number"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "same_process_as_parent": {
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "start_timestamp",
+                    "exclusive_time",
+                    "description",
+                    "op",
+                    "span_id",
+                    "parent_span_id",
+                    "trace_id",
+                    "same_process_as_parent",
+                    "tags",
+                    "data",
+                    "hash"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "start_timestamp": {
+                      "type": "number"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "same_process_as_parent": {
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "start_timestamp",
+                    "exclusive_time",
+                    "description",
+                    "op",
+                    "span_id",
+                    "parent_span_id",
+                    "trace_id",
+                    "same_process_as_parent",
+                    "tags",
+                    "data",
+                    "hash"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "start_timestamp": {
+                      "type": "number"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "same_process_as_parent": {
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "start_timestamp",
+                    "exclusive_time",
+                    "description",
+                    "op",
+                    "span_id",
+                    "parent_span_id",
+                    "trace_id",
+                    "same_process_as_parent",
+                    "tags",
+                    "data",
+                    "hash"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "start_timestamp": {
+                      "type": "number"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "same_process_as_parent": {
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "start_timestamp",
+                    "exclusive_time",
+                    "description",
+                    "op",
+                    "span_id",
+                    "parent_span_id",
+                    "trace_id",
+                    "same_process_as_parent",
+                    "tags",
+                    "data",
+                    "hash"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "number"
+                    },
+                    "start_timestamp": {
+                      "type": "number"
+                    },
+                    "exclusive_time": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "op": {
+                      "type": "string"
+                    },
+                    "span_id": {
+                      "type": "string"
+                    },
+                    "parent_span_id": {
+                      "type": "string"
+                    },
+                    "trace_id": {
+                      "type": "string"
+                    },
+                    "same_process_as_parent": {
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "type": "null"
+                    },
+                    "data": {
+                      "type": "null"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "start_timestamp",
+                    "exclusive_time",
+                    "description",
+                    "op",
+                    "span_id",
+                    "parent_span_id",
+                    "trace_id",
+                    "same_process_as_parent",
+                    "tags",
+                    "data",
+                    "hash"
+                  ]
+                }
+              ]
+            },
+            "measurements": {
+              "type": "object",
+              "properties": {
+                "num_of_spans": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["value", "unit"]
+                }
+              },
+              "required": ["num_of_spans"]
+            },
+            "breakdowns": {
+              "type": "object",
+              "properties": {
+                "span_ops": {
+                  "type": "object",
+                  "properties": {
+                    "ops.db": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "number"
+                        },
+                        "unit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["value", "unit"]
+                    },
+                    "total.time": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "number"
+                        },
+                        "unit": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["value", "unit"]
+                    }
+                  },
+                  "required": ["ops.db", "total.time"]
+                }
+              },
+              "required": ["span_ops"]
+            },
+            "_metrics": {
+              "type": "object",
+              "properties": {
+                "bytes.ingested.event": {
+                  "type": "integer"
+                },
+                "bytes.stored.event": {
+                  "type": "integer"
+                }
+              },
+              "required": ["bytes.ingested.event", "bytes.stored.event"]
+            },
+            "span_grouping_config": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": ["id"]
+            },
+            "culprit": {
+              "type": "string"
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                }
+              },
+              "required": ["title", "location"]
+            },
+            "title": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "hashes": {
+              "type": "array",
+              "items": {}
+            },
+            "nodestore_insert": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "event_id",
+            "level",
+            "version",
+            "type",
+            "transaction",
+            "transaction_info",
+            "logger",
+            "platform",
+            "timestamp",
+            "start_timestamp",
+            "received",
+            "release",
+            "environment",
+            "contexts",
+            "tags",
+            "extra",
+            "sdk",
+            "key_id",
+            "project",
+            "grouping_config",
+            "spans",
+            "measurements",
+            "breakdowns",
+            "_metrics",
+            "span_grouping_config",
+            "culprit",
+            "metadata",
+            "title",
+            "location",
+            "hashes",
+            "nodestore_insert"
+          ]
+        },
+        "primary_hash": {
+          "type": "null"
+        },
+        "retention_days": {
+          "type": "null"
+        },
+        "occurrence_id": {
+          "type": "null"
+        },
+        "occurrence_data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "group_id",
+        "group_ids",
+        "event_id",
+        "organization_id",
+        "project_id",
+        "message",
+        "platform",
+        "datetime",
+        "data",
+        "primary_hash",
+        "retention_days",
+        "occurrence_id",
+        "occurrence_data"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "is_new": {
+          "type": "boolean"
+        },
+        "is_regression": {
+          "type": "boolean"
+        },
+        "is_new_group_environment": {
+          "type": "boolean"
+        },
+        "queue": {
+          "type": "string"
+        },
+        "skip_consume": {
+          "type": "boolean"
+        },
+        "group_states": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "is_new",
+        "is_regression",
+        "is_new_group_environment",
+        "queue",
+        "skip_consume",
+        "group_states"
+      ]
+    }
+  ]
+}
