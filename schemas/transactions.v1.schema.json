@@ -12,7 +12,7 @@
         },
         "group_ids": {
           "type": "array",
-          "items": {}
+          "maxItems": 0
         },
         "event_id": {
           "type": "string"
