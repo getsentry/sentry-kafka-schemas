@@ -12,10 +12,6 @@ install-build-requirements:
 python/sentry_kafka_schemas/schema_types: schemas/ topics/ install-build-requirements
 	python python/generate_python_types.py
 
-rust/schema_types.rs:
-	cargo run --manifest-path rust_codegen/Cargo.toml
-.PHONY: rust/schema_types.rs
-
 view-rust-types:
 	cargo run --features build_deps --bin generate-schema-types
 .PHONY: view-rust-types
