@@ -26,6 +26,7 @@ fn main() {
     );
 
     if let Ok(target_dir) = std::env::var("OUT_DIR") {
+        println!("cargo:rerun-if-changed=build.rs");
         std::fs::write(Path::new(&target_dir).join("schema_types.rs"), module_code).expect("Failed to write schema_types.rs");
     } else {
         println!("{module_code}");
