@@ -1,6 +1,7 @@
 use std::path::Path;
 
 use typify::{TypeSpace, TypeSpaceSettings};
+use schemars::schema::Schema;
 
 fn generate_schema(schema_path: &str, output_module: &str) -> String {
     println!("cargo:rerun-if-changed={schema_path}");
@@ -9,7 +10,18 @@ fn generate_schema(schema_path: &str, output_module: &str) -> String {
     let schema = serde_json::from_str::<schemars::schema::RootSchema>(&json).unwrap();
 
     let mut type_space = TypeSpace::new(TypeSpaceSettings::default().with_struct_builder(true));
-    type_space.add_root_schema(schema).unwrap();
+
+    // TODO: when typify 0.12 is released, replace this entire block with add_root_schema
+    // see https://github.com/oxidecomputer/typify/pull/236/files
+    {
+        type_space
+            .add_ref_types(schema.definitions)
+            .unwrap();
+
+        type_space
+            .add_type(&Schema::Object(schema.schema))
+            .unwrap();
+    }
 
     let code = prettyplease::unparse(&syn::parse2::<syn::File>(type_space.to_stream()).unwrap());
 
