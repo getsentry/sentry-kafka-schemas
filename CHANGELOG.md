@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.20
+
+### Various fixes & improvements
+
+- feat: Rust types (#74) by @untitaker
+- fix: Bump json-schema-diff (#76) by @untitaker
+- ref: Update action-migrations workflow, get rid of bogus "SQL" message (#75) by @untitaker
+
 ## 0.0.19
 
 ### Various fixes & improvements
