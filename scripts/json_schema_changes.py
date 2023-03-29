@@ -25,6 +25,9 @@ def main() -> None:
     breaking_changes = []
     non_breaking_changes = []
 
+    if not lines:
+        return
+
     for filename in lines:
         print(f"# {filename}")
         print()
