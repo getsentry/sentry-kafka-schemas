@@ -18,5 +18,6 @@
 /topics/transactions-subscription-results.yaml            @getsentry/owners-snuba @getsentry/workflow
 /topics/sessions-subscription-results.yaml                @getsentry/owners-snuba @getsentry/workflow
 /topics/metrics-subscription-results.yaml                 @getsentry/owners-snuba @getsentry/workflow
+/topics/generic-metrics-subscription-results.yaml         @getsentry/owners-snuba @getsentry/workflow
 /schemas/subscription-result.v1.schema.json               @getsentry/owners-snuba @getsentry/workflow
 /examples/subscription-results/                           @getsentry/owners-snuba @getsentry/workflow
