@@ -3,6 +3,10 @@ use std::fmt;
 use std::fs::{read_to_string, File};
 use std::path::{Path, PathBuf};
 
+// If this file is missing, run `make rust/schema_types.rs`
+//
+// Generally this file should be built automatically, and it should also be vendored in the crate
+// on crates.io
 pub mod schema_types;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -111,7 +115,7 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
             version: schema_metadata.version,
             schema_type: schema_metadata.schema_type,
             compatibility_mode: schema_metadata.compatibility_mode,
-            schema: read_to_string(json_schema_path).map_err(|_| SchemaError::InvalidSchema)?,
+            schema: read_to_string(&json_schema_path).map_err(|_| SchemaError::InvalidSchema)?,
             schema_filepath: json_schema_path.to_owned(),
         }
     })

@@ -13,7 +13,8 @@ python/sentry_kafka_schemas/schema_types: schemas/ topics/ install-build-require
 	python python/generate_python_types.py
 
 rust/schema_types.rs:
-	cargo run --manifest-path rust_codgen/Cargo.toml
+	cargo run --manifest-path rust_codegen/Cargo.toml
+.PHONY: rust/schema_types.rs
 
 build: python/sentry_kafka_schemas/schema_types
 	pip install wheel
