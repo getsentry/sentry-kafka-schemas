@@ -3,7 +3,7 @@
   "type": "array",
   "items": [
     { "const": 2 },
-    { "const": 2 },
+    { "const": "insert" },
     {
       "type": "object",
       "properties": {
