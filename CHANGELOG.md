@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.19
+
+### Various fixes & improvements
+
+- ref(metric alerts): Add generic metrics sub results (#73) by @ceorourke
+
 ## 0.0.18
 
 ### Various fixes & improvements
