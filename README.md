@@ -72,11 +72,12 @@ types. Use that power tastefully!
 ## Using Rust types
 
 We use a completely different library for generating Rust types, and therefore
-the rules by which Rust type names are generated are different. **The entire
-project is work-in-progress.**
+the rules by which Rust type names are generated are different. **Rust types
+are work-in-progress.**
 
 For now, schema files need to be explicitly added to `rust/build.rs`. The
-generated types can be viewed with `make view-rust-types` or `cargo doc`.
+generated types can be viewed with `make view-rust-types`, `cargo doc --open`, or
+online on https://docs.rs/sentry-kafka-schemas.
 
 ## Release process and development install
 
