@@ -7,7 +7,9 @@ use std::path::{Path, PathBuf};
 //
 // Generally this file should be built automatically, and it should also be vendored in the crate
 // on crates.io
-include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
+pub mod schema_types {
+    include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
+}
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
