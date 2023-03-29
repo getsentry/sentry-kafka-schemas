@@ -3,6 +3,9 @@ name: json-schema-diff
 on:
   pull_request:
 
+env:
+  JSON_SCHEMA_DIFF_VERSION: 0.1.2
+
 jobs:
   post_changes:
     name: Post new JSON schema changes from migrations
@@ -23,10 +26,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cargo/bin/json-schema-diff
-          key: ${{ runner.os }}-json-schema-diff-bin
+          key: ${{ runner.os }}-json-schema-diff-bin-v${{ env.JSON_SCHEMA_DIFF_VERSION }}
       - name: Download and build json-schema-diff
         if: steps.cache-json-schema-diff-bin.outputs.cache-hit != 'true'
-        run: cargo install json-schema-diff --version 0.1.1 --features build-binary
+        run: cargo install json-schema-diff \
+          --version $JSON_SCHEMA_DIFF_VERSION \
+          --features build-binary
       - name: Generate schema diff
         uses: getsentry/action-migrations@v1.0.8
         with:
