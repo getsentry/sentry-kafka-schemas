@@ -29,19 +29,19 @@
           "type": "integer"
         },
         "tags": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string"
-            }
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         },
         "value": {
           "anyOf": [
             {
-            "title": "number_metric_value",
+              "title": "number_metric_value",
               "type": "number"
             },
             {
-                "title": "numbers_metric_value",
+              "title": "numbers_metric_value",
               "type": "array",
               "items": {
                 "type": "number"
