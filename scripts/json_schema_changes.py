@@ -64,12 +64,14 @@ def main() -> None:
         print_change(change)
 
     if not non_breaking_changes and not breaking_changes:
-        print("""\
+        print(
+            """\
 There were changes to the JSON schema file, but we couldn't categorize any of
 them. Therefore we don't know whether this change is safe to make.
 
 This might be a gap in linting. Want to take a look at
-https://github.com/getsentry/json-schema-diff/ and figure it out?""")
+https://github.com/getsentry/json-schema-diff/ and figure it out?"""
+        )
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
 
