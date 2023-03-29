@@ -28,9 +28,10 @@ jobs:
         if: steps.cache-json-schema-diff-bin.outputs.cache-hit != 'true'
         run: cargo install json-schema-diff --version 0.1.1 --features build-binary
       - name: Generate schema diff
-        uses: getsentry/action-migrations@v1.0.8
+        uses: getsentry/action-migrations@v1.1.0
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          commentHeader: "This pull request contains the following schema changes"
           # i have no clue what this parameter is for, but i have to set it to
           # a nonempty string to get any results
           migration: "bogusvalue"
