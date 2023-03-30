@@ -21,6 +21,14 @@ fn generate_schema(schema_path: &str, output_module: &str) -> String {
 
     let code = prettyplease::unparse(&syn::parse2::<syn::File>(type_space.to_stream()).unwrap());
 
+    // XXX: extreme hack to get rid of all hashmaps. we generally use btreemap for representation
+    // of most (small) maps
+    //
+    // some customization in typify would be nice, but we really use hashmap very rarely.
+    let code = code
+        .replace("::HashMap<", "::BTreeMap<")
+        .replace("::HashMap::", "::BTreeMap::");
+
     format!(
         "pub mod {output_module} {{
     use serde::{{Deserialize, Serialize}};

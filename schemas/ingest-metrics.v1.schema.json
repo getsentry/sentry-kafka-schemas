@@ -9,11 +9,15 @@
       "properties": {
         "org_id": {
           "description": "The organization for which this metric is being sent.",
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
         },
         "project_id": {
           "description": "The project for which this metric is being sent.",
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
         },
         "name": {
           "description": "The metric name. Relay sometimes calls this an MRI and makes assumptions about its string shape, and those assumptions also exist in certain queries. The rest of the ingestion pipeline treats it as an opaque string.",
@@ -26,7 +30,9 @@
         },
         "timestamp": {
           "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
         },
         "tags": {
           "type": "object",
@@ -50,7 +56,9 @@
           ]
         },
         "retention_days": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         }
       },
       "required": [
