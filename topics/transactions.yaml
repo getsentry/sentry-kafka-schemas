@@ -1,4 +1,4 @@
-topic: events
+topic: transactions
 description: Transactions data for Snuba
 schemas:
   - version: 1
