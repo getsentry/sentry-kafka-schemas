@@ -1,0 +1,207 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": null,
+    "group_ids": [],
+    "event_id": "dcc403b73ef548648188bbfa6012e9dc",
+    "organization_id": 1,
+    "project_id": 1,
+    "message": "sentry.monitors.tasks.check_monitors",
+    "platform": "python",
+    "datetime": "2023-03-29T23:39:23.188890Z",
+    "data": {
+      "event_id": "dcc403b73ef548648188bbfa6012e9dc",
+      "level": "info",
+      "version": "7",
+      "type": "transaction",
+      "transaction": "sentry.monitors.tasks.check_monitors",
+      "transaction_info": { "source": "task" },
+      "logger": "",
+      "platform": "python",
+      "timestamp": 1680133163.18889,
+      "start_timestamp": 1680133163.150449,
+      "received": 1680133163.233106,
+      "release": "backend@23.4.0.dev0+ea9e2e29653c5eb60741d68a1220657e24609eeb",
+      "environment": "development",
+      "contexts": {
+        "runtime": {
+          "name": "CPython",
+          "version": "3.8.13",
+          "build": "3.8.13 (default, Jul 25 2022, 16:52:16) \n[Clang 13.1.6 (clang-1316.0.21.2.5)]",
+          "type": "runtime"
+        },
+        "trace": {
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "span_id": "a887fb1496e1057f",
+          "parent_span_id": "b7a85c83b3077daa",
+          "op": "queue.task.celery",
+          "status": "ok",
+          "exclusive_time": 5.002,
+          "type": "trace",
+          "hash": "fe0f374c5e6d2b97"
+        }
+      },
+      "tags": [
+        ["celery_task_id", "07619167-85ac-428c-8960-6f3e66d942ac"],
+        ["spans_over_limit", "False"],
+        ["status", "ok"],
+        ["task_name", "sentry.monitors.tasks.check_monitors"],
+        ["transaction_id", null],
+        ["server_name", "Lyns-MacBook-Pro-13"],
+        ["level", "info"],
+        ["environment", "development"],
+        ["transaction", "sentry.monitors.tasks.check_monitors"],
+        [
+          "sentry:release",
+          "backend@23.4.0.dev0+ea9e2e29653c5eb60741d68a1220657e24609eeb"
+        ],
+        ["runtime", "CPython 3.8.13"],
+        ["runtime.name", "CPython"]
+      ],
+      "extra": {
+        "celery-job": {
+          "args": [],
+          "kwargs": {},
+          "task_name": "sentry.monitors.tasks.check_monitors"
+        },
+        "sys.argv": [
+          "/Users/lyn/Code/sentry/.venv/bin/sentry",
+          "run",
+          "worker",
+          "-c",
+          "1",
+          "--autoreload"
+        ]
+      },
+      "sdk": {
+        "name": "sentry.python.django",
+        "version": "1.17.0",
+        "integrations": [
+          "argv",
+          "atexit",
+          "celery",
+          "dedupe",
+          "django",
+          "django_atomic",
+          "excepthook",
+          "logging",
+          "modules",
+          "redis",
+          "rust_info",
+          "stdlib",
+          "threading"
+        ],
+        "packages": [{ "name": "pypi:sentry-sdk", "version": "1.17.0" }]
+      },
+      "key_id": "1",
+      "project": 1,
+      "grouping_config": {
+        "enhancements": "eJybzDRxY3J-bm5-npWRgaGlroGxrpHxBABcYgcZ",
+        "id": "newstyle:2019-10-29"
+      },
+      "spans": [
+        {
+          "timestamp": 1680133163.173439,
+          "start_timestamp": 1680133163.152112,
+          "exclusive_time": 21.327,
+          "description": "connect",
+          "op": "db",
+          "span_id": "a4137e586e0b6813",
+          "parent_span_id": "a887fb1496e1057f",
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "same_process_as_parent": true,
+          "tags": null,
+          "data": null,
+          "hash": "b640a0ce465fa2a4"
+        },
+        {
+          "timestamp": 1680133163.17915,
+          "start_timestamp": 1680133163.17366,
+          "exclusive_time": 5.49,
+          "description": "SELECT COUNT(*) FROM (SELECT \"sentry_monitor\".\"id\" AS Col1 FROM \"sentry_monitor\" WHERE (\"sentry_monitor\".\"next_checkin\" < %s AND \"sentry_monitor\".\"type\" IN (%s) AND NOT (\"sentry_monitor\".\"status\" IN (%s, %s, %s)))  LIMIT 10000) subquery",
+          "op": "db",
+          "span_id": "bae9c80bc19f8d65",
+          "parent_span_id": "a887fb1496e1057f",
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "same_process_as_parent": true,
+          "tags": null,
+          "data": null,
+          "hash": "66a3916fcab72094"
+        },
+        {
+          "timestamp": 1680133163.181655,
+          "start_timestamp": 1680133163.17977,
+          "exclusive_time": 1.885,
+          "description": "SELECT \"sentry_monitor\".\"id\", \"sentry_monitor\".\"guid\", \"sentry_monitor\".\"slug\", \"sentry_monitor\".\"organization_id\", \"sentry_monitor\".\"project_id\", \"sentry_monitor\".\"name\", \"sentry_monitor\".\"status\", \"sentry_monitor\".\"type\", \"sentry_monitor\".\"config\", \"sentry_monitor\".\"next_checkin\", \"sentry_monitor\".\"last_checkin\", \"sentry_monitor\".\"date_added\" FROM \"sentry_monitor\" WHERE (\"sentry_monitor\".\"next_checkin\" < %s AND \"sentry_monitor\".\"type\" IN (%s) AND NOT (\"sentry_monitor\".\"status\" IN (%s, %s, %s)))  LIMIT 10000",
+          "op": "db",
+          "span_id": "b60a4c240ae4683f",
+          "parent_span_id": "a887fb1496e1057f",
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "same_process_as_parent": true,
+          "tags": null,
+          "data": null,
+          "hash": "991571719e4cbab7"
+        },
+        {
+          "timestamp": 1680133163.18469,
+          "start_timestamp": 1680133163.182343,
+          "exclusive_time": 2.347,
+          "description": "SELECT COUNT(*) FROM (SELECT \"sentry_monitorcheckin\".\"id\" AS Col1 FROM \"sentry_monitorcheckin\" WHERE \"sentry_monitorcheckin\".\"status\" = %s  LIMIT 10000) subquery",
+          "op": "db",
+          "span_id": "b9e93691deb062f1",
+          "parent_span_id": "a887fb1496e1057f",
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "same_process_as_parent": true,
+          "tags": null,
+          "data": null,
+          "hash": "e5882920bb02bd9c"
+        },
+        {
+          "timestamp": 1680133163.187818,
+          "start_timestamp": 1680133163.185428,
+          "exclusive_time": 2.39,
+          "description": "SELECT \"sentry_monitorcheckin\".\"id\", \"sentry_monitorcheckin\".\"guid\", \"sentry_monitorcheckin\".\"project_id\", \"sentry_monitorcheckin\".\"monitor_id\", \"sentry_monitorcheckin\".\"monitor_environment_id\", \"sentry_monitorcheckin\".\"location_id\", \"sentry_monitorcheckin\".\"status\", \"sentry_monitorcheckin\".\"config\", \"sentry_monitorcheckin\".\"duration\", \"sentry_monitorcheckin\".\"date_added\", \"sentry_monitorcheckin\".\"date_updated\", \"sentry_monitorcheckin\".\"attachment_id\", \"sentry_monitor\".\"id\", \"sentry_monitor\".\"guid\", \"sentry_monitor\".\"slug\", \"sentry_monitor\".\"organization_id\", \"sentry_monitor\".\"project_id\", \"sentry_monitor\".\"name\", \"sentry_monitor\".\"status\", \"sentry_monitor\".\"type\", \"sentry_monitor\".\"config\", \"sentry_monitor\".\"next_checkin\", \"sentry_monitor\".\"last_checkin\", \"sentry_monitor\".\"date_added\" FROM \"sentry_monitorcheckin\" INNER JOIN \"sentry_monitor\" ON (\"sentry_monitorcheckin\".\"monitor_id\" = \"sentry_monitor\".\"id\") WHERE \"sentry_monitorcheckin\".\"status\" = %s  LIMIT 10000",
+          "op": "db",
+          "span_id": "9e6ca0691868127f",
+          "parent_span_id": "a887fb1496e1057f",
+          "trace_id": "a1f6d1d2c9a24669bd3b530806c12094",
+          "same_process_as_parent": true,
+          "tags": null,
+          "data": null,
+          "hash": "8e56fb346112a315"
+        }
+      ],
+      "measurements": { "num_of_spans": { "value": 5.0, "unit": "none" } },
+      "breakdowns": {
+        "span_ops": {
+          "ops.db": { "value": 33.439, "unit": "millisecond" },
+          "total.time": { "value": 33.439, "unit": "millisecond" }
+        }
+      },
+      "_metrics": { "bytes.ingested.event": 4819, "bytes.stored.event": 6052 },
+      "span_grouping_config": { "id": "default:2022-10-27" },
+      "culprit": "sentry.monitors.tasks.check_monitors",
+      "metadata": {
+        "title": "sentry.monitors.tasks.check_monitors",
+        "location": "sentry.monitors.tasks.check_monitors"
+      },
+      "title": "sentry.monitors.tasks.check_monitors",
+      "location": "sentry.monitors.tasks.check_monitors",
+      "hashes": [],
+      "nodestore_insert": 1680133164.430991
+    },
+    "primary_hash": null,
+    "retention_days": null,
+    "occurrence_id": null,
+    "occurrence_data": {}
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_transactions",
+    "skip_consume": false,
+    "group_states": null
+  }
+]

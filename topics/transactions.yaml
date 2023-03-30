@@ -1,0 +1,9 @@
+topic: transactions
+description: Transactions data for Snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: transactions.v1.schema.json
+    examples:
+      - transactions/1/

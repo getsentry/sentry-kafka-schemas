@@ -1,0 +1,503 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": [
+    { "const": 2 },
+    { "const": "insert" },
+    {
+      "$ref": "#/definitions/TransactionEvent"
+    }
+  ],
+  "definitions": {
+    "TransactionEvent": {
+      "type": "object",
+      "title": "transaction_event",
+      "additionalProperties": false,
+      "properties": {
+        "group_id": {
+          "type": "null"
+        },
+        "group_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "organization_id": {
+          "type": "integer"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "data": {
+          "$ref": "#/definitions/Data"
+        },
+        "primary_hash": {
+          "type": "null"
+        },
+        "retention_days": {
+          "type": "null"
+        },
+        "occurrence_id": {
+          "type": "null"
+        },
+        "occurrence_data": {
+          "$ref": "#/definitions/OccurrenceData"
+        },
+        "is_new": {
+          "type": "boolean"
+        },
+        "is_regression": {
+          "type": "boolean"
+        },
+        "is_new_group_environment": {
+          "type": "boolean"
+        },
+        "queue": {
+          "type": "string"
+        },
+        "skip_consume": {
+          "type": "boolean"
+        },
+        "group_states": {
+          "type": "null"
+        }
+      },
+      "required": []
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "transaction": {
+          "type": "string"
+        },
+        "transaction_info": {
+          "$ref": "#/definitions/TransactionInfo"
+        },
+        "logger": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "number"
+        },
+        "start_timestamp": {
+          "type": "number"
+        },
+        "received": {
+          "type": "number"
+        },
+        "release": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "contexts": {
+          "$ref": "#/definitions/Contexts"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "extra": {
+          "$ref": "#/definitions/Extra"
+        },
+        "sdk": {
+          "$ref": "#/definitions/SDK"
+        },
+        "key_id": {
+          "type": "string"
+        },
+        "project": {
+          "type": "integer"
+        },
+        "grouping_config": {
+          "$ref": "#/definitions/GroupingConfig"
+        },
+        "spans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Span"
+          }
+        },
+        "measurements": {
+          "$ref": "#/definitions/Measurements"
+        },
+        "breakdowns": {
+          "$ref": "#/definitions/Breakdowns"
+        },
+        "_metrics": {
+          "$ref": "#/definitions/Metrics"
+        },
+        "span_grouping_config": {
+          "$ref": "#/definitions/SpanGroupingConfig"
+        },
+        "culprit": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "title": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "hashes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nodestore_insert": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "_metrics",
+        "breakdowns",
+        "contexts",
+        "culprit",
+        "environment",
+        "event_id",
+        "extra",
+        "grouping_config",
+        "hashes",
+        "key_id",
+        "level",
+        "location",
+        "logger",
+        "measurements",
+        "metadata",
+        "nodestore_insert",
+        "platform",
+        "project",
+        "received",
+        "release",
+        "sdk",
+        "span_grouping_config",
+        "spans",
+        "start_timestamp",
+        "tags",
+        "timestamp",
+        "title",
+        "transaction",
+        "transaction_info",
+        "type",
+        "version"
+      ]
+    },
+    "Metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bytes.ingested.event": {
+          "type": "integer"
+        },
+        "bytes.stored.event": {
+          "type": "integer"
+        }
+      },
+      "required": ["bytes.ingested.event", "bytes.stored.event"]
+    },
+    "Breakdowns": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "span_ops": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/NumOfSpans"
+          }
+        }
+      },
+      "required": ["span_ops"]
+    },
+    "NumOfSpans": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["unit", "value"]
+    },
+    "Contexts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "runtime": {
+          "$ref": "#/definitions/Runtime"
+        },
+        "trace": {
+          "$ref": "#/definitions/Trace"
+        }
+      },
+      "required": ["runtime", "trace"]
+    },
+    "Runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "build": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": ["build", "name", "type", "version"]
+    },
+    "Trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trace_id": {
+          "type": "string"
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "parent_span_id": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "exclusive_time": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "exclusive_time",
+        "hash",
+        "op",
+        "parent_span_id",
+        "span_id",
+        "status",
+        "trace_id",
+        "type"
+      ]
+    },
+    "Extra": {
+      "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
+      "type": ["object", "null"],
+      "additionalProperties": true
+    },
+    "OccurrenceData": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "GroupingConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enhancements": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["enhancements", "id"]
+    },
+    "Measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "num_of_spans": {
+          "$ref": "#/definitions/NumOfSpans"
+        }
+      },
+      "required": ["num_of_spans"]
+    },
+    "Metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      },
+      "required": ["location", "title"]
+    },
+    "SDK": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "integrations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Package"
+          }
+        }
+      },
+      "required": ["integrations", "name", "packages", "version"]
+    },
+    "Package": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "version"]
+    },
+    "SpanGroupingConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["id"]
+    },
+    "Span": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "type": "number"
+        },
+        "start_timestamp": {
+          "type": "number"
+        },
+        "exclusive_time": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "parent_span_id": {
+          "type": "string"
+        },
+        "trace_id": {
+          "type": "string"
+        },
+        "same_process_as_parent": {
+          "type": "boolean"
+        },
+        "tags": {
+          "type": "null"
+        },
+        "data": {
+          "type": "null"
+        },
+        "hash": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "data",
+        "description",
+        "exclusive_time",
+        "hash",
+        "op",
+        "parent_span_id",
+        "same_process_as_parent",
+        "span_id",
+        "start_timestamp",
+        "tags",
+        "timestamp",
+        "trace_id"
+      ]
+    },
+    "TransactionInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": ["source"]
+    }
+  }
+}
