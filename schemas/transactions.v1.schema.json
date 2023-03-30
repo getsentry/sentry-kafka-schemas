@@ -185,7 +185,9 @@
         },
         "hashes": {
           "type": "array",
-          "items": {}
+          "items": {
+            "type": "string"
+          }
         },
         "nodestore_insert": {
           "type": "number"
