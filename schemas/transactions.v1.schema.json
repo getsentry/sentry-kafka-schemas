@@ -19,7 +19,9 @@
         },
         "group_ids": {
           "type": "array",
-          "maxItems": 0
+          "items": {
+            "type": "integer"
+          }
         },
         "event_id": {
           "type": "string"
