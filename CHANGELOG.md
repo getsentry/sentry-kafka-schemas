@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.21
+
+### Various fixes & improvements
+
+- feat: Transactions topic and schema definition (#77) by @lynnagara
+- fix: Improve rust types for ingest-metrics again (#78) by @untitaker
+- fix: Fix filename handling of jsonschema changes (#70) by @untitaker
+
 ## 0.0.20
 
 ### Various fixes & improvements
