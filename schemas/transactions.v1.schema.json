@@ -339,37 +339,9 @@
       ]
     },
     "Extra": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "celery-job": {
-          "$ref": "#/definitions/CeleryJob"
-        },
-        "sys.argv": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "required": ["celery-job", "sys.argv"]
-    },
-    "CeleryJob": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "args": {
-          "type": "array",
-          "items": {}
-        },
-        "kwargs": {
-          "$ref": "#/definitions/OccurrenceData"
-        },
-        "task_name": {
-          "type": "string"
-        }
-      },
-      "required": ["args", "kwargs", "task_name"]
+      "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
+      "type": ["object", "null"],
+      "additionalProperties": true
     },
     "OccurrenceData": {
       "type": "object",
