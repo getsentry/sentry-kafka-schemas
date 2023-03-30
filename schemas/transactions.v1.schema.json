@@ -5,18 +5,10 @@
     { "const": 2 },
     { "const": "insert" },
     {
-      "$ref": "#/definitions/TransactionMessage"
+      "$ref": "#/definitions/TransactionEvent"
     }
   ],
   "definitions": {
-    "TransactionMessage": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/TransactionEvent"
-        }
-      ],
-      "title": "transaction_message"
-    },
     "TransactionEvent": {
       "type": "object",
       "title": "transaction_event",
@@ -27,7 +19,7 @@
         },
         "group_ids": {
           "type": "array",
-          "items": {}
+          "maxItems": 0
         },
         "event_id": {
           "type": "string"
