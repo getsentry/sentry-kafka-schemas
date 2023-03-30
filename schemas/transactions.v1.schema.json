@@ -47,7 +47,7 @@
           "type": "null"
         },
         "retention_days": {
-          "type": "null"
+          "type": ["integer", "null"]
         },
         "occurrence_id": {
           "type": "null"
@@ -74,7 +74,27 @@
           "type": "null"
         }
       },
-      "required": []
+      "required": [
+        "group_id",
+        "group_ids",
+        "event_id",
+        "organization_id",
+        "project_id",
+        "message",
+        "platform",
+        "datetime",
+        "data",
+        "primary_hash",
+        "retention_days",
+        "occurrence_id",
+        "occurrence_data",
+        "is_new",
+        "is_regression",
+        "is_new_group_environment",
+        "queue",
+        "skip_consume",
+        "group_states"
+      ]
     },
     "Data": {
       "type": "object",
