@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.0.23
+
+### Various fixes & improvements
+
+- fix: Transactions context (#80) by @lynnagara
+
+## 0.0.22
+
+### Various fixes & improvements
+
+- fix: Fix metric value types across all schemas (#83) by @untitaker
+
 ## 0.0.21
 
 ### Various fixes & improvements

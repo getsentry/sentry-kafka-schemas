@@ -1,6 +1,11 @@
 name: json-schema-diff
 
 on:
+  # We run this action on main to get cache artifacts. The json-schema-diff
+  # binary is not actually run in any way on main.
+  push:
+    branches:
+      - main
   pull_request:
 
 env:
@@ -34,6 +39,7 @@ jobs:
             --version $JSON_SCHEMA_DIFF_VERSION \
             --features build-binary
       - name: Generate schema diff
+        if: github.event_name == 'pull_request'
         uses: getsentry/action-migrations@v1.1.0
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -43,4 +49,5 @@ jobs:
           migration: "bogusvalue"
           cmd: python ./scripts/json_schema_changes.py --no-exit-code
       - name: Fail if any breaking changes found
+        if: github.event_name == 'pull_request'
         run: python ./scripts/json_schema_changes.py
