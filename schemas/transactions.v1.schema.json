@@ -894,46 +894,6 @@
         }
       ]
     },
-    "Trace": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "trace_id": {
-          "type": "string"
-        },
-        "span_id": {
-          "type": "string"
-        },
-        "parent_span_id": {
-          "type": "string"
-        },
-        "op": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "exclusive_time": {
-          "type": "number"
-        },
-        "type": {
-          "type": "string"
-        },
-        "hash": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "exclusive_time",
-        "hash",
-        "op",
-        "parent_span_id",
-        "span_id",
-        "status",
-        "trace_id",
-        "type"
-      ]
-    },
     "Extra": {
       "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
       "type": ["object", "null"],
