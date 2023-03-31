@@ -1,9 +1,12 @@
-import os
 from pathlib import Path
 
 from sentry_kafka_schemas import get_schema
 from yaml import safe_load
 import re
+
+_SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")
+_EXAMPLES= Path(__file__).parents[2].joinpath("examples/")
+_TOPICS = Path(__file__).parents[2].joinpath("topics/")
 
 
 def test_all_topics() -> None:
@@ -12,8 +15,9 @@ def test_all_topics() -> None:
     valid_chars = re.compile(r"^[a-zA-Z0-9\-\_]+$")
 
     used_schema_filepaths = set()
+    used_examples = set()
 
-    topics_dir = Path.joinpath(Path(__file__).parents[2], "topics")
+    topics_dir = _TOPICS
     for filename in topics_dir.iterdir():
         if filename.suffix != ".yaml":
             raise Exception(f"Invalid YAML file: {filename}")
@@ -32,8 +36,14 @@ def test_all_topics() -> None:
 
             # Check valid schema versions
             topic_schemas = topic_data["schemas"]
-            for i in range(0, len(topic_schemas)):
-                assert topic_schemas[i]["version"] == i + 1
+            for i, schema_raw in enumerate(topic_schemas):
+                used_schema_filepaths.add(_SCHEMAS.joinpath(schema_raw['resource']))
+                for example_path in schema_raw['examples']:
+                    for entry in _EXAMPLES.joinpath(example_path).rglob("*"):
+                        if entry.is_file():
+                            used_examples.add(entry)
+
+                assert schema_raw["version"] == i + 1
 
         # The schema can be loaded
         schema = get_schema(filename.stem)
@@ -42,10 +52,19 @@ def test_all_topics() -> None:
 
     existing_schema_filepaths = set()
 
-    for entry in Path(__file__).parents[2].joinpath("python/sentry_kafka_schemas/schemas/").rglob("*"):
+    for entry in _SCHEMAS.rglob("*"):
         if entry.is_file():
-            existing_schema_filepaths.add(str(entry))
+            existing_schema_filepaths.add(entry)
 
     unused_schema_filepaths = existing_schema_filepaths - used_schema_filepaths
     # Assert that every schema file in schemas/ is referenced by a topic.
     assert not unused_schema_filepaths
+
+    existing_examples = set()
+    for entry in _EXAMPLES.rglob("*"):
+        if entry.is_file():
+            existing_examples.add(entry)
+
+    # Assert that every example file in examples/ is referenced by a topic.
+    unused_examples = existing_examples - used_examples
+    assert not unused_examples
