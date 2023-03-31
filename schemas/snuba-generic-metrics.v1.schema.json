@@ -32,7 +32,7 @@
         "value": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "number"
             },
             {
               "type": "array",
