@@ -160,6 +160,7 @@
           "type": "object",
           "title": "end_unmerge_message_body",
           "properties": {
+            "transaction_id": { "type": "string" },
             "project_id": { "type": "integer" },
             "previous_group_id": { "type": "integer" },
             "new_group_id": { "type": "integer" },
