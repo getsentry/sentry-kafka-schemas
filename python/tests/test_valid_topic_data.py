@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from sentry_kafka_schemas import get_schema
@@ -9,6 +10,8 @@ def test_all_topics() -> None:
     # `.` is technically also valid in Kafka but we don't allow it
     # at Sentry since it can collide with `_`
     valid_chars = re.compile(r"^[a-zA-Z0-9\-\_]+$")
+
+    used_schema_filepaths = set()
 
     topics_dir = Path.joinpath(Path(__file__).parents[2], "topics")
     for filename in topics_dir.iterdir():
@@ -33,4 +36,16 @@ def test_all_topics() -> None:
                 assert topic_schemas[i]["version"] == i + 1
 
         # The schema can be loaded
-        get_schema(filename.stem)
+        schema = get_schema(filename.stem)
+
+        used_schema_filepaths.add(schema['schema_filepath'])
+
+    existing_schema_filepaths = set()
+
+    for entry in Path(__file__).parents[2].joinpath("python/sentry_kafka_schemas/schemas/").rglob("*"):
+        if entry.is_file():
+            existing_schema_filepaths.add(str(entry))
+
+    unused_schema_filepaths = existing_schema_filepaths - used_schema_filepaths
+    # Assert that every schema file in schemas/ is referenced by a topic.
+    assert not unused_schema_filepaths
