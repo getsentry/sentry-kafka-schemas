@@ -1,0 +1,318 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": null,
+    "group_ids": [],
+    "event_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "organization_id": 1,
+    "project_id": 1,
+    "message": "GET /some_resource",
+    "platform": "node",
+    "datetime": "2023-03-31T17:55:23.562560Z",
+    "data": {
+      "event_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "level": "info",
+      "version": "5",
+      "type": "transaction",
+      "transaction": "GET /some_resource",
+      "transaction_info": { "source": "url" },
+      "logger": "",
+      "modules": {
+        "axios": "1.3.4",
+        "request": "2.88.2"
+      },
+      "platform": "node",
+      "timestamp": 1680285323.56256,
+      "start_timestamp": 1680285323.557694,
+      "received": 1680285323.612312,
+      "environment": "production",
+      "request": {
+        "url": "http://127.0.0.1:8000/some_resource",
+        "method": "GET",
+        "query_string": [["userId", "some_id"]],
+        "headers": [["Accept", "application/json, text/plain, */*"]],
+        "fragment": null,
+        "cookies": null,
+        "data": null,
+        "env": null,
+        "inferred_content_type": null
+      },
+      "contexts": {
+        "app": {
+          "app_start_time": "2023-03-31T08:36:35.718Z",
+          "app_memory": 1000000000,
+          "type": "app"
+        },
+        "browser": { "name": "axios", "version": "1.3.3", "type": "browser" },
+        "culture": { "locale": "en-US", "timezone": "UTC", "type": "culture" },
+        "device": {
+          "arch": "arm64",
+          "memory_size": 8114593792,
+          "free_memory": 4423172096,
+          "boot_time": "2023-03-31T08:31:43.059Z",
+          "processor_count": 2,
+          "cpu_description": "Intel(R)",
+          "processor_frequency": 0,
+          "type": "device"
+        },
+        "os": {
+          "name": "Android",
+          "kernel_version": "5.5.5.5",
+          "type": "os"
+        },
+        "runtime": { "name": "node", "version": "v16.19.1", "type": "runtime" },
+        "trace": {
+          "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "span_id": "bbbbbbbbbbbbbbbb",
+          "op": "http.server",
+          "status": "ok",
+          "exclusive_time": 1.911163,
+          "client_sample_rate": 0.5,
+          "data": {
+            "query": {
+              "userId": "some_id"
+            },
+            "url": "/some_resource&userId=some_id"
+          },
+          "tags": { "http.status_code": "200" },
+          "type": "trace",
+          "hash": "cccccccccccccccc"
+        }
+      },
+      "breadcrumbs": {
+        "values": [
+          {
+            "timestamp": 1680251805.543,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 unpipe listeners added to [Console]. Use emitter.setMaxListeners() to increase limit\n(Use `node --trace-warnings ...` to show where the warning was created)"
+          },
+          {
+            "timestamp": 1680251805.544,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 error listeners added to [Console]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.545,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 unpipe listeners added to [LogstashWinstonTransport]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.546,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 error listeners added to [LogstashWinstonTransport]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.55,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 drain listeners added to [Console]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.551,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 close listeners added to [Console]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.552,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 finish listeners added to [Console]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.553,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 drain listeners added to [LogstashWinstonTransport]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.553,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 close listeners added to [LogstashWinstonTransport]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680251805.556,
+            "type": "default",
+            "category": "console",
+            "level": "error",
+            "message": "(node:123) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 200 finish listeners added to [LogstashWinstonTransport]. Use emitter.setMaxListeners() to increase limit"
+          },
+          {
+            "timestamp": 1680269241.773,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://something.com/something"
+            }
+          },
+          {
+            "timestamp": 1680269242.055,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://analytics.com/example"
+            }
+          },
+          {
+            "timestamp": 1680270907.369,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://example.com/something"
+            }
+          },
+          {
+            "timestamp": 1680270907.637,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://analytics.com/example"
+            }
+          },
+          {
+            "timestamp": 1680270972.38,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://example.com/something"
+            }
+          },
+          {
+            "timestamp": 1680270972.701,
+            "type": "http",
+            "category": "http",
+            "level": "info",
+            "data": {
+              "method": "POST",
+              "status_code": 200,
+              "url": "https://analytics.com/example"
+            }
+          }
+        ]
+      },
+      "tags": [
+        ["http.status_code", "200"],
+        ["server_name", "ip-1-1-1-1.internal"],
+        ["level", "info"],
+        ["environment", "production"],
+        ["transaction", "GET /some_resource"],
+        ["url", "http://127.0.0.1:8000/some_resource"],
+        ["browser", "axios 1.3.3"],
+        ["browser.name", "axios"],
+        ["os.name", "Linux"],
+        ["runtime", "node v16.19.1"],
+        ["runtime.name", "node"]
+      ],
+      "sdk": {
+        "name": "sentry.javascript.node",
+        "version": "7.44.1",
+        "integrations": ["InboundFilters", "Http", "Context"],
+        "packages": [{ "name": "npm:@sentry/node", "version": "7.44.1" }]
+      },
+      "ingest_path": [
+        {
+          "version": "23.3.1",
+          "public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "key_id": "1000000",
+      "project": 4504672300564480,
+      "grouping_config": {
+        "enhancements": "eJybzDRxY3J-bm5-npWRgaGlroGxrpHxBABcYgcZ",
+        "id": "newstyle:2019-10-29"
+      },
+      "spans": [
+        {
+          "timestamp": 1680285323.560327,
+          "start_timestamp": 1680285323.558596,
+          "exclusive_time": 1.731158,
+          "description": "SELECT DISTINCT \"Users\".\"id\", FROM \"Resource\" JOIN \"Users\" ON \"Users\".\"id\" = \"Resource\".\"userId\" WHERE \"Resource\".\"userId\" = ANY($1)",
+          "op": "db",
+          "span_id": "ffffffffffffffff",
+          "parent_span_id": "bbbbbbbbbbbbbbbb",
+          "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "same_process_as_parent": null,
+          "tags": null,
+          "data": null,
+          "hash": "1111111111111111"
+        },
+        {
+          "timestamp": 1680285323.561735,
+          "start_timestamp": 1680285323.560511,
+          "exclusive_time": 1.223802,
+          "description": "SELECT c.\"id\", c.\"name\", c.\"userId\" FROM \"Resource\"  WHERE c.\"id\" = ANY($1)",
+          "op": "db",
+          "span_id": "2222222222222222",
+          "parent_span_id": "bbbbbbbbbbbbbbbb",
+          "trace_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "same_process_as_parent": null,
+          "tags": null,
+          "data": null,
+          "hash": "dddddddddddddddd"
+        }
+      ],
+      "breakdowns": {
+        "span_ops": {
+          "ops.db": { "value": 2.95496, "unit": "millisecond" },
+          "total.time": { "value": 2.95496, "unit": "millisecond" }
+        }
+      },
+      "_metrics": {
+        "bytes.ingested.event": 13119,
+        "bytes.stored.event": 14369
+      },
+      "span_grouping_config": { "id": "default:2022-10-27" },
+      "culprit": "GET /some_resource",
+      "metadata": {
+        "title": "GET /some_resource",
+        "location": "GET /some_resource"
+      },
+      "title": "GET /some_resource",
+      "location": "GET /some_resource",
+      "hashes": [],
+      "nodestore_insert": 1680285326.203478
+    },
+    "primary_hash": null,
+    "retention_days": 90,
+    "occurrence_id": null,
+    "occurrence_data": {}
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_transactions",
+    "skip_consume": false,
+    "group_states": null
+  }
+]
