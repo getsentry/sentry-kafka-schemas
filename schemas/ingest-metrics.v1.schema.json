@@ -43,16 +43,23 @@
         "value": {
           "anyOf": [
             {
-              "title": "number_metric_value",
+              "title": "counter_metric_value",
               "type": "number"
             },
             {
-              "title": "numbers_metric_value",
+              "title": "set_metric_value",
               "type": "array",
               "items": {
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 4294967295
+              }
+            },
+            {
+              "title": "distribution_metric_value",
+              "type": "array",
+              "items": {
+                "type": "number"
               }
             }
           ]
