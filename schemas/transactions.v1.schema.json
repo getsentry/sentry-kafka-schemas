@@ -78,6 +78,112 @@
       },
       "required": []
     },
+    "AppContext": {
+      "description": " Application information.\n\n App context describes the application. As opposed to the runtime, this is the actual\n application that was running and carries metadata about the current session.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "app_build": {
+              "description": " Internal build ID as it appears on the platform.",
+              "type": ["string", "null"]
+            },
+            "app_identifier": {
+              "description": " Version-independent application identifier, often a dotted bundle ID.",
+              "type": ["string", "null"]
+            },
+            "app_memory": {
+              "description": " Amount of memory used by the application in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "app_name": {
+              "description": " Application name as it appears on the platform.",
+              "type": ["string", "null"]
+            },
+            "app_start_time": {
+              "description": " Start time of the app.\n\n Formatted UTC timestamp when the user started the application.",
+              "type": ["string", "null"]
+            },
+            "app_version": {
+              "description": " Application version as it appears on the platform.",
+              "type": ["string", "null"]
+            },
+            "build_type": {
+              "description": " String identifying the kind of build. For example, `testflight`.",
+              "type": ["string", "null"]
+            },
+            "device_app_hash": {
+              "description": " Application-specific device identifier.",
+              "type": ["string", "null"]
+            },
+            "in_foreground": {
+              "description": " A flag indicating whether the app is in foreground or not. An app is in foreground when it's visible to the user.",
+              "type": ["boolean", "null"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BrowserContext": {
+      "description": " Web browser information.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": " Display name of the browser application.",
+              "type": ["string", "null"]
+            },
+            "version": {
+              "description": " Version string of the browser.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CloudResourceContext": {
+      "description": " Cloud Resource Context.\n\n This context describes the cloud resource the event originated from.\n\n Example:\n\n ```json\n \"cloud_resource\": {\n     \"cloud.account.id\": \"499517922981\",\n     \"cloud.provider\": \"aws\",\n     \"cloud.platform\": \"aws_ec2\",\n     \"cloud.region\": \"us-east-1\",\n     \"cloud.vavailability_zone\": \"us-east-1e\",\n     \"host.id\": \"i-07d3301208fe0a55a\",\n     \"host.type\": \"t2.large\"\n }\n ```",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "cloud.account.id": {
+              "description": " The cloud account ID the resource is assigned to.",
+              "type": ["string", "null"]
+            },
+            "cloud.availability_zone": {
+              "description": " The zone where the resource is running.",
+              "type": ["string", "null"]
+            },
+            "cloud.platform": {
+              "description": " The cloud platform in use.\n The prefix of the service SHOULD match the one specified in cloud_provider.",
+              "type": ["string", "null"]
+            },
+            "cloud.provider": {
+              "description": " Name of the cloud provider.",
+              "type": ["string", "null"]
+            },
+            "cloud.region": {
+              "description": " The geographical region the resource is running.",
+              "type": ["string", "null"]
+            },
+            "host.id": {
+              "description": " Unique host ID.",
+              "type": ["string", "null"]
+            },
+            "host.type": {
+              "description": " Machine type of the host.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
     "Data": {
       "type": "object",
       "additionalProperties": false,
@@ -229,6 +335,14 @@
         "version"
       ]
     },
+    "EventId": {
+      "description": " Wrapper around a UUID with slightly different formatting.",
+      "anyOf": [
+        {
+          "type": "string"
+        }
+      ]
+    },
     "Metrics": {
       "type": "object",
       "additionalProperties": false,
@@ -255,6 +369,406 @@
       },
       "required": ["span_ops"]
     },
+    "Cookies": {
+      "description": " A map holding cookies.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": ["string", "null"]
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": ["array", "null"],
+                "items": [
+                  {
+                    "type": ["string", "null"]
+                  },
+                  {
+                    "type": ["string", "null"]
+                  }
+                ],
+                "maxItems": 2,
+                "minItems": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "Context": {
+      "description": " A context describes environment info (e.g. device, os or browser).",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/DeviceContext"
+        },
+        {
+          "$ref": "#/definitions/OsContext"
+        },
+        {
+          "$ref": "#/definitions/RuntimeContext"
+        },
+        {
+          "$ref": "#/definitions/AppContext"
+        },
+        {
+          "$ref": "#/definitions/BrowserContext"
+        },
+        {
+          "$ref": "#/definitions/GpuContext"
+        },
+        {
+          "$ref": "#/definitions/TraceContext"
+        },
+        {
+          "$ref": "#/definitions/ProfileContext"
+        },
+        {
+          "$ref": "#/definitions/MonitorContext"
+        },
+        {
+          "$ref": "#/definitions/ResponseContext"
+        },
+        {
+          "$ref": "#/definitions/OtelContext"
+        },
+        {
+          "$ref": "#/definitions/CloudResourceContext"
+        },
+        {
+          "type": "object",
+          "additionalProperties": true
+        }
+      ]
+    },
+    "Contexts": {
+      "description": " The Contexts Interface provides additional context data. Typically, this is data related to the\n current user and the environment. For example, the device or application version. Its canonical\n name is `contexts`.\n\n The `contexts` type can be used to define arbitrary contextual data on the event. It accepts an\n object of key/value pairs. The key is the “alias” of the context and can be freely chosen.\n However, as per policy, it should match the type of the context unless there are two values for\n a type. You can omit `type` if the key name is the type.\n\n Unknown data for the contexts is rendered as a key/value list.\n\n For more details about sending additional data with your event, see the [full documentation on\n Additional Data](https://docs.sentry.io/enriching-error-data/additional-data/).",
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Context"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "DeviceContext": {
+      "description": " Device information.\n\n Device context describes the device that caused the event. This is most appropriate for mobile\n applications.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "arch": {
+              "description": " Native cpu architecture of the device.",
+              "type": ["string", "null"]
+            },
+            "battery_level": {
+              "description": " Current battery level in %.\n\n If the device has a battery, this can be a floating point value defining the battery level\n (in the range 0-100).",
+              "type": ["number", "null"]
+            },
+            "battery_status": {
+              "description": " Status of the device's battery.\n\n For example, `Unknown`, `Charging`, `Discharging`, `NotCharging`, `Full`.",
+              "type": ["string", "null"]
+            },
+            "boot_time": {
+              "description": " Indicator when the device was booted.",
+              "type": ["string", "null"]
+            },
+            "brand": {
+              "description": " Brand of the device.",
+              "type": ["string", "null"]
+            },
+            "charging": {
+              "description": " Whether the device was charging or not.",
+              "type": ["boolean", "null"]
+            },
+            "cpu_description": {
+              "description": " CPU description.\n\n For example, Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz.",
+              "type": ["string", "null"]
+            },
+            "device_type": {
+              "description": " Kind of device the application is running on.\n\n For example, `Unknown`, `Handheld`, `Console`, `Desktop`.",
+              "type": ["string", "null"]
+            },
+            "device_unique_identifier": {
+              "description": " Unique device identifier.",
+              "type": ["string", "null"]
+            },
+            "external_free_storage": {
+              "description": " Free size of the attached external storage in bytes (eg: android SDK card).",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "external_storage_size": {
+              "description": " Total size of the attached external storage in bytes (eg: android SDK card).",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "family": {
+              "description": " Family of the device model.\n\n This is usually the common part of model names across generations. For instance, `iPhone`\n would be a reasonable family, so would be `Samsung Galaxy`.",
+              "type": ["string", "null"]
+            },
+            "free_memory": {
+              "description": " How much memory is still available in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "free_storage": {
+              "description": " How much storage is free in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "low_memory": {
+              "description": " Whether the device was low on memory.",
+              "type": ["boolean", "null"]
+            },
+            "manufacturer": {
+              "description": " Manufacturer of the device.",
+              "type": ["string", "null"]
+            },
+            "memory_size": {
+              "description": " Total memory available in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "model": {
+              "description": " Device model.\n\n This, for example, can be `Samsung Galaxy S3`.",
+              "type": ["string", "null"]
+            },
+            "model_id": {
+              "description": " Device model (internal identifier).\n\n An internal hardware revision to identify the device exactly.",
+              "type": ["string", "null"]
+            },
+            "name": {
+              "description": " Name of the device.",
+              "type": ["string", "null"]
+            },
+            "online": {
+              "description": " Whether the device was online or not.",
+              "type": ["boolean", "null"]
+            },
+            "orientation": {
+              "description": " Current screen orientation.\n\n This can be a string `portrait` or `landscape` to define the orientation of a device.",
+              "type": ["string", "null"]
+            },
+            "processor_count": {
+              "description": " Number of \"logical processors\".\n\n For example, 8.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "processor_frequency": {
+              "description": " Processor frequency in MHz.\n\n Note that the actual CPU frequency might vary depending on current load and\n power conditions, especially on low-powered devices like phones and laptops.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "screen_density": {
+              "description": " Device screen density.",
+              "type": ["number", "null"]
+            },
+            "screen_dpi": {
+              "description": " Screen density as dots-per-inch.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "screen_resolution": {
+              "description": " Device screen resolution.\n\n (e.g.: 800x600, 3040x1444)",
+              "type": ["string", "null"]
+            },
+            "simulator": {
+              "description": " Simulator/prod indicator.",
+              "type": ["boolean", "null"]
+            },
+            "storage_size": {
+              "description": " Total storage size of the device in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "supports_accelerometer": {
+              "description": " Whether the accelerometer is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_audio": {
+              "description": " Whether audio is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_gyroscope": {
+              "description": " Whether the gyroscope is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_location_service": {
+              "description": " Whether location support is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_vibration": {
+              "description": " Whether vibration is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "timezone": {
+              "description": " Timezone of the device.",
+              "type": ["string", "null"]
+            },
+            "usable_memory": {
+              "description": " How much memory is usable for the app in bytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "GpuContext": {
+      "description": " GPU information.\n\n Example:\n\n ```json\n \"gpu\": {\n   \"name\": \"AMD Radeon Pro 560\",\n   \"vendor_name\": \"Apple\",\n   \"memory_size\": 4096,\n   \"api_type\": \"Metal\",\n   \"multi_threaded_rendering\": true,\n   \"version\": \"Metal\",\n   \"npot_support\": \"Full\"\n }\n ```",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "api_type": {
+              "description": " The device low-level API type.\n\n Examples: `\"Apple Metal\"` or `\"Direct3D11\"`",
+              "type": ["string", "null"]
+            },
+            "graphics_shader_level": {
+              "description": " Approximate \"shader capability\" level of the graphics device.\n\n For Example: Shader Model 2.0, OpenGL ES 3.0, Metal / OpenGL ES 3.1, 27 (unknown)",
+              "type": ["string", "null"]
+            },
+            "id": {
+              "description": " The PCI identifier of the graphics device.",
+              "type": ["null", "string"]
+            },
+            "max_texture_size": {
+              "description": " Largest size of a texture that is supported by the graphics hardware.\n\n For Example: 16384",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "memory_size": {
+              "description": " The total GPU memory available in Megabytes.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "multi_threaded_rendering": {
+              "description": " Whether the GPU has multi-threaded rendering or not.",
+              "type": ["boolean", "null"]
+            },
+            "name": {
+              "description": " The name of the graphics device.",
+              "type": ["string", "null"]
+            },
+            "npot_support": {
+              "description": " The Non-Power-Of-Two support.",
+              "type": ["string", "null"]
+            },
+            "supports_compute_shaders": {
+              "description": " Whether compute shaders are available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_draw_call_instancing": {
+              "description": " Whether GPU draw call instancing is supported.",
+              "type": ["boolean", "null"]
+            },
+            "supports_geometry_shaders": {
+              "description": " Whether geometry shaders are available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "supports_ray_tracing": {
+              "description": " Whether ray tracing is available on the device.",
+              "type": ["boolean", "null"]
+            },
+            "vendor_id": {
+              "description": " The PCI vendor identifier of the graphics device.",
+              "type": ["string", "null"]
+            },
+            "vendor_name": {
+              "description": " The vendor name as reported by the graphics device.",
+              "type": ["string", "null"]
+            },
+            "version": {
+              "description": " The Version of the graphics device.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "HeaderName": {
+      "description": " A \"into-string\" type that normalizes header names.",
+      "anyOf": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "HeaderValue": {
+      "description": " A \"into-string\" type that normalizes header values.",
+      "anyOf": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "Headers": {
+      "description": " A map holding headers.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/HeaderValue"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": ["array", "null"],
+                "items": [
+                  {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/HeaderName"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/HeaderValue"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                ],
+                "maxItems": 2,
+                "minItems": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
     "NumOfSpans": {
       "type": "object",
       "additionalProperties": false,
@@ -268,76 +782,97 @@
       },
       "required": ["unit", "value"]
     },
-    "Contexts": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "runtime": {
-          "$ref": "#/definitions/Runtime"
-        },
-        "trace": {
-          "$ref": "#/definitions/Trace"
+    "ProfileContext": {
+      "description": " Profile context",
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["profile_id"],
+          "properties": {
+            "profile_id": {
+              "description": " The profile ID.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/EventId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
         }
-      },
-      "required": ["runtime", "trace"]
+      ]
     },
-    "Runtime": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "build": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
+    "ResponseContext": {
+      "description": " Response interface that contains information on a HTTP response related to the event.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "body_size": {
+              "description": " HTTP response body size.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "cookies": {
+              "description": " The cookie values.\n\n Can be given unparsed as string, as dictionary, or as a list of tuples.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Cookies"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "headers": {
+              "description": " A dictionary of submitted headers.\n\n If a header appears multiple times it, needs to be merged according to the HTTP standard\n for header merging. Header names are treated case-insensitively by Sentry.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Headers"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "status_code": {
+              "description": " HTTP status code.",
+              "type": ["integer", "null"],
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
         }
-      },
-      "required": ["build", "name", "type", "version"]
+      ]
     },
-    "Trace": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "trace_id": {
-          "type": "string"
-        },
-        "span_id": {
-          "type": "string"
-        },
-        "parent_span_id": {
-          "type": "string"
-        },
-        "op": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "exclusive_time": {
-          "type": "number"
-        },
-        "type": {
-          "type": "string"
-        },
-        "hash": {
-          "type": "string"
+    "RuntimeContext": {
+      "description": " Runtime information.\n\n Runtime context describes a runtime in more detail. Typically, this context is present in\n `contexts` multiple times if multiple runtimes are involved (for instance, if you have a\n JavaScript application running on top of JVM).",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "build": {
+              "description": " Application build string, if it is separate from the version.",
+              "type": ["string", "null"]
+            },
+            "name": {
+              "description": " Runtime name.",
+              "type": ["string", "null"]
+            },
+            "raw_description": {
+              "description": " Unprocessed runtime info.\n\n An unprocessed description string obtained by the runtime. For some well-known runtimes,\n Sentry will attempt to parse `name` and `version` from this string, if they are not\n explicitly given.",
+              "type": ["string", "null"]
+            },
+            "version": {
+              "description": " Runtime version string.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "exclusive_time",
-        "hash",
-        "op",
-        "parent_span_id",
-        "span_id",
-        "status",
-        "trace_id",
-        "type"
       ]
     },
     "Extra": {
@@ -384,6 +919,71 @@
         }
       },
       "required": ["location", "title"]
+    },
+    "MonitorContext": {
+      "description": " Monitor information.",
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true
+        }
+      ]
+    },
+    "OsContext": {
+      "description": " Operating system information.\n\n OS context describes the operating system on which the event was created. In web contexts, this\n is the operating system of the browser (generally pulled from the User-Agent string).",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "build": {
+              "description": " Internal build number of the operating system.",
+              "type": ["string", "null"]
+            },
+            "kernel_version": {
+              "description": " Current kernel version.\n\n This is typically the entire output of the `uname` syscall.",
+              "type": ["string", "null"]
+            },
+            "name": {
+              "description": " Name of the operating system.",
+              "type": ["string", "null"]
+            },
+            "raw_description": {
+              "description": " Unprocessed operating system info.\n\n An unprocessed description string obtained by the operating system. For some well-known\n runtimes, Sentry will attempt to parse `name` and `version` from this string, if they are\n not explicitly given.",
+              "type": ["string", "null"]
+            },
+            "rooted": {
+              "description": " Indicator if the OS is rooted (mobile mostly).",
+              "type": ["boolean", "null"]
+            },
+            "version": {
+              "description": " Version of the operating system.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "OtelContext": {
+      "description": " OpenTelemetry Context\n\n If an event has this context, it was generated from an OpenTelemetry signal (trace, metric, log).",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "description": " Attributes of the OpenTelemetry span that maps to a Sentry event.\n\n <https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/trace/v1/trace.proto#L174-L186>",
+              "type": ["object", "null"],
+              "additionalProperties": true
+            },
+            "resource": {
+              "description": " Information about an OpenTelemetry resource.\n\n <https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/resource/v1/resource.proto>",
+              "type": ["object", "null"],
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "SDK": {
       "type": "object",
@@ -487,6 +1087,113 @@
         "tags",
         "timestamp",
         "trace_id"
+      ]
+    },
+    "SpanId": {
+      "description": " A 16-character hex string as described in the W3C trace context spec.",
+      "anyOf": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "SpanStatus": {
+      "description": "Trace status.\n\nValues from <https://github.com/open-telemetry/opentelemetry-specification/blob/8fb6c14e4709e75a9aaa64b0dbbdf02a6067682a/specification/api-tracing.md#status> Mapping to HTTP from <https://github.com/open-telemetry/opentelemetry-specification/blob/8fb6c14e4709e75a9aaa64b0dbbdf02a6067682a/specification/data-http.md#status>",
+      "type": "string",
+      "enum": [
+        "ok",
+        "cancelled",
+        "unknown",
+        "invalid_argument",
+        "deadline_exceeded",
+        "not_found",
+        "already_exists",
+        "permission_denied",
+        "resource_exhausted",
+        "failed_precondition",
+        "aborted",
+        "out_of_range",
+        "unimplemented",
+        "internal_error",
+        "unavailable",
+        "data_loss",
+        "unauthenticated"
+      ]
+    },
+    "TraceContext": {
+      "description": " Trace context",
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["span_id", "trace_id"],
+          "properties": {
+            "client_sample_rate": {
+              "description": " The client-side sample rate as reported in the envelope's `trace.sample_rate` header.\n\n The server takes this field from envelope headers and writes it back into the event. Clients\n should not ever send this value.",
+              "type": ["number", "null"]
+            },
+            "exclusive_time": {
+              "description": " The amount of time in milliseconds spent in this transaction span,\n excluding its immediate child spans.",
+              "type": ["number", "null"]
+            },
+            "op": {
+              "description": " Span type (see `OperationType` docs).",
+              "type": ["string", "null"]
+            },
+            "parent_span_id": {
+              "description": " The ID of the span enclosing this span.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/SpanId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "span_id": {
+              "description": " The ID of the span.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/SpanId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "status": {
+              "description": " Whether the trace failed or succeeded. Currently only used to indicate status of individual\n transactions.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/SpanStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "trace_id": {
+              "description": " The trace ID.",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/TraceId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TraceId": {
+      "description": " A 32-character hex string as described in the W3C trace context spec.",
+      "anyOf": [
+        {
+          "type": "string"
+        }
       ]
     },
     "TransactionInfo": {
