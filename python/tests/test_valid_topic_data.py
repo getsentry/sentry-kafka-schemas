@@ -48,8 +48,6 @@ def test_all_topics() -> None:
         # The schema can be loaded
         schema = get_schema(filename.stem)
 
-        used_schema_filepaths.add(schema['schema_filepath'])
-
     existing_schema_filepaths = set()
 
     for entry in _SCHEMAS.rglob("*"):
