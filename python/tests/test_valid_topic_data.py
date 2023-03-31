@@ -5,7 +5,7 @@ from yaml import safe_load
 import re
 
 _SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")
-_EXAMPLES= Path(__file__).parents[2].joinpath("examples/")
+_EXAMPLES = Path(__file__).parents[2].joinpath("examples/")
 _TOPICS = Path(__file__).parents[2].joinpath("topics/")
 
 
@@ -37,8 +37,8 @@ def test_all_topics() -> None:
             # Check valid schema versions
             topic_schemas = topic_data["schemas"]
             for i, schema_raw in enumerate(topic_schemas):
-                used_schema_filepaths.add(_SCHEMAS.joinpath(schema_raw['resource']))
-                for example_path in schema_raw['examples']:
+                used_schema_filepaths.add(_SCHEMAS.joinpath(schema_raw["resource"]))
+                for example_path in schema_raw["examples"]:
                     for entry in _EXAMPLES.joinpath(example_path).rglob("*"):
                         if entry.is_file():
                             used_examples.add(entry)
