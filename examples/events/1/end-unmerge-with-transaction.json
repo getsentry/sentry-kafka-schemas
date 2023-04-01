@@ -1,0 +1,15 @@
+[
+  2,
+  "end_unmerge",
+  {
+    "transaction_id": "0fe719d1d3cf4a5eb32314371032abc9",
+    "project_id": 1,
+    "previous_group_id": 1,
+    "new_group_id": 2,
+    "hashes": [
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ],
+    "datetime": "2023-03-30T22:14:49.343044Z"
+  }
+]
