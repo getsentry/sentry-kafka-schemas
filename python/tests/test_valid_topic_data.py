@@ -46,7 +46,7 @@ def test_all_topics() -> None:
                 assert schema_raw["version"] == i + 1
 
         # The schema can be loaded
-        schema = get_schema(filename.stem)
+        get_schema(filename.stem)
 
     existing_schema_filepaths = set()
 
