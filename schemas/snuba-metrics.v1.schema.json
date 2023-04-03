@@ -32,9 +32,18 @@
         "value": {
           "anyOf": [
             {
+              "title": "counter_metric_value",
               "type": "number"
             },
             {
+              "title": "set_metric_value",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            {
+              "title": "distribution_metric_value",
               "type": "array",
               "items": {
                 "type": "number"
