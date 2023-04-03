@@ -766,7 +766,6 @@
     },
     "NumOfSpans": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "value": {
           "type": "number"
@@ -894,13 +893,11 @@
     },
     "Measurements": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "num_of_spans": {
           "$ref": "#/definitions/NumOfSpans"
         }
-      },
-      "required": ["num_of_spans"]
+      }
     },
     "Metadata": {
       "type": "object",
@@ -1030,7 +1027,6 @@
     },
     "Span": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "timestamp": {
           "type": "number"
@@ -1060,10 +1056,10 @@
           "type": ["boolean", "null"]
         },
         "tags": {
-          "type": "null"
+          "type": ["object", "null"]
         },
         "data": {
-          "type": "null"
+          "type": ["object", "null"]
         },
         "hash": {
           "type": "string"
