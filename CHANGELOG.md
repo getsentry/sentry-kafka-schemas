@@ -1,5 +1,16 @@
 # Changelog and versioning
 
+## 0.0.24
+
+### Various fixes & improvements
+
+- docs: Add some guidance about schema strictness (#91) by @lynnagara
+- fix: Loosen transactions schema, add example (#87) by @lynnagara
+- fix: Standardise retention_days on events and transactions (#86) by @lynnagara
+- fix: Lint against dead schema files unreferenced by any topic (#85) by @untitaker
+- fix(events): We seem to be getting transaction_id in end_unmerge now (#79) by @lynnagara
+- fix: Make schema-changes workflow faster (#84) by @untitaker
+
 ## 0.0.23
 
 ### Various fixes & improvements
