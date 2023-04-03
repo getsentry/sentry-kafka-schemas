@@ -91,6 +91,10 @@ For releasing a new stable version from main branch, go to
 [Actions](https://github.com/getsentry/sentry-kafka-schemas/actions) and
 trigger a new job for the `Release` workflow.
 
+After releasing a new version, you should immediately bump Sentry, Snuba and
+Relay to ensure that all services are synchronized onto the new schema as
+soon as possible.
+
 Most likely you are working on a PR to Snuba or Sentry where you already want
 to use those types. You can do that by running `make build` in this repo, then
 running `pip install -e ~/projects/sentry-kafka-schemas/`.
