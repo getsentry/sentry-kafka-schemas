@@ -6,6 +6,10 @@ Contains the Kafka topics and schema definitions used by the Sentry service.
 
 Currently only jsonschema is supported. The jsonschema should be placed directly in the `schemas` directory, and then referenced from the relevant topic.
 
+## How strict should my schema be?
+
+If in doubt, we recommend that schemas are only as strict as is minimally required by all consumers and downstream code required by Sentry. However it is ultimately up to the owners of the schema to decide whether a stricter schema is appropriate in particular scenarios.
+
 ## Adding example messages
 
 Example messages can be placed in the `examples` directory and referenced from the relevant topic/version.
