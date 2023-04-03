@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.0.25
+
+### Various fixes & improvements
+
+- feat: Add Rust build cache to reduce CI times (#89) by @untitaker
+- fix: Align snuba-metric value field with ingest-metrics (#90) by @untitaker
+
 ## 0.0.24
 
 ### Various fixes & improvements
