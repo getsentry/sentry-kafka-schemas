@@ -386,7 +386,7 @@
         "project_id": {
           "type": "integer"
         },
-        "retention_days": { "type": "integer" }
+        "retention_days": { "type": ["integer", "null"] }
       },
       "required": [
         "data",
