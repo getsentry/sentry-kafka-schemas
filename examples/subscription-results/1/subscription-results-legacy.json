@@ -13,7 +13,14 @@
           "name": "count",
           "type": "UInt64"
         }
-      ]
+      ],
+      "profile": {
+        "bytes": 64,
+        "blocks": 1,
+        "rows": 1,
+        "elapsed": 0.11267709732055664
+      },
+      "trace_output": ""
     },
     "request": {
       "query": "MATCH (events) SELECT count() AS `count` WHERE type = \\'error\\' AND project_id IN array(4551586472787969)",

@@ -45,12 +45,6 @@
                     },
                     "additionalProperties": false
                   }
-                },
-                "profile": {
-                  "type": ["object", "null"]
-                },
-                "trace_output": {
-                  "type": "string"
                 }
               },
               "required": ["data", "meta"],

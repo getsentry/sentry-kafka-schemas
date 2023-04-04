@@ -1,6 +1,3 @@
-# Search and storage is the default owner
-* @getsentry/owners-snuba
-
 # Ingest topics
 /topics/ingest-metrics.yaml                                @getsentry/owners-ingest @getsentry/owners-snuba
 
@@ -22,3 +19,6 @@
 /topics/generic-metrics-subscription-results.yaml         @getsentry/owners-snuba @getsentry/workflow
 /schemas/subscription-result.v1.schema.json               @getsentry/owners-snuba @getsentry/workflow
 /examples/subscription-results/                           @getsentry/owners-snuba @getsentry/workflow
+
+# Search and storage is the default owner
+* @getsentry/owners-snuba
