@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-use std::fmt;
 use std::error;
+use std::fmt;
 use std::fs::{read_to_string, File};
 use std::path::{Path, PathBuf};
 
@@ -45,7 +45,7 @@ impl fmt::Display for SchemaError {
     }
 }
 
-impl error::Error for SchemaError { }
+impl error::Error for SchemaError {}
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct TopicSchema {
