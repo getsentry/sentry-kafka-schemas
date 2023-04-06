@@ -1,5 +1,16 @@
 # Changelog and versioning
 
+## 0.0.26
+
+### Various fixes & improvements
+
+- fix: Make generated schema types an optional feature (#96) by @untitaker
+- fix: Impl std::error::Error for SchemaError (#95) by @untitaker
+- fix: Bump json-schema-diff to 0.1.2 (#94) by @untitaker
+- docs: Clarify that bumping the version is part of the release process (#92) by @lynnagara
+- feat: Remove unused fields from subscription results (#88) by @lynnagara
+- ref: Loosen transaction schema (#93) by @lynnagara
+
 ## 0.0.25
 
 ### Various fixes & improvements
