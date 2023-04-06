@@ -1,8 +1,13 @@
 use std::path::Path;
 
-use schemars::schema::Schema;
-use typify::{TypeSpace, TypeSpaceSettings};
 
+#[cfg(feature = "type_generation")]
+use {
+    schemars::schema::Schema,
+    typify::{TypeSpace, TypeSpaceSettings}
+};
+
+#[cfg(feature = "type_generation")]
 fn generate_schema(schema_path: &str, output_module: &str) -> String {
     println!("cargo:rerun-if-changed={schema_path}");
     let json = std::fs::read_to_string(schema_path).expect("Read schema JSON file");
@@ -38,11 +43,16 @@ fn generate_schema(schema_path: &str, output_module: &str) -> String {
 }
 
 fn main() {
+    #[allow(unused_mut)]
     let mut module_code = String::new();
-    module_code.push_str(&generate_schema(
-        "schemas/ingest-metrics.v1.schema.json",
-        "ingest_metrics_v1",
-    ));
+
+    #[cfg(feature = "type_generation")]
+    {
+        module_code.push_str(&generate_schema(
+            "schemas/ingest-metrics.v1.schema.json",
+            "ingest_metrics_v1",
+        ));
+    }
 
     if let Ok(target_dir) = std::env::var("OUT_DIR") {
         println!("cargo:rerun-if-changed=build.rs");
