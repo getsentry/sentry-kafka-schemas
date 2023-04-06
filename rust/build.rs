@@ -1,10 +1,9 @@
 use std::path::Path;
 
-
 #[cfg(feature = "type_generation")]
 use {
     schemars::schema::Schema,
-    typify::{TypeSpace, TypeSpaceSettings}
+    typify::{TypeSpace, TypeSpaceSettings},
 };
 
 #[cfg(feature = "type_generation")]
