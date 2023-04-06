@@ -7,6 +7,9 @@
       "title": "ingest_metric",
       "additionalProperties": false,
       "properties": {
+        "use_case_id": {
+          "type": "string"
+        },
         "org_id": {
           "description": "The organization for which this metric is being sent.",
           "type": "integer",
