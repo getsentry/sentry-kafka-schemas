@@ -46,7 +46,7 @@
           "$ref": "#/definitions/Data"
         },
         "primary_hash": {
-          "type": "null"
+          "type": ["string", "null"]
         },
         "retention_days": {
           "type": ["integer", "null"]
@@ -273,9 +273,6 @@
         "breakdowns": {
           "$ref": "#/definitions/Breakdowns"
         },
-        "_metrics": {
-          "$ref": "#/definitions/Metrics"
-        },
         "span_grouping_config": {
           "$ref": "#/definitions/SpanGroupingConfig"
         },
@@ -304,7 +301,6 @@
       "required": [
         "contexts",
         "culprit",
-        "environment",
         "event_id",
         "grouping_config",
         "hashes",
@@ -337,19 +333,6 @@
           "type": "string"
         }
       ]
-    },
-    "Metrics": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "bytes.ingested.event": {
-          "type": "integer"
-        },
-        "bytes.stored.event": {
-          "type": "integer"
-        }
-      },
-      "required": ["bytes.ingested.event", "bytes.stored.event"]
     },
     "Breakdowns": {
       "type": "object",
@@ -979,28 +962,15 @@
     },
     "SDK": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
         },
         "version": {
           "type": "string"
-        },
-        "integrations": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "packages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Package"
-          }
         }
       },
-      "required": ["integrations", "name", "packages", "version"]
+      "required": ["name", "version"]
     },
     "Package": {
       "type": "object",
@@ -1188,14 +1158,19 @@
       ]
     },
     "TransactionInfo": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "source": {
-          "type": "string"
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "null"
         }
-      },
-      "required": ["source"]
+      ]
     }
   }
 }
