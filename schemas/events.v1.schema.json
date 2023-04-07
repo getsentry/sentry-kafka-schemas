@@ -249,7 +249,7 @@
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
           "additionalProperties": false,
-          "required": ["project_id", "event_ids", "datetime"]
+          "required": ["project_id", "event_ids"]
         }
       ]
     },

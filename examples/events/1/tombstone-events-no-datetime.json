@@ -1,0 +1,11 @@
+[
+  2,
+  "tombstone_events",
+  {
+    "project_id": 123,
+    "event_ids": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+    "old_primary_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "from_timestamp": "2023-04-06T00:00:00.000000Z",
+    "to_timestamp": "2023-04-06T00:00:00.000000Z"
+  }
+]
