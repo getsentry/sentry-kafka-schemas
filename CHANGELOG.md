@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.27
+
+### Various fixes & improvements
+
+- fix(transactions): Remove some stuff Snuba doesn't care about (#99) by @lynnagara
+- fix(events): Fix the schema for tombstone events (#98) by @lynnagara
+- fix(rust): Make regress dependency optional as well (#100) by @untitaker
+
 ## 0.0.26
 
 ### Various fixes & improvements
