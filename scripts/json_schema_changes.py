@@ -5,7 +5,7 @@ import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Mapping, MutableMapping
 
 
 def main() -> None:
@@ -85,10 +85,25 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
 Change = Mapping[str, Any]
 
 
-_CHANGE_PRINTERS: Mapping[str, Callable[[Change], str]] = {
-    "TypeRemove": lambda change: f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed",
-    "PropertyRemove": lambda change: f"Removed the property {change['path']}, so it is no longer accepted. Maybe use additionalProperties?",
-}
+_CHANGE_PRINTERS: MutableMapping[str, Callable[[Change], str]] = {}
+ChangePrinter = Callable[[Change], str]
+
+def _add_change_printer(f: ChangePrinter) -> ChangePrinter:
+    _CHANGE_PRINTERS[f.__name__] = f
+    return f
+
+
+@_add_change_printer
+def TypeRemove(change: Change) -> str:
+    return f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed"
+
+@_add_change_printer
+def PropertyRemove(change: Change) -> str:
+    first_sentence = f"Removed the property {change['path']}"
+    if change['change']['PropertyRemove']['lhs_additional_properties']:
+        return f"{first_sentence}, but it is still accepted via additionalProperties=true"
+    else:
+        return f"{first_sentence}, so it is no longer accepted. Maybe use additionalProperties?"
 
 
 def print_change(change: Change) -> None:
