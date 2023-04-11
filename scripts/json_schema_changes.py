@@ -99,7 +99,7 @@ def TypeRemove(change: Change) -> str:
 
 @_add_change_printer
 def PropertyRemove(change: Change) -> str:
-    first_sentence = f"Removed the property {change['path']}"
+    first_sentence = f"Removed a property {change['change']['PropertyRemove']['removed']} from {change['path']}"
     if change['change']['PropertyRemove']['lhs_additional_properties']:
         return f"{first_sentence}, but it is still accepted via additionalProperties=true"
     else:
