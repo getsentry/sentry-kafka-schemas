@@ -188,15 +188,6 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "event_id": {
-          "type": "string"
-        },
-        "level": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
         "type": {
           "type": "string"
         },
@@ -205,12 +196,6 @@
         },
         "transaction_info": {
           "$ref": "#/definitions/TransactionInfo"
-        },
-        "logger": {
-          "type": "string"
-        },
-        "platform": {
-          "type": "string"
         },
         "timestamp": {
           "type": "number"
@@ -252,14 +237,8 @@
         "sdk": {
           "$ref": "#/definitions/SDK"
         },
-        "key_id": {
-          "type": "string"
-        },
         "project": {
           "type": "integer"
-        },
-        "grouping_config": {
-          "$ref": "#/definitions/GroupingConfig"
         },
         "spans": {
           "type": "array",
@@ -273,58 +252,17 @@
         "breakdowns": {
           "$ref": "#/definitions/Breakdowns"
         },
-        "span_grouping_config": {
-          "$ref": "#/definitions/SpanGroupingConfig"
-        },
         "culprit": {
           "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/Metadata"
         },
         "title": {
           "type": "string"
         },
         "location": {
           "type": "string"
-        },
-        "hashes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "nodestore_insert": {
-          "type": "number"
         }
       },
-      "required": [
-        "contexts",
-        "culprit",
-        "event_id",
-        "grouping_config",
-        "hashes",
-        "key_id",
-        "level",
-        "location",
-        "logger",
-        "metadata",
-        "nodestore_insert",
-        "platform",
-        "project",
-        "received",
-        "sdk",
-        "span_grouping_config",
-        "spans",
-        "start_timestamp",
-        "tags",
-        "timestamp",
-        "title",
-        "transaction",
-        "transaction_info",
-        "type",
-        "version"
-      ]
+      "required": ["contexts", "spans", "start_timestamp", "timestamp", "type"]
     },
     "EventId": {
       "description": " Wrapper around a UUID with slightly different formatting.",
@@ -861,19 +799,6 @@
       "type": "object",
       "additionalProperties": false
     },
-    "GroupingConfig": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "enhancements": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        }
-      },
-      "required": ["enhancements", "id"]
-    },
     "Measurements": {
       "type": "object",
       "properties": {
@@ -881,19 +806,6 @@
           "$ref": "#/definitions/NumOfSpans"
         }
       }
-    },
-    "Metadata": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "location": {
-          "type": "string"
-        }
-      },
-      "required": ["location", "title"]
     },
     "MonitorContext": {
       "description": " Monitor information.",
@@ -984,16 +896,6 @@
         }
       },
       "required": ["name", "version"]
-    },
-    "SpanGroupingConfig": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "string"
-        }
-      },
-      "required": ["id"]
     },
     "Span": {
       "type": "object",
