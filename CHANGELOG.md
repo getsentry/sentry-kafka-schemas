@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.28
+
+### Various fixes & improvements
+
+- fix: Fix wording in json-schema-diff (#103) by @untitaker
+- fix(transactions): Fix transactions "data" to exclude stuff Snuba doesn't care about (#102) by @lynnagara
+- fix: Bump json-schema-diff to 0.1.4 (#101) by @untitaker
+
 ## 0.0.27
 
 ### Various fixes & improvements
