@@ -110,7 +110,7 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
     }
 
     let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join(format!("schemas/{}.yaml", schema_metadata.resource));
+        .join(format!("schemas/{}", schema_metadata.resource));
 
     Ok({
         Schema {

@@ -108,3 +108,23 @@ jobs:
           make install
       - name: Run tests
         run: make tests
+
+  tests-rust:
+    name: "Run tests (Rust)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout code
+      - uses: actions/cache@v3
+        name: Restore build cache
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-test-${{ hashFiles('**/Cargo.lock') }}
+      - name: Run tests
+        run: make tests-rust
