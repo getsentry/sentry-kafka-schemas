@@ -130,7 +130,7 @@ mod tests {
     #[test]
     fn test_get_schema() {
         assert_eq!(get_schema("asdf", None), Err(SchemaError::TopicNotFound));
-        let schema = get_schema("querylog", None).unwrap();
+        let schema = get_schema("snuba-queries", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Json);
     }
