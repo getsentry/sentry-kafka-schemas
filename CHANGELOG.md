@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.29
+
+### Various fixes & improvements
+
+- fix: Fix Rust test breakage and add Rust CI (#107) by @untitaker
+
 ## 0.0.28
 
 ### Various fixes & improvements
