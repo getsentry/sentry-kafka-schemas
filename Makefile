@@ -53,3 +53,7 @@ lint-rust:
 tests:
 	pytest -n auto python/ -vv
 .PHONY: tests
+
+tests-rust:
+	cargo test
+.PHONY: tests-rust

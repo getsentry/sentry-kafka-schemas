@@ -109,8 +109,8 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         return Err(SchemaError::InvalidType);
     }
 
-    let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join(format!("schemas/{}.yaml", schema_metadata.resource));
+    let json_schema_path =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("schemas/{}", schema_metadata.resource));
 
     Ok({
         Schema {
@@ -130,7 +130,7 @@ mod tests {
     #[test]
     fn test_get_schema() {
         assert_eq!(get_schema("asdf", None), Err(SchemaError::TopicNotFound));
-        let schema = get_schema("querylog", None).unwrap();
+        let schema = get_schema("snuba-queries", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Json);
     }
