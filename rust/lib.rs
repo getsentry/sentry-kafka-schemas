@@ -109,8 +109,8 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         return Err(SchemaError::InvalidType);
     }
 
-    let json_schema_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join(format!("schemas/{}", schema_metadata.resource));
+    let json_schema_path =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("schemas/{}", schema_metadata.resource));
 
     Ok({
         Schema {
