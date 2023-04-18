@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.30
+
+### Various fixes & improvements
+
+- fix(transactions): Span description can be null (#108) by @lynnagara
+
 ## 0.0.29
 
 ### Various fixes & improvements
