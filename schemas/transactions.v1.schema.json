@@ -910,7 +910,7 @@
           "type": "number"
         },
         "description": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "op": {
           "type": "string"
