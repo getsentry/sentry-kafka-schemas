@@ -5,6 +5,7 @@
   "metric_id": 1232341,
   "type": "s",
   "timestamp": 1676388965,
+  "origin_timestamp": 1676390000,
   "tags": {
     "10": 11,
     "20": 22,
