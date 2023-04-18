@@ -26,6 +26,9 @@
         "timestamp": {
           "type": "integer"
         },
+        "origin_timestamp": {
+          "type": "integer"
+        },
         "tags": {
           "$ref": "#/definitions/IntToInt"
         },
@@ -66,6 +69,7 @@
         "retention_days",
         "tags",
         "timestamp",
+        "origin_timestamp",
         "type",
         "use_case_id",
         "value"
