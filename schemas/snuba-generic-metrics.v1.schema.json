@@ -69,7 +69,7 @@
         "retention_days",
         "tags",
         "timestamp",
-        "origin_timestamp",
+        "sentry_received_timestamp",
         "type",
         "use_case_id",
         "value"
