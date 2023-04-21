@@ -26,6 +26,9 @@
         "timestamp": {
           "type": "integer"
         },
+        "sentry_received_timestamp": {
+          "type": "number"
+        },
         "tags": {
           "$ref": "#/definitions/StringToString"
         },
