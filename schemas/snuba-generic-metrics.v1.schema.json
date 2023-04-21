@@ -26,8 +26,8 @@
         "timestamp": {
           "type": "integer"
         },
-        "origin_timestamp": {
-          "type": "integer"
+        "sentry_received_timestamp": {
+          "type": "number"
         },
         "tags": {
           "$ref": "#/definitions/StringToString"
