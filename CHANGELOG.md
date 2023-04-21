@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.0.31
+
+### Various fixes & improvements
+
+- feat(metrics): Add sentry_received_timestamp to schemas to support indexer SLO (#109) by @ayirr7
+- fix(transactions): Span description can be null (#108) by @lynnagara
+
 ## 0.0.29
 
 ### Various fixes & improvements
