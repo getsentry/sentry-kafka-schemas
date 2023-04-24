@@ -5,7 +5,7 @@
     "Main": {
       "type": "object",
       "title": "generic_metric",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "version": { "const": 2 },
         "use_case_id": {
