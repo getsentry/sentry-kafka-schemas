@@ -7,3 +7,32 @@
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentry-kafka-schemas"
+dependencies = [
+    "python-rapidjson==1.8",
+    "PyYAML>=5.4,<7.0",
+    "typing-extensions>=4.0.0"
+]
+version = "0.0.29"
+authors = [
+    {"name" = "Sentry", email = "oss@sentry.io"}
+]
+
+description = "Kafka topics and schemas for Sentry"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.package-data]
+sentry_kafka_schemas = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["python/"]
+
+[tool.distutils.bdist_wheel]
+universal = true
