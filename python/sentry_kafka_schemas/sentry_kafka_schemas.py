@@ -24,6 +24,7 @@ __TOPIC_TO_SCHEMA: MutableMapping[Tuple[str, Optional[int]], Optional[Schema]] =
 class SchemaNotFound(Exception):
     pass
 
+
 class TopicSchema(TypedDict):
     version: int
     type: Literal["json"]
@@ -42,6 +43,7 @@ class TopicData(TypedDict):
     description: str
     services: ServicesData
     schemas: Sequence[TopicSchema]
+
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
 _SCHEMAS_PATH = Path.joinpath(Path(__file__).parent, "schemas")
