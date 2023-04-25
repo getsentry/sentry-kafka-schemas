@@ -64,7 +64,7 @@ def test_all_topics() -> None:
         with open(filename) as f:
             topic_data = safe_load(f)
 
-            _TOPIC_SCHEMA(topic_data)  # type: ignore
+            _TOPIC_SCHEMA(topic_data)
 
             # Check valid topic name
             topic_name = topic_data["topic"]
