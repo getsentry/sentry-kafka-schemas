@@ -1,5 +1,10 @@
 topic: transactions
 description: Transactions data for Snuba
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
 schemas:
   - version: 1
     compatibility_mode: none

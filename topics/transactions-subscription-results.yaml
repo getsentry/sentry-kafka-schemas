@@ -1,5 +1,10 @@
 topic: transactions-subscription-results
 description: Transactions Subscription Results
+services:
+  producers:
+    - getsentry/snuba
+  consumers:
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none

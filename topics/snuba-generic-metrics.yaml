@@ -1,5 +1,10 @@
 topic: snuba-generic-metrics
 description: Generic metrics for Snuba
+services:
+  consumers:
+    - getsentry/snuba
+  producers:
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none

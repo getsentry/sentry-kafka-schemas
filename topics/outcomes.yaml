@@ -1,5 +1,12 @@
 topic: outcomes
 description: Outcomes for events sent to sentry
+services:
+  producers:
+    - getsentry/sentry
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+    - getsentry/snuba
 schemas:
   - version: 1
     compatibility_mode: none

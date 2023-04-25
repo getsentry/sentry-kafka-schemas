@@ -1,5 +1,10 @@
 topic: sessions-subscription-results
 description: Sessions Subscription Results
+services:
+  producers:
+    - getsentry/snuba
+  consumers:
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none
