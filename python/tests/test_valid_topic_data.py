@@ -9,35 +9,43 @@ _SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")
 _EXAMPLES = Path(__file__).parents[2].joinpath("examples/")
 _TOPICS = Path(__file__).parents[2].joinpath("topics/")
 
-_TOPIC_SCHEMA = fastjsonschema.compile({
-    "properties": {
-        "topic": {"type": "string"},
-        "description": {"type": "string"},
-        "services": {
-            "properties": {
-                "consumers": {"type": "array", "items": {"type": "string"}},
-                "producers": {"type": "array", "items": {"type": "string"}},
-            },
-            "required": ["consumers", "producers"],
-            "aditionalProperties": False,
-        },
-        "schemas": {
-            "type": "array",
-            "items": {
+_TOPIC_SCHEMA = fastjsonschema.compile(
+    {
+        "properties": {
+            "topic": {"type": "string"},
+            "description": {"type": "string"},
+            "services": {
                 "properties": {
-                    "version": {"type": "integer", "minimum": 1},
-                    "type": {"const": "json"},
-                    "compatibility_mode": {"enum": ["none", "backward"]},
-                    "resource": {"type": "string"},
-                    "examples": {"type": "array", "items": {"type": "string"}},
+                    "consumers": {"type": "array", "items": {"type": "string"}},
+                    "producers": {"type": "array", "items": {"type": "string"}},
                 },
-                "required": ["version", "type", "compatibility_mode", "resource", "examples"]
-            }
-        }
-    },
-    "aditionalProperties": False,
-    "required": ["topic", "description", "services"],
-})
+                "required": ["consumers", "producers"],
+                "aditionalProperties": False,
+            },
+            "schemas": {
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "version": {"type": "integer", "minimum": 1},
+                        "type": {"const": "json"},
+                        "compatibility_mode": {"enum": ["none", "backward"]},
+                        "resource": {"type": "string"},
+                        "examples": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": [
+                        "version",
+                        "type",
+                        "compatibility_mode",
+                        "resource",
+                        "examples",
+                    ],
+                },
+            },
+        },
+        "aditionalProperties": False,
+        "required": ["topic", "description", "services"],
+    }
+)
 
 
 def test_all_topics() -> None:
