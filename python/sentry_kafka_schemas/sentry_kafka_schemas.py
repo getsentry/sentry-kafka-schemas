@@ -11,7 +11,6 @@ from typing import (
     Tuple,
     TypedDict,
     cast,
-    Union,
     Literal,
 )
 from sentry_kafka_schemas.types import Schema, Example
