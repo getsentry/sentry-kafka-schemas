@@ -1415,6 +1415,10 @@
             "region": {
               "description": " Human readable region name or code.",
               "type": ["string", "null"]
+            },
+            "subdivision": {
+              "description": " Human readable subdivision name.",
+              "type": ["string", "null"]
             }
           },
           "additionalProperties": false
