@@ -1,5 +1,10 @@
 topic: ingest-metrics
 description: Both release health and performance metrics (before indexer)
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none

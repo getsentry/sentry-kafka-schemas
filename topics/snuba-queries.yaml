@@ -1,5 +1,10 @@
 topic: snuba-queries
 description: Snuba querylog
+services:
+  consumers:
+    - getsentry/snuba
+  producers:
+    - getsentry/snuba
 schemas:
   - version: 1
     compatibility_mode: none

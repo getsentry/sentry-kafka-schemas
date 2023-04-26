@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 import rapidjson
@@ -9,7 +11,6 @@ from typing import (
     Tuple,
     TypedDict,
     cast,
-    Union,
     Literal,
 )
 from sentry_kafka_schemas.types import Schema, Example
@@ -23,19 +24,25 @@ class SchemaNotFound(Exception):
     pass
 
 
-TopicSchema = TypedDict(
-    "TopicSchema",
-    {
-        "topic": str,
-        "version": int,
-        "type": Union[Literal["json"]],
-        "compatibility_mode": Union[Literal["none"], Literal["backward"]],
-        "resource": str,
-        "examples": Sequence[str],
-    },
-)
+class TopicSchema(TypedDict):
+    version: int
+    type: Literal["json"]
+    compatibility_mode: Literal["none", "backward"]
+    resource: str
+    examples: Sequence[str]
 
-TopicData = TypedDict("TopicData", {"version": int, "schemas": Sequence[TopicSchema]})
+
+class ServicesData(TypedDict):
+    consumers: Sequence[str]
+    producers: Sequence[str]
+
+
+class TopicData(TypedDict):
+    topic: str
+    description: str
+    services: ServicesData
+    schemas: Sequence[TopicSchema]
+
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
 _SCHEMAS_PATH = Path.joinpath(Path(__file__).parent, "schemas")

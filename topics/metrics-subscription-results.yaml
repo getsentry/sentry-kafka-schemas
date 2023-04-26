@@ -1,5 +1,10 @@
 topic: metrics-subscription-results
 description: Metrics Subscription Results
+services:
+  consumers:
+    - getsentry/sentry
+  producers:
+    - getsentry/snuba
 schemas:
   - version: 1
     compatibility_mode: none

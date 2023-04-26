@@ -1,5 +1,10 @@
 topic: snuba-metrics
 description: Release health metrics
+services:
+  consumers:
+    - getsentry/snuba
+  producers:
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none
