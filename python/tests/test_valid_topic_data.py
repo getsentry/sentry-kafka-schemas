@@ -16,8 +16,8 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             "description": {"type": "string"},
             "services": {
                 "properties": {
-                    "consumers": {"type": "array", "items": {"type": "string"}},
-                    "producers": {"type": "array", "items": {"type": "string"}},
+                    "consumers": {"type": "array", "items": {"$ref": "#/definitions/Repo"}},
+                    "producers": {"type": "array", "items": {"$ref": "#/definitions/Repo"}},
                 },
                 "required": ["consumers", "producers"],
                 "aditionalProperties": False,
@@ -44,6 +44,16 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
         },
         "aditionalProperties": False,
         "required": ["topic", "description", "services"],
+        "definitions": {
+            "Repo": {
+                "enum": [
+                    # enumerate all repos here to avoid typos
+                    "getsentry/snuba",
+                    "getsentry/relay",
+                    "getsentry/sentry",
+                ]
+            }
+        }
     }
 )
 
