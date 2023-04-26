@@ -701,25 +701,6 @@
         }
       ]
     },
-    "CError": {
-      "description": " POSIX signal with optional extended data.\n\n Error codes set by Linux system calls and some library functions as specified in ISO C99,\n POSIX.1-2001, and POSIX.1-2008. See\n [`errno(3)`](https://man7.org/linux/man-pages/man3/errno.3.html) for more information.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "description": " Optional name of the errno constant.",
-              "type": ["string", "null"]
-            },
-            "number": {
-              "description": " The error code as specified by ISO C99, POSIX.1-2001 or POSIX.1-2008.",
-              "type": ["integer", "null"]
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
     "ClientSdkInfo": {
       "title": "client_sdk_info",
       "description": " The SDK Interface describes the Sentry SDK and its configuration used to capture and transmit an event.",
@@ -1636,35 +1617,6 @@
         }
       ]
     },
-    "MachException": {
-      "description": " Mach exception information.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "code": {
-              "description": " The mach exception code.",
-              "type": ["integer", "null"],
-              "minimum": 0
-            },
-            "exception": {
-              "description": " The mach exception type.",
-              "type": ["integer", "null"]
-            },
-            "name": {
-              "description": " Optional name of the mach exception.",
-              "type": ["string", "null"]
-            },
-            "subcode": {
-              "description": " The mach exception subcode.",
-              "type": ["integer", "null"],
-              "minimum": 0
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
     "Mechanism": {
       "description": " The mechanism by which an exception was generated and handled.\n\n The exception mechanism is an optional field residing in the [exception](#typedef-Exception).\n It carries additional information about the way the exception was created on the target system.\n This includes general exception values obtained from the operating system or runtime APIs, as\n well as mechanism-specific values.",
       "anyOf": [
@@ -1672,36 +1624,8 @@
           "type": "object",
           "required": ["type"],
           "properties": {
-            "data": {
-              "description": " Arbitrary extra data that might help the user understand the error thrown by this mechanism.",
-              "type": ["object", "null"],
-              "additionalProperties": true
-            },
-            "description": {
-              "description": " Optional human-readable description of the error mechanism.\n\n May include a possible hint on how to solve this error.",
-              "type": ["string", "null"]
-            },
             "handled": {
               "description": " Flag indicating whether this exception was handled.\n\n This is a best-effort guess at whether the exception was handled by user code or not. For\n example:\n\n - Exceptions leading to a 500 Internal Server Error or to a hard process crash are\n   `handled=false`, as the SDK typically has an integration that automatically captures the\n   error.\n\n - Exceptions captured using `capture_exception` (called from user code) are `handled=true`\n   as the user explicitly captured the exception (and therefore kind of handled it)",
-              "type": ["boolean", "null"]
-            },
-            "help_link": {
-              "description": " Link to online resources describing this error.",
-              "type": ["string", "null"]
-            },
-            "meta": {
-              "description": " Operating system or runtime meta information.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/MechanismMeta"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "synthetic": {
-              "description": " If this is set then the exception is not a real exception but some\n form of synthetic error for instance from a signal handler, a hard\n segfault or similar where type and value are not useful for grouping\n or display purposes.",
               "type": ["boolean", "null"]
             },
             "type": {
@@ -1709,62 +1633,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
-        }
-      ]
-    },
-    "MechanismMeta": {
-      "description": " Operating system or runtime meta information to an exception mechanism.\n\n The mechanism metadata usually carries error codes reported by the runtime or operating system,\n along with a platform-dependent interpretation of these codes. SDKs can safely omit code names\n and descriptions for well-known error codes, as it will be filled out by Sentry. For\n proprietary or vendor-specific error codes, adding these values will give additional\n information to the user.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "errno": {
-              "description": " Optional ISO C standard error code.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/CError"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "mach_exception": {
-              "description": " A Mach Exception on Apple systems comprising a code triple and optional descriptions.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/MachException"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "ns_error": {
-              "description": " An NSError on Apple systems comprising code and signal.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/NsError"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "signal": {
-              "description": " Information on the POSIX signal.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/PosixSignal"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            }
-          },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1781,25 +1650,6 @@
         {
           "type": "object",
           "additionalProperties": true
-        }
-      ]
-    },
-    "NsError": {
-      "description": " NSError informaiton.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "code": {
-              "description": " The error code.",
-              "type": ["integer", "null"]
-            },
-            "domain": {
-              "description": " A string containing the error domain.",
-              "type": ["string", "null"]
-            }
-          },
-          "additionalProperties": false
         }
       ]
     },
@@ -1853,33 +1703,6 @@
               "description": " Information about an OpenTelemetry resource.\n\n <https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/resource/v1/resource.proto>",
               "type": ["object", "null"],
               "additionalProperties": true
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
-    "PosixSignal": {
-      "description": " POSIX signal with optional extended data.\n\n On Apple systems, signals also carry a code in addition to the signal number describing the\n signal in more detail. On Linux, this code does not exist.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "code": {
-              "description": " An optional signal code present on Apple systems.",
-              "type": ["integer", "null"]
-            },
-            "code_name": {
-              "description": " Optional name of the errno constant.",
-              "type": ["string", "null"]
-            },
-            "name": {
-              "description": " Optional name of the errno constant.",
-              "type": ["string", "null"]
-            },
-            "number": {
-              "description": " The POSIX signal number.",
-              "type": ["integer", "null"]
             }
           },
           "additionalProperties": false
