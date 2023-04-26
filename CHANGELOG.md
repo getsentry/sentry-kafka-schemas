@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.0.32
+
+### Various fixes & improvements
+
+- fix(events): Loosen events mechanism (#114) by @lynnagara
+- ref: Add basic consumer/producer info for each topic (#113) by @untitaker
+- fix: Loosen metrics schemas (#112) by @lynnagara
+
 ## 0.0.31
 
 ### Various fixes & improvements
