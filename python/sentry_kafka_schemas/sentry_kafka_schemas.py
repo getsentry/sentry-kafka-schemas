@@ -4,6 +4,7 @@ import os
 
 import rapidjson
 from typing import (
+    Any,
     Iterable,
     Optional,
     MutableMapping,
@@ -20,7 +21,7 @@ from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
 from pathlib import Path
 from yaml import safe_load
 
-__TOPIC_TO_CODEC: MutableMapping[Tuple[str, Optional[int]], Optional[Codec]] = {}
+__TOPIC_TO_CODEC: MutableMapping[Tuple[str, Optional[int]], Optional[Codec[Any]]] = {}
 
 
 class SchemaNotFound(Exception):
@@ -120,7 +121,7 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
     return schema
 
 
-def get_codec(topic: str, version: Optional[int] = None) -> Codec:
+def get_codec(topic: str, version: Optional[int] = None) -> Codec[Any]:
     cache_key = (topic, version)
     if cache_key in __TOPIC_TO_CODEC:
         cache_value = __TOPIC_TO_CODEC[cache_key]
@@ -134,6 +135,7 @@ def get_codec(topic: str, version: Optional[int] = None) -> Codec:
         __TOPIC_TO_CODEC[cache_key] = None
         raise
 
+    rv: Codec[Any]
     if schema["type"] == "json":
         rv = JsonCodec(json_schema=schema["schema"])
     elif schema["type"] == "msgpack":
