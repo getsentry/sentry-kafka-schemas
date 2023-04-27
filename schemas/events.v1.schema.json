@@ -446,8 +446,7 @@
             {
               "$ref": "#/definitions/ExceptionChain"
             },
-            { "type": "null" },
-            { "type": "integer" }
+            { "type": ["null", "integer"] }
           ]
         },
         "threads": {
