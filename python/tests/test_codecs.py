@@ -24,9 +24,7 @@ def get_example_data() -> Example:
 
 @pytest.mark.parametrize("codec_cls", [JsonCodec, MsgpackCodec])
 def test_json_codec(codec_cls: Codec) -> None:
-    schema_path = Path.joinpath(
-        Path(__file__).parent, "test.schema.json"
-    )
+    schema_path = Path.joinpath(Path(__file__).parent, "test.schema.json")
     with open(schema_path, mode="r") as f:
         schema = json.loads(f.read())
 
