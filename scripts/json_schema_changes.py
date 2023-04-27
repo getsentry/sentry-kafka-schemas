@@ -28,6 +28,9 @@ def main() -> None:
         return
 
     for filename in lines:
+        print(f"# {filename}")
+        print()
+
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
                 ["git", "show", f"origin/main:{filename}"]
@@ -47,7 +50,9 @@ def main() -> None:
 
     if breaking_changes:
         print("```")
-        print("<details><summary><strong>changes considered breaking:</strong></summary>")
+        print(
+            "<details><summary><strong>changes considered breaking:</strong></summary>"
+        )
         print("```")
         for filename, changes in breaking_changes.items():
             print(f"## {filename}")
