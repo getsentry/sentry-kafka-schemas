@@ -37,7 +37,7 @@ Schema = TypedDict(
 @dataclasses.dataclass(frozen=True)
 class Example:
     path: Path
-    type: Literal['json', 'msgpack']
+    type: Literal["json", "msgpack"]
 
     _examples_basepath: Path
 
