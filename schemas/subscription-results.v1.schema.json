@@ -5,7 +5,7 @@
     "Main": {
       "title": "subscription_result",
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "version": {
           "const": 3
@@ -13,7 +13,7 @@
         "payload": {
           "type": "object",
           "title": "payload_v3",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "subscription_id": {
               "type": "string",
@@ -43,7 +43,7 @@
                         "type": "string"
                       }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": true
                   }
                 }
               },

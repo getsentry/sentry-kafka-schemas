@@ -76,7 +76,7 @@
     },
     "MappingMeta": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "patternProperties": {
         "^[chdfr]$": {
           "$ref": "#/definitions/IntToString"
@@ -85,7 +85,7 @@
     },
     "IntToString": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "patternProperties": {
         "^[0-9]$": {
           "type": "string"
