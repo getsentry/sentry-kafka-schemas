@@ -14,10 +14,13 @@ from typing import (
     Literal,
 )
 from sentry_kafka_schemas.types import Schema, Example
+from sentry_kafka_schemas.codecs import Codec
+from sentry_kafka_schemas.codecs.json import JsonCodec
+from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
 from pathlib import Path
 from yaml import safe_load
 
-__TOPIC_TO_SCHEMA: MutableMapping[Tuple[str, Optional[int]], Optional[Schema]] = {}
+__TOPIC_TO_CODEC: MutableMapping[Tuple[str, Optional[int]], Optional[Codec]] = {}
 
 
 class SchemaNotFound(Exception):
@@ -77,7 +80,7 @@ def _get_topic(topic: str) -> TopicData:
     return topic_data
 
 
-def get_schema(topic: str, version: Optional[int] = None) -> Schema:
+def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
     """
     Returns the schema for a topic. If version is passed, return the schema for
     the specified version, otherwise the latest version is returned.
@@ -88,49 +91,59 @@ def get_schema(topic: str, version: Optional[int] = None) -> Schema:
     """
     schema_key = (topic, version)
 
-    if schema_key not in __TOPIC_TO_SCHEMA:
-        try:
-            topic_data = _get_topic(topic)
+    topic_data = _get_topic(topic)
 
-            topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
+    topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
 
-            schema_metadata = None
-            if version is None:
-                schema_metadata = topic_schemas[-1]
-            else:
-                for s in topic_schemas:
-                    if s["version"] == version:
-                        schema_metadata = s
-                        break
+    schema_metadata = None
+    if version is None:
+        schema_metadata = topic_schemas[-1]
+    else:
+        for s in topic_schemas:
+            if s["version"] == version:
+                schema_metadata = s
+                break
 
-                if schema_metadata is None:
-                    raise SchemaNotFound("Invalid version")
+        if schema_metadata is None:
+            raise SchemaNotFound("Invalid version")
 
-        except SchemaNotFound:
-            __TOPIC_TO_SCHEMA[schema_key] = None
-            raise
+    resource_path = Path.joinpath(_SCHEMAS_PATH, schema_metadata["resource"])
+    with open(resource_path) as f:
+        json_schema = rapidjson.load(f)
+    schema: Schema = {
+        "version": schema_metadata["version"],
+        "type": schema_metadata["type"],
+        "compatibility_mode": schema_metadata["compatibility_mode"],
+        "schema": json_schema,
+        "schema_filepath": str(resource_path),
+        "examples": schema_metadata["examples"],
+    }
 
-        resource_path = Path.joinpath(_SCHEMAS_PATH, schema_metadata["resource"])
-        with open(resource_path) as f:
-            json_schema = rapidjson.load(f)
-        schema: Schema = {
-            "version": schema_metadata["version"],
-            "type": schema_metadata["type"],
-            "compatibility_mode": schema_metadata["compatibility_mode"],
-            "schema": json_schema,
-            "schema_filepath": str(resource_path),
-            "examples": schema_metadata["examples"],
-        }
+    return schema
 
-        __TOPIC_TO_SCHEMA[schema_key] = schema
-        return schema
 
-    elif __TOPIC_TO_SCHEMA[schema_key] is None:
-        raise SchemaNotFound
+def get_codec(topic: str, version: Optional[int] = None) -> Codec:
+    cache_key = (topic, version)
+    if cache_key in __TOPIC_TO_CODEC:
+        cache_value = __TOPIC_TO_CODEC[cache_key]
+        if cache_value is None:
+            raise SchemaNotFound
+        return cache_value
 
-    cached_schema = __TOPIC_TO_SCHEMA[schema_key]
-    assert cached_schema is not None
-    return cached_schema
+    try:
+        schema = _get_schema(topic, version=version)
+    except SchemaNotFound:
+        __TOPIC_TO_CODEC[cache_key] = None
+        raise
+
+    if schema['type'] == 'json':
+        rv = JsonCodec(schema=schema['schema'])
+    elif schema['type'] == 'msgpack':
+        rv = MsgpackCodec(json_schema=schema['schema'])
+    else:
+        raise ValueError(schema['type'])
+    __TOPIC_TO_CODEC[cache_key] = rv
+    return rv
 
 
 def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example]:
@@ -144,7 +157,7 @@ def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example
     This is currently a separate function, not a method on a Schema class,
     because we might want to split out examples from this package at some point.
     """
-    schema = get_schema(topic, version)
+    schema = _get_schema(topic, version)
 
     for example_entry in schema["examples"]:
         example_path = Path.joinpath(_EXAMPLES_PATH, example_entry)

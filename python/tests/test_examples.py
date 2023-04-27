@@ -7,7 +7,7 @@ import jsonschema
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     _list_topics,
     _get_topic,
-    get_schema,
+    _get_schema,
 )
 from sentry_kafka_schemas.types import Example
 from sentry_kafka_schemas import iter_examples
@@ -47,7 +47,7 @@ def test_examples(
     example: Example,
     jsonschema_library: str,
 ) -> None:
-    schema = get_schema(topic, version=version)["schema"]
+    schema = _get_schema(topic, version=version)["schema"]
     example_data = example.load()
 
     if jsonschema_library == "fastjsonschema":

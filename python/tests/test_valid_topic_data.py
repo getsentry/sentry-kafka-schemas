@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from sentry_kafka_schemas import get_schema
+from sentry_kafka_schemas import get_codec
 import fastjsonschema
 from yaml import safe_load
 import re
@@ -103,7 +103,7 @@ def test_all_topics() -> None:
                 assert schema_raw["version"] == i + 1
 
         # The schema can be loaded
-        get_schema(filename.stem)
+        get_codec(filename.stem)
 
     existing_schema_filepaths = set()
 
