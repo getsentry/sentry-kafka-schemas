@@ -1,11 +1,8 @@
-# this script currently runs without any dependencies installed. that can be
-# changed easily, but right now we don't need anything like rapidjson over
-# json, so CI is slightly faster
 import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Callable, Mapping, MutableMapping
+from typing import Any, Callable, Mapping, MutableMapping, MutableSequence
 
 
 def main() -> None:
@@ -22,8 +19,10 @@ def main() -> None:
     )
     lines = process_output.decode("utf8").splitlines()
 
-    breaking_changes = []
-    non_breaking_changes = []
+    breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
+    non_breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
+    consumers = []
+    producers = []
 
     if not lines:
         return
@@ -43,28 +42,34 @@ def main() -> None:
                 ["json-schema-diff", old_file.name, filename]
             ).splitlines():
 
-                change = json.loads(raw_change)
+                change: Change = json.loads(raw_change)
                 if change["is_breaking"]:
-                    breaking_changes.append(change)
+                    breaking_changes.setdefault(filename, []).append(change)
                 else:
-                    non_breaking_changes.append(change)
+                    non_breaking_changes.setdefault(filename, []).append(change)
 
     if breaking_changes:
-        print("!!! WARNING: changes considered breaking:")
-        print()
-        for change in breaking_changes:
-            print_change(change)
+        print("<details><summary>**changes considered breaking:**</summary>")
+        print("```")
+        for filename, changes in breaking_changes.items():
+            print("## {filename}")
+            for change in changes:
+                print_change(change)
 
-        print()
-
-        if non_breaking_changes:
-            print("other changes:")
+        print("```")
+        print("</details>")
 
     if non_breaking_changes:
-        print()
+        print("<details><summary>**benign changes:**</summary>")
+        print("```")
 
-    for change in non_breaking_changes:
-        print_change(change)
+        for filename, changes in non_breaking_changes.items():
+            print("## {filename}")
+            for change in changes:
+                print_change(change)
+
+        print("```")
+        print("</details>")
 
     if not non_breaking_changes and not breaking_changes:
         print(
@@ -78,8 +83,29 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
 
-    if breaking_changes and "--no-exit-code" not in sys.argv:
-        sys.exit(2)
+    elif breaking_changes:
+        print("""\
+**This PR contains breaking changes.** Normally you should avoid that and make
+your consumer forwards-compatible (meaning that updated consumers can still
+accept old messages).
+
+If you know what you are doing, this change could potentially be rolled out
+to **producers**
+first.
+""")
+        if "--no-exit-code" not in sys.argv:
+            sys.exit(2)
+    else:
+        print(f"""\
+This PR should be safe to roll out to **consumers** first. Make sure to bump
+the library in the following repos first:
+    {consumers}
+
+...then in the other repos:
+    {producers}
+
+Take a look at the README for how to release a new version of sentry-kafka-schemas.
+        """)
 
 
 Change = Mapping[str, Any]
