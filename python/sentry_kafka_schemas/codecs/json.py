@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import os
-from typing import Any, Optional, TypeVar, cast
+from typing import Any, TypeVar, cast
 
 import fastjsonschema
 import rapidjson

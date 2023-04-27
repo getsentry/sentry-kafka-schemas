@@ -89,8 +89,6 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
     Only JSON schemas are currently supported.
     """
-    schema_key = (topic, version)
-
     topic_data = _get_topic(topic)
 
     topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])

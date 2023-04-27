@@ -4,4 +4,4 @@ from sentry_kafka_schemas.sentry_kafka_schemas import (
     get_codec,
 )
 
-__all__ = ["get_schema", "iter_examples", "SchemaNotFound"]
+__all__ = ["get_codec", "iter_examples", "SchemaNotFound"]
