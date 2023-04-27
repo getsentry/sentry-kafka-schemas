@@ -28,9 +28,6 @@ def main() -> None:
         return
 
     for filename in lines:
-        print(f"# {filename}")
-        print()
-
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
                 ["git", "show", f"origin/main:{filename}"]
