@@ -115,10 +115,10 @@ first.
             f"""\
 This PR should be safe to roll out to **consumers** first. Make sure to bump
 the library in the following repos first:
-    {consumers}
+{json.dumps(consumers)}
 
 ...then in the other repos:
-    {producers}
+{json.dumps(producers)}
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
         """
