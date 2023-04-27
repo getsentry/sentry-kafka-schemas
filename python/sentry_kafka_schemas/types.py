@@ -1,6 +1,7 @@
 from typing import Any, Literal, Mapping, Sequence, TypedDict, Union
 
 import rapidjson
+import msgpack
 import dataclasses
 from pathlib import Path
 
@@ -36,6 +37,7 @@ Schema = TypedDict(
 @dataclasses.dataclass(frozen=True)
 class Example:
     path: Path
+    type: Literal['json', 'msgpack']
 
     _examples_basepath: Path
 
@@ -44,5 +46,8 @@ class Example:
         return f"<Example path=...{relpath}>"
 
     def load(self) -> Any:
-        with open(self.path) as f:
-            return rapidjson.load(f)
+        with open(self.path, "rb") as f:
+            if self.type == "json":
+                return rapidjson.load(f)
+            elif self.type == "msgpack":
+                return msgpack.unpackb(f.read())

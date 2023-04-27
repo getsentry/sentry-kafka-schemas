@@ -26,7 +26,7 @@ class SchemaNotFound(Exception):
 
 class TopicSchema(TypedDict):
     version: int
-    type: Literal["json"]
+    type: Literal["json", "msgpack"]
     compatibility_mode: Literal["none", "backward"]
     resource: str
     examples: Sequence[str]
@@ -152,10 +152,12 @@ def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example
             yield Example(
                 _examples_basepath=_EXAMPLES_PATH,
                 path=example_path,
+                type=schema['type']
             )
         else:
             for example_subpath in os.listdir(example_path):
                 yield Example(
                     _examples_basepath=_EXAMPLES_PATH,
                     path=Path.joinpath(example_path, example_subpath),
+                    type=schema['type']
                 )

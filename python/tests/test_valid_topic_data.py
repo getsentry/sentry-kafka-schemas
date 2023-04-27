@@ -33,7 +33,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                 "items": {
                     "properties": {
                         "version": {"type": "integer", "minimum": 1},
-                        "type": {"const": "json"},
+                        "type": {"enum": ["msgpack", "json"]},
                         "compatibility_mode": {"enum": ["none", "backward"]},
                         "resource": {"type": "string"},
                         "examples": {"type": "array", "items": {"type": "string"}},
