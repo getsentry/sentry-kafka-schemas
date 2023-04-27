@@ -134,12 +134,12 @@ def get_codec(topic: str, version: Optional[int] = None) -> Codec:
         __TOPIC_TO_CODEC[cache_key] = None
         raise
 
-    if schema['type'] == 'json':
-        rv = JsonCodec(json_schema=schema['schema'])
-    elif schema['type'] == 'msgpack':
-        rv = MsgpackCodec(json_schema=schema['schema'])
+    if schema["type"] == "json":
+        rv = JsonCodec(json_schema=schema["schema"])
+    elif schema["type"] == "msgpack":
+        rv = MsgpackCodec(json_schema=schema["schema"])
     else:
-        raise ValueError(schema['type'])
+        raise ValueError(schema["type"])
     __TOPIC_TO_CODEC[cache_key] = rv
     return rv
 
@@ -163,12 +163,12 @@ def iter_examples(topic: str, version: Optional[int] = None) -> Iterable[Example
             yield Example(
                 _examples_basepath=_EXAMPLES_PATH,
                 path=example_path,
-                type=schema['type']
+                type=schema["type"],
             )
         else:
             for example_subpath in os.listdir(example_path):
                 yield Example(
                     _examples_basepath=_EXAMPLES_PATH,
                     path=Path.joinpath(example_path, example_subpath),
-                    type=schema['type']
+                    type=schema["type"],
                 )
