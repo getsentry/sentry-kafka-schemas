@@ -30,7 +30,7 @@ def test_json_codec(codec_cls: Codec) -> None:
     with open(schema_path, mode="r") as f:
         schema = json.loads(f.read())
 
-    codec: JsonCodec[Example] = JsonCodec(schema=schema)
+    codec: JsonCodec[Example] = JsonCodec(json_schema=schema)
 
     data = get_example_data()
 

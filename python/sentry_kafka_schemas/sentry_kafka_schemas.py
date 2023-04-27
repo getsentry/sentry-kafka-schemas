@@ -135,7 +135,7 @@ def get_codec(topic: str, version: Optional[int] = None) -> Codec:
         raise
 
     if schema['type'] == 'json':
-        rv = JsonCodec(schema=schema['schema'])
+        rv = JsonCodec(json_schema=schema['schema'])
     elif schema['type'] == 'msgpack':
         rv = MsgpackCodec(json_schema=schema['schema'])
     else:
