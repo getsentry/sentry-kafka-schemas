@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.0.33
+
+### Various fixes & improvements
+
+- add subdivision (#115) by @udameli
+
 ## 0.0.32
 
 ### Various fixes & improvements
