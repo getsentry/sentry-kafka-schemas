@@ -46,35 +46,19 @@ def main() -> None:
                     non_breaking_changes.setdefault(filename, []).append(change)
 
     if breaking_changes:
-        print("```")
-        print(
-            "<details><summary><strong>changes considered breaking:</strong></summary>"
-        )
-        print()
-        print("```")
+        print("**changes considered breaking:**")
         for filename, changes in breaking_changes.items():
             print(f"## {filename}")
             for change in changes:
                 print_change(change)
 
-        print("```")
-        print("</details>")
-        print("```")
-
     if non_breaking_changes:
-        print("```")
-        print("<details><summary><strong>benign changes:</strong></summary>")
-        print()
-        print("```")
+        print("**benign changes:**")
 
         for filename, changes in non_breaking_changes.items():
             print(f"## {filename}")
             for change in changes:
                 print_change(change)
-
-        print("```")
-        print("</details>")
-        print("```")
 
     if not non_breaking_changes and not breaking_changes:
         print(
