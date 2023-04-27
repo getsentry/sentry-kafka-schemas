@@ -50,10 +50,10 @@ def main() -> None:
 
     if breaking_changes:
         print("```")
-        print("<details><summary>**changes considered breaking:**</summary>")
+        print("<details><summary><strong>changes considered breaking:</strong></summary>")
         print("```")
         for filename, changes in breaking_changes.items():
-            print("## {filename}")
+            print(f"## {filename}")
             for change in changes:
                 print_change(change)
 
@@ -63,11 +63,11 @@ def main() -> None:
 
     if non_breaking_changes:
         print("```")
-        print("<details><summary>**benign changes:**</summary>")
+        print("<details><summary><strong>benign changes:</strong></summary>")
         print("```")
 
         for filename, changes in non_breaking_changes.items():
-            print("## {filename}")
+            print(f"## {filename}")
             for change in changes:
                 print_change(change)
 
