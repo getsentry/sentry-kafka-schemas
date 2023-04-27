@@ -4,7 +4,11 @@ import tempfile
 import json
 from typing import Any, Callable, Mapping, MutableMapping, MutableSequence
 
-from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, _list_topics, _get_topic
+from sentry_kafka_schemas.sentry_kafka_schemas import (
+    TopicData,
+    _list_topics,
+    _get_topic,
+)
 
 
 def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
@@ -12,7 +16,7 @@ def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
 
     for topic_name in _list_topics():
         topic_data = _get_topic(topic_name)
-        for schema in topic_data['schemas']:
+        for schema in topic_data["schemas"]:
             filename = f"schemas/{schema['resource']}"
             rv[filename] = topic_data
 
@@ -45,8 +49,8 @@ def main() -> None:
         return
 
     for filename in lines:
-        consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]['services']['consumers'])
-        producers.extend(_SCHEMA_FILE_TO_TOPIC[filename]['services']['producers'])
+        consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"])
+        producers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["producers"])
 
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
