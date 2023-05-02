@@ -1,5 +1,19 @@
 # Changelog and versioning
 
+## 0.1.0
+
+### Various fixes & improvements
+
+- feat: Add support for msgpack, add schema for replay-recordings, move arroyo codecs into repo (#116) by @untitaker
+- ref: Make everything take additionalProperties (#117) by @untitaker
+- release: 0.0.33 (f73a808e) by @getsentry-bot
+
+## 0.0.33
+
+### Various fixes & improvements
+
+- add subdivision (#115) by @udameli
+
 ## 0.0.32
 
 ### Various fixes & improvements
