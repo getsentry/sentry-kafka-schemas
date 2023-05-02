@@ -34,7 +34,25 @@ The yaml file of a topic has 2 keys:
    - `resource`: Should match the file name in the `schemas` directory
    - `examples`: Should match the file names in the `examples` directory
 
-## Using Python types
+## Using the schema (in Python)
+
+```python
+from sentry_kafka_schemas import get_codec, ValidationError
+from sentry_kafka_schemas.schema_types.ingest_metrics_v1 import IngestMetric
+
+SCHEMA: Codec[IngestMetric] = get_codec("ingest-metrics")
+
+try:
+    decoded = SCHEMA.decode(b'{"type": "c", ...}')
+except ValidationError:
+    return
+
+# ingest-metrics schema defines retention_days as required type, so this is
+# safe.
+retention_days = decoded["retention_days"]
+```
+
+### Using Python types
 
 Python types are automatically generated under
 `sentry_kafka_schemas.schema_types`. A schema for version 1 of the topic
