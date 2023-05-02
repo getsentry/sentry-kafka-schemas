@@ -111,10 +111,16 @@ first.
             f"""\
 This PR should be safe to roll out to **consumers** first. Make sure to bump
 the library in the following repos first:
+
+```
 {json.dumps(consumers)}
+```
 
 ...then in the other repos:
+
+```
 {json.dumps(producers)}
+```
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
         """
@@ -122,11 +128,12 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
 
 
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
+    print("```")
     for filename, changes in file_to_changes.items():
         print(f"### {filename}")
         for change in changes:
             print_change(change)
-
+    print("```")
 
 _CHANGE_PRINTERS: MutableMapping[str, Callable[[Change], str]] = {}
 ChangePrinter = Callable[[Change], str]
