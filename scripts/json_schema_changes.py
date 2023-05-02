@@ -76,7 +76,7 @@ def main() -> None:
         print_files_and_changes(breaking_changes)
 
     if non_breaking_changes:
-        print("<details><summary>benign changes:</summary>")
+        print("<details><summary>**benign changes**</summary>")
         print_files_and_changes(non_breaking_changes)
         print("</details>")
 
