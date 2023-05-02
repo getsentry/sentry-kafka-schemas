@@ -94,32 +94,32 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
 
     elif breaking_changes:
         print(
-            """\
+            """
 ⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
 your consumer forwards-compatible (meaning that updated consumers can still
 accept old messages).
 
 If you know what you are doing, this change could potentially be rolled out
-to **producers**
-first.
+to **producers** first, but that's not a flow we support.
 """
         )
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
     else:
+        newline = "\n"
         print(
-            f"""\
+            f"""
 ✅ This PR should be safe to roll out to **consumers** first. Make sure to bump
 the library in the following repos first:
 
 ```
-{json.dumps(consumers)}
+{newline.join(consumers)}
 ```
 
 ...then in the other repos:
 
 ```
-{json.dumps(producers)}
+{newline.join(producers)}
 ```
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
