@@ -192,7 +192,8 @@
           "type": "string"
         },
         "transaction": {
-          "type": "string"
+          "description": " Transaction name of the event.\n\n For example, in a web app, this might be the route name (`\"/users/<username>/\"` or\n `UserView`), in a task queue it might be the function + module name.",
+          "type": ["string", "null"]
         },
         "transaction_info": {
           "$ref": "#/definitions/TransactionInfo"
@@ -207,10 +208,12 @@
           "type": "number"
         },
         "release": {
-          "type": "string"
+          "description": " The release version of the application.\n\n **Release versions must be unique across all projects in your organization.** This value\n can be the git SHA for the given project, or a product identifier with a semantic version.",
+          "type": ["string", "null"]
         },
         "environment": {
-          "type": "string"
+          "description": " The environment name, such as `production` or `staging`.\n\n ```json\n { \"environment\": \"production\" }\n ```",
+          "type": ["string", "null"]
         },
         "contexts": {
           "$ref": "#/definitions/Contexts"
@@ -1060,17 +1063,17 @@
       ]
     },
     "TransactionInfo": {
+      "description": " Additional information about the name of the transaction.",
       "anyOf": [
         {
           "type": "object",
           "properties": {
             "source": {
-              "type": "string"
+              "description": "Describes how the name of the transaction was determined.\n\n This will be used by the server to decide whether or not to scrub identifiers from the\n transaction name, or replace the entire name with a placeholder.",
+              "type": ["string", "null"]
             }
-          }
-        },
-        {
-          "type": "null"
+          },
+          "additionalProperties": true
         }
       ]
     }
