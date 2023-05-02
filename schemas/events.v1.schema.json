@@ -243,7 +243,7 @@
               "type": "array",
               "items": { "type": "string" }
             },
-            "old_primary_hash": { "type": "string" },
+            "old_primary_hash": { "type": ["string", "null"] },
             "from_timestamp": { "type": "string" },
             "to_timestamp": { "type": "string" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
