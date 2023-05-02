@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.1
+
+### Various fixes & improvements
+
+- ref: Align some fields in events and transactions schemas (#120) by @lynnagara
+- fix(events): Fix schema for tombstone event (#119) by @lynnagara
+
 ## 0.1.0
 
 ### Various fixes & improvements
