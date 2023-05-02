@@ -135,6 +135,7 @@ def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> 
             print_change(change)
     print("```")
 
+
 _CHANGE_PRINTERS: MutableMapping[str, Callable[[Change], str]] = {}
 ChangePrinter = Callable[[Change], str]
 
