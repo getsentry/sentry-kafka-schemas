@@ -4,7 +4,10 @@ Contains the Kafka topics and schema definitions used by the Sentry service.
 
 ## Defining schemas
 
-Currently only jsonschema is supported. The jsonschema should be placed directly in the `schemas` directory, and then referenced from the relevant topic.
+Currently only jsonschema is supported. The jsonschema should be placed directly in the `schemas` directory, and then referenced from the relevant topic via `resource` property.
+
+We use jsonschema for both JSON- and msgpack-based topics, as most msgpack types have a JSON-equivalent. For bytestrings, we type them using `{"description": "msgpack bytes"}`, which is currently just interpreted like `{}` (allow all types).
+
 
 ## How strict should my schema be?
 
@@ -27,7 +30,8 @@ The yaml file of a topic has 2 keys:
 2. `schemas`. Schemas is an array. The following should be provided for each schema:
    - `version`: Incrementing integer. Should start at 1.
    - `compatibility_mode`: `none` or `backward`.
-   - `type`: Currently only `json` is supported
+   - `type`: Can be either `json` or `msgpack`. In both cases we use
+     jsonschema to define the message schema.
    - `resource`: Should match the file name in the `schemas` directory
    - `examples`: Should match the file names in the `examples` directory
 

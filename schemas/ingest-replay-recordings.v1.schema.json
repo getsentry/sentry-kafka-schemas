@@ -27,7 +27,7 @@
     {
       "properties": {
         "type": { "const": "replay_recording_chunk" },
-        "payload": { "$comment": "msgpack bytes" },
+        "payload": { "description": "msgpack bytes" },
         "replay_id": { "type": "string" },
         "project_id": { "type": "integer", "minimum": 0 },
         "id": { "type": "string" },
@@ -44,7 +44,7 @@
         "project_id": { "type": "integer", "minimum": 0 },
         "received": { "type": "number", "minimum": 0 },
         "retention_days": { "type": "integer" },
-        "payload": { "$comment": "msgpack bytes" }
+        "payload": { "description": "msgpack bytes" }
       },
       "required": [
         "type",
