@@ -42,7 +42,7 @@
             "new_group_id": { "type": "integer" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": [
             "project_id",
             "previous_group_ids",
@@ -70,7 +70,7 @@
             "new_group_id": { "type": "integer" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": [
             "project_id",
             "previous_group_ids",
@@ -98,7 +98,7 @@
             },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["project_id", "group_ids", "datetime"]
         }
       ]
@@ -122,7 +122,7 @@
             },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["project_id", "group_ids", "datetime"]
         }
       ]
@@ -172,7 +172,7 @@
             },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": [
             "project_id",
             "previous_group_id",
@@ -199,7 +199,7 @@
             "hierarchical_hash": { "type": "string" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": [
             "project_id",
             "previous_group_id",
@@ -224,7 +224,7 @@
             "datetime": { "$ref": "#/definitions/SnubaDatetime" },
             "project_id": { "type": "integer" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["project_id", "tag", "datetime"]
         }
       ]
@@ -243,12 +243,12 @@
               "type": "array",
               "items": { "type": "string" }
             },
-            "old_primary_hash": { "type": "string" },
+            "old_primary_hash": { "type": ["string", "null"] },
             "from_timestamp": { "type": "string" },
             "to_timestamp": { "type": "string" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["project_id", "event_ids"]
         }
       ]
@@ -270,7 +270,7 @@
             "datetime": { "$ref": "#/definitions/SnubaDatetime" },
             "new_group_id": { "type": "integer" }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["event_ids", "project_id", "new_group_id"]
         }
       ]
@@ -287,7 +287,7 @@
             "project_id": { "type": "integer" },
             "group_ids": { "type": "array", "items": { "type": "integer" } }
           },
-          "additionalProperties": false,
+          "additionalProperties": true,
           "required": ["project_id", "group_ids"]
         }
       ]
@@ -678,7 +678,7 @@
               "type": ["boolean", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -697,7 +697,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -758,7 +758,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -797,7 +797,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1059,7 +1059,7 @@
               "minimum": 0
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1196,7 +1196,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1421,7 +1421,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1494,7 +1494,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1617,7 +1617,7 @@
               "description": " Parameters to be interpolated into the log message. This can be an array of positional\n parameters as well as a mapping of named arguments to their values."
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1688,7 +1688,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1709,7 +1709,7 @@
               "additionalProperties": true
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1732,7 +1732,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1789,7 +1789,7 @@
           "type": ["boolean", "null"]
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "RegVal": {
       "type": "string"
@@ -1902,7 +1902,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1945,7 +1945,7 @@
               "minimum": 0
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -1972,7 +1972,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -2039,7 +2039,7 @@
               "minimum": 0
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -2152,7 +2152,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -2238,7 +2238,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     }

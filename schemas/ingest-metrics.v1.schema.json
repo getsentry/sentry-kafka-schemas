@@ -5,7 +5,7 @@
     "IngestMetric": {
       "type": "object",
       "title": "ingest_metric",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "org_id": {
           "description": "The organization for which this metric is being sent.",

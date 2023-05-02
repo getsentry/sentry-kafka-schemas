@@ -82,7 +82,7 @@
           }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "snql_anonymized": {
       "type": "string"
@@ -104,7 +104,7 @@
     "query_list",
     "timing"
   ],
-  "additionalProperties": false,
+  "additionalProperties": true,
   "definitions": {
     "QueryMetadata": {
       "type": "object",
@@ -157,7 +157,7 @@
         "request_status",
         "slo"
       ],
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "ColumnList": {
       "type": "array",
@@ -193,7 +193,7 @@
             }
           },
           "required": ["columns", "mapping_cols"],
-          "additionalProperties": false
+          "additionalProperties": true
         },
         "groupby_cols": {
           "$ref": "#/definitions/ColumnList"

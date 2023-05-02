@@ -7,7 +7,7 @@ import jsonschema
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     _list_topics,
     _get_topic,
-    get_schema,
+    _get_schema,
 )
 from sentry_kafka_schemas.types import Example
 from sentry_kafka_schemas import iter_examples
@@ -34,7 +34,7 @@ def _get_most_specific_jsonschema_error(e: jsonschema.ValidationError) -> None:
 
 def test_file_extension() -> None:
     for example in get_all_examples():
-        assert example[2].path.name.endswith(".json")
+        assert example[2].path.name.endswith((".msgpack", ".json"))
 
 
 @pytest.mark.parametrize("topic,version,example", get_all_examples(), ids=str)
@@ -47,7 +47,7 @@ def test_examples(
     example: Example,
     jsonschema_library: str,
 ) -> None:
-    schema = get_schema(topic, version=version)["schema"]
+    schema = _get_schema(topic, version=version)["schema"]
     example_data = example.load()
 
     if jsonschema_library == "fastjsonschema":

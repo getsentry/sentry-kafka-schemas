@@ -12,7 +12,7 @@
     "TransactionEvent": {
       "type": "object",
       "title": "transaction_event",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "group_id": {
           "type": "null"
@@ -122,7 +122,7 @@
               "type": ["boolean", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -141,7 +141,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -180,7 +180,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -277,7 +277,7 @@
     },
     "Breakdowns": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "span_ops": {
           "type": "object",
@@ -543,7 +543,7 @@
               "minimum": 0
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -616,7 +616,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -719,7 +719,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -762,7 +762,7 @@
               "minimum": 0
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -789,7 +789,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -800,7 +800,7 @@
     },
     "OccurrenceData": {
       "type": "object",
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "Measurements": {
       "type": "object",
@@ -850,7 +850,7 @@
               "type": ["string", "null"]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -871,7 +871,7 @@
               "additionalProperties": true
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -889,7 +889,7 @@
     },
     "Package": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "name": {
           "type": "string"
@@ -1050,7 +1050,7 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
