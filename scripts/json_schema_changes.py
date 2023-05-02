@@ -95,7 +95,7 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
     elif breaking_changes:
         print(
             """\
-**This PR contains breaking changes.** Normally you should avoid that and make
+⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
 your consumer forwards-compatible (meaning that updated consumers can still
 accept old messages).
 
@@ -109,7 +109,7 @@ first.
     else:
         print(
             f"""\
-This PR should be safe to roll out to **consumers** first. Make sure to bump
+✅ This PR should be safe to roll out to **consumers** first. Make sure to bump
 the library in the following repos first:
 
 ```
