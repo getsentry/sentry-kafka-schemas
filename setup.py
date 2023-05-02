@@ -16,7 +16,7 @@ setup(
     description="Kafka topics and schemas for Sentry",
     zip_safe=False,
     install_requires=get_requirements(),
-    packages=["sentry_kafka_schemas", "sentry_kafka_schemas.schema_types"],
+    packages=find_packages(where="python/", exclude=["generate_python_types.py", "tests/"]),
     package_dir={"": "python/"},
     package_data={"sentry_kafka_schemas": ["py.typed"]},
     include_package_data=True,
