@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.2
+
+### Various fixes & improvements
+
+- fix(build): Add missing module to setup.py (#122) by @untitaker
+
 ## 0.1.1
 
 ### Various fixes & improvements
