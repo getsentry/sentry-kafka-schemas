@@ -2,13 +2,15 @@ import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Callable, Mapping, MutableMapping, MutableSequence
+from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     TopicData,
     _list_topics,
     _get_topic,
 )
+
+Change = Mapping[str, Any]
 
 
 def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
@@ -71,18 +73,12 @@ def main() -> None:
 
     if breaking_changes:
         print("**changes considered breaking:**")
-        for filename, changes in breaking_changes.items():
-            print(f"## {filename}")
-            for change in changes:
-                print_change(change)
+        print_files_and_changes(breaking_changes)
 
     if non_breaking_changes:
-        print("**benign changes:**")
-
-        for filename, changes in non_breaking_changes.items():
-            print(f"## {filename}")
-            for change in changes:
-                print_change(change)
+        print("<details><summary>benign changes:</summary>")
+        print_files_and_changes(non_breaking_changes)
+        print("</details>")
 
     if not non_breaking_changes and not breaking_changes:
         print(
@@ -125,7 +121,12 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
         )
 
 
-Change = Mapping[str, Any]
+def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
+    for filename, changes in file_to_changes.items():
+        print(f"### {filename}")
+        for change in changes:
+            print_change(change)
+
 
 
 _CHANGE_PRINTERS: MutableMapping[str, Callable[[Change], str]] = {}
