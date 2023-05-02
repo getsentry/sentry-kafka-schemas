@@ -1,5 +1,6 @@
 # Ingest topics
 /topics/ingest-metrics.yaml                                @getsentry/owners-ingest @getsentry/owners-snuba
+/topics/ingest-replay-recordings.yaml                      @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/replay
 
 # Topics consumed by Snuba
 /topics/events.yaml                                        @getsentry/owners-snuba

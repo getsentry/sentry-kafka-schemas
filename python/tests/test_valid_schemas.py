@@ -5,7 +5,7 @@ import pytest
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     _list_topics,
     _get_topic,
-    get_schema,
+    _get_schema,
 )
 
 
@@ -22,7 +22,7 @@ _VALID_TITLE_NAMES = re.compile(r"^[a-z][a-z0-9_]+$")
 
 @pytest.mark.parametrize("topic,version", get_all_schemas())
 def test_schemas_valid(topic: str, version: int) -> None:
-    schema = get_schema(topic, version=version)["schema"]
+    schema = _get_schema(topic, version=version)["schema"]
 
     assert schema["$schema"] == "http://json-schema.org/draft-07/schema#"
 

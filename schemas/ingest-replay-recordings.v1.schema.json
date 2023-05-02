@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "replay_recording",
+  "description": "A replay recording, or a chunk thereof",
+  "anyOf": [
+    {
+      "properties": {
+        "type": { "const": "replay_recording" },
+        "replay_id": { "type": "string" },
+        "key_id": { "type": ["null", "integer"] },
+        "org_id": { "type": "integer", "minimum": 0 },
+        "project_id": { "type": "integer", "minimum": 0 },
+        "received": { "type": "number", "minimum": 0 },
+        "retention_days": { "type": "integer" },
+        "replay_recording": { "$ref": "#/definitions/ChunkMeta" }
+      },
+      "required": [
+        "type",
+        "replay_id",
+        "org_id",
+        "project_id",
+        "received",
+        "retention_days",
+        "replay_recording"
+      ]
+    },
+    {
+      "properties": {
+        "type": { "const": "replay_recording_chunk" },
+        "payload": { "description": "msgpack bytes" },
+        "replay_id": { "type": "string" },
+        "project_id": { "type": "integer", "minimum": 0 },
+        "id": { "type": "string" },
+        "chunk_index": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["type", "replay_id", "project_id", "id", "chunk_index"]
+    },
+    {
+      "properties": {
+        "type": { "const": "replay_recording_not_chunked" },
+        "replay_id": { "type": "string" },
+        "key_id": { "type": ["null", "integer"] },
+        "org_id": { "type": "integer", "minimum": 0 },
+        "project_id": { "type": "integer", "minimum": 0 },
+        "received": { "type": "number", "minimum": 0 },
+        "retention_days": { "type": "integer" },
+        "payload": { "description": "msgpack bytes" }
+      },
+      "required": [
+        "type",
+        "replay_id",
+        "org_id",
+        "project_id",
+        "received",
+        "retention_days",
+        "payload"
+      ]
+    }
+  ],
+  "definitions": {
+    "ChunkMeta": {
+      "title": "chunk_meta",
+      "properties": {
+        "id": { "type": "string" },
+        "chunks": { "type": "integer" },
+        "size": { "type": "integer" }
+      },
+      "required": ["id", "chunks"]
+    }
+  }
+}
