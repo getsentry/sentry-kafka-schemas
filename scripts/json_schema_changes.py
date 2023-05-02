@@ -126,11 +126,6 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
         """
         )
 
-    # Manually add comment marker that is still expected by action-migrations.
-    print(
-        "<!-- This PR has a migration; here is the generated SQL for  `json-schema-changes` () -->"
-    )
-
 
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
     print()

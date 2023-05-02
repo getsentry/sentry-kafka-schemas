@@ -46,7 +46,7 @@ jobs:
             --features build-binary
       - name: Generate schema diff
         if: github.event_name == 'pull_request'
-        uses: getsentry/action-migrations@v1.2.0
+        uses: getsentry/action-migrations@v1.2.1
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           useRawBody: "true"
