@@ -21,3 +21,8 @@ jobs:
         with:
           name: ${{ github.sha }}
           path: dist/*
+
+      # validate that the built wheel is actually importable
+      - run: python -m venv /tmp/venv
+      - run: /tmp/venv/bin/pip install dist/*.whl
+      - run: /tmp/venv/bin/python -m sentry_kafka_schemas
