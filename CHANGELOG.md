@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.4
+
+### Various fixes & improvements
+
+- fix: Make Codec.validate public (#124) by @untitaker
+
 ## 0.1.3
 
 ### Various fixes & improvements
