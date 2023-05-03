@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.3
+
+### Various fixes & improvements
+
+- feat: JsonCodec and MsgpackCodec are usable without schemas (#123) by @lynnagara
+- fix(doc): Document how to use a schema (#121) by @untitaker
+- ref(ci): Give more direct advice in schema-changes lint (#118) by @untitaker
+
 ## 0.1.2
 
 ### Various fixes & improvements
