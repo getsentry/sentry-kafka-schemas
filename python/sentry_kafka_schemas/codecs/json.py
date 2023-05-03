@@ -17,12 +17,12 @@ class JsonCodec(Codec[T]):
     ) -> None:
         self.__validate = fastjsonschema.compile(json_schema)
 
-    def encode(self, data: T, validate: bool) -> bytes:
+    def encode(self, data: T, validate: bool = True) -> bytes:
         if validate:
             self.validate(data)
         return cast(bytes, rapidjson.dumps(data).encode("utf-8"))
 
-    def decode(self, raw_data: bytes, validate: bool) -> Any:
+    def decode(self, raw_data: bytes, validate: bool = True) -> Any:
         decoded = rapidjson.loads(raw_data)
         if validate:
             self.validate(decoded)

@@ -6,7 +6,7 @@ T = TypeVar("T")
 
 class Codec(ABC, Generic[T]):
     @abstractmethod
-    def encode(self, data: T, validate: bool) -> bytes:
+    def encode(self, data: T, validate: bool = True) -> bytes:
         """
         Decode bytes from Kafka message.
         If validate is true, validation is performed.
@@ -14,7 +14,7 @@ class Codec(ABC, Generic[T]):
         raise NotImplementedError
 
     @abstractmethod
-    def decode(self, raw_data: bytes, validate: bool) -> T:
+    def decode(self, raw_data: bytes, validate: bool = True) -> T:
         """
         Decode bytes from Kafka message.
         If validate is true, validation is performed.

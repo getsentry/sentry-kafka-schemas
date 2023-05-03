@@ -16,12 +16,12 @@ class MsgpackCodec(Codec[T]):
     def __init__(self, json_schema: object) -> None:
         self.__validate = fastjsonschema.compile(json_schema)
 
-    def encode(self, data: T, validate: bool) -> bytes:
+    def encode(self, data: T, validate: bool = True) -> bytes:
         if validate:
             self.validate(data)
         return cast(bytes, msgpack.packb(data))
 
-    def decode(self, raw_data: bytes, validate: bool) -> T:
+    def decode(self, raw_data: bytes, validate: bool = True) -> T:
         decoded = msgpack.unpackb(raw_data)
         if validate:
             self.validate(decoded)
