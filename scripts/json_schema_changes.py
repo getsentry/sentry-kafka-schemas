@@ -1,11 +1,31 @@
-# this script currently runs without any dependencies installed. that can be
-# changed easily, but right now we don't need anything like rapidjson over
-# json, so CI is slightly faster
 import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Callable, Mapping, MutableMapping
+from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence
+
+from sentry_kafka_schemas.sentry_kafka_schemas import (
+    TopicData,
+    _list_topics,
+    _get_topic,
+)
+
+Change = Mapping[str, Any]
+
+
+def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
+    rv = {}
+
+    for topic_name in _list_topics():
+        topic_data = _get_topic(topic_name)
+        for schema in topic_data["schemas"]:
+            filename = f"schemas/{schema['resource']}"
+            rv[filename] = topic_data
+
+    return rv
+
+
+_SCHEMA_FILE_TO_TOPIC: Mapping[str, TopicData] = _build_schema_to_topic_mapping()
 
 
 def main() -> None:
@@ -22,15 +42,17 @@ def main() -> None:
     )
     lines = process_output.decode("utf8").splitlines()
 
-    breaking_changes = []
-    non_breaking_changes = []
+    breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
+    non_breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
+    consumers: MutableSequence[str] = []
+    producers: MutableSequence[str] = []
 
     if not lines:
         return
 
     for filename in lines:
-        print(f"# {filename}")
-        print()
+        consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"])
+        producers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["producers"])
 
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
@@ -43,28 +65,20 @@ def main() -> None:
                 ["json-schema-diff", old_file.name, filename]
             ).splitlines():
 
-                change = json.loads(raw_change)
+                change: Change = json.loads(raw_change)
                 if change["is_breaking"]:
-                    breaking_changes.append(change)
+                    breaking_changes.setdefault(filename, []).append(change)
                 else:
-                    non_breaking_changes.append(change)
+                    non_breaking_changes.setdefault(filename, []).append(change)
 
     if breaking_changes:
-        print("!!! WARNING: changes considered breaking:")
-        print()
-        for change in breaking_changes:
-            print_change(change)
-
-        print()
-
-        if non_breaking_changes:
-            print("other changes:")
+        print("**changes considered breaking:**")
+        print_files_and_changes(breaking_changes)
 
     if non_breaking_changes:
-        print()
-
-    for change in non_breaking_changes:
-        print_change(change)
+        print("<details><summary><strong>benign changes</strong></summary>")
+        print_files_and_changes(non_breaking_changes)
+        print("</details>")
 
     if not non_breaking_changes and not breaking_changes:
         print(
@@ -78,11 +92,50 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
 
-    if breaking_changes and "--no-exit-code" not in sys.argv:
-        sys.exit(2)
+    elif breaking_changes:
+        print(
+            """
+⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
+your consumer forwards-compatible (meaning that updated consumers can still
+accept old messages).
+
+If you know what you are doing, this change could potentially be rolled out
+to **producers** first, but that's not a flow we support.
+"""
+        )
+        if "--no-exit-code" not in sys.argv:
+            sys.exit(2)
+    else:
+        newline = "\n"
+        print(
+            f"""
+✅ This PR should be safe to roll out to **consumers** first. Make sure to bump
+the library in the following repos first:
+
+```
+{newline.join(consumers)}
+```
+
+...then in the other repos:
+
+```
+{newline.join(producers)}
+```
+
+Take a look at the README for how to release a new version of sentry-kafka-schemas.
+        """
+        )
 
 
-Change = Mapping[str, Any]
+def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
+    print()
+    print("```")
+    for filename, changes in file_to_changes.items():
+        print(f"### {filename}")
+        for change in changes:
+            print_change(change)
+    print("```")
+    print()
 
 
 _CHANGE_PRINTERS: MutableMapping[str, Callable[[Change], str]] = {}
