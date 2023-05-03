@@ -30,6 +30,7 @@ class Codec(ABC, Generic[T]):
         Calling `decode(validate=False)` and then `validate()` should be
         equivalent to `decode(validate=True)`.
         """
+        raise NotImplementedError()
 
 
 class ValidationError(Exception):
