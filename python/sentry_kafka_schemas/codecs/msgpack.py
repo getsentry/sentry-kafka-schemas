@@ -1,4 +1,4 @@
-from typing import TypeVar, cast
+from typing import Optional, TypeVar, cast
 
 import fastjsonschema
 import msgpack
@@ -13,8 +13,11 @@ class MsgpackCodec(Codec[T]):
     This codec assumes the payload is json.
     """
 
-    def __init__(self, json_schema: object) -> None:
-        self.__validate = fastjsonschema.compile(json_schema)
+    def __init__(self, json_schema: Optional[object]) -> None:
+        if json_schema is not None:
+            self.__validate = fastjsonschema.compile(json_schema)
+        else:
+            self.__validate = lambda _: None
 
     def encode(self, data: T, validate: bool = True) -> bytes:
         if validate:

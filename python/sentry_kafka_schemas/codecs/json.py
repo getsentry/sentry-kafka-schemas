@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, TypeVar, cast
+from typing import Any, Optional, TypeVar, cast
 
 import fastjsonschema
 import rapidjson
@@ -13,9 +13,12 @@ T = TypeVar("T")
 class JsonCodec(Codec[T]):
     def __init__(
         self,
-        json_schema: object,
+        json_schema: Optional[object],
     ) -> None:
-        self.__validate = fastjsonschema.compile(json_schema)
+        if json_schema is not None:
+            self.__validate = fastjsonschema.compile(json_schema)
+        else:
+            self.__validate = lambda _: None
 
     def encode(self, data: T, validate: bool = True) -> bytes:
         if validate:
