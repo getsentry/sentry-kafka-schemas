@@ -25,11 +25,13 @@ def get_example_data() -> Example:
 @pytest.mark.parametrize("codec_cls", [JsonCodec, MsgpackCodec])
 def test_json_codec(codec_cls: Codec[Any]) -> None:
     schema_path = Path.joinpath(Path(__file__).parent, "test.schema.json")
-    with open(schema_path, mode="r") as f:
+    with open(schema_path, mode="rb") as f:
         schema = json.loads(f.read())
 
     codec: JsonCodec[Example] = JsonCodec(json_schema=schema)
 
     data = get_example_data()
 
-    assert codec.decode(codec.encode(data, validate=False), validate=True) == data
+    data_intermediate = codec.encode(data, validate=False)
+    assert isinstance(data_intermediate, bytes)
+    assert codec.decode(data_intermediate, validate=True) == data
