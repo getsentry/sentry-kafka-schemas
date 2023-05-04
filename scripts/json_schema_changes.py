@@ -113,13 +113,13 @@ to **producers** first, but that's not a flow we support.
 the library in the following repos first:
 
 ```
-{newline.join(consumers)}
+{newline.join(set(consumers))}
 ```
 
 ...then in the other repos:
 
 ```
-{newline.join(producers)}
+{newline.join(set(producers))}
 ```
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
