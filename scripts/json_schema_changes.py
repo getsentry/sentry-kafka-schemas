@@ -177,9 +177,9 @@ def print_change(change: Change) -> None:
         print()
         print("  ", end="")
 
-    print(f"```")
+    print("```")
     print(f"  {json.dumps(change)}")
-    print(f"  ```")
+    print("  ```")
     print()
 
 
