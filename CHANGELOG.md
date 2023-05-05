@@ -1,5 +1,16 @@
 # Changelog and versioning
 
+## 0.1.5
+
+### Various fixes & improvements
+
+- feat: Add functionality to schema diff script to dump out versions (#130) by @untitaker
+- fix: Improve formatting of schema diff further (#129) by @untitaker
+- fix: Align sdk property in events and transactions (#125) by @lynnagara
+- ref: Bump json-schema-diff to 0.1.5 (#128) by @untitaker
+- fix: Deduplicate list of consumers and producers (#127) by @lynnagara
+- test: Assert that codec decodes from bytes and encodes into bytes (#126) by @untitaker
+
 ## 0.1.4
 
 ### Various fixes & improvements
