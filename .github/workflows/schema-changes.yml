@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  JSON_SCHEMA_DIFF_VERSION: 0.1.4
+  JSON_SCHEMA_DIFF_VERSION: 0.1.5
 
 jobs:
   post_changes:
