@@ -145,6 +145,34 @@
         }
       ]
     },
+    "ClientSdkInfo": {
+      "title": "client_sdk_info",
+      "description": " The SDK Interface describes the Sentry SDK and its configuration used to capture and transmit an event.",
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["name", "version"],
+          "properties": {
+            "integrations": {
+              "description": " List of integrations that are enabled in the SDK. _Optional._\n\n The list should have all enabled integrations, including default integrations. Default\n integrations are included because different SDK releases may contain different default\n integrations.",
+              "type": ["array", "null"],
+              "items": {
+                "type": ["string", "null"]
+              }
+            },
+            "name": {
+              "description": " Unique SDK name. _Required._\n\n The name of the SDK. The format is `entity.ecosystem[.flavor]` where entity identifies the\n developer of the SDK, ecosystem refers to the programming language or platform where the\n SDK is to be used and the optional flavor is used to identify standalone SDKs that are part\n of a major ecosystem.\n\n Official Sentry SDKs use the entity `sentry`, as in `sentry.python` or\n `sentry.javascript.react-native`. Please use a different entity for your own SDKs.",
+              "type": ["string", "null"]
+            },
+            "version": {
+              "description": " The version of the SDK. _Required._\n\n It should have the [Semantic Versioning](https://semver.org/) format `MAJOR.MINOR.PATCH`,\n without any prefix (no `v` or anything else in front of the major version number).\n\n Examples: `0.1.0`, `1.0.0`, `4.3.12`",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
     "CloudResourceContext": {
       "description": " Cloud Resource Context.\n\n This context describes the cloud resource the event originated from.\n\n Example:\n\n ```json\n \"cloud_resource\": {\n     \"cloud.account.id\": \"499517922981\",\n     \"cloud.provider\": \"aws\",\n     \"cloud.platform\": \"aws_ec2\",\n     \"cloud.region\": \"us-east-1\",\n     \"cloud.vavailability_zone\": \"us-east-1e\",\n     \"host.id\": \"i-07d3301208fe0a55a\",\n     \"host.type\": \"t2.large\"\n }\n ```",
       "anyOf": [
@@ -238,7 +266,7 @@
           "$ref": "#/definitions/Extra"
         },
         "sdk": {
-          "$ref": "#/definitions/SDK"
+          "$ref": "#/definitions/ClientSdkInfo"
         },
         "project": {
           "type": "integer"
@@ -874,18 +902,6 @@
           "additionalProperties": true
         }
       ]
-    },
-    "SDK": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      },
-      "required": ["name", "version"]
     },
     "Package": {
       "type": "object",
