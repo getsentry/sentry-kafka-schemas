@@ -251,22 +251,28 @@ def check_for_outdated_repos(
 
     print("**versions in use:**")
     print()
-    print("*The following repositories use one of the schemas you are editing. "
-          "It is recommended to roll out schema changes in small PRs, meaning "
-          "that if those used versions lag behind the latest, it is probably "
-          "best to update those services before rolling out your change.*")
+    print(
+        "*The following repositories use one of the schemas you are editing. "
+        "It is recommended to roll out schema changes in small PRs, meaning "
+        "that if those used versions lag behind the latest, it is probably "
+        "best to update those services before rolling out your change.*"
+    )
 
     for repo, package_to_version in used_versions.items():
         for package, version in package_to_version.items():
-            print(f"- {repo}: `{package}=={format_version(version)}`"
-                  f"{upgrade_button(latest_version, version, repo)}")
+            print(
+                f"- {repo}: `{package}=={format_version(version)}`"
+                f"{upgrade_button(latest_version, version, repo)}"
+            )
 
     print()
     print(f"**latest version:** {format_version(latest_version)}")
     print()
 
 
-def upgrade_button(latest_version: Tuple[int, int, int], version: Tuple[int, int, int], repo: Repo) -> str:
+def upgrade_button(
+    latest_version: Tuple[int, int, int], version: Tuple[int, int, int], repo: Repo
+) -> str:
     if latest_version == version:
         return ""
 
