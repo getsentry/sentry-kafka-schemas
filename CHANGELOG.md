@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.6
+
+### Various fixes & improvements
+
+- fix: Exception values is not required (#131) by @lynnagara
+
 ## 0.1.5
 
 ### Various fixes & improvements
