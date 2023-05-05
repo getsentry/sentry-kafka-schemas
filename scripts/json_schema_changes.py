@@ -1,4 +1,12 @@
-from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence, Tuple
+from typing import (
+    Any,
+    Callable,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Sequence,
+    Tuple,
+)
 
 import sys
 import subprocess
@@ -33,6 +41,7 @@ _SCHEMA_FILE_TO_TOPIC: Mapping[str, TopicData] = _build_schema_to_topic_mapping(
 
 FileName = str
 Repo = str
+
 
 def main() -> None:
     process_output = subprocess.check_output(
@@ -184,6 +193,7 @@ def print_change(change: Change) -> None:
     print(json.dumps(change))
     print()
 
+
 def parse_version(string: str) -> Tuple[int, int, int]:
     constraints = []
     for constraint in string.split(","):
@@ -195,35 +205,43 @@ def parse_version(string: str) -> Tuple[int, int, int]:
 
         constraints.append((version, operator))
 
-    constraints.sort(key=lambda version_and_operator: version_and_operator[1] in ('>', '>='))
+    constraints.sort(
+        key=lambda version_and_operator: version_and_operator[1] in (">", ">=")
+    )
     version, _ = constraints[0]
     x, y, z = map(int, version.split("."))
     return x, y, z
 
+
 def format_version(version: Tuple[int, int, int]) -> str:
     return ".".join(map(str, version))
 
+
 def check_for_outdated_repos(
-    consumers: Mapping[Repo, Sequence[FileName]], producers: Mapping[Repo, Sequence[FileName]]
+    consumers: Mapping[Repo, Sequence[FileName]],
+    producers: Mapping[Repo, Sequence[FileName]],
 ) -> None:
-    latest_version = parse_version(pkg_resources.get_distribution('sentry-kafka-schemas').version)
+    latest_version = parse_version(
+        pkg_resources.get_distribution("sentry-kafka-schemas").version
+    )
 
     sboms = {}
     for repo in {*consumers, *producers}:
-        with urllib.request.urlopen(f"https://api.github.com/repos/{repo}/dependency-graph/sbom") as f:
+        with urllib.request.urlopen(
+            f"https://api.github.com/repos/{repo}/dependency-graph/sbom"
+        ) as f:
             sboms[repo] = json.load(f)
-
 
     used_versions = {}
     for repo, sbom in sboms.items():
         repo_used_versions = used_versions[repo] = {}
 
-        for package in sbom['sbom']['packages']:
-            name = package['name']
+        for package in sbom["sbom"]["packages"]:
+            name = package["name"]
             if name not in ("pip:sentry-kafka-schemas", "rust:sentry-kafka-schemas"):
                 continue
 
-            version = parse_version(package['versionInfo'])
+            version = parse_version(package["versionInfo"])
 
             # for some reason, github's SBOM (for sentry, relay, snuba)
             # contains all versions of the package ever used of the past. only
