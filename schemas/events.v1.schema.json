@@ -720,41 +720,8 @@
               "description": " Unique SDK name. _Required._\n\n The name of the SDK. The format is `entity.ecosystem[.flavor]` where entity identifies the\n developer of the SDK, ecosystem refers to the programming language or platform where the\n SDK is to be used and the optional flavor is used to identify standalone SDKs that are part\n of a major ecosystem.\n\n Official Sentry SDKs use the entity `sentry`, as in `sentry.python` or\n `sentry.javascript.react-native`. Please use a different entity for your own SDKs.",
               "type": ["string", "null"]
             },
-            "packages": {
-              "description": " List of installed and loaded SDK packages. _Optional._\n\n A list of packages that were installed as part of this SDK or the activated integrations.\n Each package consists of a name in the format `source:identifier` and `version`. If the\n source is a Git repository, the `source` should be `git`, the identifier should be a\n checkout link and the version should be a Git reference (branch, tag or SHA).",
-              "type": ["array", "null"],
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/ClientSdkPackage"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            },
             "version": {
               "description": " The version of the SDK. _Required._\n\n It should have the [Semantic Versioning](https://semver.org/) format `MAJOR.MINOR.PATCH`,\n without any prefix (no `v` or anything else in front of the major version number).\n\n Examples: `0.1.0`, `1.0.0`, `4.3.12`",
-              "type": ["string", "null"]
-            }
-          },
-          "additionalProperties": true
-        }
-      ]
-    },
-    "ClientSdkPackage": {
-      "description": " An installed and loaded package as part of the Sentry SDK.",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "description": " Name of the package.",
-              "type": ["string", "null"]
-            },
-            "version": {
-              "description": " Version of the package.",
               "type": ["string", "null"]
             }
           },
