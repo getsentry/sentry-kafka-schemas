@@ -42,13 +42,13 @@ def main() -> None:
     )
     lines = process_output.decode("utf8").splitlines()
 
+    if not lines:
+        return
+
     breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
     non_breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
     consumers: MutableSequence[str] = []
     producers: MutableSequence[str] = []
-
-    if not lines:
-        return
 
     for filename in lines:
         consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"])
@@ -72,8 +72,11 @@ def main() -> None:
                     non_breaking_changes.setdefault(filename, []).append(change)
 
     if breaking_changes:
-        print("**changes considered breaking:**")
+        print(
+            "<details><summary><strong>changes considered breaking</strong></summary>"
+        )
         print_files_and_changes(breaking_changes)
+        print("</details>")
 
     if non_breaking_changes:
         print("<details><summary><strong>benign changes</strong></summary>")
@@ -129,12 +132,10 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
 
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
     print()
-    print("```")
     for filename, changes in file_to_changes.items():
-        print(f"### {filename}")
+        print(f"**{filename}**")
         for change in changes:
             print_change(change)
-    print("```")
     print()
 
 
@@ -149,18 +150,16 @@ def _add_change_printer(f: ChangePrinter) -> ChangePrinter:
 
 @_add_change_printer
 def TypeRemove(change: Change) -> str:
-    return f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed"
+    return f"Restricted the type of `{change['path']}`, as `{change['change']['TypeRemove']['removed']}` is no longer allowed"
 
 
 @_add_change_printer
 def PropertyRemove(change: Change) -> str:
-    first_sentence = f"Removed a property {change['change']['PropertyRemove']['removed']} from {change['path']}"
+    first_sentence = f"Removed a property `{change['change']['PropertyRemove']['removed']}` from `{change['path']}`"
     if change["change"]["PropertyRemove"]["lhs_additional_properties"]:
-        return (
-            f"{first_sentence}, but it is still accepted via additionalProperties=true"
-        )
+        return f"{first_sentence}, but it is still accepted via `additionalProperties=true`"
     else:
-        return f"{first_sentence}, so it is no longer accepted. Maybe use additionalProperties?"
+        return f"{first_sentence}, so it is no longer accepted. Maybe use `additionalProperties`?"
 
 
 def print_change(change: Change) -> None:
@@ -168,10 +167,15 @@ def print_change(change: Change) -> None:
     change.pop("is_breaking")
 
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
+    print("- ", end="")
     if printer:
-        print(f"## {printer(change)}")
+        print(f"{printer(change)}")
+        print()
+        print("  ", end="")
 
-    print(json.dumps(change))
+    print("```")
+    print(f"  {json.dumps(change)}")
+    print("  ```")
     print()
 
 
