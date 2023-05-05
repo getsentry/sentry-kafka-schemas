@@ -156,9 +156,7 @@ def TypeRemove(change: Change) -> str:
 def PropertyRemove(change: Change) -> str:
     first_sentence = f"Removed a property `{change['change']['PropertyRemove']['removed']}` from `{change['path']}`"
     if change["change"]["PropertyRemove"]["lhs_additional_properties"]:
-        return (
-            f"{first_sentence}, but it is still accepted via `additionalProperties=true`"
-        )
+        return f"{first_sentence}, but it is still accepted via `additionalProperties=true`"
     else:
         return f"{first_sentence}, so it is no longer accepted. Maybe use `additionalProperties`?"
 
