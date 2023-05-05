@@ -71,10 +71,9 @@ def main() -> None:
                 else:
                     non_breaking_changes.setdefault(filename, []).append(change)
 
-    # bogus line to get rid of indentation added by actions-migrations
-    print("<!-- -->")
 
     if breaking_changes:
+        print("&nbsp;")
         print("<details><summary><h4>changes considered breaking</h4></summary>")
         print_files_and_changes(breaking_changes)
         print("</details>")
