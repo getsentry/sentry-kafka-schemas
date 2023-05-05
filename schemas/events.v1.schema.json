@@ -1088,7 +1088,6 @@
       "title": "sentry_exception_chain",
       "description": " One or multiple chained (nested) exceptions.",
       "type": "object",
-      "required": ["values"],
       "properties": {
         "values": {
           "type": ["null", "array"],
