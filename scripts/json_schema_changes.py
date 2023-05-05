@@ -258,11 +258,19 @@ def check_for_outdated_repos(
 
     for repo, package_to_version in used_versions.items():
         for package, version in package_to_version.items():
-            print(f"- {repo}: `{package}=={format_version(version)}`")
+            print(f"- {repo}: `{package}=={format_version(version)}`"
+                  f"{upgrade_button(latest_version, version, repo)}")
 
     print()
     print(f"**latest version:** {format_version(latest_version)}")
     print()
+
+
+def upgrade_button(latest_version: Tuple[int, int, int], version: Tuple[int, int, int], repo: Repo) -> str:
+    if latest_version == version:
+        return ""
+
+    return f" ([upgrade](https://github.com/{repo}/actions/workflows/bump-version.yml))"
 
 
 if __name__ == "__main__":
