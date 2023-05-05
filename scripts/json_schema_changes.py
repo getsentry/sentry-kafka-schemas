@@ -74,7 +74,7 @@ def main() -> None:
 
     if breaking_changes:
         print("&nbsp;")
-        print("<details><summary><h4>changes considered breaking</h4></summary>")
+        print("<details><summary><strong>changes considered breaking</strong></summary>")
         print_files_and_changes(breaking_changes)
         print("</details>")
 
