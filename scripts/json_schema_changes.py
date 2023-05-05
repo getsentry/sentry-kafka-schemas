@@ -41,6 +41,7 @@ _SCHEMA_FILE_TO_TOPIC: Mapping[str, TopicData] = _build_schema_to_topic_mapping(
 
 FileName = str
 Repo = str
+Version = Tuple[int, int, int]
 
 
 def main() -> None:
@@ -194,7 +195,7 @@ def print_change(change: Change) -> None:
     print()
 
 
-def parse_version(string: str) -> Tuple[int, int, int]:
+def parse_version(string: str) -> Version:
     constraints = []
     for constraint in string.split(","):
         if " " in constraint:
@@ -213,7 +214,7 @@ def parse_version(string: str) -> Tuple[int, int, int]:
     return x, y, z
 
 
-def format_version(version: Tuple[int, int, int]) -> str:
+def format_version(version: Version) -> str:
     return ".".join(map(str, version))
 
 
@@ -232,7 +233,7 @@ def check_for_outdated_repos(
         ) as f:
             sboms[repo] = json.load(f)
 
-    used_versions = {}
+    used_versions: MutableMapping[Repo, MutableMapping[str, Version]] = {}
     for repo, sbom in sboms.items():
         repo_used_versions = used_versions[repo] = {}
 
@@ -271,7 +272,7 @@ def check_for_outdated_repos(
 
 
 def upgrade_button(
-    latest_version: Tuple[int, int, int], version: Tuple[int, int, int], repo: Repo
+    latest_version: Version, version: Version, repo: Repo
 ) -> str:
     if latest_version == version:
         return ""
