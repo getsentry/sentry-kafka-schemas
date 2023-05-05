@@ -166,11 +166,11 @@ def print_change(change: Change) -> None:
     change.pop("is_breaking")
 
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
-    print("- ", end='')
+    print("- ", end="")
     if printer:
         print(f"**{printer(change)}**")
         print()
-        print("  ", end='')
+        print("  ", end="")
 
     print(f"```")
     print(f"  {json.dumps(change)}")
