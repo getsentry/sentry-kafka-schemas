@@ -71,11 +71,10 @@ def main() -> None:
                 else:
                     non_breaking_changes.setdefault(filename, []).append(change)
 
-    print()
-
     if breaking_changes:
-        print("#### changes considered breaking:")
+        print("<details><summary><h4>changes considered breaking</h4></summary>")
         print_files_and_changes(breaking_changes)
+        print("</details>")
 
     if non_breaking_changes:
         print("<details><summary><strong>benign changes</strong></summary>")
