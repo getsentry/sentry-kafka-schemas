@@ -42,13 +42,13 @@ def main() -> None:
     )
     lines = process_output.decode("utf8").splitlines()
 
+    if not lines:
+        return
+
     breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
     non_breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
     consumers: MutableSequence[str] = []
     producers: MutableSequence[str] = []
-
-    if not lines:
-        return
 
     for filename in lines:
         consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"])
@@ -129,12 +129,10 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
 
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
     print()
-    print("```")
     for filename, changes in file_to_changes.items():
         print(f"### {filename}")
         for change in changes:
             print_change(change)
-    print("```")
     print()
 
 
@@ -168,10 +166,15 @@ def print_change(change: Change) -> None:
     change.pop("is_breaking")
 
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
+    print("- ", end='')
     if printer:
-        print(f"## {printer(change)}")
+        print(f"**{printer(change)}**")
+        print()
+        print("  ", end='')
 
-    print(json.dumps(change))
+    print(f"```")
+    print(f"  {json.dumps(change)}")
+    print(f"  ```")
     print()
 
 
