@@ -1,8 +1,20 @@
+from typing import (
+    Any,
+    Callable,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Sequence,
+    Tuple,
+)
+
 import sys
 import subprocess
 import tempfile
 import json
-from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence
+import pkg_resources
+import urllib.request
+
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     TopicData,
@@ -27,6 +39,10 @@ def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
 
 _SCHEMA_FILE_TO_TOPIC: Mapping[str, TopicData] = _build_schema_to_topic_mapping()
 
+FileName = str
+Repo = str
+Version = Tuple[int, int, int]
+
 
 def main() -> None:
     process_output = subprocess.check_output(
@@ -45,14 +61,16 @@ def main() -> None:
     if not lines:
         return
 
-    breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
-    non_breaking_changes: MutableMapping[str, MutableSequence[Change]] = {}
-    consumers: MutableSequence[str] = []
-    producers: MutableSequence[str] = []
+    breaking_changes: MutableMapping[FileName, MutableSequence[Change]] = {}
+    non_breaking_changes: MutableMapping[FileName, MutableSequence[Change]] = {}
+    consumers: MutableMapping[Repo, MutableSequence[FileName]] = {}
+    producers: MutableMapping[Repo, MutableSequence[FileName]] = {}
 
     for filename in lines:
-        consumers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"])
-        producers.extend(_SCHEMA_FILE_TO_TOPIC[filename]["services"]["producers"])
+        for consumer in _SCHEMA_FILE_TO_TOPIC[filename]["services"]["consumers"]:
+            consumers.setdefault(consumer, []).extend(filename)
+        for producer in _SCHEMA_FILE_TO_TOPIC[filename]["services"]["producers"]:
+            producers.setdefault(producer, []).extend(filename)
 
         with tempfile.NamedTemporaryFile() as old_file:
             old_file_contents = subprocess.check_output(
@@ -70,6 +88,8 @@ def main() -> None:
                     breaking_changes.setdefault(filename, []).append(change)
                 else:
                     non_breaking_changes.setdefault(filename, []).append(change)
+
+    check_for_outdated_repos(consumers, producers)
 
     if breaking_changes:
         print(
@@ -116,13 +136,13 @@ to **producers** first, but that's not a flow we support.
 the library in the following repos first:
 
 ```
-{newline.join(set(consumers))}
+{newline.join(consumers)}
 ```
 
 ...then in the other repos:
 
 ```
-{newline.join(set(producers))}
+{newline.join(producers)}
 ```
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
@@ -177,6 +197,89 @@ def print_change(change: Change) -> None:
     print(f"  {json.dumps(change)}")
     print("  ```")
     print()
+
+
+def parse_version(string: str) -> Version:
+    constraints = []
+    for constraint in string.split(","):
+        if " " in constraint:
+            operator, version = constraint.split(" ", 1)
+        else:
+            version = constraint
+            operator = ""
+
+        constraints.append((version, operator))
+
+    constraints.sort(
+        key=lambda version_and_operator: version_and_operator[1] in (">", ">=")
+    )
+    version, _ = constraints[0]
+    x, y, z = map(int, version.split("."))
+    return x, y, z
+
+
+def format_version(version: Version) -> str:
+    return ".".join(map(str, version))
+
+
+def check_for_outdated_repos(
+    consumers: Mapping[Repo, Sequence[FileName]],
+    producers: Mapping[Repo, Sequence[FileName]],
+) -> None:
+    latest_version = parse_version(
+        pkg_resources.get_distribution("sentry-kafka-schemas").version
+    )
+
+    sboms = {}
+    for repo in {*consumers, *producers}:
+        with urllib.request.urlopen(
+            f"https://api.github.com/repos/{repo}/dependency-graph/sbom"
+        ) as f:
+            sboms[repo] = json.load(f)
+
+    used_versions: MutableMapping[Repo, MutableMapping[str, Version]] = {}
+    for repo, sbom in sboms.items():
+        repo_used_versions = used_versions[repo] = {}
+
+        for package in sbom["sbom"]["packages"]:
+            name = package["name"]
+            if name not in ("pip:sentry-kafka-schemas", "rust:sentry-kafka-schemas"):
+                continue
+
+            version = parse_version(package["versionInfo"])
+
+            # for some reason, github's SBOM (for sentry, relay, snuba)
+            # contains all versions of the package ever used of the past. only
+            # consider the latest one.
+            if name not in repo_used_versions or repo_used_versions[name] < version:
+                repo_used_versions[name] = version
+
+    print("**versions in use:**")
+    print()
+    print(
+        "*The following repositories use one of the schemas you are editing. "
+        "It is recommended to roll out schema changes in small PRs, meaning "
+        "that if those used versions lag behind the latest, it is probably "
+        "best to update those services before rolling out your change.*"
+    )
+
+    for repo, package_to_version in used_versions.items():
+        for package, version in package_to_version.items():
+            print(
+                f"- {repo}: `{package}=={format_version(version)}`"
+                f"{upgrade_button(latest_version, version, repo)}"
+            )
+
+    print()
+    print(f"**latest version:** {format_version(latest_version)}")
+    print()
+
+
+def upgrade_button(latest_version: Version, version: Version, repo: Repo) -> str:
+    if latest_version == version:
+        return ""
+
+    return f" ([upgrade](https://github.com/{repo}/actions/workflows/bump-version.yml))"
 
 
 if __name__ == "__main__":
