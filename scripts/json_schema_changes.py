@@ -71,8 +71,10 @@ def main() -> None:
                 else:
                     non_breaking_changes.setdefault(filename, []).append(change)
 
+    print()
+
     if breaking_changes:
-        print("**changes considered breaking:**")
+        print("#### changes considered breaking:")
         print_files_and_changes(breaking_changes)
 
     if non_breaking_changes:
@@ -130,7 +132,7 @@ Take a look at the README for how to release a new version of sentry-kafka-schem
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
     print()
     for filename, changes in file_to_changes.items():
-        print(f"### {filename}")
+        print(f"**{filename}**")
         for change in changes:
             print_change(change)
     print()
@@ -147,18 +149,18 @@ def _add_change_printer(f: ChangePrinter) -> ChangePrinter:
 
 @_add_change_printer
 def TypeRemove(change: Change) -> str:
-    return f"Restricted the type of {change['path']}, as {change['change']['TypeRemove']['removed']} is no longer allowed"
+    return f"Restricted the type of `{change['path']}`, as `{change['change']['TypeRemove']['removed']}` is no longer allowed"
 
 
 @_add_change_printer
 def PropertyRemove(change: Change) -> str:
-    first_sentence = f"Removed a property {change['change']['PropertyRemove']['removed']} from {change['path']}"
+    first_sentence = f"Removed a property `{change['change']['PropertyRemove']['removed']}` from `{change['path']}`"
     if change["change"]["PropertyRemove"]["lhs_additional_properties"]:
         return (
-            f"{first_sentence}, but it is still accepted via additionalProperties=true"
+            f"{first_sentence}, but it is still accepted via `additionalProperties=true`"
         )
     else:
-        return f"{first_sentence}, so it is no longer accepted. Maybe use additionalProperties?"
+        return f"{first_sentence}, so it is no longer accepted. Maybe use `additionalProperties`?"
 
 
 def print_change(change: Change) -> None:
@@ -168,7 +170,7 @@ def print_change(change: Change) -> None:
     printer = _CHANGE_PRINTERS.get(next(iter(change["change"])))
     print("- ", end="")
     if printer:
-        print(f"**{printer(change)}**")
+        print(f"{printer(change)}")
         print()
         print("  ", end="")
 
