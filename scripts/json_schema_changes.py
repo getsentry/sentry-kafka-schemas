@@ -271,9 +271,7 @@ def check_for_outdated_repos(
     print()
 
 
-def upgrade_button(
-    latest_version: Version, version: Version, repo: Repo
-) -> str:
+def upgrade_button(latest_version: Version, version: Version, repo: Repo) -> str:
     if latest_version == version:
         return ""
 
