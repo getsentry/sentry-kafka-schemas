@@ -460,7 +460,7 @@
         "extra": {
           "description": " Arbitrary extra information set by the user.\n\n ```json\n {\n     \"extra\": {\n         \"my_key\": 1,\n         \"some_other_value\": \"foo bar\"\n     }\n }```",
           "type": ["object", "null"],
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "fingerprint": {
           "description": " Manual fingerprint override.\n\n A list of strings used to dictate how this event is supposed to be grouped with other\n events into issues. For more information about overriding grouping see [Customize Grouping\n with Fingerprints](https://docs.sentry.io/data-management/event-grouping/).\n\n ```json\n {\n     \"fingerprint\": [\"myrpc\", \"POST\", \"/foo.bar\"]\n }",
