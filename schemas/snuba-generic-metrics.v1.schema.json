@@ -24,7 +24,8 @@
           "type": "string"
         },
         "timestamp": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "sentry_received_timestamp": {
           "type": "number"

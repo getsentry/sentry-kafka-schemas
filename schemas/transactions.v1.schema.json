@@ -76,7 +76,7 @@
           "type": "null"
         }
       },
-      "required": []
+      "required": ["data"]
     },
     "AppContext": {
       "description": " Application information.\n\n App context describes the application. As opposed to the runtime, this is the actual\n application that was running and carries metadata about the current session.",
