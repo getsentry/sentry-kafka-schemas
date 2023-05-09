@@ -120,10 +120,13 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
             """
 ⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
 your consumer forwards-compatible (meaning that updated consumers can still
-accept old messages).
+accept old messages). There are a few exceptions:
 
-If you know what you are doing, this change could potentially be rolled out
-to **producers** first, but that's not a flow we support.
+* If consumers already require these invariants in practice, and you're
+  just adjusting the JSON schema to reality, ignore this warning.
+
+* If you know what you are doing, this change could potentially be rolled out
+  to **producers** first, but that's not a flow we support.
 """
         )
         if "--no-exit-code" not in sys.argv:
