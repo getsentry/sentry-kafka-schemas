@@ -119,7 +119,7 @@ https://github.com/getsentry/json-schema-diff/ and figure it out?"""
         print(
             """
 ⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
-your consumer forwards-compatible (meaning that updated consumers can still
+your consumer backwards-compatible (meaning that updated consumers can still
 accept old messages). There are a few exceptions:
 
 * If consumers already require these invariants in practice, and you're
