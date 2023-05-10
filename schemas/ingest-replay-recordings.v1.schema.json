@@ -4,6 +4,7 @@
   "description": "A replay recording, or a chunk thereof",
   "anyOf": [
     {
+      "type": "object",
       "properties": {
         "type": { "const": "replay_recording" },
         "replay_id": { "type": "string" },
@@ -25,6 +26,7 @@
       ]
     },
     {
+      "type": "object",
       "properties": {
         "type": { "const": "replay_recording_chunk" },
         "payload": { "description": "msgpack bytes" },
@@ -36,6 +38,7 @@
       "required": ["type", "replay_id", "project_id", "id", "chunk_index"]
     },
     {
+      "type": "object",
       "properties": {
         "type": { "const": "replay_recording_not_chunked" },
         "replay_id": { "type": "string" },
@@ -60,6 +63,7 @@
   "definitions": {
     "ChunkMeta": {
       "title": "chunk_meta",
+      "type": "object",
       "properties": {
         "id": { "type": "string" },
         "chunks": { "type": "integer" },
