@@ -41,6 +41,18 @@ def test_schemas_valid(topic: str, version: int) -> None:
 
             used_titles.add(title)
 
+        if (
+            "properties" in obj
+            or "additionalProperites" in obj
+            or "patternProperties" in obj
+            or "required" in obj
+        ) and obj.get("type") != "object":
+            # Impose restriction so that types will be good:
+            # https://github.com/sbrunner/jsonschema-gentypes/issues/469
+            raise AssertionError(
+                "type=object needs to be specified explicitly on all schemas, if properties are defined"
+            )
+
         for value in obj.get("properties", {}).values():
             _validate_title(value)
 

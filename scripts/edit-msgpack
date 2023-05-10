@@ -1,0 +1,5 @@
+#!/bin/sh
+set -xe
+./scripts/msgpack2py < "$1" > /tmp/edit.msgpack
+$EDITOR /tmp/edit.msgpack
+./scripts/py2msgpack < /tmp/edit.msgpack > "$1"

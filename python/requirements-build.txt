@@ -1,1 +1,2 @@
+# Cannot upgrade to 2.2.0 due to issues described in https://github.com/sbrunner/jsonschema-gentypes/issues/469
 jsonschema-gentypes==1.5.0
