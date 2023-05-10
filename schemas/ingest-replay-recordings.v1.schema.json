@@ -5,6 +5,7 @@
   "anyOf": [
     {
       "type": "object",
+      "title": "replay_recording",
       "properties": {
         "type": { "const": "replay_recording" },
         "replay_id": { "type": "string" },
@@ -27,6 +28,7 @@
     },
     {
       "type": "object",
+      "title": "replay_recording_chunk",
       "properties": {
         "type": { "const": "replay_recording_chunk" },
         "payload": { "description": "msgpack bytes" },
@@ -39,6 +41,7 @@
     },
     {
       "type": "object",
+      "title": "replay_recording_not_chunked",
       "properties": {
         "type": { "const": "replay_recording_not_chunked" },
         "replay_id": { "type": "string" },
