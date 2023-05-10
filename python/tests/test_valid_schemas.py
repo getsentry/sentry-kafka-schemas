@@ -50,7 +50,7 @@ def test_schemas_valid(topic: str, version: int) -> None:
             # Impose restriction so that types will be good:
             # https://github.com/sbrunner/jsonschema-gentypes/issues/469
             raise AssertionError(
-                f"type=object needs to be specified explicitly on all schemas, if properties are defined"
+                "type=object needs to be specified explicitly on all schemas, if properties are defined"
             )
 
         for value in obj.get("properties", {}).values():
