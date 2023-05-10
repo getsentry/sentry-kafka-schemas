@@ -2,24 +2,24 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "replay_recording",
   "description": "A replay recording, or a chunk thereof",
-      "type": "object",
-      "properties": {
-        "type": { "const": "replay_recording_not_chunked" },
-        "replay_id": { "type": "string" },
-        "key_id": { "type": ["null", "integer"] },
-        "org_id": { "type": "integer", "minimum": 0 },
-        "project_id": { "type": "integer", "minimum": 0 },
-        "received": { "type": "integer", "minimum": 0 },
-        "retention_days": { "type": "integer" },
-        "payload": { "description": "msgpack bytes" }
-      },
-      "required": [
-        "type",
-        "replay_id",
-        "org_id",
-        "project_id",
-        "received",
-        "retention_days",
-        "payload"
-      ]
+  "type": "object",
+  "properties": {
+    "type": { "const": "replay_recording_not_chunked" },
+    "replay_id": { "type": "string" },
+    "key_id": { "type": ["null", "integer"] },
+    "org_id": { "type": "integer", "minimum": 0 },
+    "project_id": { "type": "integer", "minimum": 0 },
+    "received": { "type": "integer", "minimum": 0 },
+    "retention_days": { "type": "integer" },
+    "payload": { "description": "msgpack bytes" }
+  },
+  "required": [
+    "type",
+    "replay_id",
+    "org_id",
+    "project_id",
+    "received",
+    "retention_days",
+    "payload"
+  ]
 }
