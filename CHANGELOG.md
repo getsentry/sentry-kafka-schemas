@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.1.7
+
+### Various fixes & improvements
+
+- fix: Some fixes to make ingest-replay-recordings usable (#135) by @untitaker
+- fix: Fix typo in json_schema_changes (#134) by @untitaker
+- fix: Adjust breaking changes warning (#133) by @untitaker
+- fix: Random snuba crashes found by hypothesis-jsonschema (#132) by @untitaker
+
 ## 0.1.6
 
 ### Various fixes & improvements
