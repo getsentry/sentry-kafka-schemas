@@ -20,8 +20,6 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
             schema_data = sentry_kafka_schemas.sentry_kafka_schemas._get_schema(
                 topic_name, version
             )
-            if schema_data["type"] != "json":
-                continue
 
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
