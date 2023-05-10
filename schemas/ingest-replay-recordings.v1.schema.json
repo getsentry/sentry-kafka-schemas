@@ -12,7 +12,7 @@
         "key_id": { "type": ["null", "integer"] },
         "org_id": { "type": "integer", "minimum": 0 },
         "project_id": { "type": "integer", "minimum": 0 },
-        "received": { "type": "number", "minimum": 0 },
+        "received": { "type": "integer", "minimum": 0 },
         "retention_days": { "type": "integer" },
         "replay_recording": { "$ref": "#/definitions/ChunkMeta" }
       },
@@ -48,7 +48,7 @@
         "key_id": { "type": ["null", "integer"] },
         "org_id": { "type": "integer", "minimum": 0 },
         "project_id": { "type": "integer", "minimum": 0 },
-        "received": { "type": "number", "minimum": 0 },
+        "received": { "type": "integer", "minimum": 0 },
         "retention_days": { "type": "integer" },
         "payload": { "description": "msgpack bytes" }
       },
