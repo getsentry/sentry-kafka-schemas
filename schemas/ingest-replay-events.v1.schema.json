@@ -1,0 +1,214 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "anyOf": [
+      { "$ref": "#/definitions/ReplayEventMessage" }
+    ],
+    "definitions": {
+      "ReplayPayload": {
+        "type": "object",
+        "title": "replay_payload",
+        "additionalProperties": false,
+        "properties": {
+          "contexts": {"$ref": "#/definitions/Contexts"},
+          "dist": {"type": "string"},
+          "environment": {"type": "string"},
+          "error_ids": {"type": "array", "items": {"type": "string"}},
+          "event_hash": {"type": "string"},
+          "platform": {"type": "string"},
+          "release": {"type": "string"},
+          "replay_id": {"type": "string"},
+          "replay_start_timestamp": {"type": "integer"},
+          "replay_type": {"type": "string"},
+          "sdk": {"$ref": "#/definitions/ClientSdkInfo"},
+          "segment_id": {"type": "integer"},
+          "timestamp": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 18446744073709551615
+          },
+          "trace_ids": {"type": "array", "items": {"type": "string"}},
+          "type": {"type": "string"},
+          "urls": {"type": "array", "items": {"type": "string"}},
+          "user": {"$ref": "#/definitions/User"},
+          "project_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 18446744073709551615
+          },
+          "tags": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "retention_days": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          }
+        },
+        "required": [
+          "project_id",
+          "retention_days",
+          "timestamp"
+        ]
+      },
+      "BrowserContext": {
+        "description": " Web browser information.",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": " Display name of the browser application.",
+                "type": ["string", "null"]
+              },
+              "version": {
+                "description": " Version string of the browser.",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ClientSdkInfo": {
+        "title": "client_sdk_info",
+        "description": " The SDK Interface describes the Sentry SDK and its configuration used to capture and transmit an event.",
+        "anyOf": [
+          {
+            "type": "object",
+            "required": ["name", "version"],
+            "properties": {
+              "name": {
+                "description": " Unique SDK name. _Required._\n\n The name of the SDK. The format is `entity.ecosystem[.flavor]` where entity identifies the\n developer of the SDK, ecosystem refers to the programming language or platform where the\n SDK is to be used and the optional flavor is used to identify standalone SDKs that are part\n of a major ecosystem.\n\n Official Sentry SDKs use the entity `sentry`, as in `sentry.python` or\n `sentry.javascript.react-native`. Please use a different entity for your own SDKs.",
+                "type": ["string", "null"]
+              },
+              "version": {
+                "description": " The version of the SDK. _Required._\n\n It should have the [Semantic Versioning](https://semver.org/) format `MAJOR.MINOR.PATCH`,\n without any prefix (no `v` or anything else in front of the major version number).\n\n Examples: `0.1.0`, `1.0.0`, `4.3.12`",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      },
+      "Contexts": {
+        "description": " Contexts describing the environment (e.g. device, os or browser).",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "browser": {"anyOf": [{"$ref": "#/definitions/BrowserContext"}, {"type": "null"}]},
+              "device": {"anyOf": [{"$ref": "#/definitions/DeviceContext"}, {"type": "null"}]},
+              "os": {"anyOf": [{"$ref": "#/definitions/OsContext"}, {"type": "null"}]},
+              "replay": {"anyOf": [{"$ref": "#/definitions/ReplayContext"}, {"type": "null"}]},
+              "trace": {"anyOf": [{"$ref": "#/definitions/TraceContext"}, {"type": "null"}]}
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "DeviceContext": {
+        "description": " Device information.\n\n Device context describes the device that caused the event. This is most appropriate for mobile\n applications.",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "brand": {
+                "description": " Brand of the device.",
+                "type": ["string", "null"]
+              },
+              "family": {
+                "description": " Family of the device model.\n\n This is usually the common part of model names across generations. For instance, `iPhone`\n would be a reasonable family, so would be `Samsung Galaxy`.",
+                "type": ["string", "null"]
+              },
+              "model": {
+                "description": " Device model.\n\n This, for example, can be `Samsung Galaxy S3`.",
+                "type": ["string", "null"]
+              },
+              "name": {
+                "description": " Name of the device.",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "OsContext": {
+        "description": " Operating system information.\n\n OS context describes the operating system on which the event was created. In web contexts, this\n is the operating system of the browser (generally pulled from the User-Agent string).",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": " Name of the operating system.",
+                "type": ["string", "null"]
+              },
+              "version": {
+                "description": " Version of the operating system.",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
+      "TraceContext": {
+        "properties": {
+          "op": {"type": "string"},
+          "span_id": {"type": "string"},
+          "trace_id": {"type": "string"}
+        }
+      },
+      "ReplayContext": {
+        "properties": {
+          "error_sample_rate": {
+            "description": " The rate at which replays are sampled when an error occurred.",
+            "type": ["number", "null"]
+          },
+          "session_sample_rate": {
+            "description": " The rate at which replays are sampled.",
+            "type": ["number", "null"]
+          }
+        }
+      },
+      "User": {
+        "title": "user",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "email": {
+                "description": " Email address of the user.",
+                "type": ["string", "null"]
+              },
+              "id": {
+                "description": " Unique identifier of the user.",
+                "type": ["string", "null"]
+              },
+              "ip_address": {
+                "description": " Remote IP address of the user. Defaults to \"{{auto}}\".",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "username": {
+                "description": " Username of the user.",
+                "type": ["string", "null"]
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }
