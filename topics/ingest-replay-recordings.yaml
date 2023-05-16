@@ -4,7 +4,7 @@ services:
   producers:
     - getsentry/relay
   consumers:
-    - getsentry/snuba
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none
