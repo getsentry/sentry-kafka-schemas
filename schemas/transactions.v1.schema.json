@@ -938,7 +938,7 @@
           "type": "string"
         },
         "parent_span_id": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "trace_id": {
           "type": "string"
@@ -958,7 +958,6 @@
       },
       "required": [
         "data",
-        "parent_span_id",
         "span_id",
         "start_timestamp",
         "tags",
