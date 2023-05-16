@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.1.8
+
+### Various fixes & improvements
+
+- ref: Bump json-schema-diff (#142) by @untitaker
+- fix(transactions): Remove properties incorrectly set to required in trace context (#139) by @lynnagara
+- fix(ingest-replay-recordings): Fix consumer service (#141) by @lynnagara
+- fix(transactions): measurement.unit is not required (#140) by @lynnagara
+- fix(transactions): Fix parent-span-id (#138) by @lynnagara
+- fix: Update jsonschema-gentypes (#136) by @untitaker
+- ref: reference SENTRY_INTERNAL_APP_ID from vars (#137) by @asottile-sentry
+
 ## 0.1.7
 
 ### Various fixes & improvements
