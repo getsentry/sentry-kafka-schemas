@@ -958,11 +958,6 @@
       },
       "required": [
         "data",
-        "description",
-        "exclusive_time",
-        "hash",
-        "op",
-        "same_process_as_parent",
         "span_id",
         "start_timestamp",
         "tags",
