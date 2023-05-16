@@ -726,7 +726,7 @@
           "type": "string"
         }
       },
-      "required": ["unit", "value"]
+      "required": ["value"]
     },
     "ProfileContext": {
       "description": " Profile context",
