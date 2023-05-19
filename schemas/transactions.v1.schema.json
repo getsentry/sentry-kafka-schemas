@@ -212,6 +212,31 @@
         }
       ]
     },
+    "TagEntry": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": [
+            {
+              "type": ["string", "null"]
+            },
+            {
+              "type": ["string", "null"]
+            }
+          ],
+          "maxItems": 2,
+          "minItems": 2
+        },
+        { "type": "null" }
+      ]
+    },
+    "Tags": {
+      "description": " Manual key/value tag pairs.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TagEntry"
+      }
+    },
     "Data": {
       "type": "object",
       "additionalProperties": true,
@@ -247,20 +272,15 @@
           "$ref": "#/definitions/Contexts"
         },
         "tags": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "string"
-                }
-              ]
+          "description": " Custom tags for this event.\n\n A map or list of tags for this event. Each tag must be less than 200 characters.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Tags"
+            },
+            {
+              "type": "null"
             }
-          }
+          ]
         },
         "extra": {
           "$ref": "#/definitions/Extra"
