@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.9
+
+### Various fixes & improvements
+
+- fix(transactions): Standardise tags in transactions to match events (#144) by @lynnagara
+
 ## 0.1.8
 
 ### Various fixes & improvements
