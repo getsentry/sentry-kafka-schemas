@@ -63,6 +63,7 @@ install-docs:
 .PHONY: install-docs
 
 docs: install-docs
+	mkdir -p build/
 	python docs/source/generate_services.py > build/services.rst.inc
 	sphinx-build -W -b html docs/source docs/build
 .PHONY: docs
