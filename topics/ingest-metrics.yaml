@@ -1,4 +1,5 @@
 topic: ingest-metrics
+pipeline: metrics
 description: Both release health and performance metrics (before indexer)
 services:
   producers:

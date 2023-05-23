@@ -14,6 +14,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
         "properties": {
             "topic": {"type": "string"},
             "description": {"type": "string"},
+            "pipeline": {"type": "string"},
             "services": {
                 "properties": {
                     "consumers": {
@@ -49,7 +50,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             },
         },
         "aditionalProperties": False,
-        "required": ["topic", "description", "services"],
+        "required": ["topic", "description", "services", "pipeline"],
         "definitions": {
             "Repo": {
                 "enum": [

@@ -46,6 +46,7 @@ class TopicData(TypedDict):
     description: str
     services: ServicesData
     schemas: Sequence[TopicSchema]
+    pipeline: str
 
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
