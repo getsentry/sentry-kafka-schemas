@@ -47,7 +47,7 @@ def main():
 
     for pipeline, topics in sorted(pipelines.items()):
         print(f"Pipeline: {pipeline}")
-        print("=" * 72)
+        print("-" * 72)
         print_graph(topics)
 
 
