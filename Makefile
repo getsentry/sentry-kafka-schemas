@@ -27,7 +27,7 @@ install: python/sentry_kafka_schemas/schema_types
 .PHONY: install
 
 format:
-	black python/ scripts/
+	black python/ scripts/ docs/
 	cargo fmt
 	yarn prettier --write .
 .PHONY: format
@@ -43,7 +43,7 @@ lint: lint-python
 .PHONY: lint
 
 lint-python:
-	flake8 python/ scripts/
+	flake8 python/ scripts/ docs/
 .PHONY: lint-python
 
 lint-rust:
@@ -57,3 +57,13 @@ tests:
 tests-rust:
 	cargo test
 .PHONY: tests-rust
+
+install-docs:
+	pip install -U -r python/requirements-doc.txt
+.PHONY: install-docs
+
+docs: install install-docs
+	mkdir -p build/
+	python docs/source/generate_services.py > build/services.rst.inc
+	sphinx-build -W -b html docs/source docs/build
+.PHONY: docs

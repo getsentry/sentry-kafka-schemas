@@ -14,6 +14,8 @@ from typing import (
     cast,
     Literal,
 )
+from typing_extensions import NotRequired
+
 from sentry_kafka_schemas.types import Schema, Example
 from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
@@ -46,6 +48,7 @@ class TopicData(TypedDict):
     description: str
     services: ServicesData
     schemas: Sequence[TopicSchema]
+    pipeline: NotRequired[str]
 
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")

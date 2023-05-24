@@ -1,4 +1,5 @@
 topic: ingest-metrics
+pipeline: release-health
 description: release health metrics (before indexer)
 services:
   producers:

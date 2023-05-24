@@ -14,6 +14,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
         "properties": {
             "topic": {"type": "string"},
             "description": {"type": "string"},
+            "pipeline": {"type": "string"},
             "services": {
                 "properties": {
                     "consumers": {
