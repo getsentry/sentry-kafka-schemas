@@ -1,5 +1,4 @@
 topic: snuba-queries
-pipeline: snuba
 description: Snuba querylog
 services:
   consumers:

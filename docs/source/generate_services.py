@@ -43,10 +43,13 @@ def main():
     pipelines = {}
     for topic_name in _list_topics():
         topic = _get_topic(topic_name)
-        pipelines.setdefault(topic["pipeline"], []).append((topic_name, topic))
+        pipelines.setdefault(topic.get("pipeline"), []).append((topic_name, topic))
 
     for pipeline, topics in sorted(pipelines.items()):
-        print(f"Pipeline: {pipeline}")
+        if pipeline:
+            print(f"Pipeline: {pipeline}")
+        else:
+            print("Other topics")
         print("-" * 72)
         print_graph(topics)
 
