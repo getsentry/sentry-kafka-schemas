@@ -50,7 +50,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             },
         },
         "aditionalProperties": False,
-        "required": ["topic", "description", "services", "pipeline"],
+        "required": ["topic", "description", "services"],
         "definitions": {
             "Repo": {
                 "enum": [
