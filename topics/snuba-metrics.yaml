@@ -1,5 +1,5 @@
 topic: snuba-metrics
-pipeline: metrics
+pipeline: release-health
 description: Release health metrics
 services:
   consumers:

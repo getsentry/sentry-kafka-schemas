@@ -1,5 +1,5 @@
 topic: metrics-subscription-results
-pipeline: metrics
+pipeline: release-health
 description: Metrics Subscription Results
 services:
   consumers:

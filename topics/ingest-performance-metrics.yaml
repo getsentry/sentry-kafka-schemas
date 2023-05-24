@@ -1,6 +1,6 @@
-topic: ingest-metrics
-pipeline: release-health
-description: release health metrics (before indexer)
+topic: ingest-performance-metrics
+pipeline: generic-metrics
+description: performance metrics and soon also other usecases for generic-metrics (before indexer)
 services:
   producers:
     - getsentry/relay

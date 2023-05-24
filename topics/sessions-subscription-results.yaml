@@ -1,5 +1,5 @@
 topic: sessions-subscription-results
-pipeline: metrics
+pipeline: release-health
 description: Sessions Subscription Results
 services:
   producers:

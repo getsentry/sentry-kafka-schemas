@@ -1,5 +1,5 @@
 topic: snuba-generic-metrics
-pipeline: metrics
+pipeline: generic-metrics
 description: Generic metrics for Snuba
 services:
   consumers:
