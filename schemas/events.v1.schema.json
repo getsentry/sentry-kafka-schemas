@@ -1763,114 +1763,28 @@
     "Request": {
       "title": "sentry_request",
       "description": " Http request information.\n\n The Request interface contains information on a HTTP request related to the event. In client\n SDKs, this can be an outgoing request, or the request that rendered the current web page. On\n server SDKs, this could be the incoming web request that is being handled.\n\n The data variable should only contain the request body (not the query string). It can either be\n a dictionary (for standard HTTP requests) or a raw request body.\n\n ### Ordered Maps\n\n In the Request interface, several attributes can either be declared as string, object, or list\n of tuples. Sentry attempts to parse structured information from the string representation in\n such cases.\n\n Sometimes, keys can be declared multiple times, or the order of elements matters. In such\n cases, use the tuple representation over a plain object.\n\n Example of request headers as object:\n\n ```json\n {\n   \"content-type\": \"application/json\",\n   \"accept\": \"application/json, application/xml\"\n }\n ```\n\n Example of the same headers as list of tuples:\n\n ```json\n [\n   [\"content-type\", \"application/json\"],\n   [\"accept\", \"application/json\"],\n   [\"accept\", \"application/xml\"]\n ]\n ```\n\n Example of a fully populated request object:\n\n ```json\n {\n   \"request\": {\n     \"method\": \"POST\",\n     \"url\": \"http://absolute.uri/foo\",\n     \"query_string\": \"query=foobar&page=2\",\n     \"data\": {\n       \"foo\": \"bar\"\n     },\n     \"cookies\": \"PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1;\",\n     \"headers\": {\n       \"content-type\": \"text/html\"\n     },\n     \"env\": {\n       \"REMOTE_ADDR\": \"192.168.0.1\"\n     }\n   }\n }\n ```",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "body_size": {
-              "description": " HTTP request body size.",
-              "type": ["integer", "null"],
-              "minimum": 0
+      "type": "object",
+        "headers": {
+          "description": " A dictionary of submitted headers.\n\n If a header appears multiple times it, needs to be merged according to the HTTP standard\n for header merging. Header names are treated case-insensitively by Sentry.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Headers"
             },
-            "cookies": {
-              "description": " The cookie values.\n\n Can be given unparsed as string, as dictionary, or as a list of tuples.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Cookies"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "data": {
-              "description": " Request data in any format that makes sense.\n\n SDKs should discard large and binary bodies by default. Can be given as string or\n structural data of any format.",
-              "type": [
-                "array",
-                "object",
-                "string",
-                "integer",
-                "null",
-                "boolean"
-              ]
-            },
-            "env": {
-              "description": " Server environment data, such as CGI/WSGI.\n\n A dictionary containing environment information passed from the server. This is where\n information such as CGI/WSGI/Rack keys go that are not HTTP headers.\n\n Sentry will explicitly look for `REMOTE_ADDR` to extract an IP address.",
-              "type": ["object", "null"],
-              "additionalProperties": true
-            },
-            "fragment": {
-              "description": " The fragment of the request URL.",
-              "type": ["string", "null"]
-            },
-            "headers": {
-              "description": " A dictionary of submitted headers.\n\n If a header appears multiple times it, needs to be merged according to the HTTP standard\n for header merging. Header names are treated case-insensitively by Sentry.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Headers"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "inferred_content_type": {
-              "description": " The inferred content type of the request payload.",
-              "type": ["string", "null"]
-            },
-            "method": {
-              "description": " HTTP request method.",
-              "type": ["string", "null"]
-            },
-            "query_string": {
-              "description": " The query string component of the URL.\n\n Can be given as unparsed string, dictionary, or list of tuples.\n\n If the query string is not declared and part of the `url`, Sentry moves it to the\n query string.",
-              "anyOf": [
-                {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "anyOf": [
-                        {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": ["string", "null"]
-                          }
-                        },
-                        {
-                          "type": "array",
-                          "items": {
-                            "type": ["array", "null"],
-                            "items": [
-                              {
-                                "type": ["string", "null"]
-                              },
-                              {
-                                "type": ["string", "null"]
-                              }
-                            ],
-                            "maxItems": 2,
-                            "minItems": 2
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "url": {
-              "description": " The URL of the request if available.\n\nThe query string can be declared either as part of the `url`, or separately in `query_string`.",
-              "type": ["string", "null"]
+            {
+              "type": "null"
             }
-          },
-          "additionalProperties": true
+          ]
+        },
+        "method": {
+          "description": " HTTP request method.",
+          "type": ["string", "null"]
+        },
+        "url": {
+          "description": " The URL of the request if available.\n\nThe query string can be declared either as part of the `url`, or separately in `query_string`.",
+          "type": ["string", "null"]
         }
-      ]
+      },
+      "additionalProperties": true
     },
     "ResponseContext": {
       "description": " Response interface that contains information on a HTTP response related to the event.",
