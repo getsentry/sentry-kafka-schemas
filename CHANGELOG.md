@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.10
+
+### Various fixes & improvements
+
+- feat: Loosen requests in events schema (#147) by @lynnagara
+- doc: Generate servicemap from topic definitions (#145) by @untitaker
+- ref: Split up ingest-metrics topics (#146) by @untitaker
+
 ## 0.1.9
 
 ### Various fixes & improvements
