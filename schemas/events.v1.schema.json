@@ -1767,42 +1767,6 @@
         {
           "type": "object",
           "properties": {
-            "body_size": {
-              "description": " HTTP request body size.",
-              "type": ["integer", "null"],
-              "minimum": 0
-            },
-            "cookies": {
-              "description": " The cookie values.\n\n Can be given unparsed as string, as dictionary, or as a list of tuples.",
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/Cookies"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "data": {
-              "description": " Request data in any format that makes sense.\n\n SDKs should discard large and binary bodies by default. Can be given as string or\n structural data of any format.",
-              "type": [
-                "array",
-                "object",
-                "string",
-                "integer",
-                "null",
-                "boolean"
-              ]
-            },
-            "env": {
-              "description": " Server environment data, such as CGI/WSGI.\n\n A dictionary containing environment information passed from the server. This is where\n information such as CGI/WSGI/Rack keys go that are not HTTP headers.\n\n Sentry will explicitly look for `REMOTE_ADDR` to extract an IP address.",
-              "type": ["object", "null"],
-              "additionalProperties": true
-            },
-            "fragment": {
-              "description": " The fragment of the request URL.",
-              "type": ["string", "null"]
-            },
             "headers": {
               "description": " A dictionary of submitted headers.\n\n If a header appears multiple times it, needs to be merged according to the HTTP standard\n for header merging. Header names are treated case-insensitively by Sentry.",
               "anyOf": [
@@ -1814,54 +1778,9 @@
                 }
               ]
             },
-            "inferred_content_type": {
-              "description": " The inferred content type of the request payload.",
-              "type": ["string", "null"]
-            },
             "method": {
               "description": " HTTP request method.",
               "type": ["string", "null"]
-            },
-            "query_string": {
-              "description": " The query string component of the URL.\n\n Can be given as unparsed string, dictionary, or list of tuples.\n\n If the query string is not declared and part of the `url`, Sentry moves it to the\n query string.",
-              "anyOf": [
-                {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "anyOf": [
-                        {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": ["string", "null"]
-                          }
-                        },
-                        {
-                          "type": "array",
-                          "items": {
-                            "type": ["array", "null"],
-                            "items": [
-                              {
-                                "type": ["string", "null"]
-                              },
-                              {
-                                "type": ["string", "null"]
-                              }
-                            ],
-                            "maxItems": 2,
-                            "minItems": 2
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "null"
-                }
-              ]
             },
             "url": {
               "description": " The URL of the request if available.\n\nThe query string can be declared either as part of the `url`, or separately in `query_string`.",
