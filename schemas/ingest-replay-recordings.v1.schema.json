@@ -12,7 +12,7 @@
     "received": { "type": "integer", "minimum": 0 },
     "retention_days": { "type": "integer" },
     "payload": { "description": "msgpack bytes" },
-    "version": { "type": ["null", "integer"], "default": 0 }
+    "version": { "type": "integer", "default": 0 }
   },
   "required": [
     "type",
