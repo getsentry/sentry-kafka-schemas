@@ -430,6 +430,21 @@
           "description": " The environment name, such as `production` or `staging`.\n\n ```json\n { \"environment\": \"production\" }\n ```",
           "type": ["string", "null"]
         },
+        "errors": {
+          "description": " Errors encountered during processing. Intended to be phased out in favor of\n annotation/metadata system.",
+          "default": null,
+          "type": ["array", "null"],
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/EventProcessingError"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
         "event_id": {
           "description": " Unique identifier of this event.\n\n Hexadecimal string representing a uuid4 value. The length is exactly 32 characters. Dashes\n are not allowed. Has to be lowercase.\n\n Even though this field is backfilled on the server with a new uuid4, it is strongly\n recommended to generate that uuid4 clientside. There are some features like user feedback\n which are easier to implement that way, and debugging in case events get lost in your\n Sentry installation is also easier.\n\n Example:\n\n ```json\n {\n   \"event_id\": \"fc6d8c0c43fc4630ad850ee518f1b9d0\"\n }\n ```",
           "anyOf": [
@@ -1035,6 +1050,31 @@
       "anyOf": [
         {
           "type": "string"
+        }
+      ]
+    },
+    "EventProcessingError": {
+      "description": " An event processing error.",
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "name": {
+              "description": " Affected key or deep path.",
+              "default": null,
+              "type": ["string", "null"]
+            },
+            "type": {
+              "description": " The error kind.",
+              "type": ["string", "null"]
+            },
+            "value": {
+              "description": " The original value causing this error.",
+              "default": null
+            }
+          },
+          "additionalProperties": false
         }
       ]
     },
@@ -2035,6 +2075,10 @@
                   "type": "null"
                 }
               ]
+            },
+            "sampled": {
+              "description": " Whether the trace connected to the event has been sampled as part of dynamic sampling",
+              "type": ["boolean", "null"]
             }
           },
           "additionalProperties": true
