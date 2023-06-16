@@ -433,10 +433,7 @@
         "errors": {
           "description": " Errors encountered during processing. Intended to be phased out in favor of\n annotation/metadata system.",
           "default": null,
-          "type": [
-            "array",
-            "null"
-          ],
+          "type": ["array", "null"],
           "items": {
             "anyOf": [
               {
