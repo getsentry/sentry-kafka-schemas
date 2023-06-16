@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.12
+
+### Various fixes & improvements
+
+- fix: Fix events schema (#152) by @lynnagara
+
 ## 0.1.11
 
 ### Various fixes & improvements
