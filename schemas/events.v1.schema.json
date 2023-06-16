@@ -1073,8 +1073,7 @@
               "description": " The original value causing this error.",
               "default": null
             }
-          },
-          "additionalProperties": false
+          }
         }
       ]
     },
