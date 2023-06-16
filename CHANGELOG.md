@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.11
+
+### Various fixes & improvements
+
+- feat(errors): add errors and trace.sampled to schema (#150) by @barkbarkimashark
+- feat(replays): Add version field (#149) by @cmanallen
+
 ## 0.1.10
 
 ### Various fixes & improvements
