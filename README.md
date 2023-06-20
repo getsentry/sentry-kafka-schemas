@@ -112,6 +112,10 @@ For releasing a new stable version from main branch, go to
 [Actions](https://github.com/getsentry/sentry-kafka-schemas/actions) and
 trigger a new job for the `Release` workflow.
 
+We usually just increment the `patch` number for schema changes.
+e.g. If the last version was 0.1.11, the next version should be 0.1.12.
+Check https://github.com/getsentry/sentry-kafka-schemas/releases for the latest release numbers.
+
 After releasing a new version, you should immediately bump Sentry, Snuba and
 Relay to ensure that all services are synchronized onto the new schema as
 soon as possible.
