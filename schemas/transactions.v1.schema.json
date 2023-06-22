@@ -970,7 +970,10 @@
           "type": ["object", "null"]
         },
         "data": {
-          "type": ["object", "null"]
+          "anyOf": [
+            { "$ref": "#/definitions/SpanData"},
+            "null"
+          ]
         },
         "hash": {
           "type": "string"
@@ -1104,6 +1107,59 @@
             }
           },
           "additionalProperties": true
+        }
+      ]
+    },
+    "SpanData": {
+      "description": "Spans data bag",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "environment": {
+              "type": ["string", "null"]
+            },
+            "http.method": {
+              "type": ["string", "null"]
+            },
+            "span.action": {
+              "type": ["string", "null"]
+            },
+            "span.domain": {
+              "type": ["string", "null"]
+            },
+            "span.module": {
+              "type": ["string", "null"]
+            },
+            "span.op": {
+              "type": ["string", "null"]
+            },
+            "span.group": {
+              "description": "hex hash of the scrubbed span description",
+              "type": ["string", "null"]
+            },
+            "span.status": {
+              "type": ["string", "null"]
+            },
+            "span.system": {
+              "type": ["string", "null"]
+            },
+            "span.status_code": {
+              "type": ["integer", "null"]
+            },
+            "status_code": {
+              "type": ["integer", "null"]
+            },
+            "transaction": {
+              "type": ["string", "null"]
+            },
+            "transaction.op": {
+              "type": ["string", "null"]
+            },
+            "transaction.method": {
+              "type": ["string", "null"]
+            }
+          }
         }
       ]
     }
