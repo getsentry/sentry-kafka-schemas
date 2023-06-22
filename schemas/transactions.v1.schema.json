@@ -971,10 +971,7 @@
           "type": ["object", "null"]
         },
         "data": {
-          "anyOf": [
-            { "$ref": "#/definitions/SpanData"},
-            { "type": "null"}
-          ]
+          "anyOf": [{ "$ref": "#/definitions/SpanData" }, { "type": "null" }]
         },
         "hash": {
           "type": "string"
