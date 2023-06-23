@@ -1,0 +1,15 @@
+topic: generic-events
+pipeline: generic_events
+description: Issue platform
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: events.v1.schema.json
+    examples:
+      - generic-events/1/
