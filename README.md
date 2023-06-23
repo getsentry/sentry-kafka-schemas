@@ -8,6 +8,8 @@ Currently only jsonschema is supported. The jsonschema should be placed directly
 
 We use jsonschema for both JSON- and msgpack-based topics, as most msgpack types have a JSON-equivalent. For bytestrings, we type them using `{"description": "msgpack bytes"}`, which is currently just interpreted like `{}` (allow all types).
 
+If you don't want to hand-write it, for generating an initial json schema from a payload we like https://github.com/quicktype/quicktype
+
 ## How strict should my schema be?
 
 If in doubt, we recommend that schemas are only as strict as is minimally required by all consumers and downstream code required by Sentry. However it is ultimately up to the owners of the schema to decide whether a stricter schema is appropriate in particular scenarios.
