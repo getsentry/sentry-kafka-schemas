@@ -8,7 +8,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["something", "replay_event"]
+          "enum": ["replay_event"]
         },
         "start_time": {
           "type": "number"
