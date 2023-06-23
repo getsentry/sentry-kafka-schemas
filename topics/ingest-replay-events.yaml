@@ -1,0 +1,15 @@
+topic: ingest-replay-events
+pipeline: replays
+description: Replay events data for Snuba
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: ingest-replay-events.v1.schema.json
+    examples:
+      - ingest-replay-events/1/

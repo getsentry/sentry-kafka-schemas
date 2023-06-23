@@ -9,6 +9,7 @@
 /topics/outcomes.yaml                                      @getsentry/owners-snuba
 /topics/snuba-metrics.yaml                                 @getsentry/owners-snuba
 /topics/snuba-generic-metrics.yaml                         @getsentry/owners-snuba
+/topics/ingest-replay-events.yaml                          @getsentry/owners-snuba @getsentry/replay
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba
