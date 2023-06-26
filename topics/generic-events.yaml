@@ -10,6 +10,6 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: events.v1.schema.json
+    resource: generic-events.v1.schema.json
     examples:
       - generic-events/1/

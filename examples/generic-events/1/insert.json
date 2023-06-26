@@ -22,7 +22,21 @@
     "organization_id": 123,
     "platform": "javascript",
     "primary_hash": "061cf02b26374d108694d6643a7a2f4e",
-    "project_id": 6036610
+    "project_id": 1,
+    "occurrence_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "occurrence_data": {
+      "id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "project_id": 1,
+      "event_id": "cccccccccccccccccccccccccccccccc",
+      "fingerprint": ["dddddddddddddddddddddddddddddddd"],
+      "issue_title": "N+1 Query",
+      "subtitle": "select one, two, three from foo",
+      "resource_id": null,
+      "type": 1006,
+      "detection_time": 1677512412.11,
+      "level": "info",
+      "culprit": "/some/api/user/{user}/"
+    }
   },
   {
     "group_states": [
