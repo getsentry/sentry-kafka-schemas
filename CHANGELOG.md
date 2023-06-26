@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.14
+
+### Various fixes & improvements
+
+- feat(generic-events): Fix schema and example (#157) by @lynnagara
+
 ## 0.1.13
 
 ### Various fixes & improvements
