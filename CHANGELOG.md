@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.15
+
+### Various fixes & improvements
+
+- feat: ingest-replay-events schema (#155) by @lynnagara
+- fix(generic-events): There is also a generic type (#158) by @lynnagara
+
 ## 0.1.14
 
 ### Various fixes & improvements
