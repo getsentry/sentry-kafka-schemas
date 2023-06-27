@@ -11,7 +11,7 @@
       "received": 1677512412.437706,
       "release": "123abc",
       "timestamp": 1677512412.223,
-      "type": "error",
+      "type": "generic",
       "version": "7"
     },
     "datetime": "2023-02-27T15:40:12.223000Z",

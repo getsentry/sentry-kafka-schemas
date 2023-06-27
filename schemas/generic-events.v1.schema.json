@@ -828,7 +828,8 @@
         "expectct",
         "expectstaple",
         "transaction",
-        "default"
+        "default",
+        "generic"
       ]
     },
     "ExceptionChain": {
