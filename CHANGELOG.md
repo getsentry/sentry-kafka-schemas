@@ -1,5 +1,20 @@
 # Changelog and versioning
 
+## 0.1.14
+
+### Various fixes & improvements
+
+- feat(generic-events): Fix schema and example (#157) by @lynnagara
+
+## 0.1.13
+
+### Various fixes & improvements
+
+- feat: Add generic-events topic (#154) by @lynnagara
+- docs: Re (#156) by @lynnagara
+- Add spans data schema (#153) by @dbanda
+- docs: Update readme about choosing a version to release (#151) by @lynnagara
+
 ## 0.1.12
 
 ### Various fixes & improvements

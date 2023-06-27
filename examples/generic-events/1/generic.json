@@ -1,0 +1,82 @@
+[
+  2,
+  "insert",
+  {
+    "group_id": 1,
+    "group_ids": [],
+    "event_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "organization_id": 1,
+    "project_id": 1,
+    "message": " Monitor failure: run-some-task",
+    "platform": "other",
+    "datetime": "2023-06-27T00:00:00.000000Z",
+    "data": {
+      "event_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "level": "error",
+      "version": "3",
+      "type": "generic",
+      "logger": "",
+      "platform": "other",
+      "timestamp": 1687800000.0,
+      "received": 1687800001.0,
+      "environment": "production",
+      "contexts": {
+        "monitor": {
+          "config": {
+            "checkin_margin": null,
+            "max_runtime": null,
+            "schedule": [1, "minute"],
+            "schedule_type": 2
+          },
+          "name": "run-some-task",
+          "slug": "run-some-task",
+          "status": "missed_checkin",
+          "type": "cron_job"
+        },
+        "geo": {}
+      },
+      "tags": [
+        ["level", "error"],
+        ["environment", "production"]
+      ],
+      "project": 1,
+      "metadata": {},
+      "culprit": "",
+      "title": "<untitled>",
+      "location": null,
+      "_metrics": { "bytes.stored.event": 793 },
+      "nodestore_insert": 1687800001.0
+    },
+    "primary_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "retention_days": 90,
+    "occurrence_id": "cccccccccccccccccccccccccccccccc",
+    "occurrence_data": {
+      "id": "cccccccccccccccccccccccccccccccc",
+      "project_id": 6633039,
+      "event_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "fingerprint": ["eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"],
+      "issue_title": "Monitor failure: run-some-task",
+      "subtitle": "",
+      "resource_id": null,
+      "type": 4001,
+      "detection_time": 1687800000.0,
+      "level": "error",
+      "culprit": "error"
+    }
+  },
+  {
+    "is_new": false,
+    "is_regression": false,
+    "is_new_group_environment": false,
+    "queue": "post_process_issue_platform",
+    "skip_consume": false,
+    "group_states": [
+      {
+        "id": 1,
+        "is_new": false,
+        "is_regression": false,
+        "is_new_group_environment": false
+      }
+    ]
+  }
+]

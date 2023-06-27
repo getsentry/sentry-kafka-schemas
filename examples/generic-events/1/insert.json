@@ -1,0 +1,56 @@
+[
+  2,
+  "insert",
+  {
+    "data": {
+      "environment": "production",
+      "event_id": "9cdc4c32dff14fbbb012b0aa9e908126",
+      "level": "error",
+      "logger": "",
+      "platform": "javascript",
+      "received": 1677512412.437706,
+      "release": "123abc",
+      "timestamp": 1677512412.223,
+      "type": "generic",
+      "version": "7"
+    },
+    "datetime": "2023-02-27T15:40:12.223000Z",
+    "event_id": "9cdc4c32dff14fbbb012b0aa9e908126",
+    "group_id": 124,
+    "group_ids": [124],
+    "message": "hello world",
+    "organization_id": 123,
+    "platform": "javascript",
+    "primary_hash": "061cf02b26374d108694d6643a7a2f4e",
+    "project_id": 1,
+    "occurrence_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "occurrence_data": {
+      "id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "project_id": 1,
+      "event_id": "cccccccccccccccccccccccccccccccc",
+      "fingerprint": ["dddddddddddddddddddddddddddddddd"],
+      "issue_title": "N+1 Query",
+      "subtitle": "select one, two, three from foo",
+      "resource_id": null,
+      "type": 1006,
+      "detection_time": 1677512412.11,
+      "level": "info",
+      "culprit": "/some/api/user/{user}/"
+    }
+  },
+  {
+    "group_states": [
+      {
+        "id": "124",
+        "is_new": false,
+        "is_new_group_environment": false,
+        "is_regression": false
+      }
+    ],
+    "is_new": false,
+    "is_new_group_environment": false,
+    "is_regression": false,
+    "queue": "post_process_errors",
+    "skip_consume": false
+  }
+]
