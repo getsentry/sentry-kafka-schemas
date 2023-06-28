@@ -18,60 +18,60 @@
         "device_locale": {
           "type": "string"
         },
-		    "device_manufacturer": {
+        "device_manufacturer": {
           "type": "string"
-		    },
-		    "device_model": {
+        },
+        "device_model": {
           "type": "string"
-		    },
-		    "device_os_build_number": {
+        },
+        "device_os_build_number": {
           "type": "string"
-		    },
-		    "device_os_name": {
+        },
+        "device_os_name": {
           "type": "string"
-		    },
-		    "device_os_version": {
+        },
+        "device_os_version": {
           "type": "string"
-		    },
-		    "duration_ns": {
-		      "type": "integer"
-		    },
-		    "environment": {
+        },
+        "duration_ns": {
+          "type": "integer"
+        },
+        "environment": {
           "type": "string"
-		    },
-		    "profile_id": {
+        },
+        "profile_id": {
           "type": "string"
-		    },
-		    "organization_id": {
-		      "type": "integer"
-		    },
-		    "platform": {
+        },
+        "organization_id": {
+          "type": "integer"
+        },
+        "platform": {
           "type": "string"
-		    },
-		    "project_id": {
-		      "type": "integer"
-		    },
-		    "received": {
-		      "type": "integer"
-		    },
-		    "retention_days": {
-		      "type": "integer"
-		    },
-		    "trace_id": {
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "received": {
+          "type": "integer"
+        },
+        "retention_days": {
+          "type": "integer"
+        },
+        "trace_id": {
           "type": "string"
-		    },
-		    "transaction_id": {
+        },
+        "transaction_id": {
           "type": "string"
-		    },
-		    "transaction_name": {
+        },
+        "transaction_name": {
           "type": "string"
-		    },
-		    "version_code": {
+        },
+        "version_code": {
           "type": "string"
-		    },
-		    "version_name": {
+        },
+        "version_name": {
           "type": "string"
-		    }
+        }
       },
       "required": [
         "device_locale",
