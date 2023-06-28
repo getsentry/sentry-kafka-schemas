@@ -58,6 +58,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     "getsentry/snuba",
                     "getsentry/relay",
                     "getsentry/sentry",
+                    "getsentry/vroom",
                 ]
             }
         },
