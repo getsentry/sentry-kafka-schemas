@@ -11,6 +11,16 @@
 /topics/snuba-generic-metrics.yaml                         @getsentry/owners-snuba
 /topics/generic-events.yaml                                @getsentry/owners-snuba @getsentry/issues
 /topics/ingest-replay-events.yaml                          @getsentry/owners-snuba @getsentry/replay
+/topics/processed-profiles.yaml                            @getsentry/owners-snuba @getsentry/profiling
+/topics/profiles-call-tree.yaml                            @getsentry/owners-snuba @getsentry/profiling
+
+# Schemas
+/schemas/profile-metadata.v1.schema.json                   @getsentry/profiling
+/schemas/profile-functions.v1.schema.json                  @getsentry/profiling
+
+# Examples
+/examples/profile-metadata/                                @getsentry/profiling
+/examples/profile-functions/                               @getsentry/profiling
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba

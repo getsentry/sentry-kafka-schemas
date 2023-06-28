@@ -1,0 +1,15 @@
+topic: processed-profiles
+pipeline: profiles
+description: Profile metadata extracted from profiles for Snuba
+services:
+  producers:
+    - getsentry/vroom
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: profile-metadata.v1.schema.json
+    examples:
+      - profile-metadata/1/

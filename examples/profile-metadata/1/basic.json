@@ -1,0 +1,21 @@
+{
+  "architecture": "x86_64",
+  "device_locale": "",
+  "device_manufacturer": "",
+  "device_model": "",
+  "device_os_name": "Linux",
+  "device_os_version": "4.14.281-212.502.amzn2.x86_64",
+  "duration_ns": 55659715,
+  "environment": "staging-staging",
+  "profile_id": "f851b3c2d70d4f119b3a49ce9f630194",
+  "organization_id": 1,
+  "platform": "python",
+  "project_id": 1,
+  "received": 1687971966,
+  "retention_days": 90,
+  "trace_id": "cbf7414c931448e98ed3f9b4e239a58e",
+  "transaction_id": "6d15f5585cbd4b92945c605314f760cd",
+  "transaction_name": "GET /events",
+  "version_code": "",
+  "version_name": ""
+}

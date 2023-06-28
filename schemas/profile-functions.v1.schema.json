@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ProfileFunctions",
+  "title": "profile_functions",
+  "definitions": {
+    "ProfileFunctions": {
+      "type": "object",
+      "properties": {
+        "functions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "environment": {
+          "type": "string"
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "received": {
+          "type": "integer"
+        },
+        "release": {
+          "type": "string"
+        },
+        "dist": {
+          "type": "string"
+        },
+        "retention_days": {
+          "type": "integer"
+        },
+        "timestamp": {
+          "type": "integer"
+        },
+        "transaction_name": {
+          "type": "string"
+        },
+        "transaction_op": {
+          "type": "string"
+        },
+        "transaction_status": {
+          "type": "string"
+        },
+        "http_method": {
+          "type": "string"
+        },
+        "browser_name": {
+          "type": "string"
+        },
+        "device_class": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "functions",
+        "profile_id",
+        "platform",
+        "project_id",
+        "received",
+        "retention_days",
+        "timestamp",
+        "transaction_name",
+        "transaction_op",
+        "transaction_status"
+      ]
+    }
+  }
+}

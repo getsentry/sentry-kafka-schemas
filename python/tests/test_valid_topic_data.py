@@ -55,9 +55,10 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             "Repo": {
                 "enum": [
                     # enumerate all repos here to avoid typos
-                    "getsentry/snuba",
                     "getsentry/relay",
                     "getsentry/sentry",
+                    "getsentry/snuba",
+                    "getsentry/vroom",
                 ]
             }
         },

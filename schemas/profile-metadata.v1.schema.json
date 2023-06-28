@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ProfileMetadata",
+  "title": "profile_metadata",
+  "definitions": {
+    "ProfileMetadata": {
+      "type": "object",
+      "properties": {
+        "android_api_level": {
+          "type": "integer"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "device_classification": {
+          "type": "string"
+        },
+        "device_locale": {
+          "type": "string"
+        },
+        "device_manufacturer": {
+          "type": "string"
+        },
+        "device_model": {
+          "type": "string"
+        },
+        "device_os_build_number": {
+          "type": "string"
+        },
+        "device_os_name": {
+          "type": "string"
+        },
+        "device_os_version": {
+          "type": "string"
+        },
+        "duration_ns": {
+          "type": "integer"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "organization_id": {
+          "type": "integer"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "received": {
+          "type": "integer"
+        },
+        "retention_days": {
+          "type": "integer"
+        },
+        "trace_id": {
+          "type": "string"
+        },
+        "transaction_id": {
+          "type": "string"
+        },
+        "transaction_name": {
+          "type": "string"
+        },
+        "version_code": {
+          "type": "string"
+        },
+        "version_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "device_locale",
+        "device_manufacturer",
+        "device_model",
+        "device_os_name",
+        "device_os_version",
+        "duration_ns",
+        "profile_id",
+        "organization_id",
+        "platform",
+        "project_id",
+        "received",
+        "retention_days",
+        "trace_id",
+        "transaction_id",
+        "transaction_name",
+        "version_code",
+        "version_name"
+      ]
+    }
+  }
+}
