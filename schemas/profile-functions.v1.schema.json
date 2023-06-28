@@ -55,7 +55,7 @@
           "type": "string"
         },
         "device_class": {
-          "type": "string"
+          "type": "integer"
         }
       },
       "required": [
