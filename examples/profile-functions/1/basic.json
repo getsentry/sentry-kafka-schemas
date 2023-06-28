@@ -32,104 +32,12 @@
       ]
     },
     {
-      "fingerprint": 18356993317872863000,
-      "function": "SpaceGroup.get_concrete_spaces",
-      "package": "community_video.communities.models",
-      "in_app": true,
-      "self_times_ns": [
-        161967519,
-        75113031
-      ]
-    },
-    {
-      "fingerprint": 6615854897136258000,
-      "function": "get_space_groups",
-      "package": "community_video.communities.selectors.space_selectors",
-      "in_app": true,
-      "self_times_ns": [
-        210591143
-      ]
-    },
-    {
-      "fingerprint": 3960120691602509300,
-      "function": "OverriddenObjectPermissionBackend.has_perm",
-      "package": "community_video.communities.rules.backends",
-      "in_app": true,
-      "self_times_ns": [
-        19933212,
-        12294642,
-        19945134,
-        9966104,
-        9964477
-      ]
-    },
-    {
-      "fingerprint": 664232192605418200,
-      "function": "uuid4",
-      "package": "uuid",
-      "in_app": false,
-      "self_times_ns": [
-        14720325,
-        12294642,
-        10223642,
-        10644718
-      ]
-    },
-    {
-      "fingerprint": 17221248297314040000,
-      "function": "User.is_admin",
-      "package": "community_video.users.models",
-      "in_app": true,
-      "self_times_ns": [
-        9965667,
-        10003759,
-        11830791
-      ]
-    },
-    {
-      "fingerprint": 3956958666010618400,
-      "function": "authenticate_with_token",
-      "package": "community_video.outverse_auth.authentication",
-      "in_app": true,
-      "self_times_ns": [
-        19946707,
-        9968883
-      ]
-    },
-    {
-      "fingerprint": 15679027086232238000,
-      "function": "CommunityRole.prefetch_perms",
-      "package": "community_video.communities.models",
-      "in_app": true,
-      "self_times_ns": [
-        20809886
-      ]
-    },
-    {
-      "fingerprint": 3040971473323558400,
-      "function": "User.prefetch_perms",
-      "package": "community_video.users.models",
-      "in_app": true,
-      "self_times_ns": [
-        20614457
-      ]
-    },
-    {
       "fingerprint": 888186900786406300,
       "function": "connect",
       "package": "psycopg2",
       "in_app": false,
       "self_times_ns": [
         19946707
-      ]
-    },
-    {
-      "fingerprint": 7727014748507245000,
-      "function": "get_annotated_forum_spaces",
-      "package": "community_video.communities.selectors.forums_selectors",
-      "in_app": true,
-      "self_times_ns": [
-        15039131
       ]
     },
     {
@@ -149,7 +57,7 @@
   "received": 1687971966,
   "retention_days": 90,
   "timestamp": 1687971965,
-  "transaction_name": "/api/community/communities/{community_slug}/space_groups/",
+  "transaction_name": "GET /api/1/events",
   "transaction_op": "http.server",
   "transaction_status": "ok",
   "http_method": "GET"
