@@ -15,8 +15,12 @@
 /topics/profiles-call-tree.yaml                            @getsentry/owners-snuba @getsentry/profiling
 
 # Schemas
-/schemas/profile-metadata.v1.schema.json                   @getsentry/owners-snuba @getsentry/profiling
-/schemas/profile-functions.v1.schema.json                  @getsentry/owners-snuba @getsentry/profiling
+/schemas/profile-metadata.v1.schema.json                   @getsentry/profiling
+/schemas/profile-functions.v1.schema.json                  @getsentry/profiling
+
+# Examples
+/examples/profile-metadata/                                @getsentry/profiling
+/examples/profile-functions/                               @getsentry/profiling
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba

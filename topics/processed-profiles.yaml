@@ -11,3 +11,5 @@ schemas:
     compatibility_mode: none
     type: json
     resource: profile-metadata.v1.schema.json
+    examples:
+      - profile-metadata/1/
