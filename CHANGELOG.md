@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.16
+
+### Various fixes & improvements
+
+- feat: Add schemas for profiling Snuba payloads (#160) by @phacops
+- fix: Fix replay example (#159) by @lynnagara
+
 ## 0.1.15
 
 ### Various fixes & improvements
