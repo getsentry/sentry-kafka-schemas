@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.17
+
+### Various fixes & improvements
+
+- fix(profile-functions): device class should be an int (#161) by @lynnagara
+
 ## 0.1.16
 
 ### Various fixes & improvements
