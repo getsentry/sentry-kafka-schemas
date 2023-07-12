@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.18
+
+### Various fixes & improvements
+
+- fix(ingest-replay-events): Type is not required (#162) by @lynnagara
+
 ## 0.1.17
 
 ### Various fixes & improvements
