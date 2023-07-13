@@ -19,10 +19,7 @@
           "type": "integer"
         },
         "substatus": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "first_seen": {
           "type": "string"
@@ -31,46 +28,25 @@
           "type": "integer"
         },
         "assignee_user_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "assignee_team_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "owner_suspect_commit_user_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "owner_ownership_rule_user_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "owner_ownership_rule_team_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "owner_codeowners_user_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "owner_codeowners_team_id": {
-          "type": [
-            "integer",
-            "null"
-          ]
+          "type": ["integer", "null"]
         },
         "timestamp": {
           "type": "string"
