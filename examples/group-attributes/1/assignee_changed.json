@@ -1,0 +1,17 @@
+{
+  "group_deleted": false,
+  "project_id": 1,
+  "group_id": 1,
+  "status": 0,
+  "substatus": 7,
+  "first_seen": "2023-02-27T15:40:12.223000Z",
+  "num_comments": 0,
+  "assignee_user_id": 123,
+  "assignee_team_id": null,
+  "owner_suspect_commit_user_id": null,
+  "owner_ownership_rule_user_id": null,
+  "owner_ownership_rule_team_id": null,
+  "owner_codeowners_user_id": null,
+  "owner_codeowners_team_id": null,
+  "timestamp": "2023-02-27T15:41:12.000000Z"
+}
