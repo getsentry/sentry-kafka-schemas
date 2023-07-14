@@ -1,0 +1,14 @@
+topic: group-attributes
+description: A snapshot of Group/Issue attributes replicated from sentry
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: group-attributes.v1.schema.json
+    examples:
+      - group-attributes/1/
