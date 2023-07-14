@@ -84,6 +84,7 @@
           }
         }
       },
+      "required": ["timestamp", "duration_ms"],
       "additionalProperties": true
     },
     "snql_anonymized": {
