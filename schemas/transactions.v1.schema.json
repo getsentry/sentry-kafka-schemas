@@ -314,7 +314,14 @@
           "type": "string"
         }
       },
-      "required": ["contexts", "spans", "start_timestamp", "timestamp", "type"]
+      "required": [
+        "contexts",
+        "spans",
+        "start_timestamp",
+        "timestamp",
+        "type",
+        "received"
+      ]
     },
     "EventId": {
       "description": " Wrapper around a UUID with slightly different formatting.",
