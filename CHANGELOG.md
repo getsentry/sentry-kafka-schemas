@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.1.19
+
+### Various fixes & improvements
+
+- feat(group-attributes): add new topic and schema for group attributes (#164) by @barkbarkimashark
+
+## 0.1.18
+
+### Various fixes & improvements
+
+- fix(ingest-replay-events): Type is not required (#162) by @lynnagara
+
 ## 0.1.17
 
 ### Various fixes & improvements

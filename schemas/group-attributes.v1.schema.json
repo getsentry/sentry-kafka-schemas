@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/GroupAttributesSnapshot",
+  "definitions": {
+    "GroupAttributesSnapshot": {
+      "type": "object",
+      "title": "group_attributes_snapshot",
+      "properties": {
+        "group_deleted": {
+          "type": "boolean"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "group_id": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "substatus": {
+          "type": ["integer", "null"]
+        },
+        "first_seen": {
+          "type": "string"
+        },
+        "num_comments": {
+          "type": "integer"
+        },
+        "assignee_user_id": {
+          "type": ["integer", "null"]
+        },
+        "assignee_team_id": {
+          "type": ["integer", "null"]
+        },
+        "owner_suspect_commit_user_id": {
+          "type": ["integer", "null"]
+        },
+        "owner_ownership_rule_user_id": {
+          "type": ["integer", "null"]
+        },
+        "owner_ownership_rule_team_id": {
+          "type": ["integer", "null"]
+        },
+        "owner_codeowners_user_id": {
+          "type": ["integer", "null"]
+        },
+        "owner_codeowners_team_id": {
+          "type": ["integer", "null"]
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "group_deleted",
+        "project_id",
+        "group_id",
+        "status",
+        "substatus",
+        "first_seen",
+        "num_comments",
+        "assignee_user_id",
+        "assignee_team_id",
+        "owner_suspect_commit_user_id",
+        "owner_ownership_rule_user_id",
+        "owner_ownership_rule_team_id",
+        "owner_codeowners_user_id",
+        "owner_codeowners_team_id",
+        "timestamp"
+      ]
+    }
+  }
+}
