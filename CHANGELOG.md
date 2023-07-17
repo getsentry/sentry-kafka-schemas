@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.20
+
+### Various fixes & improvements
+
+- fix(transactions): Make received field required for transactions (#163) by @ayirr7
+
 ## 0.1.19
 
 ### Various fixes & improvements
