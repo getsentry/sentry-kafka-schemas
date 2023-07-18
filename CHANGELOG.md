@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.21
+
+### Various fixes & improvements
+
+- feat: Mark required fields in querylog (#165) by @lynnagara
+
 ## 0.1.20
 
 ### Various fixes & improvements
