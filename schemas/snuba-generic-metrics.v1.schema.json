@@ -60,6 +60,9 @@
         },
         "mapping_meta": {
           "$ref": "#/definitions/MappingMeta"
+        },
+        "aggregation_option": {
+          "type": "string"
         }
       },
       "required": [
