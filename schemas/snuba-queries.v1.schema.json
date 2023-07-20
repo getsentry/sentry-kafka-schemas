@@ -63,6 +63,7 @@
       }
     },
     "timing": {
+      "title": "timer_data",
       "type": "object",
       "properties": {
         "timestamp": {
