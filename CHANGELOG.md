@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.22
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add `aggregation_option` field to metrics (#167) by @john-z-yang
+- feat: Export timer data type from querylog (#166) by @lynnagara
+
 ## 0.1.21
 
 ### Various fixes & improvements

@@ -4,7 +4,7 @@ authors = ["Sentry <oss@sentry.io>"]
 description = "Kafka topics and schemas for Sentry"
 repository = "https://github.com/getsentry/sentry-kafka-schemas"
 license-file = "./LICENSE"
-version = "0.1.21"
+version = "0.1.22"
 edition = "2021"
 
 build = "rust/build.rs"
