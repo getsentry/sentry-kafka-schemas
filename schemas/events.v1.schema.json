@@ -1571,11 +1571,6 @@
         }
       ]
     },
-    "InstructionAddrAdjustment": {
-      "description": "Controls the mechanism by which the `instruction_addr` of a [`Stacktrace`] [`Frame`] is adjusted.\n\nThe adjustment tries to transform *return addresses* to *call addresses* for symbolication. Typically, this adjustment needs to be done for all frames but the first, as the first frame is usually taken directly from the cpu context of a hardware exception or a suspended thread and the stack trace is created from that.\n\nWhen the stack walking implementation truncates frames from the top, `\"all\"` frames should be adjusted. In case the stack walking implementation already does the adjustment when producing stack frames, `\"none\"` should be used here.",
-      "type": "string",
-      "enum": ["auto", "all_but_first", "all", "none"]
-    },
     "JsonLenientString": {
       "description": " A \"into-string\" type of value. All non-string values are serialized as JSON.",
       "anyOf": [
@@ -1759,45 +1754,9 @@
               }
             ]
           }
-        },
-        "instruction_addr_adjustment": {
-          "description": " Optional. A flag that indicates if, and how, `instruction_addr` values need to be adjusted\n before they are symbolicated.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/InstructionAddrAdjustment"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "lang": {
-          "description": " The language of the stacktrace.",
-          "type": ["string", "null"]
-        },
-        "registers": {
-          "description": " Register values of the thread (top frame).\n\n A map of register names and their values. The values should contain the actual register\n values of the thread, thus mapping to the last frame in the list.",
-          "type": ["object", "null"],
-          "additionalProperties": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/RegVal"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        },
-        "snapshot": {
-          "description": " Indicates that this stack trace is a snapshot triggered by an external signal.\n\n If this field is `false`, then the stack trace points to the code that caused this stack\n trace to be created. This can be the location of a raised exception, as well as an exception\n or signal handler.\n\n If this field is `true`, then the stack trace was captured as part of creating an unrelated\n event. For example, a thread other than the crashing thread, or a stack trace computed as a\n result of an external kill signal.",
-          "type": ["boolean", "null"]
         }
       },
       "additionalProperties": true
-    },
-    "RegVal": {
-      "type": "string"
     },
     "Request": {
       "title": "sentry_request",
