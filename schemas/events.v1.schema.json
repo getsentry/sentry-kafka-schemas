@@ -406,7 +406,6 @@
       "additionalProperties": true,
       "required": ["received"],
       "properties": {
-        "type": { "type": "string" },
         "contexts": {
           "description": " Contexts describing the environment (e.g. device, os or browser).",
           "anyOf": [
