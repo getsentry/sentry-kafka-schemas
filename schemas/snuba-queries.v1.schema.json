@@ -136,7 +136,7 @@
               "type": "integer"
             },
             "sample": {
-              "type": "number"
+              "type": ["number", "null"]
             },
             "max_threads": {
               "type": "integer"
