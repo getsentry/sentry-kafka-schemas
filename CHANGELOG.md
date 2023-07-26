@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.23
+
+### Various fixes & improvements
+
+- fix: Simplify events schemas (#171) by @lynnagara
+- feat(querylog): Add schema definition for stats object (#169) by @lynnagara
+
 ## 0.1.22
 
 ### Various fixes & improvements
