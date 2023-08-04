@@ -1,0 +1,32 @@
+[
+    2,
+    "insert",
+    {
+        "project_id": 1,
+        "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
+        "span_id": "deadbeefdeadbeef",
+        "parent_span_id": "deadbeefdeadbeef",
+        "segment_id": "deadbeefdeadbeef",
+        "is_segment": false,
+        "start_timestamp_ms": 1691105878720,
+        "duration_ms": 1000,
+        "exclusive_time_ms": 1000,
+        "tags": [["tag1", "value1"], ["tag2", "value2"]],
+        "sentry_tags": {
+            "http.method": "GET",
+            "action": "test",
+            "domain": "example.com",
+            "module": "test",
+            "group": 12324325,
+
+        },
+    },
+    {
+      "is_new": false,
+      "is_regression": false,
+      "is_new_group_environment": false,
+      "queue": "post_process_transactions",
+      "skip_consume": false,
+      "group_states": null
+    }
+  ]
