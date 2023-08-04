@@ -97,7 +97,8 @@
               "type": ["string", "null"]
             },
             "group": {
-              "type": ["integer", "null"]
+              "type": ["string", "null"],
+              "description": "8 byte hexadecimal string"
             },
             "status": {
               "type": ["string", "null"]
