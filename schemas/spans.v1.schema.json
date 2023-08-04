@@ -21,7 +21,7 @@
         },
         "trace_id": {
           "type": "string",
-          "description": "The trace ID is a unique identifier for a trace. It is an 16 byte hexadecimal string."
+          "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
         },
         "span_id": {
           "type": "string",
