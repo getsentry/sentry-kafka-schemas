@@ -9,6 +9,6 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: spans.v1.schema.json
+    resource: snuba-spans.v1.schema.json
     examples:
-      - spans/1/
+      - snuba-spans/1/
