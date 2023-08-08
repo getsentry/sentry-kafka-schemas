@@ -13,6 +13,12 @@
       "title": "span_event",
       "additionalProperties": true,
       "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "organization_id": {
+          "type": "integer"
+        },
         "project_id": {
           "type": "integer"
         },
@@ -31,6 +37,10 @@
         "segment_id": {
           "type": "string",
           "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
+        },
+        "group_raw": {
+          "type": "string",
+          "description": "The raw group ID has from the root transaction. It is an 8 byte hexadecimal string."
         },
         "is_segment": {
           "type": "boolean",
