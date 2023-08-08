@@ -59,7 +59,6 @@
               "additionalProperties": {
                 "$ref": "#/definitions/TagValue"
               }
-
             },
             {
               "type": "null"
