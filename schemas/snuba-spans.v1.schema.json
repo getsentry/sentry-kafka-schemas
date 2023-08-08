@@ -76,7 +76,8 @@
         "duration_ms",
         "exclusive_time_ms",
         "is_segment",
-        "trace_id"
+        "trace_id",
+        "retention_days"
       ]
     },
     "SentryExtractedTags": {
