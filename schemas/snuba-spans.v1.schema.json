@@ -3,8 +3,6 @@
   "title": "spans_stream_message",
   "type": "array",
   "items": [
-    { "const": 2 },
-    { "const": "insert" },
     {
       "$ref": "#/definitions/SpanEvent"
     }
@@ -57,7 +55,11 @@
           "description": " Manual key/value tag pairs.",
           "anyOf": [
             {
-              "$ref": "#/definitions/Tags"
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/TagValue"
+              }
+
             },
             {
               "type": "null"
@@ -123,30 +125,8 @@
         }
       ]
     },
-    "TagEntry": {
-      "anyOf": [
-        {
-          "type": "array",
-          "items": [
-            {
-              "type": ["string", "null"]
-            },
-            {
-              "type": ["string", "null"]
-            }
-          ],
-          "maxItems": 2,
-          "minItems": 2
-        },
-        { "type": "null" }
-      ]
-    },
-    "Tags": {
-      "description": " Manual key/value tag pairs.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/TagEntry"
-      }
+    "TagValue": {
+      "type": ["string", "number", "boolean"]
     }
   }
 }
