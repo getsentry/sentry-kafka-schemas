@@ -101,6 +101,9 @@
               "type": ["string", "null"],
               "description": "8 byte hexadecimal string"
             },
+            "system": {
+              "type": ["string", "null"]
+            },
             "status": {
               "type": ["string", "null"]
             },
