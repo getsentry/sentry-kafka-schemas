@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.24
+
+### Various fixes & improvements
+
+- spans only schemas (#172) by @dbanda
+- fix: Fix events schema (#170) by @lynnagara
+
 ## 0.1.23
 
 ### Various fixes & improvements
