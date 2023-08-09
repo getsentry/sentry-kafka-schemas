@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.25
+
+### Various fixes & improvements
+
+- parent 4bcfde3655868210dc9c56df2485ffb29cbb8158 (#173) by @dbanda
+
 ## 0.1.24
 
 ### Various fixes & improvements
