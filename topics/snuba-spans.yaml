@@ -1,0 +1,14 @@
+topic: snuba-spans
+description: Snuba spans only
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-spans.v1.schema.json
+    examples:
+      - snuba-spans/1/

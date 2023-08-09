@@ -1,0 +1,36 @@
+[
+  {
+    "event_id": "dcc403b73ef548648188bbfa6012e9dc",
+    "organization_id": 69,
+    "project_id": 1,
+    "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
+    "span_id": "deadbeefdeadbeef",
+    "parent_span_id": "deadbeefdeadbeef",
+    "segment_id": "deadbeefdeadbeef",
+    "group_raw": "b640a0ce465fa2a4",
+    "is_segment": false,
+    "start_timestamp_ms": 1691105878720,
+    "duration_ms": 1000,
+    "exclusive_time_ms": 1000,
+    "retention_days": 90,
+    "tags": {
+      "tag1": "value1",
+      "tag2": 123,
+      "tag3": true
+    },
+    "sentry_tags": {
+      "http.method": "GET",
+      "action": "GET",
+      "domain": "targetdomain.tld:targetport",
+      "module": "http",
+      "group": "deadbeefdeadbeef",
+      "status": "ok",
+      "system": "python",
+      "status_code": 200,
+      "transaction": "/organizations/:orgId/issues/",
+      "transaction.op": "navigation",
+      "op": "http.client",
+      "transaction.method": "GET"
+    }
+  }
+]
