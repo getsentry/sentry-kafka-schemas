@@ -2,11 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "spans_stream_message",
   "type": "array",
-  "items": [
-    {
-      "$ref": "#/definitions/SpanEvent"
-    }
-  ],
+  "$ref": "#/definitions/SpanEvent",
   "definitions": {
     "SpanEvent": {
       "type": "object",
