@@ -57,6 +57,9 @@
         "retention_days": {
           "type": ["integer", "null"]
         },
+        "description": {
+          "type": ["string"]
+        },
         "tags": {
           "description": " Manual key/value tag pairs.",
           "anyOf": [
