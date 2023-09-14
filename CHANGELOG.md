@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.26
+
+### Various fixes & improvements
+
+- fix(spans): Add missing description field (#174) by @phacops
+
 ## 0.1.25
 
 ### Various fixes & improvements
