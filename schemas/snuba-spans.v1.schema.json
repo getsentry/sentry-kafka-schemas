@@ -135,7 +135,7 @@
       ]
     },
     "TagValue": {
-      "type": ["string", "number", "boolean"]
+      "type": ["string"]
     }
   }
 }

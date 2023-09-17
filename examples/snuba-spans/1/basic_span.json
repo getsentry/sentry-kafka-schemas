@@ -14,8 +14,8 @@
   "retention_days": 90,
   "tags": {
     "tag1": "value1",
-    "tag2": 123,
-    "tag3": true
+    "tag2": "123",
+    "tag3": "true"
   },
   "sentry_tags": {
     "http.method": "GET",
