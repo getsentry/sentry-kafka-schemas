@@ -25,7 +25,7 @@
     "group": "deadbeefdeadbeef",
     "status": "ok",
     "system": "python",
-    "status_code": 200,
+    "status_code": "200",
     "transaction": "/organizations/:orgId/issues/",
     "transaction.op": "navigation",
     "op": "http.client",

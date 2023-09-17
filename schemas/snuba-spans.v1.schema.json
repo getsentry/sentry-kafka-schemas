@@ -93,41 +93,41 @@
           "type": "object",
           "properties": {
             "http.method": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "action": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "domain": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "module": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "group": {
-              "type": ["string", "null"],
+              "type": ["string"],
               "description": "8 byte hexadecimal string"
             },
             "system": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "status": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "status_code": {
-              "type": ["integer", "null"]
+              "type": ["string"]
             },
             "transaction": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "transaction.op": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "op": {
-              "type": ["string", "null"]
+              "type": ["string"]
             },
             "transaction.method": {
-              "type": ["string", "null"]
+              "type": ["string"]
             }
           },
           "additionalProperties": true
