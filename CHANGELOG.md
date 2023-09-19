@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.27
+
+### Various fixes & improvements
+
+- fix(spans): Fix schema as tags can only be stored as strings (#175) by @phacops
+
 ## 0.1.26
 
 ### Various fixes & improvements
