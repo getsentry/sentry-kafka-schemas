@@ -14,8 +14,8 @@
   "retention_days": 90,
   "tags": {
     "tag1": "value1",
-    "tag2": 123,
-    "tag3": true
+    "tag2": "123",
+    "tag3": "True"
   },
   "sentry_tags": {
     "http.method": "GET",
@@ -25,7 +25,7 @@
     "group": "deadbeefdeadbeef",
     "status": "ok",
     "system": "python",
-    "status_code": 200,
+    "status_code": "200",
     "transaction": "/organizations/:orgId/issues/",
     "transaction.op": "navigation",
     "op": "http.client",
