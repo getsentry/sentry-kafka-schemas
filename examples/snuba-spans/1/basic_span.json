@@ -15,7 +15,7 @@
   "tags": {
     "tag1": "value1",
     "tag2": "123",
-    "tag3": "true"
+    "tag3": "True"
   },
   "sentry_tags": {
     "http.method": "GET",
