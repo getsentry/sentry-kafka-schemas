@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "transaction_stream_message",
   "type": "array",
   "items": [
     { "const": 2 },
@@ -978,7 +977,7 @@
           "type": ["object", "null"]
         },
         "data": {
-          "anyOf": [{ "$ref": "#/definitions/SpanData" }, { "type": "null" }]
+          "type": ["object", "null"]
         },
         "hash": {
           "type": "string"
@@ -1108,60 +1107,6 @@
           "properties": {
             "source": {
               "description": "Describes how the name of the transaction was determined.\n\n This will be used by the server to decide whether or not to scrub identifiers from the\n transaction name, or replace the entire name with a placeholder.",
-              "type": ["string", "null"]
-            }
-          },
-          "additionalProperties": true
-        }
-      ]
-    },
-    "SpanData": {
-      "description": "Spans data bag",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "environment": {
-              "type": ["string", "null"]
-            },
-            "http.method": {
-              "type": ["string", "null"]
-            },
-            "span.action": {
-              "type": ["string", "null"]
-            },
-            "span.domain": {
-              "type": ["string", "null"]
-            },
-            "span.module": {
-              "type": ["string", "null"]
-            },
-            "span.op": {
-              "type": ["string", "null"]
-            },
-            "span.group": {
-              "description": "hex hash of the scrubbed span description",
-              "type": ["string", "null"]
-            },
-            "span.status": {
-              "type": ["string", "null"]
-            },
-            "span.system": {
-              "type": ["string", "null"]
-            },
-            "span.status_code": {
-              "type": ["integer", "null"]
-            },
-            "status_code": {
-              "type": ["integer", "null"]
-            },
-            "transaction": {
-              "type": ["string", "null"]
-            },
-            "transaction.op": {
-              "type": ["string", "null"]
-            },
-            "transaction.method": {
               "type": ["string", "null"]
             }
           },
