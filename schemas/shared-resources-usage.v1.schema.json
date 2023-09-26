@@ -3,6 +3,7 @@
   "$ref": "#/definitions/SharedResourcesUsage",
   "definitions": {
     "SharedResourcesUsage": {
+      "title": "shared_resources_usage",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -28,15 +29,7 @@
         "shared_resource_id",
         "timestamp",
         "usage_unit"
-      ],
-      "title": "shared_resources_usage"
+      ]
     }
-  },
-  "required": [
-    "amount",
-    "app_feature",
-    "shared_resource_id",
-    "timestamp",
-    "usage_unit"
-  ]
+  }
 }
