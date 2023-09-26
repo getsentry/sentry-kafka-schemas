@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/SharedResourceUsage",
+    "definitions": {
+        "SharedResourceUsage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "timestamp": {
+                    "type": "integer"
+                },
+                "shared_resource_id": {
+                    "type": "string"
+                },
+                "app_feature": {
+                    "type": "string"
+                },
+                "usage_unit": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "amount",
+                "app_feature",
+                "shared_resource_id",
+                "timestamp",
+                "usage_unit"
+            ],
+            "title": "SharedResourceUsage"
+        }
+    }
+}
