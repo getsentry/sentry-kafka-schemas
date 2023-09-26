@@ -31,5 +31,13 @@
             ],
             "title": "SharedResourceUsage"
         }
+      },
+      "required": [
+        "amount",
+        "app_feature",
+        "shared_resource_id",
+        "timestamp",
+        "usage_unit"
+      ],
+      "title": "SharedResourceUsage"
     }
-}
