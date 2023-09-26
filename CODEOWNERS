@@ -16,6 +16,9 @@
 /topics/group-attributes.yaml                              @getsentry/owners-snuba @getsentry/issues
 /topics/snuba-spans.yaml                                   @getsentry/owners-snuba
 
+# Topics produced to by Snuba
+/topics/shared-resources-usage.yaml                        @getsentry/owners-snuba @getsentry/data
+
 # Schemas
 /schemas/profile-metadata.v1.schema.json                   @getsentry/profiling
 /schemas/profile-functions.v1.schema.json                  @getsentry/profiling
