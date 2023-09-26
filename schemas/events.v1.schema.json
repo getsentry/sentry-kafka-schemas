@@ -1086,6 +1086,7 @@
         "expectct",
         "expectstaple",
         "transaction",
+        "nel",
         "default"
       ]
     },
