@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.28
+
+### Various fixes & improvements
+
+- Revert "Add spans data schema (#153)" (#176) by @lynnagara
+
 ## 0.1.27
 
 ### Various fixes & improvements
