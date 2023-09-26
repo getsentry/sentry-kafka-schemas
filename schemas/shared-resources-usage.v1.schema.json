@@ -16,7 +16,7 @@
           "type": "string"
         },
         "usage_unit": {
-          "type": "string"
+          "enum": ["bytes", "milliseconds", "milliseconds_sec"]
         },
         "amount": {
           "type": "integer"
