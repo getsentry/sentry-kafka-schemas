@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.29
+
+### Various fixes & improvements
+
+- allow new `nel` event type in events topics (#177) by @oioki
+
 ## 0.1.28
 
 ### Various fixes & improvements
