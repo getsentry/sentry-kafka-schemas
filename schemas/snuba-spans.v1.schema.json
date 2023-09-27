@@ -38,6 +38,10 @@
           "type": "string",
           "description": "The raw group ID has from the root transaction. It is an 8 byte hexadecimal string."
         },
+        "profile_id": {
+          "type": "string",
+          "description": "The profile ID. It is an 8 byte hexadecimal string."
+        },
         "is_segment": {
           "type": "boolean",
           "description": "Whether this span is a segment or not."
