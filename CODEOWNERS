@@ -2,6 +2,7 @@
 /topics/ingest-metrics.yaml                                @getsentry/owners-ingest @getsentry/owners-snuba
 /topics/ingest-performance-metrics.yaml                    @getsentry/owners-ingest @getsentry/owners-snuba
 /topics/ingest-replay-recordings.yaml                      @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-spans.yaml                                  @getsentry/team-starfish
 
 # Topics consumed by Snuba
 /topics/events.yaml                                        @getsentry/owners-snuba
@@ -23,11 +24,13 @@
 /schemas/profile-metadata.v1.schema.json                   @getsentry/profiling
 /schemas/profile-functions.v1.schema.json                  @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                   @getsentry/issues
+/schemas/ingest-spans.v1.schema.json                       @getsentry/team-starfish
 
 # Examples
 /examples/profile-metadata/                                @getsentry/profiling
 /examples/profile-functions/                               @getsentry/profiling
 /examples/group-attributes/                                @getsentry/issues
+/examples/ingest-spans/                                    @getsentry/team-starfish
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba
