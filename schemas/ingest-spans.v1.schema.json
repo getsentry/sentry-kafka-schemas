@@ -23,12 +23,7 @@
           "$ref": "#/definitions/Span"
         }
       },
-      "required": [
-        "organization_id",
-        "project_id",
-        "retention_days",
-        "span"
-      ]
+      "required": ["organization_id", "project_id", "retention_days", "span"]
     },
     "Span": {
       "type": "object",
@@ -36,55 +31,52 @@
       "additionalProperties": true,
       "properties": {
         "description": {
-          "type": "string",
+          "type": "string"
         },
         "exclusive_time_ms": {
-          "type": "integer",
+          "type": "integer"
         },
         "is_segment": {
-          "type": "boolean",
+          "type": "boolean"
         },
         "op": {
-          "type": "string",
-        }, 
+          "type": "string"
+        },
         "parent_span_id": {
-          "type": "string",
+          "type": "string"
         },
         "profile_id": {
-          "type": "string",
+          "type": "string"
         },
         "segment_id": {
-          "type": "string",
+          "type": "string"
         },
         "sentry_tags": {
           "type": "object",
           "additionalProperties": {
-            "type": "string",
-          },
+            "type": "string"
+          }
         },
         "span_id": {
-          "type": "string",
+          "type": "string"
         },
         "start_timestamp_ms": {
-          "type": "integer",
+          "type": "integer"
         },
         "status": {
-          "type": "string",
+          "type": "string"
         },
         "tags": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          },
+          }
         },
         "trace_id": {
-          "type": "string",
-        },
+          "type": "string"
+        }
       },
-      "required": [
-        "start_timestamp_ms",
-        "trace_id"
-      ]
-    },
+      "required": ["start_timestamp_ms", "trace_id"]
+    }
   }
 }
