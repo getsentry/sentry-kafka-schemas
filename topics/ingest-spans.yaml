@@ -1,0 +1,14 @@
+topic: ingest-spans
+description: Spans from Relay
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: ingest-spans.v1.schema.json
+    examples:
+      - ingest-spans/1/

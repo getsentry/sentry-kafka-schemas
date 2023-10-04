@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "span_kafka_message",
+  "$ref": "#/definitions/SpanKafkaMessage",
+  "definitions": {
+    "SpanKafkaMessage": {
+      "type": "object",
+      "title": "span_kafka_message",
+      "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "organization_id": {
+          "type": "integer"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "retention_days": {
+          "type": "integer"
+        },
+        "span": {
+          "$ref": "#/definitions/Span"
+        }
+      },
+      "required": [
+        "organization_id",
+        "project_id",
+        "retention_days",
+        "span"
+      ]
+    },
+    "Span": {
+      "type": "object",
+      "title": "span",
+      "additionalProperties": true,
+      "properties": {
+        "description": {
+          "type": "string",
+        },
+        "exclusive_time_ms": {
+          "type": "integer",
+        },
+        "is_segment": {
+          "type": "boolean",
+        },
+        "op": {
+          "type": "string",
+        }, 
+        "parent_span_id": {
+          "type": "string",
+        },
+        "profile_id": {
+          "type": "string",
+        },
+        "segment_id": {
+          "type": "string",
+        },
+        "sentry_tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+          },
+        },
+        "span_id": {
+          "type": "string",
+        },
+        "start_timestamp_ms": {
+          "type": "integer",
+        },
+        "status": {
+          "type": "string",
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+        },
+        "trace_id": {
+          "type": "string",
+        },
+      },
+      "required": [
+        "start_timestamp_ms",
+        "trace_id"
+      ]
+    },
+  }
+}
