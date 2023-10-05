@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.1.30
+
+### Various fixes & improvements
+
+- feat(spans): Add schema for ingest-spans (#180) by @phacops
+- fix(spans): Remove wrong array type (#181) by @phacops
+- spans: add profile id (#179) by @dbanda
+- feat(CoGS): Add `shared-resources-usage` topic schema (#178) by @rahul-kumar-saini
+
 ## 0.1.29
 
 ### Various fixes & improvements
