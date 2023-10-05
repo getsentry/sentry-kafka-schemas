@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "ingest_span_message",
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "organization_id": {
+      "type": "integer"
+    },
+    "project_id": {
+      "type": "integer"
+    },
+    "retention_days": {
+      "type": "integer"
+    },
+    "span": {
+      "$ref": "#/definitions/IngestSpan"
+    }
+  },
+  "required": ["organization_id", "project_id", "retention_days", "span"],
+  "definitions": {
+    "IngestSpan": {
+      "type": "object",
+      "title": "ingest_span",
+      "additionalProperties": true,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "exclusive_time": {
+          "type": "number"
+        },
+        "is_segment": {
+          "type": "boolean"
+        },
+        "op": {
+          "type": "string"
+        },
+        "parent_span_id": {
+          "type": "string"
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "segment_id": {
+          "type": "string"
+        },
+        "sentry_tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "start_timestamp": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "timestamp": {
+          "type": "number"
+        },
+        "trace_id": {
+          "type": "string"
+        }
+      },
+      "required": ["start_timestamp", "timestamp", "trace_id"]
+    }
+  }
+}
