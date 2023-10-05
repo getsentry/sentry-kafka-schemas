@@ -4,19 +4,11 @@
   "project_id": 1,
   "retention_days": 90,
   "span": {
-    "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
-    "span_id": "deadbeefdeadbeef",
-    "parent_span_id": "deadbeefdeadbeef",
-    "segment_id": "deadbeefdeadbeef",
-    "profile_id": "deadbeefdeadbeef",
+    "exclusive_time": 1000.1,
     "is_segment": false,
-    "start_timestamp_ms": 1691105878720,
-    "exclusive_time_ms": 1000,
-    "tags": {
-      "tag1": "value1",
-      "tag2": "123",
-      "tag3": "True"
-    },
+    "parent_span_id": "deadbeefdeadbeef",
+    "profile_id": "deadbeefdeadbeef",
+    "segment_id": "deadbeefdeadbeef",
     "sentry_tags": {
       "action": "GET",
       "domain": "targetdomain.tld:targetport",
@@ -29,6 +21,15 @@
       "transaction": "/organizations/:orgId/issues/",
       "transaction.method": "GET",
       "transaction.op": "navigation"
-    }
+    },
+    "span_id": "deadbeefdeadbeef",
+    "start_timestamp": 1691105878720.123,
+    "tags": {
+      "tag1": "value1",
+      "tag2": "123",
+      "tag3": "True"
+    },
+    "timestamp": 169110587920.123,
+    "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef"
   }
 }
