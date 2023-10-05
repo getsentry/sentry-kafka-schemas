@@ -29,8 +29,8 @@
         "description": {
           "type": "string"
         },
-        "exclusive_time_ms": {
-          "type": "integer"
+        "exclusive_time": {
+          "type": "number"
         },
         "is_segment": {
           "type": "boolean"
@@ -56,8 +56,8 @@
         "span_id": {
           "type": "string"
         },
-        "start_timestamp_ms": {
-          "type": "integer"
+        "start_timestamp": {
+          "type": "number"
         },
         "status": {
           "type": "string"
@@ -68,11 +68,14 @@
             "type": "string"
           }
         },
+        "timestamp": {
+          "type": "number"
+        },
         "trace_id": {
           "type": "string"
         }
       },
-      "required": ["start_timestamp_ms", "trace_id"]
+      "required": ["start_timestamp", "timestamp", "trace_id"]
     }
   }
 }
