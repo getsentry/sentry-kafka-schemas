@@ -39,7 +39,7 @@
         },
         "profile_id": {
           "type": "string",
-          "description": "The profile ID. It is an 8 byte hexadecimal string."
+          "description": "The profile ID. It is a 16 byte hexadecimal string."
         },
         "is_segment": {
           "type": "boolean",
