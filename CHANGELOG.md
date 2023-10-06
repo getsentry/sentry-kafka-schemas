@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.31
+
+### Various fixes & improvements
+
+- fix(spans): Fix snuba-spans example (#182) by @phacops
+
 ## 0.1.30
 
 ### Various fixes & improvements
