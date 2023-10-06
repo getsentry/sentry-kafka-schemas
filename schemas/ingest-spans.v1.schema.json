@@ -4,7 +4,7 @@
   "title": "ingest_span_message",
   "properties": {
     "event_id": {
-      "type": "string"
+      "$ref": "#/definitions/UUID"
     },
     "organization_id": {
       "type": "integer"
@@ -42,7 +42,7 @@
           "type": "string"
         },
         "profile_id": {
-          "type": "string"
+          "$ref": "#/definitions/UUID"
         },
         "segment_id": {
           "type": "string"
@@ -72,10 +72,15 @@
           "type": "number"
         },
         "trace_id": {
-          "type": "string"
+          "$ref": "#/definitions/UUID"
         }
       },
       "required": ["start_timestamp", "timestamp", "trace_id"]
+    },
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
     }
   }
 }
