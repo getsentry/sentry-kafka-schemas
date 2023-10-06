@@ -9,7 +9,7 @@
       "additionalProperties": true,
       "properties": {
         "event_id": {
-          "type": "string"
+          "$ref": "#/definitions/UUID"
         },
         "organization_id": {
           "type": "integer"
@@ -18,7 +18,7 @@
           "type": "integer"
         },
         "trace_id": {
-          "type": "string",
+          "$ref": "#/definitions/UUID",
           "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
         },
         "span_id": {
@@ -38,7 +38,7 @@
           "description": "The raw group ID has from the root transaction. It is an 8 byte hexadecimal string."
         },
         "profile_id": {
-          "type": "string",
+          "$ref": "#/definitions/UUID",
           "description": "The profile ID. It is an 8 byte hexadecimal string."
         },
         "is_segment": {
@@ -99,41 +99,40 @@
           "type": "object",
           "properties": {
             "http.method": {
-              "type": ["string"]
+              "type": "string"
             },
             "action": {
-              "type": ["string"]
+              "type": "string"
             },
             "domain": {
-              "type": ["string"]
+              "type": "string"
             },
             "module": {
-              "type": ["string"]
+              "type": "string"
             },
             "group": {
-              "type": ["string"],
-              "description": "8 byte hexadecimal string"
+              "type": "string"
             },
             "system": {
-              "type": ["string"]
+              "type": "string"
             },
             "status": {
-              "type": ["string"]
+              "type": "string"
             },
             "status_code": {
-              "type": ["string"]
+              "type": "string"
             },
             "transaction": {
-              "type": ["string"]
+              "type": "string"
             },
             "transaction.op": {
-              "type": ["string"]
+              "type": "string"
             },
             "op": {
-              "type": ["string"]
+              "type": "string"
             },
             "transaction.method": {
-              "type": ["string"]
+              "type": "string"
             }
           },
           "additionalProperties": true
@@ -141,7 +140,12 @@
       ]
     },
     "TagValue": {
-      "type": ["string"]
+      "type": "string"
+    },
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
     }
   }
 }
