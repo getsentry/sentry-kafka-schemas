@@ -12,10 +12,10 @@
           "$ref": "#/definitions/UUID"
         },
         "organization_id": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "project_id": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "trace_id": {
           "$ref": "#/definitions/UUID",
@@ -46,22 +46,22 @@
           "description": "Whether this span is a segment or not."
         },
         "start_timestamp_ms": {
-          "type": "integer",
+          "$ref": "#/definitions/UInt",
           "description": "The start timestamp of the span in milliseconds since epoch."
         },
         "duration_ms": {
-          "type": "integer",
+          "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."
         },
         "exclusive_time_ms": {
-          "type": "integer",
+          "$ref": "#/definitions/PositiveFloat",
           "description": "The exclusive time of the span in milliseconds."
         },
         "retention_days": {
-          "type": ["integer", "null"]
+          "$ref": "#/definitions/UInt16"
         },
         "description": {
-          "type": ["string"]
+          "type": "string"
         },
         "tags": {
           "description": " Manual key/value tag pairs.",
@@ -146,6 +146,24 @@
       "type": "string",
       "minLength": 32,
       "maxLength": 36
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "UInt32": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "PositiveFloat": {
+      "type": "number",
+      "minimum": 0
     }
   }
 }
