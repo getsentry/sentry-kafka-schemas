@@ -12,10 +12,10 @@
           "$ref": "#/definitions/UUID"
         },
         "organization_id": {
-          "$ref": "#/definitions/uint"
+          "$ref": "#/definitions/UInt"
         },
         "project_id": {
-          "$ref": "#/definitions/uint"
+          "$ref": "#/definitions/UInt"
         },
         "trace_id": {
           "$ref": "#/definitions/UUID",
@@ -46,19 +46,19 @@
           "description": "Whether this span is a segment or not."
         },
         "start_timestamp_ms": {
-          "$ref": "#/definitions/uint",
+          "$ref": "#/definitions/UInt",
           "description": "The start timestamp of the span in milliseconds since epoch."
         },
         "duration_ms": {
-          "$ref": "#/definitions/uint32",
+          "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."
         },
         "exclusive_time_ms": {
-          "$ref": "#/definitions/positive_float",
+          "$ref": "#/definitions/PositiveFloat",
           "description": "The exclusive time of the span in milliseconds."
         },
         "retention_days": {
-          "$ref": "#/definitions/uint16",
+          "$ref": "#/definitions/UInt16"
         },
         "description": {
           "type": "string"
@@ -147,21 +147,21 @@
       "minLength": 32,
       "maxLength": 36
     },
-    "uint16": {
+    "UInt16": {
       "type": "integer",
       "minimum": 0,
       "maximum": 65535
     },
-    "uint32": {
+    "UInt32": {
       "type": "integer",
       "minimum": 0,
       "maximum": 4294967295
     },
-    "uint": {
+    "UInt": {
       "type": "integer",
       "minimum": 0
     },
-    "positive_float": {
+    "PositiveFloat": {
       "type": "number",
       "minimum": 0
     }

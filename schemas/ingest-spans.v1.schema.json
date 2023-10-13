@@ -30,7 +30,7 @@
           "type": "string"
         },
         "exclusive_time": {
-          "$ref": "#/definitions/positive_float"
+          "$ref": "#/definitions/PositiveFloat"
         },
         "is_segment": {
           "type": "boolean"
@@ -57,7 +57,7 @@
           "type": "string"
         },
         "start_timestamp": {
-          "$ref": "#/definitions/positive_float"
+          "$ref": "#/definitions/PositiveFloat"
         },
         "status": {
           "type": "string"
@@ -69,7 +69,7 @@
           }
         },
         "timestamp": {
-          "$ref": "#/definitions/positive_float"
+          "$ref": "#/definitions/PositiveFloat"
         },
         "trace_id": {
           "$ref": "#/definitions/UUID"
@@ -82,7 +82,7 @@
       "minLength": 32,
       "maxLength": 36
     },
-    "positive_float": {
+    "PositiveFloat": {
       "type": "number",
       "minimum": 0
     }
