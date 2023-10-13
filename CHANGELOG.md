@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.32
+
+### Various fixes & improvements
+
+- fix(spans): Fix types for integer and number fields (#185) by @phacops
+- Update comment (#183) by @dbanda
+- feat(rust): Add validate_json() method in Rust (#184) by @lynnagara
+
 ## 0.1.31
 
 ### Various fixes & improvements
