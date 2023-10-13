@@ -39,7 +39,7 @@
         },
         "profile_id": {
           "$ref": "#/definitions/UUID",
-          "description": "The profile ID. It is an 8 byte hexadecimal string."
+          "description": "The profile ID. It is an 16 byte hexadecimal string."
         },
         "is_segment": {
           "type": "boolean",
