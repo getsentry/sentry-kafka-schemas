@@ -7,7 +7,9 @@
       "title": "generic_metric",
       "additionalProperties": true,
       "properties": {
-        "version": { "const": 2 },
+        "version": {
+          "const": 2
+        },
         "use_case_id": {
           "type": "string"
         },
@@ -50,6 +52,13 @@
               "title": "distribution_metric_value",
               "type": "array",
               "items": {
+                "type": "number"
+              }
+            },
+            {
+              "title": "gauge_metric_value",
+              "type": "object",
+              "additionalProperties": {
                 "type": "number"
               }
             }
