@@ -75,7 +75,14 @@
                   "type": "number"
                 }
               },
-              "additionalProperties": false
+              "additionalProperties": false,
+              "required": [
+                "min",
+                "max",
+                "sum",
+                "count",
+                "last"
+              ]
             }
           ]
         },
