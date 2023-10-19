@@ -58,8 +58,22 @@
             {
               "title": "gauge_metric_value",
               "type": "object",
-              "additionalProperties": {
-                "type": "number"
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                },
+                "sum": {
+                  "type": "number"
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "last": {
+                  "type": "number"
+                }
               }
             }
           ]
