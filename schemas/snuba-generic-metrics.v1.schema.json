@@ -76,13 +76,7 @@
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "min",
-                "max",
-                "sum",
-                "count",
-                "last"
-              ]
+              "required": ["min", "max", "sum", "count", "last"]
             }
           ]
         },
