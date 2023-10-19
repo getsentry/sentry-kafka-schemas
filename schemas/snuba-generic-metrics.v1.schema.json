@@ -74,7 +74,8 @@
                 "last": {
                   "type": "number"
                 }
-              }
+              },
+              "additionalProperties": false
             }
           ]
         },
