@@ -26,12 +26,7 @@
         "type": {
           "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
           "type": "string",
-          "enum": [
-            "c",
-            "d",
-            "s",
-            "g"
-          ]
+          "enum": ["c", "d", "s", "g"]
         },
         "timestamp": {
           "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
@@ -88,13 +83,7 @@
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "min",
-                "max",
-                "sum",
-                "count",
-                "last"
-              ]
+              "required": ["min", "max", "sum", "count", "last"]
             }
           ]
         },
