@@ -7,7 +7,9 @@
       "title": "generic_metric",
       "additionalProperties": true,
       "properties": {
-        "version": { "const": 2 },
+        "version": {
+          "const": 2
+        },
         "use_case_id": {
           "type": "string"
         },
@@ -52,6 +54,29 @@
               "items": {
                 "type": "number"
               }
+            },
+            {
+              "title": "gauge_metric_value",
+              "type": "object",
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                },
+                "sum": {
+                  "type": "number"
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "last": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false,
+              "required": ["min", "max", "sum", "count", "last"]
             }
           ]
         },
