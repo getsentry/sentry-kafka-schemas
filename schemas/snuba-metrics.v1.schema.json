@@ -57,6 +57,7 @@
             },
             {
               "title": "gauge_metric_value",
+              "description": "This type is NOT yet supported in Release Health. However, since the upstream (ingest-metrics) schema is shared between Generic Metrics and Release Health, we add this as a possible value for type checking and compatibility.",
               "type": "object",
               "properties": {
                 "min": {
