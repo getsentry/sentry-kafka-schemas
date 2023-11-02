@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.33
+
+### Various fixes & improvements
+
+- Add gauges to ingest + snuba generic metrics schema (#186) by @ayirr7
+- feat(feedback): add feedback as new event type (#187) by @JoshFerge
+
 ## 0.1.32
 
 ### Various fixes & improvements
