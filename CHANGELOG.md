@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.34
+
+### Various fixes & improvements
+
+- feat(spans): Add a received field to track e2e latency (#189) by @phacops
+
 ## 0.1.33
 
 ### Various fixes & improvements
