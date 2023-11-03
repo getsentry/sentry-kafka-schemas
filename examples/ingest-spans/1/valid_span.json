@@ -24,6 +24,7 @@
     },
     "span_id": "deadbeefdeadbeef",
     "start_timestamp": 1691105878720.123,
+    "received": 169110587919.123,
     "tags": {
       "tag1": "value1",
       "tag2": "123",

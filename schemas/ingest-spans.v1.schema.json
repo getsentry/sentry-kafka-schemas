@@ -44,6 +44,9 @@
         "profile_id": {
           "$ref": "#/definitions/UUID"
         },
+        "received": {
+          "$ref": "#/definitions/PositiveFloat"
+        },
         "segment_id": {
           "type": "string"
         },
