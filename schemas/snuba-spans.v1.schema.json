@@ -83,7 +83,13 @@
         },
         "sentry_tags": {
           "$ref": "#/definitions/SentryExtractedTags"
-        }
+        },
+        "measurements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
       },
       "required": [
         "span_id",

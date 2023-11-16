@@ -35,6 +35,12 @@
         "is_segment": {
           "type": "boolean"
         },
+        "measurements": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
         "op": {
           "type": "string"
         },

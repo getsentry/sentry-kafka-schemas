@@ -6,6 +6,9 @@
   "span": {
     "exclusive_time": 1000.1,
     "is_segment": false,
+    "measurements": {
+      "http.response_content_length": 100
+    },
     "parent_span_id": "deadbeefdeadbeef",
     "profile_id": "deadbeefdeadbeefdeadbeefdeadbeef",
     "segment_id": "deadbeefdeadbeef",
