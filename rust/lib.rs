@@ -1,13 +1,15 @@
+use std::path::PathBuf;
+
 use jsonschema::JSONSchema;
 use serde::{Deserialize, Serialize};
-use std::fs::{read_to_string, File};
-use std::path::{Path, PathBuf};
 use thiserror::Error;
 
 // This file is supposed to be auto-generated via rust/build.rs
 pub mod schema_types {
     include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
 }
+
+include!(concat!(env!("OUT_DIR"), "/embedded_data.rs"));
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -36,6 +38,8 @@ pub enum SchemaError {
     InvalidType,
     #[error("Invalid schema")]
     InvalidSchema,
+    // FIXME(swatinem): maybe a dedicated `ValidationError` would be nice which
+    // carries a JSON error as well as the exact Schema error.
     #[error("Invalid message")]
     InvalidMessage,
 }
@@ -56,10 +60,15 @@ struct TopicData {
     schemas: Vec<TopicSchema>,
 }
 
+fn find_entry<'s>(slice: &[(&str, &'s str)], key: &str) -> Option<&'s str> {
+    let idx = slice.binary_search_by_key(&key, |&(name, _)| name).ok()?;
+    Some(slice.get(idx)?.1)
+}
+
 impl TopicData {
-    fn load(path: &Path) -> Result<Self, SchemaError> {
-        let f = File::open(path).map_err(|_| SchemaError::TopicNotFound)?;
-        serde_yaml::from_reader(f).map_err(|_| SchemaError::TopicNotFound)
+    fn load(topic: &str) -> Result<Self, SchemaError> {
+        let topic_data = find_entry(TOPICS, topic).ok_or(SchemaError::TopicNotFound)?;
+        serde_yaml::from_str(topic_data).map_err(|_| SchemaError::TopicNotFound)
     }
 }
 
@@ -68,8 +77,11 @@ pub struct Schema {
     pub version: u16,
     pub schema_type: SchemaType,
     pub compatibility_mode: CompatibilityMode,
+    // FIXME(swatinem): this should maybe be private, with an accessor, or rather &'static str?
     pub schema: String,
+    // FIXME(swatinem): this should be removed in a breaking release
     pub schema_filepath: PathBuf,
+    // FIXME(swatinem): this is an `Option` because of `Default`/`Deserialize`.
     #[serde(skip)]
     compiled_json_schema: Option<JSONSchema>,
 }
@@ -88,20 +100,24 @@ impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<(), SchemaError> {
         let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
 
-        if let Some(compiled) = &self.compiled_json_schema {
-            compiled
-                .validate(&message)
-                .map_err(|_| SchemaError::InvalidMessage)
-        } else {
-            Err(SchemaError::InvalidSchema)
-        }
+        let compiled = self
+            .compiled_json_schema
+            .as_ref()
+            .ok_or(SchemaError::InvalidSchema)?;
+
+        compiled
+            .validate(&message)
+            .map_err(|_| SchemaError::InvalidMessage)?;
+
+        // FIXME(swatinem): we might as well just return the `Value` here
+        Ok(())
     }
 }
 
 pub fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, SchemaError> {
-    let topic_path = Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("topics/{topic}.yaml"));
-    let mut topic_data = TopicData::load(&topic_path)?;
+    let mut topic_data = TopicData::load(topic)?;
     topic_data.schemas.sort_by_key(|x| x.version);
+
     let schema_metadata = if let Some(version) = version {
         topic_data
             .schemas
@@ -122,7 +138,7 @@ pub fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema
     Ok(schema_metadata)
 }
 
-/// Returns the schema for a topic. If version is passed, return the schema for
+/// Returns the schema for a topic. If `version`` is passed, return the schema for
 /// the specified version, otherwise the latest version is returned.
 ///
 /// Only JSON schemas are currently supported.
@@ -132,14 +148,15 @@ pub fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema
 /// Will return `Err` if `topic` or `version` is not found or if schema data is invalid.
 pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaError> {
     let schema_metadata = get_topic_schema(topic, version)?;
-    let json_schema_path =
-        Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("schemas/{}", schema_metadata.resource));
 
-    let schema = read_to_string(&json_schema_path).map_err(|_| SchemaError::InvalidSchema)?;
+    let schema =
+        find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
 
-    let s = serde_json::from_str(&schema).map_err(|_| SchemaError::InvalidSchema)?;
+    let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
     let compiled_json_schema =
         Some(JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?);
+
+    let schema = schema.to_string();
 
     Ok({
         Schema {
@@ -147,7 +164,7 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
             schema_type: schema_metadata.schema_type,
             compatibility_mode: schema_metadata.compatibility_mode,
             schema,
-            schema_filepath: json_schema_path.to_owned(),
+            schema_filepath: PathBuf::new(),
             compiled_json_schema,
         }
     })
@@ -156,6 +173,9 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    use std::fs::read_to_string;
+    use std::path::Path;
 
     #[test]
     fn test_get_schema() {
@@ -179,7 +199,7 @@ mod tests {
         let example_dir = topic_schema.examples.first().unwrap();
         let example_path = Path::new(env!("CARGO_MANIFEST_DIR"))
             .join(format!("examples/{}{}", example_dir, "snuba-queries1.json"));
-        let example = read_to_string(&example_path).unwrap();
+        let example = read_to_string(example_path).unwrap();
         schema.validate_json(example.as_bytes()).unwrap();
 
         let invalid = "{}";
