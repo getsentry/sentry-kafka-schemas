@@ -41,23 +41,75 @@ fn generate_schema(schema_path: &str, output_module: &str) -> String {
     )
 }
 
-fn main() {
-    #[allow(unused_mut)]
-    let mut module_code = String::new();
+fn generate_embedded_data() -> String {
+    println!("cargo:rerun-if-changed=topics");
+    println!("cargo:rerun-if-changed=schemas");
 
-    #[cfg(feature = "type_generation")]
-    {
-        module_code.push_str(&generate_schema(
-            "schemas/ingest-metrics.v1.schema.json",
-            "ingest_metrics_v1",
-        ));
+    let manifest_root = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    let topics = enumerate_dir("topics");
+    let schemas = enumerate_dir("schemas");
+
+    let mut code = String::new();
+    use std::fmt::Write;
+    let w = &mut code;
+
+    writeln!(w, "const TOPICS: &[(&'static str, &'static str)] = &[").unwrap();
+    for topic in topics {
+        let name = topic.strip_suffix(".yaml").unwrap();
+        let path = format!("{manifest_root}/topics/{topic}");
+        writeln!(w, "    ({name:?}, include_str!({path:?})),").unwrap();
     }
+    writeln!(w, "];\n").unwrap();
+
+    writeln!(w, "const SCHEMAS: &[(&'static str, &'static str)] = &[").unwrap();
+    for schema in schemas {
+        let path = format!("{manifest_root}/schemas/{schema}");
+        writeln!(w, "    ({schema:?}, include_str!({path:?})),").unwrap();
+    }
+    writeln!(w, "];").unwrap();
+
+    code
+}
+
+fn enumerate_dir(dir: &str) -> Vec<String> {
+    let mut files: Vec<_> = std::fs::read_dir(dir)
+        .unwrap()
+        .map(|entry| entry.unwrap().file_name().into_string().unwrap())
+        .collect();
+    files.sort();
+    files
+}
+
+fn main() {
+    let module_code = {
+        #[cfg(feature = "type_generation")]
+        {
+            generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1")
+        }
+        #[cfg(not(feature = "type_generation"))]
+        {
+            String::new()
+        }
+    };
+
+    let embedded_data = generate_embedded_data();
 
     if let Ok(target_dir) = std::env::var("OUT_DIR") {
         println!("cargo:rerun-if-changed=build.rs");
+
         std::fs::write(Path::new(&target_dir).join("schema_types.rs"), module_code)
             .expect("Failed to write schema_types.rs");
+
+        std::fs::write(
+            Path::new(&target_dir).join("embedded_data.rs"),
+            embedded_data,
+        )
+        .expect("Failed to write embedded_data.rs");
     } else {
+        println!("### embedded_data.rs");
+        println!("{embedded_data}");
+
+        println!("### schema_types.rs");
         println!("{module_code}");
     }
 }
