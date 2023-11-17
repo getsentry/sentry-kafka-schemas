@@ -92,11 +92,11 @@ impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
         let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
 
-        self.compiled_json_schema
-            .validate(&message)
-            .map_err(|_| SchemaError::InvalidMessage)?;
-
-        Ok(message)
+        if self.compiled_json_schema.is_valid(&message) {
+            Ok(message)
+        } else {
+            Err(SchemaError::InvalidMessage)
+        }
     }
 
     /// Returns the raw JSON Schema definition.
