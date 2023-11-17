@@ -95,7 +95,7 @@ fn main() {
     let embedded_data = generate_embedded_data();
 
     if let Ok(target_dir) = std::env::var("OUT_DIR") {
-        println!("cargo:rerun-if-changed=build.rs");
+        println!("cargo:rerun-if-changed=rust/build.rs");
 
         std::fs::write(Path::new(&target_dir).join("schema_types.rs"), module_code)
             .expect("Failed to write schema_types.rs");
