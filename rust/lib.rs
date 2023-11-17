@@ -1,5 +1,3 @@
-use std::path::PathBuf;
-
 use jsonschema::JSONSchema;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -45,7 +43,7 @@ pub enum SchemaError {
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct TopicSchema {
+struct TopicSchema {
     version: u16,
     #[serde(rename = "type")]
     schema_type: SchemaType,
@@ -72,18 +70,13 @@ impl TopicData {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug)]
 pub struct Schema {
     pub version: u16,
     pub schema_type: SchemaType,
     pub compatibility_mode: CompatibilityMode,
-    // FIXME(swatinem): this should maybe be private, with an accessor, or rather &'static str?
-    pub schema: String,
-    // FIXME(swatinem): this should be removed in a breaking release
-    pub schema_filepath: PathBuf,
-    // FIXME(swatinem): this is an `Option` because of `Default`/`Deserialize`.
-    #[serde(skip)]
-    compiled_json_schema: Option<JSONSchema>,
+    schema: &'static str,
+    compiled_json_schema: JSONSchema,
 }
 
 impl PartialEq for Schema {
@@ -92,29 +85,27 @@ impl PartialEq for Schema {
             && self.schema_type == other.schema_type
             && self.compatibility_mode == other.compatibility_mode
             && self.schema == other.schema
-            && self.schema_filepath == other.schema_filepath
     }
 }
 
 impl Schema {
-    pub fn validate_json(&self, input: &[u8]) -> Result<(), SchemaError> {
+    pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
         let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
 
-        let compiled = self
-            .compiled_json_schema
-            .as_ref()
-            .ok_or(SchemaError::InvalidSchema)?;
-
-        compiled
+        self.compiled_json_schema
             .validate(&message)
             .map_err(|_| SchemaError::InvalidMessage)?;
 
-        // FIXME(swatinem): we might as well just return the `Value` here
-        Ok(())
+        Ok(message)
+    }
+
+    /// Returns the raw JSON Schema definition.
+    pub fn raw_schema(&self) -> &str {
+        self.schema
     }
 }
 
-pub fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, SchemaError> {
+fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, SchemaError> {
     let mut topic_data = TopicData::load(topic)?;
     topic_data.schemas.sort_by_key(|x| x.version);
 
@@ -138,7 +129,7 @@ pub fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema
     Ok(schema_metadata)
 }
 
-/// Returns the schema for a topic. If `version`` is passed, return the schema for
+/// Returns the schema for a topic. If `version` is passed, return the schema for
 /// the specified version, otherwise the latest version is returned.
 ///
 /// Only JSON schemas are currently supported.
@@ -153,20 +144,14 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
 
     let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
-    let compiled_json_schema =
-        Some(JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?);
+    let compiled_json_schema = JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
 
-    let schema = schema.to_string();
-
-    Ok({
-        Schema {
-            version: schema_metadata.version,
-            schema_type: schema_metadata.schema_type,
-            compatibility_mode: schema_metadata.compatibility_mode,
-            schema,
-            schema_filepath: PathBuf::new(),
-            compiled_json_schema,
-        }
+    Ok(Schema {
+        version: schema_metadata.version,
+        schema_type: schema_metadata.schema_type,
+        compatibility_mode: schema_metadata.compatibility_mode,
+        schema,
+        compiled_json_schema,
     })
 }
 
