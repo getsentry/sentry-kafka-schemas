@@ -32,5 +32,8 @@
     "transaction.op": "navigation",
     "op": "http.client",
     "transaction.method": "GET"
+  },
+  "measurements": {
+    "http.response_content_length": 100
   }
 }
