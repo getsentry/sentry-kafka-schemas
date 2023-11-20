@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.35
+
+### Various fixes & improvements
+
+- Relicense under FSL-1.0-Apache-2.0 (#193) by @chadwhitacre
+- Avoid reruns of the build script (#192) by @Swatinem
+- Embed Topics/Schemas into Rust crate (#191) by @Swatinem
+
 ## 0.1.34
 
 ### Various fixes & improvements
