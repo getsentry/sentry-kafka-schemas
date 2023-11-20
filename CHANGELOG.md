@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.36
+
+### Various fixes & improvements
+
+- feat(spans): Add measurements field (#190) by @phacops
+
 ## 0.1.35
 
 ### Various fixes & improvements
