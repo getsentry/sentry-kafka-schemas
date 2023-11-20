@@ -89,7 +89,7 @@
           "additionalProperties": {
             "type": "number"
           }
-        },
+        }
       },
       "required": [
         "span_id",
