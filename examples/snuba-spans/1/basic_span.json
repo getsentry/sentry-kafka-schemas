@@ -34,6 +34,9 @@
     "transaction.method": "GET"
   },
   "measurements": {
-    "http.response_content_length": 100
+    "http.response_content_length": {
+        "value": 100.0,
+        "unit": "byte"
+      }
   }
 }

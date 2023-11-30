@@ -85,10 +85,7 @@
           "$ref": "#/definitions/SentryExtractedTags"
         },
         "measurements": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
+          "$ref": "#/definitions/Measurements"
         }
       },
       "required": [
@@ -174,6 +171,24 @@
     "PositiveFloat": {
       "type": "number",
       "minimum": 0
+    },
+    "Measurements": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/MeasurementValue"
+      }
+    },
+    "MeasurementValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["value"]
     }
   }
 }
