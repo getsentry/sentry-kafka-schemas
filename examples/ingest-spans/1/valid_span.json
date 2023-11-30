@@ -7,7 +7,10 @@
     "exclusive_time": 1000.1,
     "is_segment": false,
     "measurements": {
-      "http.response_content_length": 100
+      "http.response_content_length": {
+        "value": 100.0,
+        "unit": "byte"
+      }
     },
     "parent_span_id": "deadbeefdeadbeef",
     "profile_id": "deadbeefdeadbeefdeadbeefdeadbeef",

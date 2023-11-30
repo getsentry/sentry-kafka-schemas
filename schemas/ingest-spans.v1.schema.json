@@ -36,10 +36,7 @@
           "type": "boolean"
         },
         "measurements": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
+          "$ref": "#/definitions/Measurements"
         },
         "op": {
           "type": "string"
@@ -94,6 +91,24 @@
     "PositiveFloat": {
       "type": "number",
       "minimum": 0
+    },
+    "Measurements": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/MeasurementValue"
+      }
+    },
+    "MeasurementValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["value"]
     }
   }
 }
