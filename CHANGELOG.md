@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.37
+
+### Various fixes & improvements
+
+- fix(spans): Fix measurements schema on spans (#194) by @phacops
+
 ## 0.1.36
 
 ### Various fixes & improvements
