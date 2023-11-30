@@ -35,8 +35,8 @@
   },
   "measurements": {
     "http.response_content_length": {
-        "value": 100.0,
-        "unit": "byte"
-      }
+      "value": 100.0,
+      "unit": "byte"
+    }
   }
 }
