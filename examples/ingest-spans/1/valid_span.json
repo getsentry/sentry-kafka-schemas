@@ -12,7 +12,7 @@
         "unit": "byte"
       }
     },
-    "metrics_summary": {
+    "_metrics_summary": {
       "c:sentry.events.outcomes@none": [
         {
           "count": 1,

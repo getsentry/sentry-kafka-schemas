@@ -87,7 +87,7 @@
         "measurements": {
           "$ref": "#/definitions/Measurements"
         },
-        "metrics_summary": {
+        "_metrics_summary": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/MetricsSummary"
