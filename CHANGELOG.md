@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.38
+
+### Various fixes & improvements
+
+- feat(spans): Add a metrics summary field to spans (#195) by @phacops
+
 ## 0.1.37
 
 ### Various fixes & improvements
