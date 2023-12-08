@@ -38,6 +38,12 @@
         "measurements": {
           "$ref": "#/definitions/Measurements"
         },
+        "_metrics_summary": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MetricsSummary"
+          }
+        },
         "op": {
           "type": "string"
         },
@@ -109,6 +115,35 @@
         }
       },
       "required": ["value"]
+    },
+    "MetricsSummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricSummaryValue"
+      }
+    },
+    "MetricSummaryValue": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "sum": {
+          "type": "number"
+        },
+        "count": {
+          "type": "number"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
