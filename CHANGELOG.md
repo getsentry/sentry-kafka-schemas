@@ -1,5 +1,142 @@
 # Changelog and versioning
 
+## 0.1.38
+
+### Various fixes & improvements
+
+- feat(spans): Add a metrics summary field to spans (#195) by @phacops
+
+## 0.1.37
+
+### Various fixes & improvements
+
+- fix(spans): Fix measurements schema on spans (#194) by @phacops
+
+## 0.1.36
+
+### Various fixes & improvements
+
+- feat(spans): Add measurements field (#190) by @phacops
+
+## 0.1.35
+
+### Various fixes & improvements
+
+- Relicense under FSL-1.0-Apache-2.0 (#193) by @chadwhitacre
+- Avoid reruns of the build script (#192) by @Swatinem
+- Embed Topics/Schemas into Rust crate (#191) by @Swatinem
+
+## 0.1.34
+
+### Various fixes & improvements
+
+- feat(spans): Add a received field to track e2e latency (#189) by @phacops
+
+## 0.1.33
+
+### Various fixes & improvements
+
+- Add gauges to ingest + snuba generic metrics schema (#186) by @ayirr7
+- feat(feedback): add feedback as new event type (#187) by @JoshFerge
+
+## 0.1.32
+
+### Various fixes & improvements
+
+- fix(spans): Fix types for integer and number fields (#185) by @phacops
+- Update comment (#183) by @dbanda
+- feat(rust): Add validate_json() method in Rust (#184) by @lynnagara
+
+## 0.1.31
+
+### Various fixes & improvements
+
+- fix(spans): Fix snuba-spans example (#182) by @phacops
+
+## 0.1.30
+
+### Various fixes & improvements
+
+- feat(spans): Add schema for ingest-spans (#180) by @phacops
+- fix(spans): Remove wrong array type (#181) by @phacops
+- spans: add profile id (#179) by @dbanda
+- feat(CoGS): Add `shared-resources-usage` topic schema (#178) by @rahul-kumar-saini
+
+## 0.1.29
+
+### Various fixes & improvements
+
+- allow new `nel` event type in events topics (#177) by @oioki
+
+## 0.1.28
+
+### Various fixes & improvements
+
+- Revert "Add spans data schema (#153)" (#176) by @lynnagara
+
+## 0.1.27
+
+### Various fixes & improvements
+
+- fix(spans): Fix schema as tags can only be stored as strings (#175) by @phacops
+
+## 0.1.26
+
+### Various fixes & improvements
+
+- fix(spans): Add missing description field (#174) by @phacops
+
+## 0.1.25
+
+### Various fixes & improvements
+
+- parent 4bcfde3655868210dc9c56df2485ffb29cbb8158 (#173) by @dbanda
+
+## 0.1.24
+
+### Various fixes & improvements
+
+- spans only schemas (#172) by @dbanda
+- fix: Fix events schema (#170) by @lynnagara
+
+## 0.1.23
+
+### Various fixes & improvements
+
+- fix: Simplify events schemas (#171) by @lynnagara
+- feat(querylog): Add schema definition for stats object (#169) by @lynnagara
+
+## 0.1.22
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add `aggregation_option` field to metrics (#167) by @john-z-yang
+- feat: Export timer data type from querylog (#166) by @lynnagara
+
+## 0.1.21
+
+### Various fixes & improvements
+
+- feat: Mark required fields in querylog (#165) by @lynnagara
+
+## 0.1.20
+
+### Various fixes & improvements
+
+- fix(transactions): Make received field required for transactions (#163) by @ayirr7
+
+## 0.1.19
+
+### Various fixes & improvements
+
+- feat(group-attributes): add new topic and schema for group attributes (#164) by @barkbarkimashark
+
+## 0.1.18
+
+### Various fixes & improvements
+
+- fix(ingest-replay-events): Type is not required (#162) by @lynnagara
+
 ## 0.1.17
 
 ### Various fixes & improvements

@@ -39,8 +39,7 @@ The yaml file of a topic has 2 keys:
 ## Using the schema (in Python)
 
 ```python
-from sentry_kafka_schemas import get_codec
-from sentry_kafka_schemas.codecs import ValidationError
+from sentry_kafka_schemas import get_codec, ValidationError
 from sentry_kafka_schemas.schema_types.ingest_metrics_v1 import IngestMetric
 
 SCHEMA: Codec[IngestMetric] = get_codec("ingest-metrics")

@@ -1,0 +1,76 @@
+{
+  "event_id": "dcc403b73ef548648188bbfa6012e9dc",
+  "organization_id": 69,
+  "project_id": 1,
+  "retention_days": 90,
+  "span": {
+    "exclusive_time": 1000.1,
+    "is_segment": false,
+    "measurements": {
+      "http.response_content_length": {
+        "value": 100.0,
+        "unit": "byte"
+      }
+    },
+    "_metrics_summary": {
+      "c:sentry.events.outcomes@none": [
+        {
+          "count": 1,
+          "max": 1.0,
+          "min": 1.0,
+          "sum": 1.0,
+          "tags": {
+            "category": "error",
+            "environment": "unknown",
+            "event_type": "error",
+            "outcome": "accepted",
+            "release": "backend@2af74c237fbd61489a1ccc46650f4f85befaf8b8",
+            "topic": "outcomes-billing",
+            "transaction": "sentry.tasks.store.save_event"
+          }
+        }
+      ],
+      "c:sentry.events.post_save.normalize.errors@none": [
+        {
+          "count": 1,
+          "max": 0.0,
+          "min": 0.0,
+          "sum": 0.0,
+          "tags": {
+            "environment": "unknown",
+            "event_type": "error",
+            "from_relay": "False",
+            "release": "backend@2af74c237fbd61489a1ccc46650f4f85befaf8b8",
+            "transaction": "sentry.tasks.store.save_event"
+          }
+        }
+      ]
+    },
+    "parent_span_id": "deadbeefdeadbeef",
+    "profile_id": "deadbeefdeadbeefdeadbeefdeadbeef",
+    "segment_id": "deadbeefdeadbeef",
+    "sentry_tags": {
+      "action": "GET",
+      "domain": "targetdomain.tld:targetport",
+      "group": "deadbeefdeadbeef",
+      "http.method": "GET",
+      "module": "http",
+      "op": "http.client",
+      "status_code": "200",
+      "system": "python",
+      "transaction": "/organizations/:orgId/issues/",
+      "transaction.method": "GET",
+      "transaction.op": "navigation"
+    },
+    "span_id": "deadbeefdeadbeef",
+    "start_timestamp": 1691105878720.123,
+    "received": 169110587919.123,
+    "tags": {
+      "tag1": "value1",
+      "tag2": "123",
+      "tag3": "True"
+    },
+    "timestamp": 169110587920.123,
+    "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef"
+  }
+}

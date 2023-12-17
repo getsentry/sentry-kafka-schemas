@@ -63,6 +63,7 @@
       }
     },
     "timing": {
+      "title": "timer_data",
       "type": "object",
       "properties": {
         "timestamp": {
@@ -84,6 +85,7 @@
           }
         }
       },
+      "required": ["timestamp", "duration_ms"],
       "additionalProperties": true
     },
     "snql_anonymized": {
@@ -125,7 +127,33 @@
           "type": ["integer", "null"]
         },
         "stats": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "final": {
+              "type": "boolean"
+            },
+            "cache_hit": {
+              "type": "integer"
+            },
+            "sample": {
+              "type": ["number", "null"]
+            },
+            "max_threads": {
+              "type": "integer"
+            },
+            "clickhouse_table": {
+              "type": "string"
+            },
+            "query_id": {
+              "type": "string"
+            },
+            "is_duplicate": {
+              "type": "integer"
+            },
+            "consistent": {
+              "type": "boolean"
+            }
+          }
         },
         "status": {
           "type": "string"

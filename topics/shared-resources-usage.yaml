@@ -1,0 +1,14 @@
+topic: shared-resources-usage
+description: CoGS data extracted from various resources
+services:
+  producers:
+    - getsentry/snuba
+  consumers:
+    - getsentry/super-big-consumers
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: shared-resources-usage.v1.schema.json
+    examples:
+      - shared-resources-usage/1/

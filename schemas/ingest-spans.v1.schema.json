@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "ingest_span_message",
+  "properties": {
+    "event_id": {
+      "$ref": "#/definitions/UUID"
+    },
+    "organization_id": {
+      "type": "integer"
+    },
+    "project_id": {
+      "type": "integer"
+    },
+    "retention_days": {
+      "type": "integer"
+    },
+    "span": {
+      "$ref": "#/definitions/IngestSpan"
+    }
+  },
+  "required": ["organization_id", "project_id", "retention_days", "span"],
+  "definitions": {
+    "IngestSpan": {
+      "type": "object",
+      "title": "ingest_span",
+      "additionalProperties": true,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "exclusive_time": {
+          "$ref": "#/definitions/PositiveFloat"
+        },
+        "is_segment": {
+          "type": "boolean"
+        },
+        "measurements": {
+          "$ref": "#/definitions/Measurements"
+        },
+        "_metrics_summary": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MetricsSummary"
+          }
+        },
+        "op": {
+          "type": "string"
+        },
+        "parent_span_id": {
+          "type": "string"
+        },
+        "profile_id": {
+          "$ref": "#/definitions/UUID"
+        },
+        "received": {
+          "$ref": "#/definitions/PositiveFloat"
+        },
+        "segment_id": {
+          "type": "string"
+        },
+        "sentry_tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "start_timestamp": {
+          "$ref": "#/definitions/PositiveFloat"
+        },
+        "status": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "timestamp": {
+          "$ref": "#/definitions/PositiveFloat"
+        },
+        "trace_id": {
+          "$ref": "#/definitions/UUID"
+        }
+      },
+      "required": ["start_timestamp", "timestamp", "trace_id"]
+    },
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
+    },
+    "PositiveFloat": {
+      "type": "number",
+      "minimum": 0
+    },
+    "Measurements": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/MeasurementValue"
+      }
+    },
+    "MeasurementValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["value"]
+    },
+    "MetricsSummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricSummaryValue"
+      }
+    },
+    "MetricSummaryValue": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "sum": {
+          "type": "number"
+        },
+        "count": {
+          "type": "number"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

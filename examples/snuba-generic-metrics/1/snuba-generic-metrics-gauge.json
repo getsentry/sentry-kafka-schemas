@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "mapping_meta": {
+    "c": {
+      "1": "g:transactions/alerts@none",
+      "3": "environment",
+      "5": "session.status"
+    }
+  },
+  "metric_id": 1,
+  "org_id": 1,
+  "project_id": 3,
+  "retention_days": 90,
+  "tags": {
+    "3": "production",
+    "5": "init"
+  },
+  "timestamp": 1677512412,
+  "sentry_received_timestamp": 1677519000.456,
+  "type": "g",
+  "use_case_id": "transactions",
+  "value": {
+    "min": 1.0,
+    "max": 2.0,
+    "sum": 3.0,
+    "count": 2,
+    "last": 1.0
+  }
+}
