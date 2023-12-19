@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.39
+
+### Various fixes & improvements
+
+- feat(replays): Add react_component_name to click event example (#197) by @cmanallen
+- feat(replays): Add examples (#196) by @cmanallen
+
 ## 0.1.38
 
 ### Various fixes & improvements
