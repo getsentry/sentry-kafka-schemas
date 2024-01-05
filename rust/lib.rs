@@ -152,7 +152,9 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
     let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
     let compiled_json_schema = JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
 
-    // FIXME(swatinem): This assumes that there is only a single examples directory
+    // FIXME(swatinem): This assumes that there is only a single `examples` entry in the definition.
+    // If we would want to support multiple, we would have to either merge those in code generation,
+    // or rather use a `fn examples() -> impl Iterator`.
     let examples = schema_metadata
         .examples
         .first()
