@@ -58,9 +58,9 @@ struct TopicData {
     schemas: Vec<TopicSchema>,
 }
 
-fn find_entry<'s>(slice: &[(&str, &'s str)], key: &str) -> Option<&'s str> {
+fn find_entry<'s, T>(slice: &'s [(&str, T)], key: &str) -> Option<&'s T> {
     let idx = slice.binary_search_by_key(&key, |&(name, _)| name).ok()?;
-    Some(slice.get(idx)?.1)
+    Some(&slice.get(idx)?.1)
 }
 
 impl TopicData {
@@ -77,6 +77,7 @@ pub struct Schema {
     pub compatibility_mode: CompatibilityMode,
     schema: &'static str,
     compiled_json_schema: JSONSchema,
+    examples: &'static [&'static [u8]],
 }
 
 impl PartialEq for Schema {
@@ -102,6 +103,11 @@ impl Schema {
     /// Returns the raw JSON Schema definition.
     pub fn raw_schema(&self) -> &str {
         self.schema
+    }
+
+    /// Returns a list of examples for this schema.
+    pub fn examples(&self) -> &[&[u8]] {
+        self.examples
     }
 }
 
@@ -146,21 +152,29 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
     let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
     let compiled_json_schema = JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
 
+    // FIXME(swatinem): This assumes that there is only a single `examples` entry in the definition.
+    // If we would want to support multiple, we would have to either merge those in code generation,
+    // or rather use a `fn examples() -> impl Iterator`.
+    let examples = schema_metadata
+        .examples
+        .first()
+        .and_then(|example| find_entry(EXAMPLES, example))
+        .copied()
+        .unwrap_or_default();
+
     Ok(Schema {
         version: schema_metadata.version,
         schema_type: schema_metadata.schema_type,
         compatibility_mode: schema_metadata.compatibility_mode,
         schema,
         compiled_json_schema,
+        examples,
     })
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    use std::fs::read_to_string;
-    use std::path::Path;
 
     #[test]
     fn test_get_schema() {
@@ -178,18 +192,16 @@ mod tests {
 
     #[test]
     fn test_validate() {
-        let topic = "snuba-queries";
-        let topic_schema = get_topic_schema(topic, None).unwrap();
-        let schema = get_schema(topic, None).unwrap();
-        let example_dir = topic_schema.examples.first().unwrap();
-        let example_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join(format!("examples/{}{}", example_dir, "snuba-queries1.json"));
-        let example = read_to_string(example_path).unwrap();
-        schema.validate_json(example.as_bytes()).unwrap();
+        let schema = get_schema("snuba-queries", None).unwrap();
 
-        let invalid = "{}";
+        let examples = schema.examples();
+        assert!(!examples.is_empty());
+        for example in examples {
+            schema.validate_json(example).unwrap();
+        }
+
         assert!(matches!(
-            schema.validate_json(invalid.as_bytes()),
+            schema.validate_json(b"{}"),
             Err(SchemaError::InvalidMessage)
         ));
     }

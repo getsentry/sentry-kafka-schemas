@@ -48,12 +48,13 @@ fn generate_embedded_data() -> String {
     let manifest_root = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
     let topics = enumerate_dir("topics");
     let schemas = enumerate_dir("schemas");
+    let examples = enumerate_dir("examples");
 
     let mut code = String::new();
     use std::fmt::Write;
     let w = &mut code;
 
-    writeln!(w, "const TOPICS: &[(&'static str, &'static str)] = &[").unwrap();
+    writeln!(w, "const TOPICS: &[(&str, &str)] = &[").unwrap();
     for topic in topics {
         let name = topic.strip_suffix(".yaml").unwrap();
         let path = format!("{manifest_root}/topics/{topic}");
@@ -61,21 +62,61 @@ fn generate_embedded_data() -> String {
     }
     writeln!(w, "];\n").unwrap();
 
-    writeln!(w, "const SCHEMAS: &[(&'static str, &'static str)] = &[").unwrap();
+    writeln!(w, "const SCHEMAS: &[(&str, &str)] = &[").unwrap();
     for schema in schemas {
         let path = format!("{manifest_root}/schemas/{schema}");
         writeln!(w, "    ({schema:?}, include_str!({path:?})),").unwrap();
     }
     writeln!(w, "];").unwrap();
 
+    let mut last_prefix = None;
+    writeln!(w, "const EXAMPLES: &[(&str, &[&[u8]])] = &[").unwrap();
+    for example in &examples {
+        let last_slash = example.rfind('/').unwrap();
+        let (prefix, _name) = example.split_at(last_slash + 1);
+        match last_prefix {
+            None => {
+                writeln!(w, "    ({prefix:?}, &[").unwrap();
+            }
+            Some(last_prefix) if last_prefix != prefix => {
+                writeln!(w, "    ]),").unwrap();
+                writeln!(w, "    ({prefix:?}, &[").unwrap();
+            }
+            _ => {}
+        }
+        last_prefix = Some(prefix);
+        let path = format!("{manifest_root}/examples/{example}");
+        writeln!(w, "        include_bytes!({path:?}),").unwrap();
+    }
+    writeln!(w, "    ]),").unwrap();
+    writeln!(w, "];").unwrap();
+
     code
 }
 
 fn enumerate_dir(dir: &str) -> Vec<String> {
-    let mut files: Vec<_> = std::fs::read_dir(dir)
-        .unwrap()
-        .map(|entry| entry.unwrap().file_name().into_string().unwrap())
-        .collect();
+    let mut files = vec![];
+
+    fn collect_files(files: &mut Vec<String>, dir: &Path, prefix: &str) {
+        for entry in std::fs::read_dir(dir).unwrap() {
+            let entry = entry.unwrap();
+            let name = entry.file_name().into_string().unwrap();
+            let name = if prefix.is_empty() {
+                name
+            } else {
+                format!("{prefix}/{name}")
+            };
+            let ty = entry.file_type().unwrap();
+            if ty.is_dir() {
+                collect_files(files, &entry.path(), &name)
+            } else if ty.is_file() {
+                files.push(name);
+            }
+        }
+    }
+
+    collect_files(&mut files, dir.as_ref(), "");
+
     files.sort();
     files
 }
