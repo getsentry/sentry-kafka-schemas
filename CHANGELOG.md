@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.40
+
+### Various fixes & improvements
+
+- Embed and expose examples in Rust (#198) by @Swatinem
+
 ## 0.1.39
 
 ### Various fixes & improvements
