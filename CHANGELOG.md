@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.41
+
+### Various fixes & improvements
+
+- ref: Add more codeowners (#200) by @untitaker
+- feat(spans): Remove group_raw from the schema as it's not used anymore (#199) by @phacops
+
 ## 0.1.40
 
 ### Various fixes & improvements
