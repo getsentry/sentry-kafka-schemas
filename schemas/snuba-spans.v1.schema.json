@@ -33,10 +33,6 @@
           "type": "string",
           "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
         },
-        "group_raw": {
-          "type": "string",
-          "description": "The raw group ID has from the root transaction. It is an 8 byte hexadecimal string."
-        },
         "profile_id": {
           "$ref": "#/definitions/UUID",
           "description": "The profile ID. It is an 16 byte hexadecimal string."
