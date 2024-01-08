@@ -15,7 +15,7 @@
 /topics/processed-profiles.yaml                            @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                            @getsentry/owners-snuba @getsentry/profiling
 /topics/group-attributes.yaml                              @getsentry/owners-snuba @getsentry/issues
-/topics/snuba-spans.yaml                                   @getsentry/profiling
+/topics/snuba-spans.yaml                                   @getsentry/owners-snuba @getsentry/profiling
 
 # Topics produced to by Snuba
 /topics/shared-resources-usage.yaml                        @getsentry/owners-snuba @getsentry/data
