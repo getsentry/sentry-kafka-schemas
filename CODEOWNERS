@@ -21,16 +21,18 @@
 /topics/shared-resources-usage.yaml                        @getsentry/owners-snuba @getsentry/data
 
 # Schemas
-/schemas/profile-metadata.v1.schema.json                   @getsentry/profiling
-/schemas/profile-functions.v1.schema.json                  @getsentry/profiling
-/schemas/group-attributes.v1.schema.json                   @getsentry/issues
+/schemas/profile-metadata.v1.schema.json                   @getsentry/owners-snuba @getsentry/profiling
+/schemas/profile-functions.v1.schema.json                  @getsentry/owners-snuba @getsentry/profiling
+/schemas/group-attributes.v1.schema.json                   @getsentry/owners-snuba @getsentry/issues
 /schemas/ingest-spans.v1.schema.json                       @getsentry/team-starfish
+/schemas/snuba-spans.v1.schema.json                        @getsentry/owners-snuba @getsentry/profiling
 
 # Examples
-/examples/profile-metadata/                                @getsentry/profiling
-/examples/profile-functions/                               @getsentry/profiling
-/examples/group-attributes/                                @getsentry/issues
-/examples/ingest-spans/                                    @getsentry/team-starfish
+/examples/profile-metadata/                                @getsentry/owners-snuba @getsentry/profiling
+/examples/profile-functions/                               @getsentry/owners-snuba @getsentry/profiling
+/examples/group-attributes/                                @getsentry/owners-snuba @getsentry/issues
+/examples/ingest-spans/                                    @getsentry/owners-snuba @getsentry/team-starfish
+/examples/snuba-spans/                                     @getsentry/owners-snuba @getsentry/profiling
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba

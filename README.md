@@ -138,3 +138,5 @@ command is `make install-py-dev`.
 
 All topics definitions, schemas and examples should have a defined owner or multiple owners if shared.
 The CODEOWNERS file should be updated with this information whenever new schemas and topics are added.
+
+Review is only required from one team/owner, not from all of them.
