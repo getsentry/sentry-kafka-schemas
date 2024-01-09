@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.42
+
+### Various fixes & improvements
+
+- fix(replays): Add event_hash field to archive example event (#201) by @cmanallen
+
 ## 0.1.41
 
 ### Various fixes & improvements
