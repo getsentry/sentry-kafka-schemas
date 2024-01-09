@@ -34,8 +34,5 @@
   "received": 1687971966,
   "retention_days": 90,
   "timestamp": 1687971965,
-  "transaction_name": "GET /api/1/events",
-  "transaction_op": "http.server",
-  "transaction_status": "ok",
-  "http_method": "GET"
+  "transaction_name": "GET /api/1/events"
 }
