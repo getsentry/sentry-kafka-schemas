@@ -30,9 +30,6 @@
         "release": {
           "type": "string"
         },
-        "dist": {
-          "type": "string"
-        },
         "retention_days": {
           "type": "integer"
         },
@@ -41,21 +38,6 @@
         },
         "transaction_name": {
           "type": "string"
-        },
-        "transaction_op": {
-          "type": "string"
-        },
-        "transaction_status": {
-          "type": "string"
-        },
-        "http_method": {
-          "type": "string"
-        },
-        "browser_name": {
-          "type": "string"
-        },
-        "device_class": {
-          "type": "integer"
         }
       },
       "required": [
@@ -66,9 +48,7 @@
         "received",
         "retention_days",
         "timestamp",
-        "transaction_name",
-        "transaction_op",
-        "transaction_status"
+        "transaction_name"
       ]
     }
   }
