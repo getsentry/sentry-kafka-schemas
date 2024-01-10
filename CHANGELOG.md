@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.43
+
+### Various fixes & improvements
+
+- fix(functions): Remove unneeded fields from the functions schema (#202) by @phacops
+
 ## 0.1.42
 
 ### Various fixes & improvements
