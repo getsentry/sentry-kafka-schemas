@@ -91,14 +91,15 @@
         }
       },
       "required": [
-        "span_id",
-        "project_id",
-        "start_timestamp_ms",
         "duration_ms",
         "exclusive_time_ms",
         "is_segment",
-        "trace_id",
-        "retention_days"
+        "project_id",
+        "received",
+        "retention_days",
+        "span_id",
+        "start_timestamp_ms",
+        "trace_id"
       ]
     },
     "SentryExtractedTags": {
