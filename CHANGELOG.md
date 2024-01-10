@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.44
+
+### Various fixes & improvements
+
+- feat(spans): Set received field as mandatory (#203) by @phacops
+
 ## 0.1.43
 
 ### Various fixes & improvements
