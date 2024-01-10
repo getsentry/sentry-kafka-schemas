@@ -7,10 +7,7 @@
       "type": "object",
       "properties": {
         "functions": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
+          "$ref": "#/definitions/Function"
         },
         "environment": {
           "type": "string"
@@ -30,9 +27,6 @@
         "release": {
           "type": "string"
         },
-        "dist": {
-          "type": "string"
-        },
         "retention_days": {
           "type": "integer"
         },
@@ -41,21 +35,6 @@
         },
         "transaction_name": {
           "type": "string"
-        },
-        "transaction_op": {
-          "type": "string"
-        },
-        "transaction_status": {
-          "type": "string"
-        },
-        "http_method": {
-          "type": "string"
-        },
-        "browser_name": {
-          "type": "string"
-        },
-        "device_class": {
-          "type": "integer"
         }
       },
       "required": [
@@ -66,10 +45,38 @@
         "received",
         "retention_days",
         "timestamp",
-        "transaction_name",
-        "transaction_op",
-        "transaction_status"
+        "transaction_name"
       ]
+    },
+    "Function": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fingerprint": {
+            "$ref": "#/definitions/UInt"
+          },
+          "function": {
+            "type": "string"
+          },
+          "in_app": {
+            "type": "boolean"
+          },
+          "package": {
+            "type": "string"
+          },
+          "self_times_ns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/UInt"
+            }
+          }
+        }
+      }
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
     }
   }
 }
