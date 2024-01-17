@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.45
+
+### Various fixes & improvements
+
+- ref: Fix querylog schema (#204) by @untitaker
+
 ## 0.1.44
 
 ### Various fixes & improvements
