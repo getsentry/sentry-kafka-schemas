@@ -27,7 +27,7 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["id"]
+      "required": ["id", "body", "referrer"]
     },
     "dataset": {
       "type": "string"
@@ -53,7 +53,8 @@
     "projects": {
       "type": "array",
       "items": {
-        "type": "integer"
+        "type": "integer",
+        "minimum": 0
       }
     },
     "query_list": {
@@ -67,10 +68,12 @@
       "type": "object",
       "properties": {
         "timestamp": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "duration_ms": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 0
         },
         "marks_ms": {
           "type": "object",
@@ -92,7 +95,8 @@
       "type": "string"
     },
     "organization": {
-      "type": ["integer", "null"]
+      "type": ["integer", "null"],
+      "minimum": 0
     }
   },
   "required": [
@@ -159,13 +163,22 @@
           "type": "string"
         },
         "trace_id": {
-          "type": ["string", "null"]
+          "type": ["string"]
         },
         "profile": {
           "$ref": "#/definitions/ClickhouseQueryProfile"
         },
         "result_profile": {
-          "type": ["object", "null"]
+          "type": ["object", "null"],
+          "properties": {
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "elapsed": {
+              "type": "number"
+            }
+          }
         },
         "request_status": {
           "type": "string"
@@ -200,7 +213,8 @@
       "title": "clickhouse_query_profile",
       "properties": {
         "time_range": {
-          "type": ["integer", "null"]
+          "type": ["integer", "null"],
+          "minimum": 0
         },
         "table": {
           "type": "string"
@@ -237,7 +251,8 @@
         "multi_level_condition",
         "where_profile",
         "groupby_cols",
-        "array_join_cols"
+        "array_join_cols",
+        "all_columns"
       ]
     }
   }
