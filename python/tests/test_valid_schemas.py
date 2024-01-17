@@ -46,7 +46,7 @@ def test_schemas_valid(topic: str, version: int) -> None:
             or "additionalProperites" in obj
             or "patternProperties" in obj
             or "required" in obj
-        ) and obj.get("type") != "object":
+        ) and "object" not in obj.get("type", ()):
             # Impose restriction so that types will be good:
             # https://github.com/sbrunner/jsonschema-gentypes/issues/469
             raise AssertionError(
