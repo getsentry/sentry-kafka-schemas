@@ -50,17 +50,12 @@
               "title": "set_metric_value",
               "type": "array",
               "items": {
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 4294967295
+                "type": "number"
               }
             },
             {
               "title": "distribution_metric_value",
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
+              "type": "string"
             },
             {
               "title": "gauge_metric_value",
