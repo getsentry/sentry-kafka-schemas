@@ -34,7 +34,7 @@
           "type": "string"
         },
         "duration_ns": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "environment": {
           "type": "string"
@@ -43,13 +43,13 @@
           "type": "string"
         },
         "organization_id": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "platform": {
           "type": "string"
         },
         "project_id": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "received": {
           "type": "integer"
@@ -92,6 +92,10 @@
         "version_code",
         "version_name"
       ]
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
     }
   }
 }
