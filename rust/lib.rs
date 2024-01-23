@@ -188,6 +188,7 @@ mod tests {
 
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();
+        get_schema("transactions", Some(1)).unwrap();
     }
 
     #[test]
