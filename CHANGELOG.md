@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.46
+
+### Various fixes & improvements
+
+- ref(spans): Remove old topic schema (#207) by @phacops
+- ref(profiles): Make schema stricter to reflect Rust consumer struct (#206) by @phacops
+
 ## 0.1.45
 
 ### Various fixes & improvements
