@@ -19,19 +19,19 @@
           "type": "string"
         },
         "project_id": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "received": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "release": {
           "type": "string"
         },
         "retention_days": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "timestamp": {
-          "type": "integer"
+          "$ref": "#/definitions/UInt"
         },
         "transaction_name": {
           "type": "string"
@@ -71,7 +71,14 @@
               "$ref": "#/definitions/UInt"
             }
           }
-        }
+        },
+        "required": [
+          "fingerprint",
+          "function",
+          "in_app",
+          "package",
+          "self_times_ns"
+        ]
       }
     },
     "UInt": {
