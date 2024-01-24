@@ -77,7 +77,7 @@ pub struct Schema {
     pub compatibility_mode: CompatibilityMode,
     schema: &'static str,
     compiled_json_schema: JSONSchema,
-    examples: &'static [&'static [u8]],
+    examples: &'static [Example],
 }
 
 impl PartialEq for Schema {
@@ -106,8 +106,24 @@ impl Schema {
     }
 
     /// Returns a list of examples for this schema.
-    pub fn examples(&self) -> &[&[u8]] {
+    pub fn examples(&self) -> &[Example] {
         self.examples
+    }
+}
+
+#[derive(Debug)]
+pub struct Example {
+    name: &'static str,
+    payload: &'static [u8],
+}
+
+impl Example {
+    pub fn name(&self) -> &str {
+        self.name
+    }
+
+    pub fn payload(&self) -> &[u8] {
+        self.payload
     }
 }
 
