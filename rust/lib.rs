@@ -214,7 +214,7 @@ mod tests {
         let examples = schema.examples();
         assert!(!examples.is_empty());
         for example in examples {
-            schema.validate_json(example).unwrap();
+            schema.validate_json(example.payload()).unwrap();
         }
 
         assert!(matches!(
