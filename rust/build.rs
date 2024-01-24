@@ -46,34 +46,45 @@ fn generate_embedded_data() -> String {
     println!("cargo:rerun-if-changed=schemas");
 
     let manifest_root = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    let topics = enumerate_dir("topics");
-    let schemas = enumerate_dir("schemas");
-    let examples = enumerate_dir("examples");
+    let mut topics = enumerate_dir("topics");
+    let mut schemas = enumerate_dir("schemas");
+    let mut examples = enumerate_dir("examples");
 
     let mut code = String::new();
     use std::fmt::Write;
     let w = &mut code;
 
     writeln!(w, "const TOPICS: &[(&str, &str)] = &[").unwrap();
-    for topic in topics {
-        let name = topic.strip_suffix(".yaml").unwrap();
+    let key_fn = |topic: &String| topic.strip_suffix(".yaml").unwrap().to_owned();
+    topics.sort_by_key(key_fn);
+    for topic in &topics {
+        let key = key_fn(topic);
         let path = format!("{manifest_root}/topics/{topic}");
-        writeln!(w, "    ({name:?}, include_str!({path:?})),").unwrap();
+        writeln!(w, "    ({key:?}, include_str!({path:?})),").unwrap();
     }
     writeln!(w, "];\n").unwrap();
 
     writeln!(w, "const SCHEMAS: &[(&str, &str)] = &[").unwrap();
-    for schema in schemas {
+    let key_fn = |schema: &String| schema.clone();
+    schemas.sort_by_key(key_fn);
+    for schema in &schemas {
+        let key = key_fn(schema);
         let path = format!("{manifest_root}/schemas/{schema}");
-        writeln!(w, "    ({schema:?}, include_str!({path:?})),").unwrap();
+        writeln!(w, "    ({key:?}, include_str!({path:?})),").unwrap();
     }
     writeln!(w, "];").unwrap();
 
     let mut last_prefix = None;
     writeln!(w, "const EXAMPLES: &[(&str, &[&[u8]])] = &[").unwrap();
-    for example in &examples {
+    let key_fn = |example: &String| {
         let last_slash = example.rfind('/').unwrap();
         let (prefix, _name) = example.split_at(last_slash + 1);
+        prefix.to_owned()
+    };
+    examples.sort_by_key(key_fn);
+
+    for example in &examples {
+        let prefix = key_fn(example);
         match last_prefix {
             None => {
                 writeln!(w, "    ({prefix:?}, &[").unwrap();
@@ -117,7 +128,6 @@ fn enumerate_dir(dir: &str) -> Vec<String> {
 
     collect_files(&mut files, dir.as_ref(), "");
 
-    files.sort();
     files
 }
 
