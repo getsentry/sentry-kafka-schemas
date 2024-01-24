@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.47
+
+### Various fixes & improvements
+
+- fix(rust): Fix spurious topic-not-found due to wrong sorting key (#208) by @untitaker
+
 ## 0.1.46
 
 ### Various fixes & improvements
