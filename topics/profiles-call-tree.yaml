@@ -6,6 +6,7 @@ services:
     - getsentry/vroom
   consumers:
     - getsentry/snuba
+    - getsentry/super-big-consumers
 schemas:
   - version: 1
     compatibility_mode: none

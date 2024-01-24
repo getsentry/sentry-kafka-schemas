@@ -6,6 +6,7 @@ services:
     - getsentry/relay
   consumers:
     - getsentry/sentry
+    - getsentry/super-big-consumers
 schemas:
   - version: 1
     compatibility_mode: none
