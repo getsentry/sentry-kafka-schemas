@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.48
+
+### Various fixes & improvements
+
+- ref(rust): Add example name to examples (#209) by @untitaker
+- add sbc to topics sbc is using (#210) by @victoria-yining-huang
+
 ## 0.1.47
 
 ### Various fixes & improvements
