@@ -75,7 +75,7 @@ fn generate_embedded_data() -> String {
     writeln!(w, "];").unwrap();
 
     let mut last_prefix = None;
-    writeln!(w, "const EXAMPLES: &[(&str, &[&[u8]])] = &[").unwrap();
+    writeln!(w, "const EXAMPLES: &[(&str, &[crate::Example])] = &[").unwrap();
     let key_fn = |example: &String| {
         let last_slash = example.rfind('/').unwrap();
         let (prefix, _name) = example.split_at(last_slash + 1);
@@ -97,7 +97,11 @@ fn generate_embedded_data() -> String {
         }
         last_prefix = Some(prefix);
         let path = format!("{manifest_root}/examples/{example}");
-        writeln!(w, "        include_bytes!({path:?}),").unwrap();
+        writeln!(
+            w,
+            "        crate::Example {{ name: {example:?}, payload: include_bytes!({path:?}) }},"
+        )
+        .unwrap();
     }
     writeln!(w, "    ]),").unwrap();
     writeln!(w, "];").unwrap();
