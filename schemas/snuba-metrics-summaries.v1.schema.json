@@ -37,7 +37,8 @@
       "$ref": "#/definitions/UUID"
     },
     "count": {
-      "$ref": "#/definitions/UInt64"
+      "type": "integer",
+      "minimum": 1
     },
     "max": {
       "type": "number"
@@ -67,6 +68,11 @@
     "segment_id",
     "span_id",
     "trace_id"
+  ],
+  "anyOf": [
+    { "required": ["max"] },
+    { "required": ["min"] },
+    { "required": ["sum"] }
   ],
   "definitions": {
     "UUID": {
