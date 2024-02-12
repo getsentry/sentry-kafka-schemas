@@ -15,6 +15,7 @@
 /topics/profiles-call-tree.yaml                            @getsentry/owners-snuba @getsentry/profiling
 /topics/group-attributes.yaml                              @getsentry/owners-snuba @getsentry/issues
 /topics/snuba-spans.yaml                                   @getsentry/owners-snuba @getsentry/profiling
+/topics/snuba-metrics-summaries.yaml                       @getsentry/owners-snuba @getsentry/profiling
 
 # Topics produced to by Snuba
 /topics/shared-resources-usage.yaml                        @getsentry/owners-snuba @getsentry/data
@@ -24,12 +25,14 @@
 /schemas/profile-functions.v1.schema.json                  @getsentry/owners-snuba @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                   @getsentry/owners-snuba @getsentry/issues
 /schemas/snuba-spans.v1.schema.json                        @getsentry/owners-snuba @getsentry/profiling
+/schemas/snuba-metrics-summaries.v1.schema.json            @getsentry/owners-snuba @getsentry/profiling
 
 # Examples
 /examples/profile-metadata/                                @getsentry/owners-snuba @getsentry/profiling
 /examples/profile-functions/                               @getsentry/owners-snuba @getsentry/profiling
 /examples/group-attributes/                                @getsentry/owners-snuba @getsentry/issues
 /examples/snuba-spans/                                     @getsentry/owners-snuba @getsentry/profiling
+/examples/snuba-metrics-summaries/                         @getsentry/owners-snuba @getsentry/profiling
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                 @getsentry/owners-snuba
