@@ -1,5 +1,11 @@
 import pytest
-from sentry_kafka_schemas import get_codec, SchemaNotFound
+from sentry_kafka_schemas import get_codec, SchemaNotFound, get_topic
+
+
+def test_get_topic() -> None:
+    topic_name = "snuba-queries"
+    topic_data = get_topic(topic_name)
+    assert topic_data["topic_creation_config"] == [{'max.message.bytes': 2000000}]
 
 
 def test_get_schema() -> None:

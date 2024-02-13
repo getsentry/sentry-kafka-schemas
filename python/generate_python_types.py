@@ -14,7 +14,7 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 
     for topic_name in sentry_kafka_schemas.sentry_kafka_schemas._list_topics():
         print(f"generating schemas for {topic_name}")
-        topic_meta = sentry_kafka_schemas.sentry_kafka_schemas._get_topic(topic_name)
+        topic_meta = sentry_kafka_schemas.sentry_kafka_schemas.get_topic(topic_name)
         for schema_meta in topic_meta["schemas"]:
             version = schema_meta["version"]
             schema_data = sentry_kafka_schemas.sentry_kafka_schemas._get_schema(

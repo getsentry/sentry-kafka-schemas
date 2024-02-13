@@ -13,6 +13,7 @@ from typing import (
     TypedDict,
     cast,
     Literal,
+    Mapping,
 )
 from typing_extensions import NotRequired
 
@@ -49,6 +50,7 @@ class TopicData(TypedDict):
     services: ServicesData
     schemas: Sequence[TopicSchema]
     pipeline: NotRequired[str]
+    topic_creation_config: Mapping[str, str]
 
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
@@ -67,7 +69,7 @@ def _list_topics() -> Iterable[str]:
         yield file[: -len(".yaml")]
 
 
-def _get_topic(topic: str) -> TopicData:
+def get_topic(topic: str) -> TopicData:
     """
     Get metadata for a specific topic name.
 
@@ -80,7 +82,6 @@ def _get_topic(topic: str) -> TopicData:
             topic_data = cast(TopicData, safe_load(f))
     except FileNotFoundError:
         raise SchemaNotFound
-
     return topic_data
 
 
@@ -93,7 +94,7 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
     Only JSON schemas are currently supported.
     """
-    topic_data = _get_topic(topic)
+    topic_data = get_topic(topic)
 
     topic_schemas = sorted(topic_data["schemas"], key=lambda x: x["version"])
 
