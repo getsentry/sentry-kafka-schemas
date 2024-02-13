@@ -12,3 +12,5 @@ schemas:
     resource: snuba-queries.v1.schema.json
     examples:
       - snuba-queries/1/
+topic_creation_config:
+  - max.message.bytes: 2000000

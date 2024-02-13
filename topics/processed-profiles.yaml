@@ -13,3 +13,5 @@ schemas:
     resource: profile-metadata.v1.schema.json
     examples:
       - profile-metadata/1/
+topic_creation_config:
+  - message.timestamp.type: LogAppendTime
