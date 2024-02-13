@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.50
+
+### Various fixes & improvements
+
+- feat(replays): add replay event to recording schema (#213) by @JoshFerge
+
 ## 0.1.49
 
 ### Various fixes & improvements
