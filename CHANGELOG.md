@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.49
+
+### Various fixes & improvements
+
+- feat(metrics_summaries): Define a schema for metrics summaries (#212) by @phacops
+- add sbc spans (#211) by @victoria-yining-huang
+
 ## 0.1.48
 
 ### Various fixes & improvements
