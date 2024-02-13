@@ -12,6 +12,7 @@
     "received": { "type": "integer", "minimum": 0 },
     "retention_days": { "type": "integer" },
     "payload": { "description": "msgpack bytes" },
+    "replay_event": { "description": "JSON bytes" },
     "version": { "type": "integer", "default": 0 }
   },
   "required": [
