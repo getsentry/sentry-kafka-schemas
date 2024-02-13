@@ -1,0 +1,14 @@
+topic: snuba-metrics-summaries
+description: Metrics summaries for spans
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-metrics-summaries.v1.schema.json
+    examples:
+      - snuba-metrics-summaries/1/

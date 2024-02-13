@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "metrics_summary",
+  "properties": {
+    "duration_ms": {
+      "$ref": "#/definitions/UInt32"
+    },
+    "end_timestamp": {
+      "$ref": "#/definitions/PositiveFloat"
+    },
+    "group": {
+      "type": "string"
+    },
+    "is_segment": {
+      "type": "boolean"
+    },
+    "mri": {
+      "type": "string"
+    },
+    "project_id": {
+      "$ref": "#/definitions/UInt64"
+    },
+    "received": {
+      "$ref": "#/definitions/PositiveFloat"
+    },
+    "retention_days": {
+      "$ref": "#/definitions/UInt16"
+    },
+    "segment_id": {
+      "type": "string"
+    },
+    "span_id": {
+      "type": "string"
+    },
+    "trace_id": {
+      "$ref": "#/definitions/UUID"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max": {
+      "type": "number"
+    },
+    "min": {
+      "type": "number"
+    },
+    "sum": {
+      "type": "number"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "duration_ms",
+    "end_timestamp",
+    "group",
+    "is_segment",
+    "mri",
+    "project_id",
+    "received",
+    "retention_days",
+    "segment_id",
+    "span_id",
+    "trace_id"
+  ],
+  "anyOf": [
+    { "required": ["max"] },
+    { "required": ["min"] },
+    { "required": ["sum"] }
+  ],
+  "definitions": {
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "UInt32": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "UInt64": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "PositiveFloat": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

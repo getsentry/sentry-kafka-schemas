@@ -1,0 +1,26 @@
+{
+  "duration_ms": 1000,
+  "end_timestamp": 1691105878.72,
+  "group": "deadbeefdeadbeef",
+  "is_segment": false,
+  "mri": "c:sentry.events.outcomes@none",
+  "project_id": 1,
+  "received": 169110587919.123,
+  "retention_days": 90,
+  "segment_id": "deadbeefdeadbeef",
+  "span_id": "deadbeefdeadbeef",
+  "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
+  "count": 1,
+  "max": 1.0,
+  "min": 1.0,
+  "sum": 1.0,
+  "tags": {
+    "category": "error",
+    "environment": "unknown",
+    "event_type": "error",
+    "outcome": "accepted",
+    "release": "backend@2af74c237fbd61489a1ccc46650f4f85befaf8b8",
+    "topic": "outcomes-billing",
+    "transaction": "sentry.tasks.store.save_event"
+  }
+}
