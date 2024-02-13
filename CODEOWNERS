@@ -15,6 +15,7 @@
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/group-attributes.yaml                                  @getsentry/owners-snuba @getsentry/issues
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/profiling
+/topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
 
 # Commit log topics produced by Snuba
 /topics/snuba-commit-log.yaml                                  @getsentry/owners-snuba
@@ -33,24 +34,30 @@
 /schemas/profile-functions.v1.schema.json                      @getsentry/owners-snuba @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
 /schemas/snuba-spans.v1.schema.json                            @getsentry/owners-snuba @getsentry/profiling
+/schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/owners-snuba @getsentry/profiling
 
 # Examples
 /examples/profile-metadata/                                    @getsentry/owners-snuba @getsentry/profiling
 /examples/profile-functions/                                   @getsentry/owners-snuba @getsentry/profiling
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
 /examples/snuba-spans/                                         @getsentry/owners-snuba @getsentry/profiling
+/examples/profile-metadata/                                    @getsentry/owners-snuba @getsentry/profiling
+/examples/profile-functions/                                   @getsentry/owners-snuba @getsentry/profiling
+/examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
+/examples/snuba-spans/                                         @getsentry/owners-snuba @getsentry/profiling
+/examples/snuba-metrics-summaries/                             @getsentry/owners-snuba @getsentry/profiling
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
 
 # Subscription results published by Snuba for Sentry's result consumer
-/topics/events-subscription-results.yaml                  @getsentry/owners-snuba @getsentry/workflow
-/topics/transactions-subscription-results.yaml            @getsentry/owners-snuba @getsentry/workflow
-/topics/sessions-subscription-results.yaml                @getsentry/owners-snuba @getsentry/workflow
-/topics/metrics-subscription-results.yaml                 @getsentry/owners-snuba @getsentry/workflow
-/topics/generic-metrics-subscription-results.yaml         @getsentry/owners-snuba @getsentry/workflow
-/schemas/subscription-result.v1.schema.json               @getsentry/owners-snuba @getsentry/workflow
-/examples/subscription-results/                           @getsentry/owners-snuba @getsentry/workflow
+/topics/events-subscription-results.yaml                      @getsentry/owners-snuba @getsentry/workflow
+/topics/transactions-subscription-results.yaml                @getsentry/owners-snuba @getsentry/workflow
+/topics/sessions-subscription-results.yaml                    @getsentry/owners-snuba @getsentry/workflow
+/topics/metrics-subscription-results.yaml                     @getsentry/owners-snuba @getsentry/workflow
+/topics/generic-metrics-subscription-results.yaml             @getsentry/owners-snuba @getsentry/workflow
+/schemas/subscription-result.v1.schema.json                   @getsentry/owners-snuba @getsentry/workflow
+/examples/subscription-results/                               @getsentry/owners-snuba @getsentry/workflow
 
 # Search and storage is the default owner
 * @getsentry/owners-snuba
