@@ -82,6 +82,9 @@ def get_topic(topic: str) -> TopicData:
             topic_data = cast(TopicData, safe_load(f))
     except FileNotFoundError:
         raise SchemaNotFound
+    if "topic_creation_config" not in topic_data:
+        topic_data["topic_creation_config"] = {}
+
     return topic_data
 
 

@@ -19,7 +19,10 @@
 
 # DLQs for Snuba topics
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
-/topics/snuba-dead-letter-generic-metrics.yaml
+/topics/snuba-dead-letter-generic-metrics.yaml                 @getsentry/owners-snuba
+/topics/snuba-dead-letter-querylog.yaml                        @getsentry/owners-snuba
+/topics/snuba-dead-letter-replays.yaml                         @getsentry/owners-snuba @getsentry/replay
+/topics/snuba-dead-letter-group-attributes.yaml                @getsentry/owners-snuba @getsentry/issues
 
 
 # Commit log topics produced by Snuba
