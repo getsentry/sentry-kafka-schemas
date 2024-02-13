@@ -1,0 +1,14 @@
+topic: snuba-dead-letter-querylog
+pipeline: errors
+description: DLQ for snuba-queries
+services:
+  producers:
+    - getsentry/snuba
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/

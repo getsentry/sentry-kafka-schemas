@@ -17,6 +17,11 @@
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
 
+# DLQs for Snuba topics
+/topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
+/topics/snuba-dead-letter-generic-metrics.yaml
+
+
 # Commit log topics produced by Snuba
 /topics/snuba-commit-log.yaml                                  @getsentry/owners-snuba
 /topics/snuba-transactions-commit-log.yaml                     @getsentry/owners-snuba
