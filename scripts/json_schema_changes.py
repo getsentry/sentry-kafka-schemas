@@ -185,6 +185,14 @@ def PropertyRemove(change: Change) -> str:
         return f"{first_sentence}, so it is no longer accepted. Maybe use `additionalProperties`?"
 
 
+@_add_change_printer
+def PropertyAdd(change: Change) -> str:
+    if change["change"]["PropertyAdd"]["lhs_additional_properties"]:
+        return "Added a new property, but the consumer has been ignoring additional properties so far. This is probably still fine, but please double-check that the producer does not already send this property with a different type in practice than you defined in this schema."
+    else:
+        return "Added a new property."
+
+
 def print_change(change: Change) -> None:
     change = dict(change)
     change.pop("is_breaking")
