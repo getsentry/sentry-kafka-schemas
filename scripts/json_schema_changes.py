@@ -188,7 +188,7 @@ def PropertyRemove(change: Change) -> str:
 @_add_change_printer
 def PropertyAdd(change: Change) -> str:
     if change["change"]["PropertyAdd"]["lhs_additional_properties"]:
-        return f"Added a new property, but the consumer has been ignoring additional properties so far. This is probably still fine, but please double-check that the producer does not already send this property with a different type in practice than you defined in this schema."
+        return "Added a new property, but the consumer has been ignoring additional properties so far. This is probably still fine, but please double-check that the producer does not already send this property with a different type in practice than you defined in this schema."
     else:
         return "Added a new property."
 
