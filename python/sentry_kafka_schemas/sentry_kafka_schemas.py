@@ -61,8 +61,6 @@ _EXAMPLES_PATH = Path.joinpath(Path(__file__).parent, "examples")
 def _list_topics() -> Iterable[str]:
     """
     List all defined topic names.
-
-    This is not yet stable API, just internally used by code generation.
     """
     for file in os.listdir(_TOPICS_PATH):
         assert file.endswith(".yaml")
