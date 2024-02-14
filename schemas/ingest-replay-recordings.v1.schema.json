@@ -4,16 +4,46 @@
   "description": "A replay recording, or a chunk thereof",
   "type": "object",
   "properties": {
-    "type": { "const": "replay_recording_not_chunked" },
-    "replay_id": { "type": "string" },
-    "key_id": { "type": ["null", "integer"] },
-    "org_id": { "type": "integer", "minimum": 0 },
-    "project_id": { "type": "integer", "minimum": 0 },
-    "received": { "type": "integer", "minimum": 0 },
-    "retention_days": { "type": "integer" },
-    "payload": { "description": "msgpack bytes" },
-    "replay_event": { "description": "JSON bytes" },
-    "version": { "type": "integer", "default": 0 }
+    "type": {
+      "const": "replay_recording_not_chunked"
+    },
+    "replay_id": {
+      "type": "string"
+    },
+    "key_id": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "org_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "project_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "received": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retention_days": {
+      "type": "integer"
+    },
+    "payload": {
+      "description": "msgpack bytes"
+    },
+    "replay_event": {
+      "description": "JSON bytes"
+    },
+    "replay_video": {
+      "description": "JSON bytes"
+    },
+    "version": {
+      "type": "integer",
+      "default": 0
+    }
   },
   "required": [
     "type",
