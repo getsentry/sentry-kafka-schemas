@@ -11,10 +11,7 @@
       "type": "string"
     },
     "key_id": {
-      "type": [
-        "null",
-        "integer"
-      ]
+      "type": ["null", "integer"]
     },
     "org_id": {
       "type": "integer",
