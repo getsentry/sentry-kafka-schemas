@@ -81,7 +81,6 @@ def test_all_topics() -> None:
 
     topics_dir = _TOPICS
     for filename in topics_dir.iterdir():
-        print(filename)
         if filename.suffix != ".yaml":
             raise Exception(f"Invalid YAML file: {filename}")
 
