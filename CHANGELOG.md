@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.51
+
+### Various fixes & improvements
+
+- feat: Topic config (#214) by @lynnagara
+- fix: Better output messages when adding properties (#216) by @untitaker
+- feat(replays): Add replay-video attribute to recording message (#215) by @cmanallen
+
 ## 0.1.50
 
 ### Various fixes & improvements
