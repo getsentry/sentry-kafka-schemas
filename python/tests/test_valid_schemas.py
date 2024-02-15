@@ -3,14 +3,14 @@ from typing import Any, Iterator, Tuple
 import pytest
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
-    _list_topics,
+    list_topics,
     get_topic,
     _get_schema,
 )
 
 
 def get_all_schemas() -> Iterator[Tuple[str, int]]:
-    for topic in _list_topics():
+    for topic in list_topics():
         for schema_raw in get_topic(topic)["schemas"]:
             version = schema_raw["version"]
             yield topic, version
