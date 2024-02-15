@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.52
+
+### Various fixes & improvements
+
+- feat: Expose list_topics function (#217) by @lynnagara
+
 ## 0.1.51
 
 ### Various fixes & improvements
