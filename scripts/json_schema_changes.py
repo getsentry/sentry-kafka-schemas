@@ -18,7 +18,7 @@ import urllib.request
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     TopicData,
-    _list_topics,
+    list_topics,
     get_topic,
 )
 
@@ -28,7 +28,7 @@ Change = Mapping[str, Any]
 def _build_schema_to_topic_mapping() -> Mapping[str, TopicData]:
     rv = {}
 
-    for topic_name in _list_topics():
+    for topic_name in list_topics():
         topic_data = get_topic(topic_name)
         for schema in topic_data["schemas"]:
             filename = f"schemas/{schema['resource']}"
