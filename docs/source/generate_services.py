@@ -1,7 +1,7 @@
 from typing import Sequence, Tuple
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     TopicData,
-    _list_topics,
+    list_topics,
     get_topic,
 )
 
@@ -41,7 +41,7 @@ def print_graph(topics: Sequence[Tuple[str, TopicData]]) -> None:
 
 def main():
     pipelines = {}
-    for topic_name in _list_topics():
+    for topic_name in list_topics():
         topic = get_topic(topic_name)
         pipelines.setdefault(topic.get("pipeline", "default"), []).append(
             (topic_name, topic)

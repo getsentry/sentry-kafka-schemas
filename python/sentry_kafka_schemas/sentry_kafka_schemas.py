@@ -58,7 +58,7 @@ _SCHEMAS_PATH = Path.joinpath(Path(__file__).parent, "schemas")
 _EXAMPLES_PATH = Path.joinpath(Path(__file__).parent, "examples")
 
 
-def _list_topics() -> Iterable[str]:
+def list_topics() -> Iterable[str]:
     """
     List all defined topic names.
     """

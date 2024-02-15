@@ -5,7 +5,7 @@ import rapidjson
 import jsonschema
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
-    _list_topics,
+    list_topics,
     get_topic,
     _get_schema,
 )
@@ -14,7 +14,7 @@ from sentry_kafka_schemas import iter_examples
 
 
 def get_all_examples() -> Iterator[Tuple[str, int, Example]]:
-    for topic in _list_topics():
+    for topic in list_topics():
         for schema_raw in get_topic(topic)["schemas"]:
             version = schema_raw["version"]
             for x in iter_examples(topic, version=version):
