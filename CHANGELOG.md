@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.53
+
+### Various fixes & improvements
+
+- feat: Export list_topics (#218) by @lynnagara
+
 ## 0.1.52
 
 ### Various fixes & improvements
