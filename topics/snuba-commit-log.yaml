@@ -1,0 +1,19 @@
+topic: snuba-commit-log
+pipeline: errors
+description: Commit log topic for errors pipeline
+services:
+  producers:
+    - getsentry/snuba
+  consumers:
+    - getsentry/sentry
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - snuba-commit-log/1/
+topic_creation_config:
+  cleanup.policy: compact,delete
+  min.compaction.lag.ms: "3600000"

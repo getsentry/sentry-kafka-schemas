@@ -48,6 +48,10 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     ],
                 },
             },
+            "topic_creation_config": {
+                "type": "object",
+                "additionalProperties": {"type": "string"},
+            },
         },
         "aditionalProperties": False,
         "required": ["topic", "description", "services"],

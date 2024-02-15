@@ -6,7 +6,7 @@ import jsonschema
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     _list_topics,
-    _get_topic,
+    get_topic,
     _get_schema,
 )
 from sentry_kafka_schemas.types import Example
@@ -15,7 +15,7 @@ from sentry_kafka_schemas import iter_examples
 
 def get_all_examples() -> Iterator[Tuple[str, int, Example]]:
     for topic in _list_topics():
-        for schema_raw in _get_topic(topic)["schemas"]:
+        for schema_raw in get_topic(topic)["schemas"]:
             version = schema_raw["version"]
             for x in iter_examples(topic, version=version):
                 yield topic, version, x

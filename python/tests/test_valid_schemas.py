@@ -4,14 +4,14 @@ import pytest
 
 from sentry_kafka_schemas.sentry_kafka_schemas import (
     _list_topics,
-    _get_topic,
+    get_topic,
     _get_schema,
 )
 
 
 def get_all_schemas() -> Iterator[Tuple[str, int]]:
     for topic in _list_topics():
-        for schema_raw in _get_topic(topic)["schemas"]:
+        for schema_raw in get_topic(topic)["schemas"]:
             version = schema_raw["version"]
             yield topic, version
 

@@ -1,0 +1,14 @@
+topic: snuba-dead-letter-replays
+pipeline: errors
+description: DLQ for ingest-replay-events
+services:
+  producers:
+    - getsentry/snuba
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
