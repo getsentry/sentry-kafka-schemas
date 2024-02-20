@@ -12,6 +12,7 @@ import sys
 import subprocess
 import tempfile
 import json
+from urllib.error import HTTPError
 import pkg_resources
 import urllib.request
 
@@ -243,10 +244,13 @@ def check_for_outdated_repos(
 
     sboms = {}
     for repo in {*consumers, *producers}:
-        with urllib.request.urlopen(
-            f"https://api.github.com/repos/{repo}/dependency-graph/sbom"
-        ) as f:
-            sboms[repo] = json.load(f)
+        try:
+            with urllib.request.urlopen(
+                f"https://api.github.com/repos/{repo}/dependency-graph/sbom"
+            ) as f:
+                sboms[repo] = json.load(f)
+        except HTTPError:
+            pass
 
     used_versions: MutableMapping[Repo, MutableMapping[str, Version]] = {}
     for repo, sbom in sboms.items():
