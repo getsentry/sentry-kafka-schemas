@@ -1,1 +1,1 @@
-jsonschema-gentypes==2.2.3
+jsonschema-gentypes==2.5.0
