@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.54
+
+### Various fixes & improvements
+
+- ref: Import errors schema from Snuba (#219) by @untitaker
+- feat: Export list_topics (#218) by @lynnagara
+
 ## 0.1.52
 
 ### Various fixes & improvements
