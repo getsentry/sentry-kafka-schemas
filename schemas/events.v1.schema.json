@@ -33,7 +33,7 @@
           "title": "start_merge_message_body",
           "properties": {
             "transaction_id": { "type": "string" },
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "previous_group_ids": {
               "type": "array",
               "items": {
@@ -63,7 +63,7 @@
           "title": "end_merge_message_body",
           "properties": {
             "transaction_id": { "type": "string" },
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "previous_group_ids": {
               "type": "array",
               "items": { "type": "integer" }
@@ -90,7 +90,7 @@
           "type": "object",
           "properties": {
             "transaction_id": { "type": "string" },
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "group_ids": {
               "type": "array",
               "items": {
@@ -114,7 +114,7 @@
           "title": "end_delete_groups_message_body",
           "properties": {
             "transaction_id": { "type": "string" },
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "group_ids": {
               "type": "array",
               "items": {
@@ -133,7 +133,11 @@
       "items": [
         { "const": 2, "type": "integer" },
         { "const": "start_unmerge" },
-        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+        {
+          "type": "object",
+          "properties": { "project_id": { "type": "integer", "minimum": 0 } },
+          "required": ["project_id"]
+        }
       ]
     },
     "StartUnmergeHierarchicalMessage": {
@@ -141,7 +145,11 @@
       "items": [
         { "const": 2, "type": "integer" },
         { "const": "start_unmerge_hierarchical" },
-        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+        {
+          "type": "object",
+          "properties": { "project_id": { "type": "integer", "minimum": 0 } },
+          "required": ["project_id"]
+        }
       ]
     },
     "StartDeleteTagMessage": {
@@ -149,7 +157,11 @@
       "items": [
         { "const": 2, "type": "integer" },
         { "const": "start_delete_tag" },
-        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+        {
+          "type": "object",
+          "properties": { "project_id": { "type": "integer", "minimum": 0 } },
+          "required": ["project_id"]
+        }
       ]
     },
     "EndUnmergeMessage": {
@@ -162,7 +174,7 @@
           "title": "end_unmerge_message_body",
           "properties": {
             "transaction_id": { "type": "string" },
-            "project_id": { "type": "integer" , "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "previous_group_id": { "type": "integer" },
             "new_group_id": { "type": "integer" },
             "hashes": {
@@ -187,13 +199,13 @@
     "EndUnmergeHierarchicalMessage": {
       "type": "array",
       "items": [
-        { "const": 2, "type": "integer"},
+        { "const": 2, "type": "integer" },
         { "const": "end_unmerge_hierarchical" },
         {
           "type": "object",
           "title": "end_unmerge_hierarchical_message_body",
           "properties": {
-            "project_id": { "type": "integer" , "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "previous_group_id": { "type": "integer" },
             "new_group_id": { "type": "integer" },
             "primary_hash": { "type": "string" },
@@ -215,7 +227,7 @@
     "EndDeleteTagMessage": {
       "type": "array",
       "items": [
-        { "const": 2, "type": "integer"},
+        { "const": 2, "type": "integer" },
         { "const": "end_delete_tag" },
         {
           "type": "object",
@@ -223,7 +235,7 @@
           "properties": {
             "tag": { "type": "string" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" },
-            "project_id": { "type": "integer", "minimum": 0}
+            "project_id": { "type": "integer", "minimum": 0 }
           },
           "additionalProperties": true,
           "required": ["project_id", "tag", "datetime"]
@@ -233,13 +245,13 @@
     "TombstoneEventsMessage": {
       "type": "array",
       "items": [
-        { "const": 2, "type": "integer"},
+        { "const": 2, "type": "integer" },
         { "const": "tombstone_events" },
         {
           "type": "object",
           "title": "tombstone_events_message_body",
           "properties": {
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "event_ids": {
               "type": "array",
               "items": { "type": "string" }
@@ -264,7 +276,7 @@
           "title": "replace_group_message_body",
           "properties": {
             "event_ids": { "type": "array", "items": { "type": "string" } },
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "from_timestamp": { "type": "string" },
             "to_timestamp": { "type": "string" },
             "transaction_id": { "type": "string" },
@@ -279,13 +291,13 @@
     "ExcludeGroupsMessage": {
       "type": "array",
       "items": [
-        { "const": 2, "type": "integer"},
+        { "const": 2, "type": "integer" },
         { "const": "exclude_groups" },
         {
           "type": "object",
           "title": "exclude_groups_message_body",
           "properties": {
-            "project_id": { "type": "integer", "minimum": 0},
+            "project_id": { "type": "integer", "minimum": 0 },
             "group_ids": { "type": "array", "items": { "type": "integer" } }
           },
           "additionalProperties": true,
