@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.56
+
+### Various fixes & improvements
+
+- fix: Fix errors schema again (#221) by @untitaker
+
 ## 0.1.55
 
 ### Various fixes & improvements
