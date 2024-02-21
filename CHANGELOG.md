@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.55
+
+### Various fixes & improvements
+
+- remove value validation for indexer schema (#220) by @john-z-yang
+
 ## 0.1.54
 
 ### Various fixes & improvements
