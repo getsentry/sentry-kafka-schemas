@@ -1,15 +1,298 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "error_event",
+  "title": "event_stream_message",
   "anyOf": [
     {
-      "$ref": "#/definitions/FourTrain"
+      "$ref": "#/definitions/InsertEventMessage"
     },
-    {
-      "$ref": "#/definitions/ThreeTrain"
-    }
+    { "$ref": "#/definitions/StartDeleteGroupsMessage" },
+    { "$ref": "#/definitions/StartMergeMessage" },
+    { "$ref": "#/definitions/StartUnmergeMessage" },
+    { "$ref": "#/definitions/StartUnmergeHierarchicalMessage" },
+    { "$ref": "#/definitions/StartDeleteTagMessage" },
+    { "$ref": "#/definitions/EndDeleteGroupsMessage" },
+    { "$ref": "#/definitions/EndMergeMessage" },
+    { "$ref": "#/definitions/EndUnmergeMessage" },
+    { "$ref": "#/definitions/EndUnmergeHierarchicalMessage" },
+    { "$ref": "#/definitions/EndDeleteTagMessage" },
+    { "$ref": "#/definitions/TombstoneEventsMessage" },
+    { "$ref": "#/definitions/ReplaceGroupMessage" },
+    { "$ref": "#/definitions/ExcludeGroupsMessage" }
   ],
   "definitions": {
+    "SnubaDatetime": {
+      "type": "string"
+    },
+    "StartMergeMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "start_merge" },
+        {
+          "type": "object",
+          "title": "start_merge_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer", "minimum": 0},
+            "previous_group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "new_group_id": { "type": "integer" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": [
+            "project_id",
+            "previous_group_ids",
+            "new_group_id",
+            "datetime"
+          ]
+        }
+      ]
+    },
+    "EndMergeMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "end_merge" },
+        {
+          "type": "object",
+          "title": "end_merge_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer", "minimum": 0},
+            "previous_group_ids": {
+              "type": "array",
+              "items": { "type": "integer" }
+            },
+            "new_group_id": { "type": "integer" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": [
+            "project_id",
+            "previous_group_ids",
+            "new_group_id",
+            "datetime"
+          ]
+        }
+      ]
+    },
+    "StartDeleteGroupsMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "start_delete_groups" },
+        {
+          "type": "object",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer", "minimum": 0},
+            "group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": ["project_id", "group_ids", "datetime"]
+        }
+      ]
+    },
+    "EndDeleteGroupsMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "end_delete_groups" },
+        {
+          "type": "object",
+          "title": "end_delete_groups_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer", "minimum": 0},
+            "group_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": ["project_id", "group_ids", "datetime"]
+        }
+      ]
+    },
+    "StartUnmergeMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "start_unmerge" },
+        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+      ]
+    },
+    "StartUnmergeHierarchicalMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "start_unmerge_hierarchical" },
+        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+      ]
+    },
+    "StartDeleteTagMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "start_delete_tag" },
+        { "type": "object", "properties": { "project_id": {"type": "integer", "minimum": 0}}, "required": ["project_id"]}
+      ]
+    },
+    "EndUnmergeMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "end_unmerge" },
+        {
+          "type": "object",
+          "title": "end_unmerge_message_body",
+          "properties": {
+            "transaction_id": { "type": "string" },
+            "project_id": { "type": "integer" , "minimum": 0},
+            "previous_group_id": { "type": "integer" },
+            "new_group_id": { "type": "integer" },
+            "hashes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": [
+            "project_id",
+            "previous_group_id",
+            "new_group_id",
+            "hashes",
+            "datetime"
+          ]
+        }
+      ]
+    },
+    "EndUnmergeHierarchicalMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer"},
+        { "const": "end_unmerge_hierarchical" },
+        {
+          "type": "object",
+          "title": "end_unmerge_hierarchical_message_body",
+          "properties": {
+            "project_id": { "type": "integer" , "minimum": 0},
+            "previous_group_id": { "type": "integer" },
+            "new_group_id": { "type": "integer" },
+            "primary_hash": { "type": "string" },
+            "hierarchical_hash": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": [
+            "project_id",
+            "previous_group_id",
+            "new_group_id",
+            "primary_hash",
+            "hierarchical_hash",
+            "datetime"
+          ]
+        }
+      ]
+    },
+    "EndDeleteTagMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer"},
+        { "const": "end_delete_tag" },
+        {
+          "type": "object",
+          "title": "end_delete_tag_message_body",
+          "properties": {
+            "tag": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" },
+            "project_id": { "type": "integer", "minimum": 0}
+          },
+          "additionalProperties": true,
+          "required": ["project_id", "tag", "datetime"]
+        }
+      ]
+    },
+    "TombstoneEventsMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer"},
+        { "const": "tombstone_events" },
+        {
+          "type": "object",
+          "title": "tombstone_events_message_body",
+          "properties": {
+            "project_id": { "type": "integer", "minimum": 0},
+            "event_ids": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "old_primary_hash": { "type": ["string", "null"] },
+            "from_timestamp": { "type": "string" },
+            "to_timestamp": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
+          },
+          "additionalProperties": true,
+          "required": ["project_id", "event_ids"]
+        }
+      ]
+    },
+    "ReplaceGroupMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer" },
+        { "const": "replace_group" },
+        {
+          "type": "object",
+          "title": "replace_group_message_body",
+          "properties": {
+            "event_ids": { "type": "array", "items": { "type": "string" } },
+            "project_id": { "type": "integer", "minimum": 0},
+            "from_timestamp": { "type": "string" },
+            "to_timestamp": { "type": "string" },
+            "transaction_id": { "type": "string" },
+            "datetime": { "$ref": "#/definitions/SnubaDatetime" },
+            "new_group_id": { "type": "integer" }
+          },
+          "additionalProperties": true,
+          "required": ["event_ids", "project_id", "new_group_id"]
+        }
+      ]
+    },
+    "ExcludeGroupsMessage": {
+      "type": "array",
+      "items": [
+        { "const": 2, "type": "integer"},
+        { "const": "exclude_groups" },
+        {
+          "type": "object",
+          "title": "exclude_groups_message_body",
+          "properties": {
+            "project_id": { "type": "integer", "minimum": 0},
+            "group_ids": { "type": "array", "items": { "type": "integer" } }
+          },
+          "additionalProperties": true,
+          "required": ["project_id", "group_ids"]
+        }
+      ]
+    },
     "Boolify": true,
     "ContextStringify": true,
     "Contexts": {
@@ -87,8 +370,7 @@
           }
         },
         "received": {
-          "default": null,
-          "type": ["number", "null"]
+          "type": ["number"]
         },
         "request": {
           "anyOf": [
@@ -156,10 +438,12 @@
           "default": null,
           "type": ["string", "null"]
         }
-      }
+      },
+      "required": ["received"]
     },
     "ErrorMessage": {
       "type": "object",
+      "title": "insert_event",
       "required": [
         "data",
         "event_id",
@@ -205,6 +489,7 @@
     },
     "Exception": {
       "type": "object",
+      "title": "sentry_exception_chain",
       "properties": {
         "values": {
           "type": ["array", "null"],
@@ -273,7 +558,7 @@
         }
       }
     },
-    "FourTrain": {
+    "InsertEventMessage": {
       "type": "array",
       "items": [
         {
@@ -291,16 +576,6 @@
       "maxItems": 4,
       "minItems": 4
     },
-    "ReplacementEvent": {
-      "type": "object",
-      "required": ["project_id"],
-      "properties": {
-        "project_id": {
-          "type": "integer",
-          "minimum": 0
-        }
-      }
-    },
     "ReplayContext": {
       "type": "object",
       "properties": {
@@ -311,6 +586,7 @@
     },
     "Request": {
       "type": "object",
+      "title": "sentry_request",
       "properties": {
         "headers": {
           "type": ["array", "null"],
@@ -334,6 +610,7 @@
       }
     },
     "Sdk": {
+      "title": "client_sdk_info",
       "type": "object",
       "properties": {
         "integrations": {
@@ -404,6 +681,7 @@
     },
     "Thread": {
       "type": "object",
+      "title": "sentry_thread_chain",
       "properties": {
         "values": {
           "type": ["array", "null"],
@@ -450,23 +728,6 @@
         }
       }
     },
-    "ThreeTrain": {
-      "type": "array",
-      "items": [
-        {
-          "type": "integer",
-          "minimum": 0
-        },
-        {
-          "type": "string"
-        },
-        {
-          "$ref": "#/definitions/ReplacementEvent"
-        }
-      ],
-      "maxItems": 3,
-      "minItems": 3
-    },
     "TraceContext": {
       "type": "object",
       "properties": {
@@ -487,6 +748,7 @@
     "Unicodify": true,
     "User": {
       "type": "object",
+      "title": "sentry_user",
       "properties": {
         "email": {
           "$ref": "#/definitions/Unicodify"
