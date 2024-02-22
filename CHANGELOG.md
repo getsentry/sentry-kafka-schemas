@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.57
+
+### Various fixes & improvements
+
+- Revert "remove value validation for indexer schema (#220)" (17219c0e) by @john-z-yang
+
 ## 0.1.56
 
 ### Various fixes & improvements
