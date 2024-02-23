@@ -38,7 +38,7 @@
         "value": {
           "anyOf": [
             {
-              "title": "encoded_series",
+              "title": "encoded_series_metric_value",
               "type": "object",
               "properties": {
                 "format": {
