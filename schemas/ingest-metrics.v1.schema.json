@@ -43,11 +43,11 @@
         "value": {
           "anyOf": [
             {
-              "title": "encoded_series_metric_value",
+              "title": "encoded_series_array_metric_value",
               "type": "object",
               "properties": {
                 "format": {
-                  "enum": ["array"]
+                  "const": "array"
                 },
                 "data": {
                   "anyOf": [
