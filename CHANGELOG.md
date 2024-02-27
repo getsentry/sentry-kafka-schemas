@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.58
+
+### Various fixes & improvements
+
+- Add encoded series to metrics schemas (#222) by @john-z-yang
+- Upgrade to FSL-1.1 (#223) by @chadwhitacre
+- Revert "Revert "remove value validation for indexer schema (#220)"" (8ad83926) by @untitaker
+
 ## 0.1.57
 
 ### Various fixes & improvements
