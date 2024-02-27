@@ -38,6 +38,32 @@
         "value": {
           "anyOf": [
             {
+              "title": "encoded_series_array_metric_value",
+              "type": "object",
+              "properties": {
+                "format": {
+                  "const": "array"
+                },
+                "data": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": ["format", "data"]
+            },
+            {
               "title": "counter_metric_value",
               "type": "number"
             },
