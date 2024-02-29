@@ -8,6 +8,7 @@ services:
   consumers:
     - getsentry/snuba
     - getsentry/super-big-consumers
+    - getsentry/sentry
 schemas:
   - version: 1
     compatibility_mode: none
