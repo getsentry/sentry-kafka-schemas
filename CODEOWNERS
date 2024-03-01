@@ -69,4 +69,4 @@
 /examples/subscription-results/                               @getsentry/owners-snuba @getsentry/workflow
 
 # Search and storage and infra is the default owner
-* @getsentry/owners-snuba @getsentry/team-ops
+* @getsentry/owners-snuba @getsentry/ops
