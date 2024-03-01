@@ -1,0 +1,14 @@
+topic: ingest-metrics-dlq
+pipeline: release-health
+description: DLQ for ingest-metrics
+services:
+  producers:
+    - getsentry/sentry
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/

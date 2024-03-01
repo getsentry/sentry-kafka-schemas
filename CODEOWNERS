@@ -3,6 +3,11 @@
 /topics/ingest-performance-metrics.yaml                        @getsentry/owners-ingest @getsentry/owners-snuba
 /topics/ingest-replay-recordings.yaml                          @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/replay
 
+# DLQs for ingest topics
+/topics/ingest-events-dlq.yaml                                 @getsentry/owners-snuba
+/topics/ingest-metrics-dlq.yaml                                @getsentry/owners-snuba
+/topics/ingest-generic-metrics-dlq.yaml                        @getsentry/owners-snuba
+
 # Topics consumed by Snuba
 /topics/events.yaml                                            @getsentry/owners-snuba
 /topics/transactions.yaml                                      @getsentry/owners-snuba
@@ -35,7 +40,7 @@
 /topics/snuba-generic-metrics-counters-commit-log.yaml         @getsentry/owners-snuba
 /topics/snuba-generic-events-commit-log.yaml                   @getsentry/owners-snuba @getsentry/issues
 
-# Topics produced to by Snuba
+# Topics produced to by Snuba and Sentry
 /topics/shared-resources-usage.yaml                            @getsentry/owners-snuba @getsentry/data
 
 # Schemas
