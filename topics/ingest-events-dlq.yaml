@@ -1,0 +1,14 @@
+topic: ingest-events-dlq
+pipeline: errors
+description: DLQ for ingest-events
+services:
+  producers:
+    - getsentry/sentry
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
