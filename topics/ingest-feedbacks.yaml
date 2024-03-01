@@ -1,6 +1,6 @@
 topic: ingest-feedbacks
 pipeline: replays
-description: User feedback widget events and attachments
+description: User feedback widget events
 services:
   producers:
     - getsentry/sentry
