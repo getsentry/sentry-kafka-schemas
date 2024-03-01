@@ -12,3 +12,5 @@ schemas:
     resource: any.json
     examples:
       - any/
+topic_creation_config:
+  log.retention.minutes: "10080"
