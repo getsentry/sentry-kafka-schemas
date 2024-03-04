@@ -1,9 +1,9 @@
 topic: ingest-feedbacks
 pipeline: replays
-description: User feedback widget events
+description: User feedback events, submitted from user
 services:
   producers:
-    - getsentry/sentry
+    - getsentry/relay
   consumers:
     - getsentry/sentry
 schemas:
