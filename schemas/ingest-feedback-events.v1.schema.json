@@ -69,11 +69,7 @@
           "$ref": "#/definitions/Feedback"
         }
       },
-      "required": [
-        "angular",
-        "feedback",
-        "trace"
-      ],
+      "required": ["angular", "feedback", "trace"],
       "title": "Contexts"
     },
     "Angular": {
@@ -84,9 +80,7 @@
           "type": "integer"
         }
       },
-      "required": [
-        "version"
-      ],
+      "required": ["version"],
       "title": "Angular"
     },
     "Feedback": {
@@ -105,9 +99,7 @@
         "url": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
+          "qt-uri-protocols": ["https"]
         },
         "source": {
           "type": "string"
@@ -146,13 +138,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "data",
-        "op",
-        "origin",
-        "span_id",
-        "trace_id"
-      ],
+      "required": ["data", "op", "origin", "span_id", "trace_id"],
       "title": "Trace"
     },
     "Data": {
@@ -187,18 +173,13 @@
         "url": {
           "type": "string",
           "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
+          "qt-uri-protocols": ["https"]
         },
         "headers": {
           "$ref": "#/definitions/Headers"
         }
       },
-      "required": [
-        "headers",
-        "url"
-      ],
+      "required": ["headers", "url"],
       "title": "Request"
     },
     "Headers": {
@@ -209,9 +190,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "User-Agent"
-      ],
+      "required": ["User-Agent"],
       "title": "Headers"
     },
     "SDK": {
@@ -237,12 +216,7 @@
           }
         }
       },
-      "required": [
-        "integrations",
-        "name",
-        "packages",
-        "version"
-      ],
+      "required": ["integrations", "name", "packages", "version"],
       "title": "SDK"
     },
     "Package": {
@@ -256,10 +230,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name",
-        "version"
-      ],
+      "required": ["name", "version"],
       "title": "Package"
     },
     "Tags": {
@@ -270,9 +241,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "transaction"
-      ],
+      "required": ["transaction"],
       "title": "Tags"
     }
   }
