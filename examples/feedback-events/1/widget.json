@@ -1,0 +1,67 @@
+{
+  "contexts": {
+    "trace": {
+      "data": {
+        "sentry.source": "url",
+        "sentry.origin": "manual",
+        "sentry.op": "ui.action.click",
+        "sentry.sample_rate": 1
+      },
+      "op": "ui.action.click",
+      "span_id": "af56b414007cdf14",
+      "trace_id": "9ae5b04b26f3481cab6c326aaa9bca9f",
+      "origin": "manual"
+    },
+    "angular": {
+      "version": 17
+    },
+    "feedback": {
+      "contact_email": "john.doe@gmail.com",
+      "name": "John Doe",
+      "message": "Test feedback submission\nHello world! Nice widget",
+      "url": "https://nugettrends.com/",
+      "source": "widget",
+      "replay_id": "a60c73d398334770a050eaee2a9bfd93"
+    }
+  },
+  "type": "feedback",
+  "request": {
+    "url": "https://nugettrends.com/",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    }
+  },
+  "event_id": "5c941f7c8d3c4a56b05119c4b612991d",
+  "timestamp": 1709675365.66,
+  "environment": "production",
+  "release": "27e7677",
+  "sdk": {
+    "integrations": [
+      "InboundFilters",
+      "FunctionToString",
+      "Breadcrumbs",
+      "GlobalHandlers",
+      "LinkedErrors",
+      "Dedupe",
+      "HttpContext",
+      "Replay",
+      "ReplayCanvas",
+      "Feedback",
+      "BrowserTracing",
+      "BrowserProfiling"
+    ],
+    "name": "sentry.javascript.angular-ivy",
+    "version": "7.100.1",
+    "packages": [
+      {
+        "name": "npm:@sentry/angular-ivy",
+        "version": "7.100.1"
+      }
+    ]
+  },
+  "level": "info",
+  "tags": {
+    "transaction": "/"
+  },
+  "platform": "javascript"
+}

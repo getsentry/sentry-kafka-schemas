@@ -1,0 +1,279 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/FeedbackEvent",
+  "definitions": {
+    "FeedbackEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contexts": {
+          "$ref": "#/definitions/Contexts"
+        },
+        "type": {
+          "type": "string"
+        },
+        "request": {
+          "$ref": "#/definitions/Request"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "number"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "release": {
+          "type": "string"
+        },
+        "sdk": {
+          "$ref": "#/definitions/SDK"
+        },
+        "level": {
+          "type": "string"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "platform": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contexts",
+        "environment",
+        "event_id",
+        "level",
+        "platform",
+        "release",
+        "request",
+        "sdk",
+        "tags",
+        "timestamp",
+        "type"
+      ],
+      "title": "FeedbackEvent"
+    },
+    "Contexts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trace": {
+          "$ref": "#/definitions/Trace"
+        },
+        "angular": {
+          "$ref": "#/definitions/Angular"
+        },
+        "feedback": {
+          "$ref": "#/definitions/Feedback"
+        }
+      },
+      "required": [
+        "angular",
+        "feedback",
+        "trace"
+      ],
+      "title": "Contexts"
+    },
+    "Angular": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "version"
+      ],
+      "title": "Angular"
+    },
+    "Feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contact_email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "replay_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contact_email",
+        "message",
+        "name",
+        "replay_id",
+        "source",
+        "url"
+      ],
+      "title": "Feedback"
+    },
+    "Trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        },
+        "op": {
+          "type": "string"
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "trace_id": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "data",
+        "op",
+        "origin",
+        "span_id",
+        "trace_id"
+      ],
+      "title": "Trace"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sentry.source": {
+          "type": "string"
+        },
+        "sentry.origin": {
+          "type": "string"
+        },
+        "sentry.op": {
+          "type": "string"
+        },
+        "sentry.sample_rate": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sentry.op",
+        "sentry.origin",
+        "sentry.sample_rate",
+        "sentry.source"
+      ],
+      "title": "Data"
+    },
+    "Request": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "headers": {
+          "$ref": "#/definitions/Headers"
+        }
+      },
+      "required": [
+        "headers",
+        "url"
+      ],
+      "title": "Request"
+    },
+    "Headers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "User-Agent": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "User-Agent"
+      ],
+      "title": "Headers"
+    },
+    "SDK": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "integrations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Package"
+          }
+        }
+      },
+      "required": [
+        "integrations",
+        "name",
+        "packages",
+        "version"
+      ],
+      "title": "SDK"
+    },
+    "Package": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "title": "Package"
+    },
+    "Tags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "transaction": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "transaction"
+      ],
+      "title": "Tags"
+    }
+  }
+}

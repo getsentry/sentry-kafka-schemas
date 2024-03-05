@@ -1,0 +1,15 @@
+topic: ingest-feedback-events
+pipeline: user-feedback
+description: User feedback events from SDK
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: ingest-feedback-events.v1.schema.json
+    examples:
+      - feedback-events/1/
