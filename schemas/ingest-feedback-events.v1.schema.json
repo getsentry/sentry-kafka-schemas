@@ -5,16 +5,13 @@
   "definitions": {
     "FeedbackEvent": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "contexts": {
           "$ref": "#/definitions/Contexts"
         },
         "type": {
           "type": "string"
-        },
-        "request": {
-          "$ref": "#/definitions/Request"
         },
         "event_id": {
           "type": "string"
@@ -28,9 +25,6 @@
         "release": {
           "type": "string"
         },
-        "sdk": {
-          "$ref": "#/definitions/SDK"
-        },
         "level": {
           "type": "string"
         },
@@ -43,47 +37,23 @@
       },
       "required": [
         "contexts",
-        "environment",
         "event_id",
-        "level",
-        "platform",
-        "release",
-        "request",
-        "sdk",
-        "tags",
-        "timestamp",
-        "type"
+        "timestamp"
       ]
     },
     "Contexts": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
-        "trace": {
-          "$ref": "#/definitions/Trace"
-        },
-        "angular": {
-          "$ref": "#/definitions/Angular"
-        },
         "feedback": {
           "$ref": "#/definitions/Feedback"
         }
       },
-      "required": ["angular", "feedback", "trace"]
-    },
-    "Angular": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "version": {
-          "type": "integer"
-        }
-      },
-      "required": ["version"]
+      "required": ["feedback"]
     },
     "Feedback": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "contact_email": {
           "type": "string"
@@ -110,129 +80,14 @@
         "contact_email",
         "message",
         "name",
-        "replay_id",
-        "source",
-        "url"
+        "source"
       ]
-    },
-    "Trace": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "data": {
-          "$ref": "#/definitions/Data"
-        },
-        "op": {
-          "type": "string"
-        },
-        "span_id": {
-          "type": "string"
-        },
-        "trace_id": {
-          "type": "string"
-        },
-        "origin": {
-          "type": "string"
-        }
-      },
-      "required": ["data", "op", "origin", "span_id", "trace_id"]
-    },
-    "Data": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "sentry.source": {
-          "type": "string"
-        },
-        "sentry.origin": {
-          "type": "string"
-        },
-        "sentry.op": {
-          "type": "string"
-        },
-        "sentry.sample_rate": {
-          "type": "integer"
-        }
-      },
-      "required": [
-        "sentry.op",
-        "sentry.origin",
-        "sentry.sample_rate",
-        "sentry.source"
-      ]
-    },
-    "Request": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": ["https"]
-        },
-        "headers": {
-          "$ref": "#/definitions/Headers"
-        }
-      },
-      "required": ["headers", "url"]
-    },
-    "Headers": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "User-Agent": {
-          "type": "string"
-        }
-      },
-      "required": ["User-Agent"]
-    },
-    "SDK": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "integrations": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "name": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "packages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Package"
-          }
-        }
-      },
-      "required": ["integrations", "name", "packages", "version"]
-    },
-    "Package": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      },
-      "required": ["name", "version"]
     },
     "Tags": {
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "transaction": {
-          "type": "string"
-        }
-      },
-      "required": ["transaction"]
+      "additionalProperties": true,
+      "properties": {},
+      "required": []
     }
   }
 }

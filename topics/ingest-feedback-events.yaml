@@ -12,4 +12,4 @@ schemas:
     type: json
     resource: ingest-feedback-events.v1.schema.json
     examples:
-      - feedback-events/1/
+      - ingest-feedback-events/1/

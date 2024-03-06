@@ -1,0 +1,88 @@
+{
+  "contexts": {
+    "trace": {
+      "data": {
+        "sentry.source": "route",
+        "sentry.origin": "manual",
+        "sentry.op": "ui.action.click",
+        "sentry.sample_rate": 0.01
+      },
+      "op": "ui.action.click",
+      "span_id": "97471fd4022a5a9a",
+      "trace_id": "8a849c45695247c3895a5788ac5dbb02",
+      "origin": "manual"
+    },
+    "organization": {
+      "id": "1",
+      "slug": "sentry"
+    },
+    "feedback": {
+      "contact_email": "andrew.liu@sentry.io",
+      "name": "Andrew Liu",
+      "message": "test feedback event for user feedback development",
+      "url": "https://sentry.sentry.io/ddm/?statsPeriod=24h",
+      "source": "widget",
+      "replay_id": "82a785e590d54b2692429d46513e5564"
+    }
+  },
+  "type": "feedback",
+  "request": {
+    "url": "https://sentry.sentry.io/ddm/?statsPeriod=24h",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    }
+  },
+  "event_id": "74287fdf939c4b82abc603232583e722",
+  "timestamp": 1709695989.715,
+  "environment": "prod",
+  "release": "frontend@5d1f3aa444b6538e789e7fcbc4c7a713afca699b",
+  "sdk": {
+    "integrations": [
+      "InboundFilters",
+      "FunctionToString",
+      "TryCatch",
+      "Breadcrumbs",
+      "GlobalHandlers",
+      "LinkedErrors",
+      "Dedupe",
+      "HttpContext",
+      "ExtraErrorData",
+      "MetricsAggregator",
+      "BrowserTracing",
+      "BrowserProfiling"
+    ],
+    "name": "sentry.javascript.react",
+    "version": "7.103.0",
+    "packages": [
+      {
+        "name": "npm:@sentry/react",
+        "version": "7.103.0"
+      }
+    ]
+  },
+  "tags": {
+    "transaction": "/ddm/",
+    "sentry_version": "24.3.0.dev0",
+    "isCustomerDomain": "yes",
+    "customerDomain.organizationUrl": "https://sentry.sentry.io",
+    "customerDomain.sentryUrl": "https://sentry.io",
+    "customerDomain.subdomain": "sentry",
+    "organization": "1",
+    "organization.slug": "sentry",
+    "plan": "am2_business_ent_auf",
+    "plan.name": "Business",
+    "plan.max_members": "null",
+    "plan.total_members": "323",
+    "plan.tier": "am2",
+    "timeOrigin.mode": "navigationStart"
+  },
+  "user": {
+    "ip_address": "98.51.47.219",
+    "email": "andrew.liu@sentry.io",
+    "id": 3069298,
+    "isStaff": false,
+    "name": "Andrew Liu"
+  },
+  "level": "info",
+  "platform": "javascript"
+}
