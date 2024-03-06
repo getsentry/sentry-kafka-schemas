@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$ref": "#/definitions/FeedbackEvent",
+  "title": "feedback_event",
   "definitions": {
     "FeedbackEvent": {
       "type": "object",
@@ -52,8 +53,7 @@
         "tags",
         "timestamp",
         "type"
-      ],
-      "title": "FeedbackEvent"
+      ]
     },
     "Contexts": {
       "type": "object",
@@ -69,8 +69,7 @@
           "$ref": "#/definitions/Feedback"
         }
       },
-      "required": ["angular", "feedback", "trace"],
-      "title": "Contexts"
+      "required": ["angular", "feedback", "trace"]
     },
     "Angular": {
       "type": "object",
@@ -80,8 +79,7 @@
           "type": "integer"
         }
       },
-      "required": ["version"],
-      "title": "Angular"
+      "required": ["version"]
     },
     "Feedback": {
       "type": "object",
@@ -115,8 +113,7 @@
         "replay_id",
         "source",
         "url"
-      ],
-      "title": "Feedback"
+      ]
     },
     "Trace": {
       "type": "object",
@@ -138,8 +135,7 @@
           "type": "string"
         }
       },
-      "required": ["data", "op", "origin", "span_id", "trace_id"],
-      "title": "Trace"
+      "required": ["data", "op", "origin", "span_id", "trace_id"]
     },
     "Data": {
       "type": "object",
@@ -163,8 +159,7 @@
         "sentry.origin",
         "sentry.sample_rate",
         "sentry.source"
-      ],
-      "title": "Data"
+      ]
     },
     "Request": {
       "type": "object",
@@ -179,8 +174,7 @@
           "$ref": "#/definitions/Headers"
         }
       },
-      "required": ["headers", "url"],
-      "title": "Request"
+      "required": ["headers", "url"]
     },
     "Headers": {
       "type": "object",
@@ -190,8 +184,7 @@
           "type": "string"
         }
       },
-      "required": ["User-Agent"],
-      "title": "Headers"
+      "required": ["User-Agent"]
     },
     "SDK": {
       "type": "object",
@@ -216,8 +209,7 @@
           }
         }
       },
-      "required": ["integrations", "name", "packages", "version"],
-      "title": "SDK"
+      "required": ["integrations", "name", "packages", "version"]
     },
     "Package": {
       "type": "object",
@@ -230,8 +222,7 @@
           "type": "string"
         }
       },
-      "required": ["name", "version"],
-      "title": "Package"
+      "required": ["name", "version"]
     },
     "Tags": {
       "type": "object",
@@ -241,8 +232,7 @@
           "type": "string"
         }
       },
-      "required": ["transaction"],
-      "title": "Tags"
+      "required": ["transaction"]
     }
   }
 }
