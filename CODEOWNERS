@@ -2,6 +2,7 @@
 /topics/ingest-metrics.yaml                                    @getsentry/owners-ingest @getsentry/owners-snuba
 /topics/ingest-performance-metrics.yaml                        @getsentry/owners-ingest @getsentry/owners-snuba
 /topics/ingest-replay-recordings.yaml                          @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-events.yaml                                     @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/ops
 
 # DLQs for ingest topics
 /topics/ingest-events-dlq.yaml                                 @getsentry/owners-snuba
