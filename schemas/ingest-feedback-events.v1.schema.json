@@ -6,18 +6,30 @@
     "FeedbackEvent": {
       "type": "object",
       "additionalProperties": true,
+      "required": [
+        "event_id",
+        "timestamp",
+        "platform",
+        "contexts"
+      ],
       "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": ["number", "string"]
+        },
+        "platform": {
+          "type": "string"
+        },
         "contexts": {
           "$ref": "#/definitions/Contexts"
         },
         "type": {
           "type": "string"
         },
-        "event_id": {
+        "level": {
           "type": "string"
-        },
-        "timestamp": {
-          "type": "number"
         },
         "environment": {
           "type": "string"
@@ -25,21 +37,10 @@
         "release": {
           "type": "string"
         },
-        "level": {
-          "type": "string"
-        },
         "tags": {
-          "$ref": "#/definitions/Tags"
-        },
-        "platform": {
-          "type": "string"
+          "type": "object"
         }
-      },
-      "required": [
-        "contexts",
-        "event_id",
-        "timestamp"
-      ]
+      }
     },
     "Contexts": {
       "type": "object",
@@ -54,14 +55,18 @@
     "Feedback": {
       "type": "object",
       "additionalProperties": true,
+      "required": [],
       "properties": {
         "contact_email": {
+          "type": "string"
+        },
+        "message": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "message": {
+        "source": {
           "type": "string"
         },
         "url": {
@@ -69,25 +74,10 @@
           "format": "uri",
           "qt-uri-protocols": ["https"]
         },
-        "source": {
-          "type": "string"
-        },
         "replay_id": {
           "type": "string"
         }
-      },
-      "required": [
-        "contact_email",
-        "message",
-        "name",
-        "source"
-      ]
-    },
-    "Tags": {
-      "type": "object",
-      "additionalProperties": true,
-      "properties": {},
-      "required": []
+      }
     }
   }
 }
