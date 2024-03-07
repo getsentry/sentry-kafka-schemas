@@ -9,7 +9,7 @@ services:
 schemas:
   - version: 1
     compatibility_mode: none
-    type: json
+    type: msgpack
     resource: ingest-feedback-events.v1.schema.json
     examples:
       - ingest-feedback-events/1/
