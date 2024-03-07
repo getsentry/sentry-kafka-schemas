@@ -6,12 +6,7 @@
     "FeedbackEvent": {
       "type": "object",
       "additionalProperties": true,
-      "required": [
-        "event_id",
-        "timestamp",
-        "platform",
-        "contexts"
-      ],
+      "required": ["event_id", "timestamp", "platform", "contexts"],
       "properties": {
         "event_id": {
           "type": "string"
