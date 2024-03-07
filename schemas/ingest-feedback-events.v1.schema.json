@@ -22,6 +22,9 @@
         "platform": {
           "type": "string"
         },
+        "dist": {
+          "type": "string"
+        },
         "contexts": {
           "$ref": "#/definitions/Contexts"
         },
@@ -38,6 +41,12 @@
           "type": "string"
         },
         "tags": {
+          "type": "object"
+        },
+        "user": {
+          "type": "object"
+        },
+        "sdk": {
           "type": "object"
         }
       }
