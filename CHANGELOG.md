@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 0.1.59
+
+### Various fixes & improvements
+
+- feat: Add retention values to DLQ (#228) by @lynnagara
+- Switch workflow team for issues team (#229) by @armenzg
+- ref: Add team ops as codeowners (#226) by @lynnagara
+- feat: Add dlq topics to topic registry (#225) by @lynnagara
+- feat: Add outcomes-billing topic (#224) by @lynnagara
+
 ## 0.1.58
 
 ### Various fixes & improvements
