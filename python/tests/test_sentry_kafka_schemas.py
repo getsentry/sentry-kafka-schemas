@@ -9,7 +9,7 @@ def test_get_topic() -> None:
     assert topic_data["topic_creation_config"] == {"max.message.bytes": "2000000"}
 
     # Topic without creation config
-    topic_name_no_config = "snuba-dead-letter-replays"
+    topic_name_no_config = "outcomes"
     topic_data = get_topic(topic_name_no_config)
     assert topic_data["topic_creation_config"] == {}
 
