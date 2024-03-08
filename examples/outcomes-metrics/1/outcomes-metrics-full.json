@@ -1,0 +1,10 @@
+{
+  "timestamp": 1709812800,
+  "org_id": 1,
+  "project_id": 1,
+  "mri": "d:custom/request_duration@seconds",
+  "outcome": 2,
+  "reason": "foobar",
+  "quantity": 42,
+  "cardinality": 1337
+}

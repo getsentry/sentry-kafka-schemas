@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "metrics-outcome",
+  "$ref": "#/definitions/MetricsOutcome",
+  "definitions": {
+    "MetricsOutcome": {
+      "properties": {
+        "timestamp": {
+          "description": "The UNIX timestamp in seconds when the outcome was created, optionally truncated to the last hour.",
+          "$ref": "#/definitions/U64"
+        },
+        "org_id": {
+          "description": "The organization for which this outcome is being sent.",
+          "$ref": "#/definitions/U64"
+        },
+        "project_id": {
+          "description": "The project for which this outcome is being sent.",
+          "$ref": "#/definitions/U64"
+        },
+        "mri": {
+          "description": "Valid metric resource identifier `<type>:<namespace>/<name>[@<unit>]` for which the outcome is being sent.",
+          "type": "string"
+        },
+        "outcome": {
+          "description": "Outcome ID, metric outcomes share the same numeric outcome ID with regular outcomes.",
+          "$ref": "#/definitions/U64"
+        },
+        "reason": {
+          "description": "Optional machine readable, free-form reason code.",
+          "type": ["string", "null"]
+        },
+        "quantity": {
+          "description": "Amount of metric buckets accepted by Relay (volume).",
+          "type": "integer"
+        },
+        "cardinality": {
+          "description": "Maximum observed cardinality of the metric.",
+          "type": "integer"
+        }
+      },
+      "required": ["timestamp", "org_id", "project_id", "mri", "outcome"]
+    },
+    "U64": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    }
+  }
+}
