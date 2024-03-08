@@ -13,4 +13,4 @@ schemas:
     type: json
     resource: outcomes-metrics.v1.schema.json
     examples:
-      -  outcomes-metrics/1
+      - outcomes-metrics/1
