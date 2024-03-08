@@ -10,7 +10,6 @@
     "event_id": { "type": "string" },
     "project_id": { "type": "integer" },
     "start_time": { "type": "integer" }
-
   },
   "required": ["type", "event_id", "project_id", "payload", "start_time"]
 }
