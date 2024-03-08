@@ -32,11 +32,11 @@
         },
         "quantity": {
           "description": "Amount of metric buckets accepted by Relay (volume).",
-          "type": "integer"
+          "$ref": "#/definitions/U64"
         },
         "cardinality": {
           "description": "Maximum observed cardinality of the metric.",
-          "type": "integer"
+          "$ref": "#/definitions/U64"
         }
       },
       "required": ["timestamp", "org_id", "project_id", "mri", "outcome"]
