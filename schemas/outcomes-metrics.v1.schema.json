@@ -4,6 +4,7 @@
   "$ref": "#/definitions/MetricsOutcome",
   "definitions": {
     "MetricsOutcome": {
+      "type": "object",
       "properties": {
         "timestamp": {
           "description": "The UNIX timestamp in seconds when the outcome was created, optionally truncated to the last hour.",
