@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.60
+
+### Various fixes & improvements
+
+- feat: Add basic schema and examples for ingest-events [INC-660] (#230) by @lynnagara
+- feat: Add max.message.bytes on events and transactions topics (#233) by @lynnagara
+- meta: fix ingest code owners (#232) by @Dav1dde
+
 ## 0.1.59
 
 ### Various fixes & improvements
