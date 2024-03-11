@@ -1,86 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/FeedbackEvent",
   "title": "feedback_event",
+  "description": "User feedback event from Relay",
+  "$ref": "#/definitions/FeedbackEvent",
   "definitions": {
     "FeedbackEvent": {
       "type": "object",
-      "additionalProperties": true,
-      "required": ["event_id", "timestamp", "platform", "contexts"],
-      "properties": {
-        "event_id": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": ["number", "string"]
-        },
-        "platform": {
-          "type": "string"
-        },
-        "dist": {
-          "type": "string"
-        },
-        "contexts": {
-          "$ref": "#/definitions/Contexts"
-        },
-        "type": {
-          "type": "string"
-        },
-        "level": {
-          "type": "string"
-        },
-        "environment": {
-          "type": "string"
-        },
-        "release": {
-          "type": "string"
-        },
-        "tags": {
-          "type": "object"
-        },
-        "user": {
-          "type": "object"
-        },
-        "sdk": {
-          "type": "object"
-        }
-      }
-    },
-    "Contexts": {
-      "type": "object",
+      "required": ["type", "event_id", "project_id", "payload", "start_time"],
       "additionalProperties": true,
       "properties": {
-        "feedback": {
-          "$ref": "#/definitions/Feedback"
-        }
-      },
-      "required": ["feedback"]
-    },
-    "Feedback": {
-      "type": "object",
-      "additionalProperties": true,
-      "required": [],
-      "properties": {
-        "contact_email": {
-          "type": "string"
+        "type": { "type": "string" },
+        "payload": {
+          "description": "bytes. JSON string of the wrapped feedback event"
         },
-        "message": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "source": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": ["https"]
-        },
-        "replay_id": {
-          "type": "string"
-        }
+        "event_id": { "type": "string" },
+        "project_id": { "type": "integer" },
+        "start_time": { "type": "integer" }
       }
     }
   }
