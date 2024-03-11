@@ -15,4 +15,5 @@ schemas:
     examples:
       - events/1/
 topic_creation_config:
+  max.message.bytes: "25000000"
   message.timestamp.type: LogAppendTime
