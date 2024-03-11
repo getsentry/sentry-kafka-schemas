@@ -1,0 +1,17 @@
+topic: ingest-events
+pipeline: errors
+description: Errors data from Relay
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: msgpack
+    resource: ingest-events.v1.schema.json
+    examples:
+      - ingest-events/1/
+topic_creation_config:
+  max.message.bytes: "10000000"
