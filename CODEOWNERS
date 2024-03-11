@@ -1,8 +1,8 @@
 # Ingest topics
 /topics/ingest-events.yaml                                     @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
-/topics/ingest-metrics.yaml                                    @getsentry/owners-ingest @getsentry/owners-snuba
-/topics/ingest-performance-metrics.yaml                        @getsentry/owners-ingest @getsentry/owners-snuba
-/topics/ingest-replay-recordings.yaml                          @getsentry/owners-ingest @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-metrics.yaml                                    @getsentry/owners-snuba @getsentry/ingest
+/topics/ingest-performance-metrics.yaml                        @getsentry/owners-snuba @getsentry/ingest
+/topics/ingest-replay-recordings.yaml                          @getsentry/owners-snuba @getsentry/ingest @getsentry/replay
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
 
 # DLQs for ingest topics
