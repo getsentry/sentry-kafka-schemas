@@ -37,9 +37,18 @@
         "cardinality": {
           "description": "Maximum observed cardinality of the metric.",
           "$ref": "#/definitions/U64"
+        },
+        "cardinality_window": {
+          "description": "Time window, in seconds, in which the cardinality was observed.",
+          "$ref": "#/definitions/U64"
         }
       },
-      "required": ["timestamp", "org_id", "project_id", "mri", "outcome"]
+      "required": ["timestamp", "org_id", "project_id", "mri", "outcome"],
+      "dependentSchemas": {
+        "cardinality": {
+          "required": ["cardinality_window"]
+        }
+      }
     },
     "U64": {
       "type": "integer",
