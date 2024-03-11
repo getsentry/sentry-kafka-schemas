@@ -15,5 +15,6 @@ schemas:
     examples:
       - ingest-replay-events/1/
 topic_creation_config:
+  compression.type: lz4
   message.timestamp.type: LogAppendTime
   max.message.bytes: "15000000"
