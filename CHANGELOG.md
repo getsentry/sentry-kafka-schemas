@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.1.61
+
+### Various fixes & improvements
+
+- Include empty and null `trace_id` (#235) by @xurui-c
+- ref: Add compression.type to ingest-feedback-events (#236) by @lynnagara
+- feat: Ensure compression.type is specified on all topics (#234) by @lynnagara
+- feat(replay): Config new ingest-feedback-events topic (#227) by @aliu3ntry
+
 ## 0.1.60
 
 ### Various fixes & improvements
