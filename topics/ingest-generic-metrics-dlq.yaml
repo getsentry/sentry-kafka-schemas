@@ -13,4 +13,5 @@ schemas:
     examples:
       - any/
 topic_creation_config:
+  compression.type: lz4
   log.retention.minutes: "10080"

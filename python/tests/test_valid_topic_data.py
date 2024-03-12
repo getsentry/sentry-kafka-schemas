@@ -98,6 +98,13 @@ def test_all_topics() -> None:
             # Check description provided for topic
             assert topic_data["description"]
 
+            # Check every topic has an explicit, valid compression type
+            # Today we use lz4 everywhere, this list can be extended if needed
+            valid_types = ["lz4"]
+            assert (
+                topic_data["topic_creation_config"]["compression.type"] in valid_types
+            )
+
             # Check valid schema versions
             topic_schemas = topic_data["schemas"]
             for i, schema_raw in enumerate(topic_schemas):
