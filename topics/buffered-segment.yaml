@@ -9,6 +9,6 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: any.json
+    resource: buffered-segment.v1.schema.json
     examples:
-      - any/
+      - buffered-segment/1/
