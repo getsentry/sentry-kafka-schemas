@@ -25,6 +25,9 @@
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
 
+# Topics produced by Sentry
+/topics/buffered-segment.yaml                                  @getsentry/owners-snuba @getsentry/team-starfish
+
 # DLQs for Snuba topics
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
 /topics/snuba-dead-letter-generic-metrics.yaml                 @getsentry/owners-snuba
@@ -61,6 +64,7 @@
 /examples/profile-functions/                                   @getsentry/owners-snuba @getsentry/profiling
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
 /examples/snuba-spans/                                         @getsentry/owners-snuba @getsentry/profiling
+/examples/buffered-segment/                                    @getsentry/owners-snuba @getsentry/team-starfish
 /examples/snuba-metrics-summaries/                             @getsentry/owners-snuba @getsentry/profiling
 
 # Internal Snuba topics
