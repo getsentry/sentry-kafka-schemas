@@ -1,0 +1,14 @@
+topic: buffered-segment
+description: List of buffered spans for a segment
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
