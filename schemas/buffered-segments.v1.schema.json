@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "buffered_segment_message",
+  "title": "buffered_segment",
   "type": "object",
   "additionalProperties": true,
   "properties": {
