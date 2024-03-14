@@ -9,7 +9,7 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: snuba-spans.v1.schema.json
+    resource: buffered-segment.v1.schema.json
     examples:
       - buffered-segment/1/
 topic_creation_config:

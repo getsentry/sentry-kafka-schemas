@@ -1,8 +1,25 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "spans_stream_message",
-  "$ref": "#/definitions/SpanEvent",
+  "title": "buffered_segment_message",
+  "$ref": "#/definitions/Segment",
   "definitions": {
+    "Segment": {
+      "type": "object",
+      "title": "buffered_segment",
+      "additionalProperties": true,
+      "properties": {
+        "spans": {
+          "$ref": "#/definitions/Spans"
+        }
+      }
+    },
+    "Spans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/SpanEvent"
+      }
+    },
     "SpanEvent": {
       "type": "object",
       "title": "span_event",

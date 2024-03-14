@@ -53,6 +53,7 @@
 /schemas/profile-functions.v1.schema.json                      @getsentry/owners-snuba @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
 /schemas/snuba-spans.v1.schema.json                            @getsentry/owners-snuba @getsentry/profiling
+/schemas/buffered-segment.v1.schema.json                       @getsentry/owners-snuba @getsentry/team-starfish
 /schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/owners-snuba @getsentry/profiling
 
 # Examples
