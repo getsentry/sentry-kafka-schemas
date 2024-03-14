@@ -11,7 +11,8 @@
         "spans": {
           "$ref": "#/definitions/Spans"
         }
-      }
+      },
+      "required": ["spans"]
     },
     "Spans": {
       "type": "array",
