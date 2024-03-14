@@ -19,7 +19,6 @@
     },
     "Span": {
       "type": "object",
-      "title": "span",
       "additionalProperties": true,
       "properties": {
         "event_id": {
