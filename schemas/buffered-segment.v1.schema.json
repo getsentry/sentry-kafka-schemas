@@ -1,29 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "buffered_segment_message",
-  "$ref": "#/definitions/Segment",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "spans": {
+      "$ref": "#/definitions/Spans"
+    }
+  },
+  "required": [
+    "spans"
+  ],
   "definitions": {
-    "Segment": {
-      "type": "object",
-      "title": "buffered_segment",
-      "additionalProperties": true,
-      "properties": {
-        "spans": {
-          "$ref": "#/definitions/Spans"
-        }
-      },
-      "required": ["spans"]
-    },
     "Spans": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "#/definitions/SpanEvent"
+        "$ref": "#/definitions/Span"
       }
     },
-    "SpanEvent": {
+    "Span": {
       "type": "object",
-      "title": "span_event",
+      "title": "span",
       "additionalProperties": true,
       "properties": {
         "event_id": {
@@ -209,7 +207,9 @@
           "type": "string"
         }
       },
-      "required": ["value"]
+      "required": [
+        "value"
+      ]
     },
     "MetricsSummary": {
       "type": "array",
