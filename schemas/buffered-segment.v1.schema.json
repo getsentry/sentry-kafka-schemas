@@ -8,9 +8,7 @@
       "$ref": "#/definitions/Spans"
     }
   },
-  "required": [
-    "spans"
-  ],
+  "required": ["spans"],
   "definitions": {
     "Spans": {
       "type": "array",
@@ -207,9 +205,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "value"
-      ]
+      "required": ["value"]
     },
     "MetricsSummary": {
       "type": "array",
