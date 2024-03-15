@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.62
+
+### Various fixes & improvements
+
+- feat(feedback): add feedback-events DLQ (#238) by @aliu3ntry
+
 ## 0.1.61
 
 ### Various fixes & improvements
