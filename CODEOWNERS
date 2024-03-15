@@ -9,6 +9,7 @@
 /topics/ingest-events-dlq.yaml                                 @getsentry/owners-snuba
 /topics/ingest-metrics-dlq.yaml                                @getsentry/owners-snuba
 /topics/ingest-generic-metrics-dlq.yaml                        @getsentry/owners-snuba
+/topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba
 
 # Topics consumed by Snuba
 /topics/events.yaml                                            @getsentry/owners-snuba
