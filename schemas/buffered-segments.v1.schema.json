@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "buffered_segment",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "spans": {
+      "$ref": "#/definitions/Spans"
+    }
+  },
+  "required": ["spans"],
+  "definitions": {
+    "Spans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/Span"
+      }
+    },
+    "Span": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "event_id": {
+          "$ref": "#/definitions/UUID"
+        },
+        "organization_id": {
+          "$ref": "#/definitions/UInt"
+        },
+        "project_id": {
+          "$ref": "#/definitions/UInt"
+        },
+        "trace_id": {
+          "$ref": "#/definitions/UUID",
+          "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
+        },
+        "span_id": {
+          "type": "string",
+          "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
+        },
+        "parent_span_id": {
+          "type": "string",
+          "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
+        },
+        "segment_id": {
+          "type": "string",
+          "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
+        },
+        "profile_id": {
+          "$ref": "#/definitions/UUID",
+          "description": "The profile ID. It is an 16 byte hexadecimal string."
+        },
+        "is_segment": {
+          "type": "boolean",
+          "description": "Whether this span is a segment or not."
+        },
+        "start_timestamp_ms": {
+          "$ref": "#/definitions/UInt",
+          "description": "The start timestamp of the span in milliseconds since epoch."
+        },
+        "duration_ms": {
+          "$ref": "#/definitions/UInt32",
+          "description": "The duration of the span in milliseconds."
+        },
+        "exclusive_time_ms": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "The exclusive time of the span in milliseconds."
+        },
+        "retention_days": {
+          "$ref": "#/definitions/UInt16"
+        },
+        "received": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "Unix timestamp when the span was received by Sentry."
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "description": " Manual key/value tag pairs.",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/TagValue"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sentry_tags": {
+          "$ref": "#/definitions/SentryExtractedTags"
+        },
+        "measurements": {
+          "$ref": "#/definitions/Measurements"
+        },
+        "_metrics_summary": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MetricsSummary"
+          }
+        }
+      },
+      "required": [
+        "duration_ms",
+        "exclusive_time_ms",
+        "is_segment",
+        "project_id",
+        "received",
+        "retention_days",
+        "span_id",
+        "start_timestamp_ms",
+        "trace_id"
+      ]
+    },
+    "SentryExtractedTags": {
+      "description": "Tags extracted by sentry. These are kept separate from customer tags",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "http.method": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "module": {
+              "type": "string"
+            },
+            "group": {
+              "type": "string"
+            },
+            "system": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "status_code": {
+              "type": "string"
+            },
+            "transaction": {
+              "type": "string"
+            },
+            "transaction.op": {
+              "type": "string"
+            },
+            "op": {
+              "type": "string"
+            },
+            "transaction.method": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "TagValue": {
+      "type": "string"
+    },
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "UInt32": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "PositiveFloat": {
+      "type": "number",
+      "minimum": 0
+    },
+    "Measurements": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/MeasurementValue"
+      }
+    },
+    "MeasurementValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["value"]
+    },
+    "MetricsSummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricSummaryValue"
+      }
+    },
+    "MetricSummaryValue": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "sum": {
+          "type": "number"
+        },
+        "count": {
+          "type": "number"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
