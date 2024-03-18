@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.63
+
+### Various fixes & improvements
+
+- feat(spans): Add topic definition for buffered-segment topic (#237) by @shruthilayaj
+
 ## 0.1.62
 
 ### Various fixes & improvements
