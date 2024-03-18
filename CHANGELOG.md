@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.64
+
+### Various fixes & improvements
+
+- Add DLQ topics (#239) by @lynnagara
+
 ## 0.1.63
 
 ### Various fixes & improvements
