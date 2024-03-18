@@ -6,7 +6,9 @@
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
 
 # DLQs for ingest topics
-/topics/ingest-events-dlq.yaml                                 @getsentry/owners-snuba
+/topics/ingest-events-dlq.yaml                                 @getsentry/ops
+/topics/ingest-transactions-dlq.yaml                           @getsentry/ops
+/topics/ingest-attachments-dlq.yaml                            @getsentry/ops
 /topics/ingest-metrics-dlq.yaml                                @getsentry/owners-snuba
 /topics/ingest-generic-metrics-dlq.yaml                        @getsentry/owners-snuba
 /topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba @getsentry/replay

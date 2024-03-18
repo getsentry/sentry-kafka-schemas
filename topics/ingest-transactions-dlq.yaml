@@ -1,0 +1,17 @@
+topic: ingest-transactions-dlq
+pipeline: transactions
+description: DLQ for ingest-transactions
+services:
+  producers:
+    - getsentry/sentry
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
+topic_creation_config:
+  compression.type: lz4
+  log.retention.minutes: "10080"
