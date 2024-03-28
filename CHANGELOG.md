@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.65
+
+### Various fixes & improvements
+
+- fix: Fix topic creation config (#241) by @lynnagara
+
 ## 0.1.64
 
 ### Various fixes & improvements
