@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.66
+
+### Various fixes & improvements
+
+- fix: Don't fail on msgpack topics (#242) by @lynnagara
+
 ## 0.1.65
 
 ### Various fixes & improvements
