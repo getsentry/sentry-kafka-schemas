@@ -56,7 +56,7 @@
 /schemas/profile-functions.v1.schema.json                      @getsentry/owners-snuba @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
 /schemas/snuba-spans.v1.schema.json                            @getsentry/owners-snuba @getsentry/profiling
-/schemas/buffered-segments.v1.schema.json                       @getsentry/owners-snuba @getsentry/performance
+/schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
 /schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/owners-snuba @getsentry/profiling
 
 # Examples
@@ -74,14 +74,24 @@
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
 
+# Scheduled subscription topics
+/topics/scheduled-subscriptions-events.yaml                         @getsentry/owners-snuba
+/topics/scheduled-subscriptions-transactions.yaml                   @getsentry/owners-snuba
+/topics/scheduled-subscriptions-metrics.yaml                        @getsentry/owners-snuba
+/topics/scheduled-subscriptions-generic-metrics-counters.yaml       @getsentry/owners-snuba
+/topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
+/topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
+
+
+
 # Subscription results published by Snuba for Sentry's result consumer
-/topics/events-subscription-results.yaml                      @getsentry/owners-snuba @getsentry/issues
-/topics/transactions-subscription-results.yaml                @getsentry/owners-snuba @getsentry/issues
-/topics/sessions-subscription-results.yaml                    @getsentry/owners-snuba @getsentry/issues
-/topics/metrics-subscription-results.yaml                     @getsentry/owners-snuba @getsentry/issues
-/topics/generic-metrics-subscription-results.yaml             @getsentry/owners-snuba @getsentry/issues
-/schemas/subscription-result.v1.schema.json                   @getsentry/owners-snuba @getsentry/issues
-/examples/subscription-results/                               @getsentry/owners-snuba @getsentry/issues
+/topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
+/topics/transactions-subscription-results.yaml                      @getsentry/owners-snuba @getsentry/issues
+/topics/sessions-subscription-results.yaml                          @getsentry/owners-snuba @getsentry/issues
+/topics/metrics-subscription-results.yaml                           @getsentry/owners-snuba @getsentry/issues
+/topics/generic-metrics-subscription-results.yaml                   @getsentry/owners-snuba @getsentry/issues
+/schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
+/examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
 
 # Search and storage and infra is the default owner
 * @getsentry/owners-snuba @getsentry/ops

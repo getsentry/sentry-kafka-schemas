@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "subscription_id": {
+          "type": "string"
+        },
+        "request": {
+          "type": "object"
+        },
+        "result": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "meta": {
+              "type": "array"
+            }
+          },
+          "required": ["data", "meta"]
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity",
+        "request",
+        "result",
+        "subscription_id",
+        "timestamp"
+      ]
+    }
+  },
+  "required": ["payload", "version"]
+}
