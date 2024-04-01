@@ -1,0 +1,17 @@
+topic: scheduled-subscriptions-generic-metrics-counters
+pipeline: generic-metrics
+description: Scheduled subscriptions
+services:
+  producers:
+    - getsentry/snuba
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: subscription-scheduled.v1.schema.json
+    examples:
+      - subscription-scheduled/1/
+topic_creation_config:
+  compression.type: lz4
