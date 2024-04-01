@@ -1,0 +1,17 @@
+topic: snuba-dead-letter-generic-events
+pipeline: generic-events
+description: DLQ for generic-events
+services:
+  producers:
+    - getsentry/snuba
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "604800000" # 7 days
