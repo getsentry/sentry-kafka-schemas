@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.67
+
+### Various fixes & improvements
+
+- feat: Add the scheduled subscription topics (#243) by @lynnagara
+- feat: add missing dlq for generic-events (#244) by @lynnagara
+
 ## 0.1.66
 
 ### Various fixes & improvements
