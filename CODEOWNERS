@@ -37,7 +37,7 @@
 /topics/snuba-dead-letter-querylog.yaml                        @getsentry/owners-snuba
 /topics/snuba-dead-letter-replays.yaml                         @getsentry/owners-snuba @getsentry/replay
 /topics/snuba-dead-letter-group-attributes.yaml                @getsentry/owners-snuba @getsentry/issues
-
+/topics/snuba-dead-letter-generic-events.yaml                  @getsentry/owners-snuba @getsentry/issues
 
 # Commit log topics produced by Snuba
 /topics/snuba-commit-log.yaml                                  @getsentry/owners-snuba
