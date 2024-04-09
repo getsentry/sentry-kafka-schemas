@@ -30,6 +30,7 @@
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
+/topics/buffered-segments-dlq.yaml                             @getsentry/owners-snuba @getsentry/performance
 
 # DLQs for Snuba topics
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
