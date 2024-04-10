@@ -51,7 +51,7 @@ class TopicData(TypedDict):
     schemas: Sequence[TopicSchema]
     pipeline: NotRequired[str]
     topic_creation_config: Mapping[str, str]
-    partitins: Optional[int]
+    partitions: Optional[int]
 
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
