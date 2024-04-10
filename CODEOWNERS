@@ -81,6 +81,7 @@
 /topics/scheduled-subscriptions-generic-metrics-counters.yaml       @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
+/topics/scheduled-subscriptions-generic-metrics-gauges.yaml         @getsentry/owners-snuba
 
 
 
