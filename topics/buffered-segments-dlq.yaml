@@ -1,0 +1,16 @@
+topic: buffered-segments-dlq
+description: DLQ for buffered-segments
+services:
+  producers:
+    - getsentry/sentry
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: any.json
+    examples:
+      - any/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "604800000" # 7 days
