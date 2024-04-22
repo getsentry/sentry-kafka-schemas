@@ -61,10 +61,7 @@
                   ]
                 }
               },
-              "required": [
-                "format",
-                "data"
-              ]
+              "required": ["format", "data"]
             },
             {
               "title": "encoded_series_base64_metric_value",
@@ -77,10 +74,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "format",
-                "data"
-              ]
+              "required": ["format", "data"]
             },
             {
               "title": "counter_metric_value",
@@ -121,13 +115,7 @@
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "min",
-                "max",
-                "sum",
-                "count",
-                "last"
-              ]
+              "required": ["min", "max", "sum", "count", "last"]
             }
           ]
         },
