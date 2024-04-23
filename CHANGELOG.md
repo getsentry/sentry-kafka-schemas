@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.69
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add base64 support to metrics schemas (#252) by @ayirr7
+
 ## 0.1.68
 
 ### Various fixes & improvements
