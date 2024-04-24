@@ -4,6 +4,7 @@
 /topics/ingest-performance-metrics.yaml                        @getsentry/owners-snuba @getsentry/ingest
 /topics/ingest-replay-recordings.yaml                          @getsentry/owners-snuba @getsentry/ingest @getsentry/replay
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-monitors.yaml                                   @getsentry/crons
 
 # DLQs for ingest topics
 /topics/ingest-events-dlq.yaml                                 @getsentry/ops
@@ -59,6 +60,7 @@
 /schemas/snuba-spans.v1.schema.json                            @getsentry/owners-snuba @getsentry/profiling
 /schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
 /schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/owners-snuba @getsentry/profiling
+/schemas/ingest-monitors.v1.schema.json                        @getsentry/crons
 
 # Examples
 /examples/profile-metadata/                                    @getsentry/owners-snuba @getsentry/profiling
@@ -71,6 +73,7 @@
 /examples/snuba-spans/                                         @getsentry/owners-snuba @getsentry/profiling
 /examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/performance
 /examples/snuba-metrics-summaries/                             @getsentry/owners-snuba @getsentry/profiling
+/examples/ingest-monitors/                                     @getsentry/crons
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
