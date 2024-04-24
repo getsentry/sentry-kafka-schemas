@@ -46,6 +46,7 @@
 /topics/snuba-generic-metrics-sets-commit-log.yaml             @getsentry/owners-snuba
 /topics/snuba-generic-metrics-distributions-commit-log.yaml    @getsentry/owners-snuba
 /topics/snuba-generic-metrics-counters-commit-log.yaml         @getsentry/owners-snuba
+/topics/snuba-generic-metrics-gauges-commit-log.yaml           @getsentry/owners-snuba
 /topics/snuba-generic-events-commit-log.yaml                   @getsentry/owners-snuba @getsentry/issues
 
 # Topics produced to by Snuba and Sentry
