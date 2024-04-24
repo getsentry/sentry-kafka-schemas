@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.71
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add gauges subscription topic (#249) by @ayirr7
+
 ## 0.1.70
 
 ### Various fixes & improvements
