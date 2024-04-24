@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.70
+
+### Various fixes & improvements
+
+- feat(crons): Add ingest-monitors schema / topic (#253) by @evanpurkhiser
+- style: Spacing (#254) by @evanpurkhiser
+- Revert "feat(generic-metrics): Add base64 support to metrics schemas (#252)" (#255) by @ayirr7
+
 ## 0.1.69
 
 ### Various fixes & improvements
