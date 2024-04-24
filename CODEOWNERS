@@ -48,6 +48,7 @@
 /topics/snuba-generic-metrics-sets-commit-log.yaml             @getsentry/owners-snuba
 /topics/snuba-generic-metrics-distributions-commit-log.yaml    @getsentry/owners-snuba
 /topics/snuba-generic-metrics-counters-commit-log.yaml         @getsentry/owners-snuba
+/topics/snuba-generic-metrics-gauges-commit-log.yaml           @getsentry/owners-snuba
 /topics/snuba-generic-events-commit-log.yaml                   @getsentry/owners-snuba @getsentry/issues
 
 # Topics produced to by Snuba and Sentry
@@ -85,6 +86,7 @@
 /topics/scheduled-subscriptions-generic-metrics-counters.yaml       @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
+/topics/scheduled-subscriptions-generic-metrics-gauges.yaml         @getsentry/owners-snuba
 
 # Subscription results published by Snuba for Sentry's result consumer
 /topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
