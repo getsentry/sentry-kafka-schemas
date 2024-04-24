@@ -83,8 +83,6 @@
 /topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
 
-
-
 # Subscription results published by Snuba for Sentry's result consumer
 /topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
 /topics/transactions-subscription-results.yaml                      @getsentry/owners-snuba @getsentry/issues
