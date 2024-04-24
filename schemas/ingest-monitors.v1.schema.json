@@ -21,9 +21,7 @@
           "const": "clock_pulse"
         }
       },
-      "required": [
-        "message_type"
-      ]
+      "required": ["message_type"]
     },
     "MonitorCheckIn": {
       "type": "object",
