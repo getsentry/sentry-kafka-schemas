@@ -1,5 +1,20 @@
 # Changelog and versioning
 
+## 0.1.69
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add base64 support to metrics schemas (#252) by @ayirr7
+
+## 0.1.68
+
+### Various fixes & improvements
+
+- ref: clean up sessions-subscription-results topic (#246) by @lynnagara
+- feat: Add required partition count to topic definition (#250) by @lynnagara
+- feat: Add a DLQ for buffered segment topic (#247) by @shruthilayaj
+- test(replay): add example for replay viewed events (#245) by @aliu3ntry
+
 ## 0.1.67
 
 ### Various fixes & improvements

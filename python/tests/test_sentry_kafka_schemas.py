@@ -10,6 +10,10 @@ def test_get_topic() -> None:
         "max.message.bytes": "2000000",
     }
 
+    assert topic_data["partitions"] is None
+
+    assert get_topic("snuba-commit-log")["partitions"] == 1
+
 
 def test_get_schema() -> None:
     topic_name = "snuba-queries"

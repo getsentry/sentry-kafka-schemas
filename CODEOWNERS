@@ -30,6 +30,7 @@
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
+/topics/buffered-segments-dlq.yaml                             @getsentry/owners-snuba @getsentry/performance
 
 # DLQs for Snuba topics
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
@@ -89,7 +90,6 @@
 # Subscription results published by Snuba for Sentry's result consumer
 /topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
 /topics/transactions-subscription-results.yaml                      @getsentry/owners-snuba @getsentry/issues
-/topics/sessions-subscription-results.yaml                          @getsentry/owners-snuba @getsentry/issues
 /topics/metrics-subscription-results.yaml                           @getsentry/owners-snuba @getsentry/issues
 /topics/generic-metrics-subscription-results.yaml                   @getsentry/owners-snuba @getsentry/issues
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
