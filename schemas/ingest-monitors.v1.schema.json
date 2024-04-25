@@ -48,7 +48,7 @@
         },
         "sdk": {
           "description": "The originating SDK client identifier string.",
-          "type": "string"
+          "type": ["string", "null"]
         },
         "retention_days": {
           "type": "integer",
