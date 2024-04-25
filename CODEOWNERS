@@ -54,6 +54,9 @@
 # Topics produced to by Snuba and Sentry
 /topics/shared-resources-usage.yaml                            @getsentry/owners-snuba @getsentry/data
 
+# Topics related to cron monitor tasks
+/topics/monitors-clock-tick.yaml                               @getsentry/crons
+
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/owners-snuba @getsentry/profiling
 /schemas/profile-functions.v1.schema.json                      @getsentry/owners-snuba @getsentry/profiling
@@ -62,6 +65,7 @@
 /schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
 /schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/owners-snuba @getsentry/profiling
 /schemas/ingest-monitors.v1.schema.json                        @getsentry/crons
+/schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
 
 # Examples
 /examples/profile-metadata/                                    @getsentry/owners-snuba @getsentry/profiling
@@ -75,6 +79,7 @@
 /examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/performance
 /examples/snuba-metrics-summaries/                             @getsentry/owners-snuba @getsentry/profiling
 /examples/ingest-monitors/                                     @getsentry/crons
+/examples/monitors-clock-tick/                                 @getsentry/crons
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba

@@ -1,0 +1,18 @@
+topic: monitors-clock-tick
+pipeline: monitors
+description: cron monitor clock ticks
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: monitors-clock-tick.v1.schema.json
+    examples:
+      - monitors-clock-tick/1/
+topic_creation_config:
+  compression.type: lz4
+  message.timestamp.type: LogAppendTime
