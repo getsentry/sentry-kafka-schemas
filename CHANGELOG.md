@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.72
+
+### Various fixes & improvements
+
+- Revert "Revert "feat(generic-metrics): Add base64 support to metrics schemas …" (#256) by @ayirr7
+
 ## 0.1.71
 
 ### Various fixes & improvements
