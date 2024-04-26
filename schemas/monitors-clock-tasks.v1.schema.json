@@ -29,11 +29,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "type",
-        "ts",
-        "checkin_id"
-      ]
+      "required": ["type", "ts", "checkin_id"]
     },
     "MonitorsMarkMissing": {
       "type": "object",
@@ -54,11 +50,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "type",
-        "ts",
-        "monitor_environment_id"
-      ]
+      "required": ["type", "ts", "monitor_environment_id"]
     }
   }
 }
