@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.74
+
+### Various fixes & improvements
+
+- feat(crons): Add topic to support monitor clock tasks (#259) by @evanpurkhiser
+- feat(crons): Add monitors-clock-tick (#258) by @evanpurkhiser
+
 ## 0.1.73
 
 ### Various fixes & improvements
