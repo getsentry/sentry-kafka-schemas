@@ -14,9 +14,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "ts"
-      ]
+      "required": ["ts"]
     }
   }
 }
