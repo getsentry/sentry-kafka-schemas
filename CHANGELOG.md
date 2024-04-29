@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 0.1.75
+
+### Various fixes & improvements
+
+- perf: change payload type of replay event (#265) by @anonrig
+- style(crons): Spelling of timed out (#263) by @evanpurkhiser
+- fix: Don't block ci on sphinx warning (#262) by @lynnagara
+- fix: ingest-feedback-events-dlq max.message.bytes (#260) by @lynnagara
+- fix: Upgrade typify to unblock CI (#261) by @lynnagara
+
 ## 0.1.74
 
 ### Various fixes & improvements
