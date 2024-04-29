@@ -1,0 +1,30 @@
+{
+  "type": "replay_event",
+  "start_time": 1702848658.558295,
+  "replay_id": "834f314caae54030a1b0dc52b202f24a",
+  "project_id": 1,
+  "retention_days": 90,
+  "payload": {
+    "type": "replay_actions",
+    "replay_id": "834f314caae54030a1b0dc52b202f24a",
+    "clicks": [
+      {
+        "alt": "Submit Form",
+        "aria_label": "Form submission button",
+        "class": ["hello", "world"],
+        "component_name": "SignUpForm",
+        "event_hash": "43fa3efbd5954163af6c279f3f5088c9",
+        "id": "id",
+        "is_dead": 1,
+        "is_rage": 0,
+        "node_id": 1,
+        "role": "button",
+        "tag": "div",
+        "testid": "x-button-submit-form",
+        "text": "Submit",
+        "timestamp": 1702848658.558295,
+        "title": "Click to submit form"
+      }
+    ]
+  }
+}
