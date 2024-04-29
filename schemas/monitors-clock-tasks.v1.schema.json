@@ -25,7 +25,7 @@
           "type": "number"
         },
         "checkin_id": {
-          "description": "The check-in ID to mark as timedout.",
+          "description": "The check-in ID to mark as timed out.",
           "type": "number"
         }
       },
