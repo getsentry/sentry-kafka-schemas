@@ -21,6 +21,9 @@
         "substatus": {
           "type": ["integer", "null"]
         },
+        "priority": {
+          "type": ["integer", "null"]
+        },
         "first_seen": {
           "type": "string"
         },
