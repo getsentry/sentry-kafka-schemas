@@ -23,10 +23,16 @@
           "type": "integer"
         },
         "payload": {
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "type": "integer" }
+            },
+            {
+              "type": "object",
+              "additionalProperties": true
+            }
+          ]
         }
       },
       "required": [
