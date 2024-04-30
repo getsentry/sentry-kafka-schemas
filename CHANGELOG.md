@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.76
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Switch Kafka schema examples to non-padded Base64 encoding (#267) by @ayirr7
+- Add priority to group attributes schema (#251) by @snigdhas
+
 ## 0.1.75
 
 ### Various fixes & improvements
