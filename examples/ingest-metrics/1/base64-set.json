@@ -12,6 +12,6 @@
   "retention_days": 90,
   "value": {
     "format": "base64",
-    "data": "AQAAAAcAAAA="
+    "data": "AQAAAAcAAAA"
   }
 }
