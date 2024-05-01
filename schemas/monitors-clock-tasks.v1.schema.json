@@ -24,12 +24,16 @@
           "description": "The timestamp the clock ticked at.",
           "type": "number"
         },
+        "monitor_environment_id": {
+          "description": "The monitor environment ID the check-in is part of.",
+          "type": "number"
+        },
         "checkin_id": {
           "description": "The check-in ID to mark as timed out.",
           "type": "number"
         }
       },
-      "required": ["type", "ts", "checkin_id"]
+      "required": ["type", "ts", "monitor_environment_id", "checkin_id"]
     },
     "MonitorsMarkMissing": {
       "type": "object",
