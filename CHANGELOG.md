@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.77
+
+### Various fixes & improvements
+
+- feat(crons): Ensure monitor_environment_id in all clock tasks (#264) by @evanpurkhiser
+
 ## 0.1.76
 
 ### Various fixes & improvements
