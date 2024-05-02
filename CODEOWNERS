@@ -86,6 +86,7 @@
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
+/topics/event-replacements.yaml                                @getsentry/owners-snuba
 
 # Scheduled subscription topics
 /topics/scheduled-subscriptions-events.yaml                         @getsentry/owners-snuba
