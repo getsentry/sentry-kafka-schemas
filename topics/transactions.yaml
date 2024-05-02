@@ -18,3 +18,4 @@ topic_creation_config:
   compression.type: lz4
   max.message.bytes: "25000000"
   message.timestamp.type: LogAppendTime
+  retention.ms: "86400000"
