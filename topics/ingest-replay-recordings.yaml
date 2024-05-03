@@ -15,3 +15,4 @@ schemas:
       - ingest-replay-recordings/1/
 topic_creation_config:
   compression.type: lz4
+  retention.ms: "86400000"
