@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.79
+
+### Various fixes & improvements
+
+- feat: Add missing event-replacements topic (#268) by @lynnagara
+- Make retention.ms a mandatory field (#269) by @lynnagara
+- feat: Update max message size on buffered-spans (#248) by @shruthilayaj
+
 ## 0.1.78
 
 ### Various fixes & improvements
