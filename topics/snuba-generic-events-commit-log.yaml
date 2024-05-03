@@ -18,4 +18,5 @@ topic_creation_config:
   compression.type: lz4
   cleanup.policy: compact,delete
   min.compaction.lag.ms: "3600000"
+  retention.ms: "86400000"
 partitions: 1 # Commit log topic must always have one partition
