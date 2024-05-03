@@ -9,7 +9,7 @@ def get_requirements() -> Sequence[str]:
 
 setup(
     name="sentry-kafka-schemas",
-    version="0.1.76",
+    version="0.1.78",
     author="Sentry",
     author_email="oss@sentry.io",
     url="https://github.com/getsentry/sentry-kafka-schemas",
