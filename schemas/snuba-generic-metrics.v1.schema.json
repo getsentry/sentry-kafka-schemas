@@ -61,7 +61,10 @@
                   ]
                 }
               },
-              "required": ["format", "data"]
+              "required": [
+                "format",
+                "data"
+              ]
             },
             {
               "title": "encoded_series_base64_metric_value",
@@ -74,7 +77,26 @@
                   "type": "string"
                 }
               },
-              "required": ["format", "data"]
+              "required": [
+                "format",
+                "data"
+              ]
+            },
+            {
+              "title": "encoded_series_zstd_metric_value",
+              "type": "object",
+              "properties": {
+                "format": {
+                  "const": "zstd"
+                },
+                "data": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "format",
+                "data"
+              ]
             },
             {
               "title": "counter_metric_value",
@@ -115,7 +137,13 @@
                 }
               },
               "additionalProperties": false,
-              "required": ["min", "max", "sum", "count", "last"]
+              "required": [
+                "min",
+                "max",
+                "sum",
+                "count",
+                "last"
+              ]
             }
           ]
         },

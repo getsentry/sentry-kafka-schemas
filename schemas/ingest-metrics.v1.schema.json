@@ -26,7 +26,12 @@
         "type": {
           "description": "The metric type. [c]ounter, [d]istribution, [s]et. Relay additionally defines Gauge, but that metric type is completely unsupported downstream.",
           "type": "string",
-          "enum": ["c", "d", "s", "g"]
+          "enum": [
+            "c",
+            "d",
+            "s",
+            "g"
+          ]
         },
         "timestamp": {
           "description": "The timestamp at which this metric was being sent. Relay will round this down to the next 10-second interval.",
@@ -66,7 +71,10 @@
                   ]
                 }
               },
-              "required": ["format", "data"]
+              "required": [
+                "format",
+                "data"
+              ]
             },
             {
               "title": "encoded_series_base64_metric_value",
@@ -79,7 +87,26 @@
                   "type": "string"
                 }
               },
-              "required": ["format", "data"]
+              "required": [
+                "format",
+                "data"
+              ]
+            },
+            {
+              "title": "encoded_series_zstd_metric_value",
+              "type": "object",
+              "properties": {
+                "format": {
+                  "const": "zstd"
+                },
+                "data": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "format",
+                "data"
+              ]
             },
             {
               "title": "counter_metric_value",
@@ -122,7 +149,13 @@
                 }
               },
               "additionalProperties": false,
-              "required": ["min", "max", "sum", "count", "last"]
+              "required": [
+                "min",
+                "max",
+                "sum",
+                "count",
+                "last"
+              ]
             }
           ]
         },
