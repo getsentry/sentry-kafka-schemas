@@ -130,6 +130,12 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
+        },
+        "received_at": {
+          "description": "The oldest timestamp of the first metric that was received in this bucket by the outermost internal Relay.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
         }
       },
       "required": [
