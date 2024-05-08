@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.80
+
+### Various fixes & improvements
+
+- feat(metrics): Add received_at timestamp to Kafka schema (#271) by @iambriccardo
+
 ## 0.1.79
 
 ### Various fixes & improvements
