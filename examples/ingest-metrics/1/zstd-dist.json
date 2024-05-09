@@ -1,0 +1,13 @@
+{
+  "name": "d:transactions/duration@millisecond",
+  "org_id": 1,
+  "retention_days": 90,
+  "project_id": 42,
+  "tags": {},
+  "type": "d",
+  "value": {
+    "format": "zstd",
+    "data": "KLUv/QBYrQAAcAAA8D8AQAAAAAAAAAhAAgBgRgCw"
+  },
+  "timestamp": 666666666666
+}
