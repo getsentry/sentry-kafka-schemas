@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.81
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add support for zstd compression in message processing (#270) by @ayirr7
+
 ## 0.1.80
 
 ### Various fixes & improvements
