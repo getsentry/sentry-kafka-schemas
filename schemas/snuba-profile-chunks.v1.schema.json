@@ -5,7 +5,7 @@
   "additionalProperties": true,
   "properties": {
     "project_id": {
-      "$ref": "#/definitions/UInt"
+      "$ref": "#/definitions/UInt64"
     },
     "profiler_id": {
       "$ref": "#/definitions/UUID"
@@ -14,16 +14,16 @@
       "$ref": "#/definitions/UUID"
     },
     "start_timestamp": {
-      "$ref": "#/definitions/PositiveFloat",
+      "$ref": "#/definitions/PositiveFloat"
     },
     "end_timestamp": {
-      "$ref": "#/definitions/PositiveFloat",
+      "$ref": "#/definitions/PositiveFloat"
     },
     "retention_days": {
       "$ref": "#/definitions/UInt16"
     },
     "received": {
-      "$ref": "#/definitions/PositiveFloat"
+      "$ref": "#/definitions/UInt64"
     }
   },
   "required": [
@@ -40,6 +40,15 @@
       "type": "string",
       "minLength": 32,
       "maxLength": 36
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "UInt64": {
+      "type": "integer",
+      "minimum": 0
     },
     "PositiveFloat": {
       "type": "number",
