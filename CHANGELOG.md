@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.83
+
+### Various fixes & improvements
+
+- fix(profiles): Add missing configuration option for snuba-profile-chunks (#274) by @phacops
+
 ## 0.1.82
 
 ### Various fixes & improvements
