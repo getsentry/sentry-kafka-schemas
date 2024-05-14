@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.82
+
+### Various fixes & improvements
+
+- feat(profiles): Add schema definition for profile chunks (#272) by @phacops
+
 ## 0.1.81
 
 ### Various fixes & improvements
