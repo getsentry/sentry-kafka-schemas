@@ -29,9 +29,9 @@
 /topics/ingest-replay-events.yaml                              @getsentry/owners-snuba @getsentry/replay
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
-/topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
+/topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/performance
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
@@ -65,10 +65,10 @@
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
 /schemas/profile-functions.v1.schema.json                      @getsentry/profiling
-/schemas/snuba-spans.v1.schema.json                            @getsentry/profiling
 /schemas/snuba-metrics-summaries.v1.schema.json                @getsentry/profiling
 /schemas/snuba-profile-chunks.v1.schema.json                   @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
+/schemas/snuba-spans.v1.schema.json                            @getsentry/performance
 /schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
 /schemas/ingest-monitors.v1.schema.json                        @getsentry/crons
 /schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
@@ -82,9 +82,9 @@
 /examples/snuba-spans/                                         @getsentry/profiling
 /examples/profile-metadata/                                    @getsentry/profiling
 /examples/profile-functions/                                   @getsentry/profiling
-/examples/snuba-spans/                                         @getsentry/profiling
 /examples/snuba-metrics-summaries/                             @getsentry/profiling
 /examples/snuba-profile-chunks/                                @getsentry/profiling
+/examples/snuba-spans/                                         @getsentry/performance
 /examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/performance
 /examples/ingest-monitors/                                     @getsentry/crons
 /examples/monitors-clock-tick/                                 @getsentry/crons
