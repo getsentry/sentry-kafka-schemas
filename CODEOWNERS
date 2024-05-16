@@ -1,5 +1,4 @@
 # Search and storage and infra is the default owner
-#
 * @getsentry/owners-snuba @getsentry/ops
 
 # Ingest topics
