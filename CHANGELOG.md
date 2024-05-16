@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.85
+
+### Various fixes & improvements
+
+- feat(spans): Add microsecond precision timestamps (#276) by @phacops
+- fix: Move default rule to the top of the file (#277) by @phacops
+
 ## 0.1.84
 
 ### Various fixes & improvements
