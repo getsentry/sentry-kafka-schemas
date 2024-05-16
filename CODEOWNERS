@@ -1,3 +1,6 @@
+# Search and storage and infra is the default owner
+* @getsentry/owners-snuba @getsentry/ops
+
 # Ingest topics
 /topics/ingest-events.yaml                                     @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-metrics.yaml                                    @getsentry/owners-snuba @getsentry/ingest
@@ -107,6 +110,3 @@
 /topics/generic-metrics-subscription-results.yaml                   @getsentry/owners-snuba @getsentry/issues
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
 /examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
-
-# Search and storage and infra is the default owner
-* @getsentry/owners-snuba @getsentry/ops
