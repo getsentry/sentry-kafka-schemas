@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.86
+
+### Various fixes & improvements
+
+- fix(spans): Fix timestamp names to reflect better their use (#278) by @phacops
+
 ## 0.1.85
 
 ### Various fixes & improvements
