@@ -17,3 +17,4 @@ topic_creation_config:
   compression.type: lz4
   message.timestamp.type: LogAppendTime
   retention.ms: "86400000"
+partitions: 1 # monitors-clock-tick must always have one partition
