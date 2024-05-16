@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.84
+
+### Various fixes & improvements
+
+- set max message bytes on snuba-metrics and snuba-dead-letter-metrics to 10mb (#275) by @lynnagara
+- fix: max.message.bytes for dlq topics (#273) by @lynnagara
+
 ## 0.1.83
 
 ### Various fixes & improvements
