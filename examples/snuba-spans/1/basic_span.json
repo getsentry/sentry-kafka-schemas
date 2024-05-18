@@ -13,8 +13,8 @@
   "received": 1715868485.381,
   "retention_days": 90,
   "start_timestamp_ms": 1715868485371,
-  "start_timestamp_micro": 1715868485.370551,
-  "end_timestamp_micro": 1715868486.370551,
+  "start_timestamp_precise": 1715868485.370551,
+  "end_timestamp_precise": 1715868486.370551,
   "tags": {
     "tag1": "value1",
     "tag2": "123",
