@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.87
+
+### Various fixes & improvements
+
+- introduce standard segment settings for all commit log topics (#281) by @lynnagara
+- fix(spans): Fix precise timestamp names in example (#280) by @phacops
+- monitors-clock-tick must always have 1 partition (#279) by @lynnagara
+
 ## 0.1.86
 
 ### Various fixes & improvements
