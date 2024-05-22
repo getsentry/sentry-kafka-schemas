@@ -19,7 +19,6 @@ topic_creation_config:
   cleanup.policy: compact,delete
   min.compaction.lag.ms: "3600000"
   retention.ms: "86400000"
-  retention.ms: "86400000"
   segment.bytes: "104857600"
   segment.ms: "3600000"
 partitions: 1 # Commit log topic must always have one partition
