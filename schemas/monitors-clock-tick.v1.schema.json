@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "monitors_clock_tick",
+  "$ref": "#/definitions/MonitorsClockTick",
+  "definitions": {
+    "MonitorsClockTick": {
+      "type": "object",
+      "title": "clock_tick",
+      "description": "A message indicating that the ingest-monitor consumer has processed check-ins past the specified minute-bound timestamp.",
+      "additionalProperties": false,
+      "properties": {
+        "ts": {
+          "description": "The timestamp the clock ticked at.",
+          "type": "number"
+        }
+      },
+      "required": ["ts"]
+    }
+  }
+}

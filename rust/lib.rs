@@ -14,6 +14,8 @@ include!(concat!(env!("OUT_DIR"), "/embedded_data.rs"));
 pub enum SchemaType {
     #[serde(rename = "json")]
     Json,
+    #[serde(rename = "msgpack")]
+    Msgpack,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -144,10 +146,6 @@ fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, Sc
             .ok_or(SchemaError::InvalidVersion)?
     };
 
-    if schema_metadata.schema_type != SchemaType::Json {
-        return Err(SchemaError::InvalidType);
-    }
-
     Ok(schema_metadata)
 }
 
@@ -198,9 +196,16 @@ mod tests {
             get_schema("asdf", None),
             Err(SchemaError::TopicNotFound)
         ));
+
+        // Json topic
         let schema = get_schema("snuba-queries", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Json);
+
+        // Msgpack topic
+        let schema = get_schema("ingest-events", None).unwrap();
+        assert_eq!(schema.version, 1);
+        assert_eq!(schema.schema_type, SchemaType::Msgpack);
 
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();

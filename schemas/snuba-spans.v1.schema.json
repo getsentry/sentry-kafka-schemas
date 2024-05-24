@@ -45,6 +45,14 @@
           "$ref": "#/definitions/UInt",
           "description": "The start timestamp of the span in milliseconds since epoch."
         },
+        "start_timestamp_precise": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
+        },
+        "end_timestamp_precise": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
+        },
         "duration_ms": {
           "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."

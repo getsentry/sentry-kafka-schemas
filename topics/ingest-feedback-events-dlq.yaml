@@ -14,4 +14,5 @@ schemas:
       - any/
 topic_creation_config:
   compression.type: lz4
-  log.retention.minutes: "10080" # 7 days
+  max.message.bytes: "10000000"
+  retention.ms: "604800000" # 7 days

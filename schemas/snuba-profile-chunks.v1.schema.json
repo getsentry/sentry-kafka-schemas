@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "profile_chunk",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "project_id": {
+      "$ref": "#/definitions/UInt64"
+    },
+    "profiler_id": {
+      "$ref": "#/definitions/UUID"
+    },
+    "chunk_id": {
+      "$ref": "#/definitions/UUID"
+    },
+    "start_timestamp": {
+      "$ref": "#/definitions/PositiveFloat"
+    },
+    "end_timestamp": {
+      "$ref": "#/definitions/PositiveFloat"
+    },
+    "retention_days": {
+      "$ref": "#/definitions/UInt16"
+    },
+    "received": {
+      "$ref": "#/definitions/UInt64"
+    }
+  },
+  "required": [
+    "project_id",
+    "profiler_id",
+    "chunk_id",
+    "start_timestamp",
+    "end_timestamp",
+    "received",
+    "retention_days"
+  ],
+  "definitions": {
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "UInt64": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "PositiveFloat": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

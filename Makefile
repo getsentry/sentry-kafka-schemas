@@ -65,5 +65,5 @@ install-docs:
 docs: install install-docs
 	mkdir -p build/
 	python docs/source/generate_services.py > build/services.rst.inc
-	sphinx-build -W -b html docs/source docs/build
+	sphinx-build -b html docs/source docs/build
 .PHONY: docs

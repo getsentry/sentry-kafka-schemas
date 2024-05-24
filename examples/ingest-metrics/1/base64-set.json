@@ -1,0 +1,17 @@
+{
+  "org_id": 420,
+  "project_id": 420,
+  "name": "s:sessions/user@none",
+  "tags": {
+    "sdk": "raven-node/2.6.3",
+    "environment": "production",
+    "release": "sentry-test@1.0.0"
+  },
+  "timestamp": 11111111111,
+  "type": "s",
+  "retention_days": 90,
+  "value": {
+    "format": "base64",
+    "data": "AQAAAAcAAAA"
+  }
+}

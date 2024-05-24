@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "payload": {
+    "subscription_id": "1/944ec0c4eed611ee8c912e62feddd7b5",
+    "request": {
+      "query": "MATCH (events) SELECT count() AS count",
+      "tenant_ids": { "referrer": "subscription", "organization_id": 1 }
+    },
+    "result": {
+      "data": [{ "count": 1 }],
+      "meta": [{ "type": "UInt64", "name": "count" }]
+    },
+    "timestamp": "2024-03-30T13:46:27.363030",
+    "entity": "events"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ingest_monitor_message",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/ClockPulseMessage"
+    },
+    {
+      "$ref": "#/definitions/MonitorCheckIn"
+    }
+  ],
+  "definitions": {
+    "ClockPulseMessage": {
+      "type": "object",
+      "title": "clock_pulse",
+      "description": "A message that is only used as a marker for minute boundaries.",
+      "additionalProperties": false,
+      "properties": {
+        "message_type": {
+          "description": "Discriminant marker identifying this as a clock-pulse message.",
+          "const": "clock_pulse"
+        }
+      },
+      "required": ["message_type"]
+    },
+    "MonitorCheckIn": {
+      "type": "object",
+      "title": "check_in",
+      "description": "A message that contains a monitor check-in payload.",
+      "additionalProperties": true,
+      "properties": {
+        "message_type": {
+          "description": "Discriminant marker identifying this as a check-in message.",
+          "const": "check_in"
+        },
+        "payload": {
+          "description": "bytes. JSON string of the wrapped monitor check-in event."
+        },
+        "start_time": {
+          "description": "The time relay produced the check-in to kafka. In seconds with floating precision.",
+          "type": "number"
+        },
+        "project_id": {
+          "description": "The project for which this check-in is being sent.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "sdk": {
+          "description": "The originating SDK client identifier string.",
+          "type": ["string", "null"]
+        },
+        "retention_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      },
+      "required": [
+        "message_type",
+        "payload",
+        "start_time",
+        "project_id",
+        "retention_days"
+      ]
+    }
+  }
+}

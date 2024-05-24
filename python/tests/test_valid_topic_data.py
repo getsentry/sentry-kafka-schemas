@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from sentry_kafka_schemas import get_codec
+from sentry_kafka_schemas import get_codec, list_topics, get_topic
 import fastjsonschema
 from yaml import safe_load
 import re
@@ -137,3 +137,12 @@ def test_all_topics() -> None:
     # Assert that every example file in examples/ is referenced by a topic.
     unused_examples = existing_examples - used_examples
     assert not unused_examples
+
+
+def test_retention() -> None:
+    # All topics at sentry have either 1 day or 7 day retention and this property is mandatory
+    allowed_values = (str(1 * 1000 * 60 * 60 * 24), str(7 * 1000 * 60 * 60 * 24))
+
+    for topic_name in list_topics():
+        topic = get_topic(topic_name)
+        assert topic["topic_creation_config"]["retention.ms"] in allowed_values

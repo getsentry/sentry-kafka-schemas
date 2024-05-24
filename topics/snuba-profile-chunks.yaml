@@ -1,0 +1,18 @@
+topic: snuba-profile-chunks
+description: Profile chunks for continuous profiling
+services:
+  producers:
+    - getsentry/vroom
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-profile-chunks.v1.schema.json
+    examples:
+      - snuba-profile-chunks/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
+  max.message.bytes: "52428800"

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "monitors_clock_tasks",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/MonitorsMarkTimeout"
+    },
+    {
+      "$ref": "#/definitions/MonitorsMarkMissing"
+    }
+  ],
+  "definitions": {
+    "MonitorsMarkTimeout": {
+      "type": "object",
+      "title": "mark_timeout",
+      "description": "Indicates a check-in should be marked as having timed out.",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Discriminant marker identifying the task.",
+          "const": "mark_timeout"
+        },
+        "ts": {
+          "description": "The timestamp the clock ticked at.",
+          "type": "number"
+        },
+        "monitor_environment_id": {
+          "description": "The monitor environment ID the check-in is part of.",
+          "type": "number"
+        },
+        "checkin_id": {
+          "description": "The check-in ID to mark as timed out.",
+          "type": "number"
+        }
+      },
+      "required": ["type", "ts", "monitor_environment_id", "checkin_id"]
+    },
+    "MonitorsMarkMissing": {
+      "type": "object",
+      "title": "mark_missing",
+      "description": "Indicates a monitor ID that should be marked as missed.",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Discriminant marker identifying the task.",
+          "const": "mark_missing"
+        },
+        "ts": {
+          "description": "The timestamp the clock ticked at.",
+          "type": "number"
+        },
+        "monitor_environment_id": {
+          "description": "The monitor environment ID to generate a missed check-in for.",
+          "type": "number"
+        }
+      },
+      "required": ["type", "ts", "monitor_environment_id"]
+    }
+  }
+}

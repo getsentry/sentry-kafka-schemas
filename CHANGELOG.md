@@ -1,5 +1,155 @@
 # Changelog and versioning
 
+## 0.1.87
+
+### Various fixes & improvements
+
+- introduce standard segment settings for all commit log topics (#281) by @lynnagara
+- fix(spans): Fix precise timestamp names in example (#280) by @phacops
+- monitors-clock-tick must always have 1 partition (#279) by @lynnagara
+
+## 0.1.86
+
+### Various fixes & improvements
+
+- fix(spans): Fix timestamp names to reflect better their use (#278) by @phacops
+
+## 0.1.85
+
+### Various fixes & improvements
+
+- feat(spans): Add microsecond precision timestamps (#276) by @phacops
+- fix: Move default rule to the top of the file (#277) by @phacops
+
+## 0.1.84
+
+### Various fixes & improvements
+
+- set max message bytes on snuba-metrics and snuba-dead-letter-metrics to 10mb (#275) by @lynnagara
+- fix: max.message.bytes for dlq topics (#273) by @lynnagara
+
+## 0.1.83
+
+### Various fixes & improvements
+
+- fix(profiles): Add missing configuration option for snuba-profile-chunks (#274) by @phacops
+
+## 0.1.82
+
+### Various fixes & improvements
+
+- feat(profiles): Add schema definition for profile chunks (#272) by @phacops
+
+## 0.1.81
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add support for zstd compression in message processing (#270) by @ayirr7
+
+## 0.1.80
+
+### Various fixes & improvements
+
+- feat(metrics): Add received_at timestamp to Kafka schema (#271) by @iambriccardo
+
+## 0.1.79
+
+### Various fixes & improvements
+
+- feat: Add missing event-replacements topic (#268) by @lynnagara
+- Make retention.ms a mandatory field (#269) by @lynnagara
+- feat: Update max message size on buffered-spans (#248) by @shruthilayaj
+
+## 0.1.78
+
+### Various fixes & improvements
+
+- feat(crons): Ensure monitor_environment_id in all clock tasks (#264) by @evanpurkhiser
+
+## 0.1.76
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Switch Kafka schema examples to non-padded Base64 encoding (#267) by @ayirr7
+- Add priority to group attributes schema (#251) by @snigdhas
+
+## 0.1.75
+
+### Various fixes & improvements
+
+- perf: change payload type of replay event (#265) by @anonrig
+- style(crons): Spelling of timed out (#263) by @evanpurkhiser
+- fix: Don't block ci on sphinx warning (#262) by @lynnagara
+- fix: ingest-feedback-events-dlq max.message.bytes (#260) by @lynnagara
+- fix: Upgrade typify to unblock CI (#261) by @lynnagara
+
+## 0.1.74
+
+### Various fixes & improvements
+
+- feat(crons): Add topic to support monitor clock tasks (#259) by @evanpurkhiser
+- feat(crons): Add monitors-clock-tick (#258) by @evanpurkhiser
+
+## 0.1.73
+
+### Various fixes & improvements
+
+- ref(crons): Allow null for sdk property (#257) by @evanpurkhiser
+
+## 0.1.72
+
+### Various fixes & improvements
+
+- Revert "Revert "feat(generic-metrics): Add base64 support to metrics schemas …" (#256) by @ayirr7
+
+## 0.1.71
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add gauges subscription topic (#249) by @ayirr7
+
+## 0.1.70
+
+### Various fixes & improvements
+
+- feat(crons): Add ingest-monitors schema / topic (#253) by @evanpurkhiser
+- style: Spacing (#254) by @evanpurkhiser
+- Revert "feat(generic-metrics): Add base64 support to metrics schemas (#252)" (#255) by @ayirr7
+
+## 0.1.69
+
+### Various fixes & improvements
+
+- feat(generic-metrics): Add base64 support to metrics schemas (#252) by @ayirr7
+
+## 0.1.68
+
+### Various fixes & improvements
+
+- ref: clean up sessions-subscription-results topic (#246) by @lynnagara
+- feat: Add required partition count to topic definition (#250) by @lynnagara
+- feat: Add a DLQ for buffered segment topic (#247) by @shruthilayaj
+- test(replay): add example for replay viewed events (#245) by @aliu3ntry
+
+## 0.1.67
+
+### Various fixes & improvements
+
+- feat: Add the scheduled subscription topics (#243) by @lynnagara
+- feat: add missing dlq for generic-events (#244) by @lynnagara
+
+## 0.1.66
+
+### Various fixes & improvements
+
+- fix: Don't fail on msgpack topics (#242) by @lynnagara
+
+## 0.1.65
+
+### Various fixes & improvements
+
+- fix: Fix topic creation config (#241) by @lynnagara
+
 ## 0.1.64
 
 ### Various fixes & improvements

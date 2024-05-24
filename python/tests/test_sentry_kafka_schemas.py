@@ -8,7 +8,12 @@ def test_get_topic() -> None:
     assert topic_data["topic_creation_config"] == {
         "compression.type": "lz4",
         "max.message.bytes": "2000000",
+        "retention.ms": "86400000",
     }
+
+    assert topic_data["partitions"] is None
+
+    assert get_topic("snuba-commit-log")["partitions"] == 1
 
 
 def test_get_schema() -> None:
