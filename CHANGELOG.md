@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 0.1.88
+
+### Various fixes & improvements
+
+- set correct segment.bytes on outcomes topics (#285) by @lynnagara
+- fix snuba-spans max.message.bytes (#284) by @lynnagara
+- fix max.message.bytes on ingest-replay-events (#283) by @lynnagara
+- build(deps): bump black from 22.6.0 to 24.3.0 in /python (#240) by @dependabot
+- fix: ingest-monitors topic configuration (#282) by @lynnagara
+
 ## 0.1.87
 
 ### Various fixes & improvements
