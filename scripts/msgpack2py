@@ -2,6 +2,5 @@
 
 import sys
 import msgpack
-import json
 output = repr(msgpack.unpackb(sys.stdin.buffer.read()))
 sys.stdout.write(output)
