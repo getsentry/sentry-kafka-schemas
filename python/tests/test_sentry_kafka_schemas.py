@@ -7,7 +7,7 @@ def test_get_topic() -> None:
     topic_data = get_topic(topic_name)
     assert topic_data["topic_creation_config"] == {
         "compression.type": "lz4",
-        "max.message.bytes": "2000000",
+        "max.message.bytes": "50000000",
         "message.timestamp.type": "LogAppendTime",
         "retention.ms": "86400000",
     }
