@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.1.89
+
+### Various fixes & improvements
+
+- feat: snuba-queries is 50mb (#290) by @lynnagara
+- processed-profiles and profiles-call-tree have 50mb (#289) by @lynnagara
+- fix ingest-replay-recordings topic definition (#288) by @lynnagara
+- fix message.timestamp.type on 3 topics (#287) by @lynnagara
+
 ## 0.1.88
 
 ### Various fixes & improvements
