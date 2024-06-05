@@ -1,9 +1,9 @@
+import re
 from pathlib import Path
 
-from sentry_kafka_schemas import get_codec, list_topics, get_topic
 import fastjsonschema
+from sentry_kafka_schemas import get_codec, get_topic, list_topics
 from yaml import safe_load
-import re
 
 _SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")
 _EXAMPLES = Path(__file__).parents[2].joinpath("examples/")

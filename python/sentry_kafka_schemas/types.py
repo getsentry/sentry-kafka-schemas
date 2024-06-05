@@ -1,9 +1,9 @@
-from typing import Any, Literal, Mapping, Sequence, TypedDict, Union
-
-import rapidjson
-import msgpack
 import dataclasses
 from pathlib import Path
+from typing import Any, Literal, Mapping, Sequence, TypedDict, Union
+
+import msgpack
+import rapidjson
 
 __all__ = ["Schema"]
 

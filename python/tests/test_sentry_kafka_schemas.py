@@ -1,5 +1,5 @@
 import pytest
-from sentry_kafka_schemas import get_codec, SchemaNotFound, get_topic
+from sentry_kafka_schemas import SchemaNotFound, get_codec, get_topic
 
 
 def test_get_topic() -> None:
