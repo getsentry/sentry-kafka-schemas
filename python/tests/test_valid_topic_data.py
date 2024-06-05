@@ -63,6 +63,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     "getsentry/sentry",
                     "getsentry/snuba",
                     "getsentry/vroom",
+                    "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
                 ]
             }
