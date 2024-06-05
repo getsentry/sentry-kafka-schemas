@@ -50,6 +50,4 @@ html_css_files = [
 
 autodoc_inherit_docstrings = False
 
-mermaid_init_js = (
-    "mermaid.initialize({startOnLoad:true, flowchart:{defaultRenderer: 'elk'}});"
-)
+mermaid_init_js = "mermaid.initialize({startOnLoad:true, flowchart:{defaultRenderer: 'elk'}});"
