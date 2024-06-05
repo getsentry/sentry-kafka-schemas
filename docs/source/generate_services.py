@@ -1,9 +1,6 @@
 from typing import Sequence, Tuple
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    TopicData,
-    list_topics,
-    get_topic,
-)
+
+from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, get_topic, list_topics
 
 
 def _name(name):
@@ -43,9 +40,7 @@ def main():
     pipelines = {}
     for topic_name in list_topics():
         topic = get_topic(topic_name)
-        pipelines.setdefault(topic.get("pipeline", "default"), []).append(
-            (topic_name, topic)
-        )
+        pipelines.setdefault(topic.get("pipeline", "default"), []).append((topic_name, topic))
 
     for pipeline, topics in sorted(pipelines.items()):
         if pipeline != "default":

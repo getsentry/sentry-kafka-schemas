@@ -1,8 +1,8 @@
 from sentry_kafka_schemas.sentry_kafka_schemas import (
-    iter_examples,
     SchemaNotFound,
     get_codec,
     get_topic,
+    iter_examples,
     list_topics,
 )
 

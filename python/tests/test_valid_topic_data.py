@@ -1,9 +1,9 @@
+import re
 from pathlib import Path
 
-from sentry_kafka_schemas import get_codec, list_topics, get_topic
 import fastjsonschema
+from sentry_kafka_schemas import get_codec, get_topic, list_topics
 from yaml import safe_load
-import re
 
 _SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")
 _EXAMPLES = Path(__file__).parents[2].joinpath("examples/")
@@ -63,6 +63,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     "getsentry/sentry",
                     "getsentry/snuba",
                     "getsentry/vroom",
+                    "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
                 ]
             }
@@ -101,9 +102,7 @@ def test_all_topics() -> None:
             # Check every topic has an explicit, valid compression type
             # Today we use lz4 everywhere, this list can be extended if needed
             valid_types = ["lz4"]
-            assert (
-                topic_data["topic_creation_config"]["compression.type"] in valid_types
-            )
+            assert topic_data["topic_creation_config"]["compression.type"] in valid_types
 
             # Check valid schema versions
             topic_schemas = topic_data["schemas"]

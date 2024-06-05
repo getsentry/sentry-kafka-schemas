@@ -1,0 +1,19 @@
+topic: uptime-results
+pipeline: uptime
+description: uptime check results
+services:
+  producers:
+    - getsentry/uptime-checker
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: uptime-results.v1.schema.json
+    examples:
+      - uptime-results/1/
+topic_creation_config:
+  compression.type: lz4
+  message.timestamp.type: LogAppendTime
+  retention.ms: "86400000"

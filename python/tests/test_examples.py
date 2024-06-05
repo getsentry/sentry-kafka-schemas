@@ -1,16 +1,12 @@
 from typing import Iterator, Tuple
-import pytest
-import fastjsonschema
-import rapidjson
-import jsonschema
 
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    list_topics,
-    get_topic,
-    _get_schema,
-)
-from sentry_kafka_schemas.types import Example
+import fastjsonschema
+import jsonschema
+import pytest
+import rapidjson
 from sentry_kafka_schemas import iter_examples
+from sentry_kafka_schemas.sentry_kafka_schemas import _get_schema, get_topic, list_topics
+from sentry_kafka_schemas.types import Example
 
 
 def get_all_examples() -> Iterator[Tuple[str, int, Example]]:
@@ -38,9 +34,7 @@ def test_file_extension() -> None:
 
 
 @pytest.mark.parametrize("topic,version,example", get_all_examples(), ids=str)
-@pytest.mark.parametrize(
-    "jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"]
-)
+@pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"])
 def test_examples(
     topic: str,
     version: int,

@@ -1,27 +1,13 @@
-from typing import (
-    Any,
-    Callable,
-    Mapping,
-    MutableMapping,
-    MutableSequence,
-    Sequence,
-    Tuple,
-)
-
-import sys
-import subprocess
-import tempfile
 import json
-from urllib.error import HTTPError
-import pkg_resources
+import subprocess
+import sys
+import tempfile
 import urllib.request
+from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence, Tuple
+from urllib.error import HTTPError
 
-
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    TopicData,
-    list_topics,
-    get_topic,
-)
+import pkg_resources
+from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, get_topic, list_topics
 
 Change = Mapping[str, Any]
 
@@ -74,9 +60,7 @@ def main() -> None:
             producers.setdefault(producer, []).extend(filename)
 
         with tempfile.NamedTemporaryFile() as old_file:
-            old_file_contents = subprocess.check_output(
-                ["git", "show", f"origin/main:{filename}"]
-            )
+            old_file_contents = subprocess.check_output(["git", "show", f"origin/main:{filename}"])
             old_file.write(old_file_contents)
             old_file.flush()
 
@@ -93,9 +77,7 @@ def main() -> None:
     check_for_outdated_repos(consumers, producers)
 
     if breaking_changes:
-        print(
-            "<details><summary><strong>changes considered breaking</strong></summary>"
-        )
+        print("<details><summary><strong>changes considered breaking</strong></summary>")
         print_files_and_changes(breaking_changes)
         print("</details>")
 
@@ -222,9 +204,7 @@ def parse_version(string: str) -> Version:
 
         constraints.append((version, operator))
 
-    constraints.sort(
-        key=lambda version_and_operator: version_and_operator[1] in (">", ">=")
-    )
+    constraints.sort(key=lambda version_and_operator: version_and_operator[1] in (">", ">="))
     version, _ = constraints[0]
     x, y, z = map(int, version.split("."))
     return x, y, z
@@ -238,9 +218,7 @@ def check_for_outdated_repos(
     consumers: Mapping[Repo, Sequence[FileName]],
     producers: Mapping[Repo, Sequence[FileName]],
 ) -> None:
-    latest_version = parse_version(
-        pkg_resources.get_distribution("sentry-kafka-schemas").version
-    )
+    latest_version = parse_version(pkg_resources.get_distribution("sentry-kafka-schemas").version)
 
     sboms = {}
     for repo in {*consumers, *producers}:

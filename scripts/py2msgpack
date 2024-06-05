@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-import sys
-import msgpack
 import ast
+import sys
+
+import msgpack
+
 output = msgpack.packb(ast.literal_eval(sys.stdin.buffer.read().decode()))
 sys.stdout.buffer.write(output)

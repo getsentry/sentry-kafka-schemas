@@ -4,7 +4,6 @@ from typing import Any, Optional, TypeVar, cast
 
 import fastjsonschema
 import rapidjson
-
 from sentry_kafka_schemas.codecs import Codec, ValidationError
 
 T = TypeVar("T")
