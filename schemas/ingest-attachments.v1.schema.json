@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "attachments",
+  "description": "User feedback event from Relay",
+  "type": "object",
+  "required": ["type", "event_id", "project_id"],
+  "additionalProperties": true,
+  "properties": {
+    "type": { "type": "string" },
+    "event_id": { "type": "string" },
+    "project_id": { "type": "integer" },
+    "payload": {
+      "description": "bytes"
+    },
+    "attachment_id": { "type": "string" },
+    "chunk_index": { "type": "integer" },
+    "attachment": {
+      "type": "object"
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["attachment"]
+    },
+    {
+      "required": ["attachment_id", "chunk_index", "payload"]
+    }
+  ]
+}
