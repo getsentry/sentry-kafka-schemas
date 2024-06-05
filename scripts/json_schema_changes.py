@@ -1,27 +1,13 @@
-from typing import (
-    Any,
-    Callable,
-    Mapping,
-    MutableMapping,
-    MutableSequence,
-    Sequence,
-    Tuple,
-)
-
-import sys
-import subprocess
-import tempfile
 import json
-from urllib.error import HTTPError
-import pkg_resources
+import subprocess
+import sys
+import tempfile
 import urllib.request
+from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence, Tuple
+from urllib.error import HTTPError
 
-
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    TopicData,
-    list_topics,
-    get_topic,
-)
+import pkg_resources
+from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, get_topic, list_topics
 
 Change = Mapping[str, Any]
 

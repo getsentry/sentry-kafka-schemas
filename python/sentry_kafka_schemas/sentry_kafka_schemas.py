@@ -1,27 +1,26 @@
 from __future__ import annotations
 
 import os
-
-import rapidjson
+from pathlib import Path
 from typing import (
     Any,
     Iterable,
-    Optional,
+    Literal,
+    Mapping,
     MutableMapping,
+    Optional,
     Sequence,
     Tuple,
     TypedDict,
     cast,
-    Literal,
-    Mapping,
 )
-from typing_extensions import NotRequired
 
-from sentry_kafka_schemas.types import Schema, Example
+import rapidjson
 from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
-from pathlib import Path
+from sentry_kafka_schemas.types import Example, Schema
+from typing_extensions import NotRequired
 from yaml import safe_load
 
 __TOPIC_TO_CODEC: MutableMapping[Tuple[str, Optional[int]], Optional[Codec[Any]]] = {}

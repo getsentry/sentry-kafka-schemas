@@ -1,9 +1,6 @@
 from typing import Sequence, Tuple
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    TopicData,
-    list_topics,
-    get_topic,
-)
+
+from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, get_topic, list_topics
 
 
 def _name(name):

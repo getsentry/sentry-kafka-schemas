@@ -2,7 +2,6 @@ from typing import Optional, TypeVar, cast
 
 import fastjsonschema
 import msgpack
-
 from sentry_kafka_schemas.codecs import Codec, ValidationError
 
 T = TypeVar("T")

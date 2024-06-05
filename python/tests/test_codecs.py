@@ -1,9 +1,9 @@
-import pytest
 import json
 from pathlib import Path
-from typing import TypedDict, Any
-from sentry_kafka_schemas.codecs import Codec
+from typing import Any, TypedDict
 
+import pytest
+from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
 

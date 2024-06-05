@@ -28,6 +28,7 @@ install: python/sentry_kafka_schemas/schema_types
 
 format:
 	black python/ scripts/ docs/
+	isort --overwrite-in-place python/ scripts/ docs/
 	cargo fmt
 	yarn prettier --write .
 .PHONY: format

@@ -1,12 +1,8 @@
 import re
 from typing import Any, Iterator, Tuple
-import pytest
 
-from sentry_kafka_schemas.sentry_kafka_schemas import (
-    list_topics,
-    get_topic,
-    _get_schema,
-)
+import pytest
+from sentry_kafka_schemas.sentry_kafka_schemas import _get_schema, get_topic, list_topics
 
 
 def get_all_schemas() -> Iterator[Tuple[str, int]]:
