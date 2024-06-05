@@ -12,9 +12,9 @@ def test_get_topic() -> None:
         "retention.ms": "86400000",
     }
 
-    assert topic_data["partitions"] is None
+    assert topic_data["enforced_partition_count"] is None
 
-    assert get_topic("snuba-commit-log")["partitions"] == 1
+    assert get_topic("snuba-commit-log")["enforced_partition_count"] == 1
 
 
 def test_get_schema() -> None:
