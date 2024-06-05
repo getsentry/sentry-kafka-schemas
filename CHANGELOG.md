@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.1.90
+
+### Various fixes & improvements
+
+- add schema, topic definition and examples for ingest-attachments topic (#293) by @lynnagara
+- feat(uptime): Add uptime-results topic (#294) by @evanpurkhiser
+- ref(format): Match black config with sentry (#297) by @evanpurkhiser
+- rename partitions to enforced_partition_count (#296) by @lynnagara
+- feat(lint): Add isort (#295) by @evanpurkhiser
+- run tests against python 3.12 in CI (#292) by @lynnagara
+- bump default python version to 3.11 (#291) by @lynnagara
+
 ## 0.1.89
 
 ### Various fixes & improvements
