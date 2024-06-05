@@ -62,8 +62,6 @@ def test_schemas_valid(topic: str, version: int) -> None:
     _validate_title(schema)
 
     for definition_name, definition in schema.get("definitions", {}).items():  # type: ignore
-        assert _VALID_DEFINITION_NAMES.match(
-            definition_name
-        ), f"{definition_name} is not TitleCase"
+        assert _VALID_DEFINITION_NAMES.match(definition_name), f"{definition_name} is not TitleCase"
 
         _validate_title(definition)

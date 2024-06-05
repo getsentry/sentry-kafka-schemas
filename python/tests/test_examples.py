@@ -34,9 +34,7 @@ def test_file_extension() -> None:
 
 
 @pytest.mark.parametrize("topic,version,example", get_all_examples(), ids=str)
-@pytest.mark.parametrize(
-    "jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"]
-)
+@pytest.mark.parametrize("jsonschema_library", ["fastjsonschema", "jsonschema", "rapidjson"])
 def test_examples(
     topic: str,
     version: int,
