@@ -50,7 +50,7 @@ class TopicData(TypedDict):
     schemas: Sequence[TopicSchema]
     pipeline: NotRequired[str]
     topic_creation_config: Mapping[str, str]
-    partitions: Optional[int]
+    enforced_partition_count: Optional[int]
 
 
 _TOPICS_PATH = Path.joinpath(Path(__file__).parent, "topics")
@@ -83,8 +83,8 @@ def get_topic(topic: str) -> TopicData:
     if "topic_creation_config" not in topic_data:
         topic_data["topic_creation_config"] = {}
 
-    if "partitions" not in topic_data:
-        topic_data["partitions"] = None
+    if "enforced_partition_count" not in topic_data:
+        topic_data["enforced_partition_count"] = None
 
     return topic_data
 
