@@ -27,6 +27,7 @@ Each topic is a yaml file in the topics directory. This topic name is a "logical
 The yaml file of a topic has the following keys:
 
 1. `schemas`. Schemas is an array. The following should be provided for each schema:
+
    - `version`: Incrementing integer. Should start at 1.
    - `compatibility_mode`: `none` or `backward`.
    - `type`: Can be either `json` or `msgpack`. In both cases we use
@@ -38,7 +39,6 @@ The yaml file of a topic has the following keys:
 3. `services`. Which Sentry services produce to and consume from the topic.
 4. `description`.
 5. `pipeline`.
-
 
 ## Using the schema (in Python)
 
