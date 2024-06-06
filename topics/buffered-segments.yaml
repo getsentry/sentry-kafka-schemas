@@ -1,4 +1,3 @@
-topic: buffered-segments
 description: List of buffered spans for a segment
 services:
   producers:

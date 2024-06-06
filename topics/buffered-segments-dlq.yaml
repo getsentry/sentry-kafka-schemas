@@ -1,4 +1,3 @@
-topic: buffered-segments-dlq
 description: DLQ for buffered-segments
 services:
   producers:

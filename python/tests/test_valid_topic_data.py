@@ -12,7 +12,6 @@ _TOPICS = Path(__file__).parents[2].joinpath("topics/")
 _TOPIC_SCHEMA = fastjsonschema.compile(
     {
         "properties": {
-            "topic": {"type": "string"},
             "description": {"type": "string"},
             "pipeline": {"type": "string"},
             "services": {
@@ -54,7 +53,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             },
         },
         "aditionalProperties": False,
-        "required": ["topic", "description", "services"],
+        "required": ["description", "services"],
         "definitions": {
             "Repo": {
                 "enum": [
@@ -91,8 +90,7 @@ def test_all_topics() -> None:
             _TOPIC_SCHEMA(topic_data)
 
             # Check valid topic name
-            topic_name = topic_data["topic"]
-            assert topic_name == filename.stem
+            topic_name = filename.stem
             assert valid_chars.match(topic_name)
             assert len(topic_name) <= 255
 

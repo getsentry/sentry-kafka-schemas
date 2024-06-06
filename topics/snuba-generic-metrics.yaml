@@ -1,4 +1,3 @@
-topic: snuba-generic-metrics
 pipeline: generic-metrics
 description: Generic metrics for Snuba
 services:

@@ -1,4 +1,3 @@
-topic: monitors-clock-tick
 pipeline: monitors
 description: cron monitor clock ticks
 services:

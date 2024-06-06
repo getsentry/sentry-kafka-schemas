@@ -1,4 +1,3 @@
-topic: generic-events
 pipeline: generic-events
 description: Issue platform
 services:

@@ -1,4 +1,3 @@
-topic: scheduled-subscriptions-metrics
 pipeline: release-health
 description: Scheduled subscriptions
 services:

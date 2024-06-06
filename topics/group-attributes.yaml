@@ -1,4 +1,3 @@
-topic: group-attributes
 description: A snapshot of Group/Issue attributes replicated from sentry
 services:
   producers:

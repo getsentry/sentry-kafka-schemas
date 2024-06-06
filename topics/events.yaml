@@ -1,4 +1,3 @@
-topic: events
 pipeline: errors
 description: Errors data for Snuba
 services:

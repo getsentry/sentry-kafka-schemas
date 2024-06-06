@@ -24,17 +24,21 @@ Example messages must be stripped of **all** customer related data. This also in
 
 Each topic is a yaml file in the topics directory. This topic name is a "logical" topic name as many services in Sentry support overriding the default name to a different physical topic name if desired. Topic names must be unique in Sentry: the same name cannot be used for different types of data.
 
-The yaml file of a topic has 2 keys:
+The yaml file of a topic has the following keys:
 
-1. `topic`. This is the logical topic name. It must match the filename.
+1. `schemas`. Schemas is an array. The following should be provided for each schema:
 
-2. `schemas`. Schemas is an array. The following should be provided for each schema:
    - `version`: Incrementing integer. Should start at 1.
    - `compatibility_mode`: `none` or `backward`.
    - `type`: Can be either `json` or `msgpack`. In both cases we use
      jsonschema to define the message schema.
    - `resource`: Should match the file name in the `schemas` directory
    - `examples`: Should match the file names in the `examples` directory
+
+2. `topic_configuration_config`. Configuration used to create the topic
+3. `services`. Which Sentry services produce to and consume from the topic.
+4. `description`.
+5. `pipeline`.
 
 ## Using the schema (in Python)
 

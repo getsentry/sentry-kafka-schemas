@@ -1,4 +1,3 @@
-topic: ingest-transactions-dlq
 pipeline: transactions
 description: DLQ for ingest-transactions
 services:

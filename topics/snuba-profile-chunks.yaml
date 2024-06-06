@@ -1,4 +1,3 @@
-topic: snuba-profile-chunks
 description: Profile chunks for continuous profiling
 services:
   producers:

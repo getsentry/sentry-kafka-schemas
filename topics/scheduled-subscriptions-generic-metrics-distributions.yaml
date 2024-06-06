@@ -1,4 +1,3 @@
-topic: scheduled-subscriptions-generic-metrics-distributions
 pipeline: generic-metrics
 description: Scheduled subscriptions
 services:

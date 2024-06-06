@@ -1,4 +1,3 @@
-topic: uptime-results
 pipeline: uptime
 description: uptime check results
 services:

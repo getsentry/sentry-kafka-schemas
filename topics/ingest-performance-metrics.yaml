@@ -1,4 +1,3 @@
-topic: ingest-performance-metrics
 pipeline: generic-metrics
 description: performance metrics and soon also other usecases for generic-metrics (before indexer)
 services:

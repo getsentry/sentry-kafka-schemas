@@ -1,4 +1,3 @@
-topic: snuba-dead-letter-replays
 pipeline: errors
 description: DLQ for ingest-replay-events
 services:

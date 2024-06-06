@@ -1,4 +1,3 @@
-topic: ingest-replay-events
 pipeline: replays
 description: Replay events data for Snuba
 services:

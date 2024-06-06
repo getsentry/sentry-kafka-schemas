@@ -1,4 +1,3 @@
-topic: snuba-dead-letter-generic-metrics
 pipeline: errors
 description: DLQ for snuba-generic-metrics
 services:

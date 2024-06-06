@@ -1,4 +1,3 @@
-topic: transactions
 pipeline: transactions
 description: Transactions data for Snuba
 services:

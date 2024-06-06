@@ -1,4 +1,3 @@
-topic: snuba-metrics-summaries
 description: Metrics summaries for spans
 services:
   producers:

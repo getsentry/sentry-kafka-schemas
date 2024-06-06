@@ -1,4 +1,3 @@
-topic: ingest-events
 pipeline: errors
 description: Errors data from Relay
 services:

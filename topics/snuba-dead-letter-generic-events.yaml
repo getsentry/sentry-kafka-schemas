@@ -1,4 +1,3 @@
-topic: snuba-dead-letter-generic-events
 pipeline: generic-events
 description: DLQ for generic-events
 services:
