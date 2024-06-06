@@ -89,6 +89,11 @@ def test_all_topics() -> None:
 
             _TOPIC_SCHEMA(topic_data)
 
+            # Check valid topic name
+            topic_name = filename.stem
+            assert valid_chars.match(topic_name)
+            assert len(topic_name) <= 255
+
             # Check description provided for topic
             assert topic_data["description"]
 
