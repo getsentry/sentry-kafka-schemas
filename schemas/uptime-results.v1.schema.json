@@ -59,7 +59,7 @@
     },
     "request_info": {
       "description": "Duration of the check in ms. Will be null when the status is missed_window",
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "request_type": {
           "description": "The type of HTTP method used for the check",
@@ -68,7 +68,7 @@
         },
         "http_status_code": {
           "description": "Status code of the successful check-in",
-          "type": "number"
+          "type": ["number", "null"]
         }
       }
     }
