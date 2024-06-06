@@ -56,7 +56,6 @@ struct TopicSchema {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct TopicData {
-    topic: String,
     schemas: Vec<TopicSchema>,
 }
 
