@@ -17,7 +17,7 @@
     { "name": "Last successful check-in", "value": "Never", "important": false }
   ],
   "type": 4001,
-  "detection_time": 1717713781.100000,
+  "detection_time": 1717713781.1,
   "level": "error",
   "culprit": "",
   "initial_issue_priority": null,
