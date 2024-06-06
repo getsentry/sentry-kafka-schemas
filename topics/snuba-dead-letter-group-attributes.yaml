@@ -1,4 +1,3 @@
-topic: snuba-dead-letter-group-attributes
 pipeline: errors
 description: DLQ for group-attributes
 services:

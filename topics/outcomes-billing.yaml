@@ -1,4 +1,3 @@
-topic: outcomes-billing
 pipeline: outcomes
 description: Outcomes for events sent to sentry
 services:

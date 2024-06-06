@@ -1,4 +1,3 @@
-topic: ingest-monitors
 pipeline: monitors
 description: cron monitor check-in ingest
 services:

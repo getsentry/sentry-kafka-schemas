@@ -1,4 +1,3 @@
-topic: snuba-metrics
 pipeline: release-health
 description: Release health metrics
 services:

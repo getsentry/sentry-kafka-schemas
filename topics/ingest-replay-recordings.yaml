@@ -1,4 +1,3 @@
-topic: ingest-replay-recordings
 pipeline: replays
 description: Replay Recording payloads
 services:

@@ -1,4 +1,3 @@
-topic: processed-profiles
 pipeline: profiles
 description: Profile metadata extracted from profiles for Snuba
 services:

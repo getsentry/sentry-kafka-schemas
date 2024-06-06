@@ -1,4 +1,3 @@
-topic: metrics-subscription-results
 pipeline: release-health
 description: Metrics Subscription Results
 services:

@@ -1,4 +1,3 @@
-topic: scheduled-subscriptions-transactions
 pipeline: transactions
 description: Scheduled subscriptions
 services:

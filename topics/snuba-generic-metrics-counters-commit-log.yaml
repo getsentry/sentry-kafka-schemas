@@ -1,4 +1,3 @@
-topic: snuba-generic-metrics-counters-commit-log
 pipeline: generic-metrics
 description: Commit log topic for generic metrics counters pipeline
 services:

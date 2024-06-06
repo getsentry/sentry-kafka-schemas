@@ -1,4 +1,3 @@
-topic: ingest-events-dlq
 pipeline: errors
 description: DLQ for ingest-events
 services:

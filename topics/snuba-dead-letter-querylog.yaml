@@ -1,4 +1,3 @@
-topic: snuba-dead-letter-querylog
 pipeline: errors
 description: DLQ for snuba-queries
 services:

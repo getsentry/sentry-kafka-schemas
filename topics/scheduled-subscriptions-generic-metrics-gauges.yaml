@@ -1,4 +1,3 @@
-topic: scheduled-subscriptions-generic-metrics-gauges
 pipeline: generic-metrics
 description: Scheduled subscriptions
 services:

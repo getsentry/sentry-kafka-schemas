@@ -1,4 +1,3 @@
-topic: ingest-attachments-dlq
 pipeline: attachments
 description: DLQ for ingest-attachments
 services:

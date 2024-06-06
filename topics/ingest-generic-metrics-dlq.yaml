@@ -1,4 +1,3 @@
-topic: ingest-generic-metrics-dlq
 pipeline: release-health
 description: DLQ for ingest-performance-metrics
 services:

@@ -1,4 +1,3 @@
-topic: snuba-metrics-commit-log
 pipeline: release-health
 description: Commit log topic for release health pipeline
 services:

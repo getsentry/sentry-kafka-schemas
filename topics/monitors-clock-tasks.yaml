@@ -1,4 +1,3 @@
-topic: monitors-clock-tasks
 pipeline: monitors
 description: cron monitor clock based tasks
 services:

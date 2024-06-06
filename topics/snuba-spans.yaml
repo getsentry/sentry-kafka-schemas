@@ -1,4 +1,3 @@
-topic: snuba-spans
 description: Snuba spans only
 services:
   producers:

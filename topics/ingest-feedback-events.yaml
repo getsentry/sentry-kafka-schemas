@@ -1,4 +1,3 @@
-topic: ingest-feedback-events
 pipeline: user-feedback
 description: User feedback events from SDK
 services:

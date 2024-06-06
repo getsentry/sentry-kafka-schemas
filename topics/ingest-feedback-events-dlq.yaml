@@ -1,4 +1,3 @@
-topic: ingest-feedback-events-dlq
 pipeline: user-feedback
 description: DLQ for ingest-feedback-events
 services:

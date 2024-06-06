@@ -1,4 +1,3 @@
-topic: scheduled-subscriptions-events
 pipeline: errors
 description: Scheduled subscriptions for errors pipeline
 services:

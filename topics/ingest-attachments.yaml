@@ -1,4 +1,3 @@
-topic: ingest-attachments
 pipeline: attachments
 description: Attachments data from Relay
 services:

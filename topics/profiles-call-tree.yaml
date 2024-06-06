@@ -1,4 +1,3 @@
-topic: profiles-call-tree
 pipeline: profiles
 description: Function data extracted from profiles for Snuba
 services:
