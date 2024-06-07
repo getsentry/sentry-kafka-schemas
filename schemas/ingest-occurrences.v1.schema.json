@@ -10,11 +10,7 @@
     "subtitle": { "type": ["string", "null"] },
     "type": { "type": ["integer", "null"] },
     "initial_issue_priority": { "type": ["integer", "null"] },
-    "payload_type": {"type": ["string", "null"] }
+    "payload_type": { "type": ["string", "null"] }
   },
-  "required": [
-    "id",
-    "project_id",
-    "fingerprint"
-  ]
+  "required": ["id", "project_id", "fingerprint"]
 }
