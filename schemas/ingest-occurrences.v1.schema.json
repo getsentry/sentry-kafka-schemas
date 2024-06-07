@@ -6,18 +6,15 @@
     "id": { "type": "string" },
     "project_id": { "type": "integer" },
     "fingerprint": { "type": "array", "items": { "type": "string" } },
-    "issue_title": { "type": "string" },
-    "subtitle": { "type": "string" },
-    "type": { "type": "integer" },
-    "initial_issue_priority": { "type": ["null", "integer"] },
-    "payload_type": { "type": "string" }
+    "issue_title": { "type": ["string", "null"] },
+    "subtitle": { "type": ["string", "null"] },
+    "type": { "type": ["integer", "null"] },
+    "initial_issue_priority": { "type": ["integer", "null"] },
+    "payload_type": {"type": ["string", "null"] }
   },
   "required": [
     "id",
     "project_id",
-    "fingerprint",
-    "issue_title",
-    "subtitle",
-    "type"
+    "fingerprint"
   ]
 }
