@@ -9,7 +9,8 @@
     "issue_title": { "type": "string" },
     "subtitle": { "type": "string" },
     "type": { "type": "integer" },
-    "initial_issue_priority": { "type": ["null", "integer"] }
+    "initial_issue_priority": { "type": ["null", "integer"] },
+    "payload_type": {"type": "string"}
   },
   "required": [
     "id",
