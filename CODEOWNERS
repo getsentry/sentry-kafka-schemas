@@ -9,6 +9,7 @@
 /topics/ingest-replay-recordings.yaml                          @getsentry/owners-snuba @getsentry/ingest @getsentry/replay
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
 /topics/ingest-monitors.yaml                                   @getsentry/crons
+/topics/ingest-occurrences.yaml                                @getsentry/issues
 
 # DLQs for ingest topics
 /topics/ingest-events-dlq.yaml                                 @getsentry/ops

@@ -1,0 +1,59 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "project_id": 1,
+  "event_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "fingerprint": ["cccccccccccccccccccccccccccccccc"],
+  "issue_title": "Monitor failure: poll_service",
+  "subtitle": "Your monitor has reached its failure threshold.",
+  "resource_id": null,
+  "evidence_data": {},
+  "evidence_display": [
+    {
+      "name": "Failure reason",
+      "value": "A missed check-in was detected",
+      "important": true
+    },
+    { "name": "Environment", "value": "us", "important": false },
+    { "name": "Last successful check-in", "value": "Never", "important": false }
+  ],
+  "type": 4001,
+  "detection_time": 1717713781.1,
+  "level": "error",
+  "culprit": "",
+  "initial_issue_priority": null,
+  "assignee": null,
+  "payload_type": "occurrence",
+  "event": {
+    "contexts": {
+      "monitor": {
+        "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "slug": "poll_service",
+        "name": "poll_service",
+        "config": {
+          "schedule": "*/1 * * * *",
+          "checkin_margin": null,
+          "max_runtime": null,
+          "timezone": "UTC",
+          "failure_issue_threshold": null,
+          "recovery_threshold": null,
+          "schedule_type": 1
+        },
+        "status": "error",
+        "type": "cron_job"
+      }
+    },
+    "environment": "us",
+    "event_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "fingerprint": ["cccccccccccccccccccccccccccccccc"],
+    "platform": "other",
+    "project_id": 1,
+    "received": "2024-06-06T22:43:01.100000+00:00",
+    "sdk": null,
+    "tags": {
+      "monitor.id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "monitor.slug": "poll_service",
+      "monitor.incident": "12345"
+    },
+    "timestamp": "2024-06-06T22:43:01.100000+00:00"
+  }
+}

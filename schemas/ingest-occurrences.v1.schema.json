@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Issue occurrence",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "project_id": { "type": "integer" },
+    "fingerprint": { "type": "array", "items": { "type": "string" } },
+    "issue_title": { "type": ["string", "null"] },
+    "subtitle": { "type": ["string", "null"] },
+    "type": { "type": ["integer", "null"] },
+    "initial_issue_priority": { "type": ["integer", "null"] },
+    "payload_type": { "type": ["string", "null"] }
+  },
+  "required": ["id", "project_id", "fingerprint"]
+}
