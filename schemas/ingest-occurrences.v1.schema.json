@@ -10,7 +10,7 @@
     "subtitle": { "type": "string" },
     "type": { "type": "integer" },
     "initial_issue_priority": { "type": ["null", "integer"] },
-    "payload_type": {"type": "string"}
+    "payload_type": { "type": "string" }
   },
   "required": [
     "id",
