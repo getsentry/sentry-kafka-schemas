@@ -1,5 +1,18 @@
 # Changelog and versioning
 
+## 0.1.91
+
+### Various fixes & improvements
+
+- ref(uptime): Improve uptime-results schema w/ definitions (#304) by @evanpurkhiser
+- feat(issue-search): Add first_release_id to the group_attributes kafka schema (#286) by @snigdhas
+- add schema, examples and topic definition for ingest-occurrences (#301) by @lynnagara
+- fix(uptime): Bad UUIDs in examples (#302) by @evanpurkhiser
+- fix(uptime): Allow request_info and http_status_code to be null (#303) by @evanpurkhiser
+- fix snuba-metrics-summaries (#300) by @lynnagara
+- ref: remove redundant property from topic files (#299) by @lynnagara
+- set 10mb max.message bytes for metrics topics (#298) by @lynnagara
+
 ## 0.1.90
 
 ### Various fixes & improvements
