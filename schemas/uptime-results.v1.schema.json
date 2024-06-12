@@ -1,88 +1,139 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "uptime_result",
-  "type": "object",
-  "description": "A message containing the result of the uptime check.",
-  "additionalProperties": true,
-  "properties": {
-    "guid": {
-      "description": "Unique identifier of the uptime check",
-      "type": "string"
-    },
-    "monitor_id": {
-      "description": "The identifier of the uptime monitor",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 18446744073709551615
-    },
-    "monitor_environment_id": {
-      "description": "The identifier of the uptime monitors environment",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 18446744073709551615
-    },
-    "status": {
+  "$ref": "#/definitions/CheckResult",
+  "definitions": {
+    "CheckStatus": {
       "description": "The status of the check",
       "type": "string",
-      "enum": ["success", "failure", "missed_window"]
+      "enum": [
+        "success",
+        "failure",
+        "missed_window"
+      ]
     },
-    "status_reason": {
+    "CheckStatusReasonType": {
+      "description": "The type of the status reason",
+      "type": "string",
+      "enum": [
+        "timeout",
+        "dns_error",
+        "failure"
+      ]
+    },
+    "RequestType": {
+      "description": "The type of HTTP method used for the check",
+      "type": "string",
+      "enum": [
+        "HEAD",
+        "GET"
+      ]
+    },
+    "CheckStatusReason": {
       "description": "Reason for the status, primairly used for failure",
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
         "type": {
-          "description": "The type of the status reason",
-          "type": "string",
-          "enum": ["timeout", "dns_error", "failure"]
+          "$ref": "#/definitions/CheckStatusReasonType"
         },
         "description": {
           "description": "A human readable description of the status reason",
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "type",
+        "description"
+      ]
     },
-    "trace_id": {
-      "description": "Trace ID associated with the check-in made",
-      "type": "string"
-    },
-    "scheduled_check_time": {
-      "description": "Timestamp in milliseconds of when the check was schedule to run",
-      "type": "number"
-    },
-    "actual_check_time": {
-      "description": "Timestamp in milliseconds of when the check was actually ran",
-      "type": "number"
-    },
-    "duration_ms": {
-      "description": "Duration of the check in ms. Will be null when the status is missed_window",
-      "type": ["number", "null"]
-    },
-    "request_info": {
-      "description": "Duration of the check in ms. Will be null when the status is missed_window",
-      "type": ["object", "null"],
+    "RequestInfo": {
+      "description": "Additional information about the request made",
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
         "request_type": {
-          "description": "The type of HTTP method used for the check",
-          "type": "string",
-          "enum": ["HEAD", "GET"]
+          "$ref": "#/definitions/RequestType"
         },
         "http_status_code": {
           "description": "Status code of the successful check-in",
-          "type": ["number", "null"]
+          "type": [
+            "number",
+            "null"
+          ]
         }
-      }
+      },
+      "required": [
+        "request_type",
+        "http_status_code"
+      ]
+    },
+    "CheckResult": {
+      "type": "object",
+      "description": "A message containing the result of the uptime check.",
+      "additionalProperties": true,
+      "properties": {
+        "guid": {
+          "description": "Unique identifier of the uptime check",
+          "type": "string"
+        },
+        "monitor_id": {
+          "description": "The identifier of the uptime monitor",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "monitor_environment_id": {
+          "description": "The identifier of the uptime monitors environment",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "status": {
+          "$ref": "#/definitions/CheckStatus"
+        },
+        "status_reason": {
+          "$ref": "#/definitions/CheckStatusReason"
+        },
+        "trace_id": {
+          "description": "Trace ID associated with the check-in made",
+          "type": "string"
+        },
+        "scheduled_check_time": {
+          "description": "Timestamp in milliseconds of when the check was schedule to run",
+          "type": "number"
+        },
+        "actual_check_time": {
+          "description": "Timestamp in milliseconds of when the check was actually ran",
+          "type": "number"
+        },
+        "duration_ms": {
+          "description": "Duration of the check in ms. Will be null when the status is missed_window",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "request_info": {
+          "$ref": "#/definitions/RequestInfo"
+        }
+      },
+      "required": [
+        "guid",
+        "monitor_id",
+        "monitor_environment_id",
+        "status",
+        "status_reason",
+        "trace_id",
+        "scheduled_check_time",
+        "actual_check_time",
+        "duration_ms",
+        "request_info"
+      ]
     }
-  },
-  "required": [
-    "guid",
-    "monitor_id",
-    "monitor_environment_id",
-    "status",
-    "status_reason",
-    "trace_id",
-    "scheduled_check_time",
-    "actual_check_time",
-    "duration_ms",
-    "request_info"
-  ]
+  }
 }
