@@ -6,35 +6,21 @@
     "CheckStatus": {
       "description": "The status of the check",
       "type": "string",
-      "enum": [
-        "success",
-        "failure",
-        "missed_window"
-      ]
+      "enum": ["success", "failure", "missed_window"]
     },
     "CheckStatusReasonType": {
       "description": "The type of the status reason",
       "type": "string",
-      "enum": [
-        "timeout",
-        "dns_error",
-        "failure"
-      ]
+      "enum": ["timeout", "dns_error", "failure"]
     },
     "RequestType": {
       "description": "The type of HTTP method used for the check",
       "type": "string",
-      "enum": [
-        "HEAD",
-        "GET"
-      ]
+      "enum": ["HEAD", "GET"]
     },
     "CheckStatusReason": {
       "description": "Reason for the status, primairly used for failure",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": ["object", "null"],
       "properties": {
         "type": {
           "$ref": "#/definitions/CheckStatusReasonType"
@@ -44,33 +30,21 @@
           "type": "string"
         }
       },
-      "required": [
-        "type",
-        "description"
-      ]
+      "required": ["type", "description"]
     },
     "RequestInfo": {
       "description": "Additional information about the request made",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": ["object", "null"],
       "properties": {
         "request_type": {
           "$ref": "#/definitions/RequestType"
         },
         "http_status_code": {
           "description": "Status code of the successful check-in",
-          "type": [
-            "number",
-            "null"
-          ]
+          "type": ["number", "null"]
         }
       },
-      "required": [
-        "request_type",
-        "http_status_code"
-      ]
+      "required": ["request_type", "http_status_code"]
     },
     "CheckResult": {
       "type": "object",
@@ -113,10 +87,7 @@
         },
         "duration_ms": {
           "description": "Duration of the check in ms. Will be null when the status is missed_window",
-          "type": [
-            "number",
-            "null"
-          ]
+          "type": ["number", "null"]
         },
         "request_info": {
           "$ref": "#/definitions/RequestInfo"
