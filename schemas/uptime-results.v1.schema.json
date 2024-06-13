@@ -4,23 +4,27 @@
   "$ref": "#/definitions/CheckResult",
   "definitions": {
     "CheckStatus": {
+      "title": "check_status",
       "description": "The status of the check",
       "type": "string",
       "enum": ["success", "failure", "missed_window"]
     },
     "CheckStatusReasonType": {
+      "title": "check_status_reason_type",
       "description": "The type of the status reason",
       "type": "string",
       "enum": ["timeout", "dns_error", "failure"]
     },
     "RequestType": {
+      "title": "request_type",
       "description": "The type of HTTP method used for the check",
       "type": "string",
       "enum": ["HEAD", "GET"]
     },
     "CheckStatusReason": {
+      "title": "check_status_reason",
       "description": "Reason for the status, primairly used for failure",
-      "type": ["object", "null"],
+      "type": "object",
       "properties": {
         "type": {
           "$ref": "#/definitions/CheckStatusReasonType"
@@ -33,8 +37,9 @@
       "required": ["type", "description"]
     },
     "RequestInfo": {
+      "title": "request_info",
       "description": "Additional information about the request made",
-      "type": ["object", "null"],
+      "type": "object",
       "properties": {
         "request_type": {
           "$ref": "#/definitions/RequestType"
@@ -47,8 +52,9 @@
       "required": ["request_type", "http_status_code"]
     },
     "CheckResult": {
-      "type": "object",
+      "title": "check_result",
       "description": "A message containing the result of the uptime check.",
+      "type": "object",
       "additionalProperties": true,
       "properties": {
         "guid": {
@@ -71,7 +77,14 @@
           "$ref": "#/definitions/CheckStatus"
         },
         "status_reason": {
-          "$ref": "#/definitions/CheckStatusReason"
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CheckStatusReason"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "trace_id": {
           "description": "Trace ID associated with the check-in made",
@@ -90,7 +103,14 @@
           "type": ["number", "null"]
         },
         "request_info": {
-          "$ref": "#/definitions/RequestInfo"
+          "oneOf": [
+            {
+              "$ref": "#/definitions/RequestInfo"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
