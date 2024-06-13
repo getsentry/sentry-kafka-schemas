@@ -29,6 +29,7 @@
 /topics/generic-events.yaml                                    @getsentry/owners-snuba @getsentry/issues
 /topics/group-attributes.yaml                                  @getsentry/owners-snuba @getsentry/issues
 /topics/ingest-replay-events.yaml                              @getsentry/owners-snuba @getsentry/replay
+/topics/profiles.yaml                                          @getsentry/owners-snuba @getsentry/profiling
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
