@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.92
+
+### Various fixes & improvements
+
+- fix(uptime): Improve type generation (#306) by @evanpurkhiser
+
 ## 0.1.91
 
 ### Various fixes & improvements
