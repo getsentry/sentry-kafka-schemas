@@ -10,6 +10,7 @@
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
 /topics/ingest-monitors.yaml                                   @getsentry/crons
 /topics/ingest-occurrences.yaml                                @getsentry/issues
+/topics/profiles.yaml                                          @getsentry/profiling
 
 # DLQs for ingest topics
 /topics/ingest-events-dlq.yaml                                 @getsentry/ops
@@ -29,7 +30,6 @@
 /topics/generic-events.yaml                                    @getsentry/owners-snuba @getsentry/issues
 /topics/group-attributes.yaml                                  @getsentry/owners-snuba @getsentry/issues
 /topics/ingest-replay-events.yaml                              @getsentry/owners-snuba @getsentry/replay
-/topics/profiles.yaml                                          @getsentry/owners-snuba @getsentry/profiling
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling

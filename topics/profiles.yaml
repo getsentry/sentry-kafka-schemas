@@ -1,8 +1,8 @@
 pipeline: profiles
-description: TODO - figure out what this topic is for
+description: Profiles data from Relay
 services:
   producers:
-    - getsentry/vroom
+    - getsentry/relay
   consumers:
     - getsentry/sentry
 schemas:
