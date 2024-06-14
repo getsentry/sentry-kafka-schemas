@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.93
+
+### Various fixes & improvements
+
+- fix(uptime): Add `subscription_id` and remove monitor related ids (#308) by @wedamija
+- feat(uptime): Add timeout example (#305) by @evanpurkhiser
+
 ## 0.1.92
 
 ### Various fixes & improvements
