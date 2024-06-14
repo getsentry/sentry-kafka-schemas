@@ -61,17 +61,9 @@
           "description": "Unique identifier of the uptime check",
           "type": "string"
         },
-        "monitor_id": {
-          "description": "The identifier of the uptime monitor",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 18446744073709551615
-        },
-        "monitor_environment_id": {
-          "description": "The identifier of the uptime monitors environment",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 18446744073709551615
+        "subscription_id": {
+          "description": "Identifier of the subscription that this check was run for",
+          "type": "string"
         },
         "status": {
           "$ref": "#/definitions/CheckStatus"
@@ -115,8 +107,7 @@
       },
       "required": [
         "guid",
-        "monitor_id",
-        "monitor_environment_id",
+        "subscription_id",
         "status",
         "status_reason",
         "trace_id",
