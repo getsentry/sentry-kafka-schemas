@@ -7,6 +7,7 @@
     "description": "Check timed out"
   },
   "trace_id": "947efba02dac463b9c1d886a44bafc94",
+  "span_id": "58e84098e63f42e1",
   "scheduled_check_time": 1717614062978,
   "actual_check_time": 1717614068008,
   "duration_ms": 100,
