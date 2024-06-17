@@ -1,0 +1,18 @@
+pipeline: transactions
+description: Transactions data from Relay
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: msgpack
+    resource: ingest-transactions.v1.schema.json
+    examples:
+      - ingest-transactions/1/
+topic_creation_config:
+  compression.type: lz4
+  max.message.bytes: "10000000"
+  retention.ms: "86400000"

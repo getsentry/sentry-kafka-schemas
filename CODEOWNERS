@@ -3,6 +3,7 @@
 
 # Ingest topics
 /topics/ingest-events.yaml                                     @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
+/topics/ingest-transactions.yaml                               @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-attachments.yaml                                @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-metrics.yaml                                    @getsentry/owners-snuba @getsentry/ingest
 /topics/ingest-performance-metrics.yaml                        @getsentry/owners-snuba @getsentry/ingest
