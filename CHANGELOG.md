@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.94
+
+### Various fixes & improvements
+
+- add topic and schema definition for profiles topic (#307) by @lynnagara
+- feat(uptime): Add span_id to check result message (#309) by @evanpurkhiser
+
 ## 0.1.93
 
 ### Various fixes & improvements
