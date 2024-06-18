@@ -1,0 +1,18 @@
+pipeline: profiles
+description: Profiles data from Relay
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: msgpack
+    resource: profiles.v1.schema.json
+    examples:
+      - profiles/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
+  max.message.bytes: "52428800"

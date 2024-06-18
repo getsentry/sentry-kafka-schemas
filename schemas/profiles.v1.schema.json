@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "profile",
+  "description": "profile data from relay",
+  "type": "object",
+  "required": ["type", "organization_id", "project_id", "key_id", "payload"],
+  "additionalProperties": true,
+  "properties": {
+    "type": { "type": "string" },
+    "organization_id": { "type": "integer" },
+    "project_id": { "type": "integer" },
+    "key_id": { "type": "integer" },
+    "received": { "type": "integer" },
+    "payload": {
+      "description": "bytes"
+    }
+  }
+}
