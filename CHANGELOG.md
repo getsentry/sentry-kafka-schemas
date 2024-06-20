@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.95
+
+### Various fixes & improvements
+
+- Update first_release_id field to integer or null (#310) by @snigdhas
+- add topic definition, schema and examples for ingest-transactions (#311) by @lynnagara
+
 ## 0.1.94
 
 ### Various fixes & improvements
