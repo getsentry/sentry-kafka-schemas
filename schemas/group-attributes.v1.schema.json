@@ -25,7 +25,7 @@
           "type": ["integer", "null"]
         },
         "first_release_id": {
-          "$ref": "#/definitions/GroupAttributesSnapshot/UUID"
+          "type": ["integer", "null"]
         },
         "first_seen": {
           "type": "string"
@@ -74,12 +74,7 @@
         "owner_codeowners_user_id",
         "owner_codeowners_team_id",
         "timestamp"
-      ],
-      "UUID": {
-        "type": "string",
-        "minLength": 32,
-        "maxLength": 36
-      }
+      ]
     }
   }
 }
