@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.96
+
+### Various fixes & improvements
+
+- fix event-replacements topic (#312) by @lynnagara
+
 ## 0.1.95
 
 ### Various fixes & improvements
