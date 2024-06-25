@@ -19,11 +19,11 @@
           "description": "UUID of the subscription that this check config represents.",
           "type": "string"
         },
-        "interval": {
+        "interval_seconds": {
           "$ref": "#/definitions/CheckInterval"
         },
-        "timeout": {
-          "description": "The total time we will allow to make the request in seconds.",
+        "timeout_ms": {
+          "description": "The total time we will allow to make the request in milliseconds.",
           "type": "number"
         },
         "url": {
