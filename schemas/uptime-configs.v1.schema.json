@@ -7,14 +7,7 @@
       "title": "check_interval",
       "description": "The interval between each check run in seconds.",
       "type": "number",
-      "enum": [
-        60,
-        300,
-        600,
-        1200,
-        1800,
-        3600
-      ]
+      "enum": [60, 300, 600, 1200, 1800, 3600]
     },
     "CheckConfig": {
       "title": "check_config",
@@ -38,12 +31,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "subscription_id",
-        "interval",
-        "timeout",
-        "url"
-      ]
+      "required": ["subscription_id", "interval", "timeout", "url"]
     }
   }
 }
