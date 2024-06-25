@@ -1,0 +1,28 @@
+pipeline: uptime
+description: |
+  Uptime subscription configuration storage. This is a unique use of kafka in
+  that the log offset will never be moved forward by the consumer, and messages
+  are effectively stored forever (until a tombstones with the same key is
+  produced). The topic uses "log compaction" (as configured by the
+  cleanup.policy) to discard old messages with the same key.
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/uptime-checker
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: msgpack
+    resource: uptime-configs.v1.schema.json
+    examples:
+      - uptime-configs/1/
+topic_creation_config:
+  compression.type: lz4
+  message.timestamp.type: LogAppendTime
+  # Enable log compaction to ensure old configurations are cleaned up
+  cleanup.policy: "compact"
+  # Tombestones are retained for a month
+  delete.retention.ms: "2629800000"
+  # Configurations are never dropped
+  retention.ms: "-1"
