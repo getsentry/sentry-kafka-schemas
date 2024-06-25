@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.97
+
+### Various fixes & improvements
+
+- feat(uptime): Add uptime-results topic (#313) by @evanpurkhiser
+- test: Allow -1 retention when cleanup.policy: compact (#314) by @evanpurkhiser
+
 ## 0.1.96
 
 ### Various fixes & improvements
