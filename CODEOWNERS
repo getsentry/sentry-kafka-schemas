@@ -68,6 +68,7 @@
 
 # Topics related to uptime
 /topics/uptime-results.yaml                                    @getsentry/crons
+/topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
@@ -81,6 +82,7 @@
 /schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
 /schemas/monitors-clock-tasks.v1.schema.json                   @getsentry/crons
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
+/schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 
 # Examples
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
@@ -98,6 +100,7 @@
 /examples/monitors-clock-tick/                                 @getsentry/crons
 /examples/monitors-clock-tasks/                                @getsentry/crons
 /examples/uptime-results/                                      @getsentry/crons
+/examples/uptime-configs/                                      @getsentry/crons
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
