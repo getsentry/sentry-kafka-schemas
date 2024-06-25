@@ -138,8 +138,28 @@ def test_all_topics() -> None:
 
 def test_retention() -> None:
     # All topics at sentry have either 1 day or 7 day retention and this property is mandatory
-    allowed_values = (str(1 * 1000 * 60 * 60 * 24), str(7 * 1000 * 60 * 60 * 24))
+    allowed_values = [
+        str(1 * 1000 * 60 * 60 * 24),  # 1 day
+        str(7 * 1000 * 60 * 60 * 24),  # 7 days
+    ]
 
     for topic_name in list_topics():
         topic = get_topic(topic_name)
-        assert topic["topic_creation_config"]["retention.ms"] in allowed_values
+
+        retention = topic["topic_creation_config"]["retention.ms"]
+        cleanup_policy = topic["topic_creation_config"].get("cleanup.policy")
+
+        # infinite retntion (-1) is allowed only when the cleanup.policy is set
+        # to log compaction mode
+        if cleanup_policy == "compact":
+            allowed = [*allowed_values, "-1"]
+        else:
+            allowed = allowed_values
+
+        # Helpful error message if set to -1 but not using compact mode
+        if retention == "-1" and cleanup_policy != "compact":
+            error = "Cleanup policy should be set to compact when retention is set to -1"
+        else:
+            error = f"Invalid retention for topic {topic_name}: {retention}"
+
+        assert retention in allowed, error
