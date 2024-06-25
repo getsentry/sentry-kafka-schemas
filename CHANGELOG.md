@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.98
+
+### Various fixes & improvements
+
+- fix(uptime): Improve naming of interval = timeout (#316) by @evanpurkhiser
+
 ## 0.1.97
 
 ### Various fixes & improvements
