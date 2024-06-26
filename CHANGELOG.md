@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.99
+
+### Various fixes & improvements
+
+- fix(uptime): Fix required elements of schema to match properties (#317) by @wedamija
+
 ## 0.1.98
 
 ### Various fixes & improvements
