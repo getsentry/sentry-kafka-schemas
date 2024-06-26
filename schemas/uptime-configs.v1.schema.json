@@ -31,7 +31,7 @@
           "type": "string"
         }
       },
-      "required": ["subscription_id", "interval", "timeout", "url"]
+      "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"]
     }
   }
 }
