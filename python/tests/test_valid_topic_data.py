@@ -163,3 +163,24 @@ def test_retention() -> None:
             error = f"Invalid retention for topic {topic_name}: {retention}"
 
         assert retention in allowed, error
+
+
+def test_dlq_configuration() -> None:
+    # This file does not match the naming convention
+    custom_dlq_mapping = {
+        "ingest-generic-metrics-dlq": "ingest-performance-metrics"
+    }
+
+    topics_dir = _TOPICS
+    for filename in topics_dir.iterdir():
+        if filename.stem.endswith("-dlq"):
+            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[:-4])
+            with open(filename) as dlq_file, open(f"{filename.parent}/{main_topic_name}.yaml") as main_topic_file:
+                dlq_topic_data = safe_load(dlq_file)
+                main_topic_data = safe_load(main_topic_file)
+
+                # max.message.bytes matches
+                assert dlq_topic_data["topic_creation_config"].get("max.message.bytes") == main_topic_data["topic_creation_config"].get("max.message.bytes")
+
+                # DLQ has 7 day retention
+                assert dlq_topic_data["topic_creation_config"]["retention.ms"] == str(7 * 1000 * 60 * 60 * 24)
