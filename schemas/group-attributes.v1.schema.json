@@ -24,7 +24,7 @@
         "priority": {
           "type": ["integer", "null"]
         },
-        "first_release_id": {
+        "first_release": {
           "type": ["integer", "null"]
         },
         "first_seen": {
