@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.100
+
+### Various fixes & improvements
+
+- ensure dlq topics have the same message size as their underlying topics (#319) by @lynnagara
+- Update name for field to match new column name (#318) by @snigdhas
+
 ## 0.1.99
 
 ### Various fixes & improvements
