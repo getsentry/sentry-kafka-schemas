@@ -176,12 +176,15 @@ def test_dlq_configuration() -> None:
     }
 
     topics_dir = _TOPICS
-    for filename in topics_dir.iterdir():
-        if filename.stem.endswith("-dlq"):
-            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[:-4])
+    dlq_suffix = "-dlq"
+    snuba_dlq_prefix = "snuba-dead-letter-"
 
-        elif filename.stem.startswith("snuba-dead-letter-"):
-            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[18:])
+    for filename in topics_dir.iterdir():
+        if filename.stem.endswith(dlq_suffix):
+            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[:-len(dlq_suffix)])
+
+        elif filename.stem.startswith(snuba_dlq_prefix):
+            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[len(snuba_dlq_prefix):])
         else:
             continue
 
