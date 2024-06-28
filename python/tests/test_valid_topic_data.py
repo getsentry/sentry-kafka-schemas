@@ -186,12 +186,19 @@ def test_dlq_configuration() -> None:
         else:
             continue
 
-        with open(filename) as dlq_file, open(f"{filename.parent}/{main_topic_name}.yaml") as main_topic_file:
+        with (
+            open(filename) as dlq_file,
+            open(f"{filename.parent}/{main_topic_name}.yaml") as main_topic_file,
+        ):
             dlq_topic_data = safe_load(dlq_file)
             main_topic_data = safe_load(main_topic_file)
 
             # max.message.bytes matches
-            assert dlq_topic_data["topic_creation_config"].get("max.message.bytes") == main_topic_data["topic_creation_config"].get("max.message.bytes")
+            assert dlq_topic_data["topic_creation_config"].get(
+                "max.message.bytes"
+            ) == main_topic_data["topic_creation_config"].get("max.message.bytes")
 
             # DLQ has 7 day retention
-            assert dlq_topic_data["topic_creation_config"]["retention.ms"] == str(7 * 1000 * 60 * 60 * 24)
+            assert dlq_topic_data["topic_creation_config"]["retention.ms"] == str(
+                7 * 1000 * 60 * 60 * 24
+            )
