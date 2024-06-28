@@ -166,8 +166,7 @@ def test_retention() -> None:
 
 
 def test_dlq_configuration() -> None:
-    # This file does not match the naming convention
-
+    # These topics do not match the naming conventions
     custom_dlq_mapping = {
         "ingest-generic-metrics-dlq": "ingest-performance-metrics",
         "snuba-dead-letter-replays": "ingest-replay-events",
