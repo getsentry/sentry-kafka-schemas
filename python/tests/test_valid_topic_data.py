@@ -181,10 +181,14 @@ def test_dlq_configuration() -> None:
 
     for filename in topics_dir.iterdir():
         if filename.stem.endswith(dlq_suffix):
-            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[:-len(dlq_suffix)])
+            main_topic_name = custom_dlq_mapping.get(
+                filename.stem, filename.stem[: -len(dlq_suffix)]
+            )
 
         elif filename.stem.startswith(snuba_dlq_prefix):
-            main_topic_name = custom_dlq_mapping.get(filename.stem, filename.stem[len(snuba_dlq_prefix):])
+            main_topic_name = custom_dlq_mapping.get(
+                filename.stem, filename.stem[len(snuba_dlq_prefix) :]
+            )
         else:
             continue
 
