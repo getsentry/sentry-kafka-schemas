@@ -163,3 +163,48 @@ def test_retention() -> None:
             error = f"Invalid retention for topic {topic_name}: {retention}"
 
         assert retention in allowed, error
+
+
+def test_dlq_configuration() -> None:
+    # These topics do not match the naming conventions
+    custom_dlq_mapping = {
+        "ingest-generic-metrics-dlq": "ingest-performance-metrics",
+        "snuba-dead-letter-replays": "ingest-replay-events",
+        "snuba-dead-letter-metrics": "snuba-metrics",
+        "snuba-dead-letter-querylog": "snuba-queries",
+        "snuba-dead-letter-generic-metrics": "snuba-generic-metrics",
+    }
+
+    topics_dir = _TOPICS
+    dlq_suffix = "-dlq"
+    snuba_dlq_prefix = "snuba-dead-letter-"
+
+    for filename in topics_dir.iterdir():
+        if filename.stem.endswith(dlq_suffix):
+            main_topic_name = custom_dlq_mapping.get(
+                filename.stem, filename.stem[: -len(dlq_suffix)]
+            )
+
+        elif filename.stem.startswith(snuba_dlq_prefix):
+            main_topic_name = custom_dlq_mapping.get(
+                filename.stem, filename.stem[len(snuba_dlq_prefix) :]
+            )
+        else:
+            continue
+
+        with (
+            open(filename) as dlq_file,
+            open(f"{filename.parent}/{main_topic_name}.yaml") as main_topic_file,
+        ):
+            dlq_topic_data = safe_load(dlq_file)
+            main_topic_data = safe_load(main_topic_file)
+
+            # max.message.bytes matches
+            assert dlq_topic_data["topic_creation_config"].get(
+                "max.message.bytes"
+            ) == main_topic_data["topic_creation_config"].get("max.message.bytes")
+
+            # DLQ has 7 day retention
+            assert dlq_topic_data["topic_creation_config"]["retention.ms"] == str(
+                7 * 1000 * 60 * 60 * 24
+            )
