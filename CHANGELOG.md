@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.101
+
+### Various fixes & improvements
+
+- ref(uptime): Add `_ms` suffix to timestamps (#320) by @evanpurkhiser
+
 ## 0.1.100
 
 ### Various fixes & improvements
