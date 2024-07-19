@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.102
+
+### Various fixes & improvements
+
+- chore(billing): Add DLQ schemas (#321) by @dashed
+
 ## 0.1.101
 
 ### Various fixes & improvements
