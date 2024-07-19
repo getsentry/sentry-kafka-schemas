@@ -25,7 +25,9 @@
 /topics/events.yaml                                            @getsentry/owners-snuba
 /topics/transactions.yaml                                      @getsentry/owners-snuba
 /topics/outcomes.yaml                                          @getsentry/owners-snuba
-/topics/outcomes-billing.yaml                                  @getsentry/owners-snuba
+/topics/outcomes-dlq.yaml                                      @getsentry/owners-snuba
+/topics/outcomes-billing.yaml                                  @getsentry/owners-snuba @getsentry/revenue
+/topics/outcomes-billing-dlq.yaml                                  @getsentry/owners-snuba @getsentry/revenue
 /topics/snuba-metrics.yaml                                     @getsentry/owners-snuba
 /topics/snuba-generic-metrics.yaml                             @getsentry/owners-snuba
 /topics/generic-events.yaml                                    @getsentry/owners-snuba @getsentry/issues
