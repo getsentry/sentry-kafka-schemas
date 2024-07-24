@@ -107,6 +107,8 @@
         "retention_days",
         "span_id",
         "start_timestamp_ms",
+        "start_timestamp_precise",
+        "end_timestamp_precise",
         "trace_id"
       ]
     },
