@@ -103,6 +103,7 @@
         "exclusive_time_ms",
         "is_segment",
         "project_id",
+        "organization_id",
         "received",
         "retention_days",
         "span_id",
