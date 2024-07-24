@@ -57,6 +57,7 @@
     }
   },
   "required": [
+    "count",
     "duration_ms",
     "end_timestamp",
     "group",
@@ -68,11 +69,6 @@
     "segment_id",
     "span_id",
     "trace_id"
-  ],
-  "anyOf": [
-    { "required": ["max"] },
-    { "required": ["min"] },
-    { "required": ["sum"] }
   ],
   "definitions": {
     "UUID": {
