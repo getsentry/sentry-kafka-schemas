@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.103
+
+### Various fixes & improvements
+
+- fix(metrics_summaries): Accept metrics summaries with only count (#322) by @phacops
+
 ## 0.1.102
 
 ### Various fixes & improvements
