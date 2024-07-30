@@ -135,6 +135,9 @@
         "retention_days": {
           "type": "integer"
         },
+        "sample_rate": {
+          "type": "number"
+        },
         "mapping_meta": {
           "$ref": "#/definitions/MappingMeta"
         },
