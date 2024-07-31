@@ -91,6 +91,9 @@
         "measurements": {
           "$ref": "#/definitions/Measurements"
         },
+        "data": {
+          "$ref": "#/definitions/Data"
+        },
         "_metrics_summary": {
           "type": "object",
           "additionalProperties": {
@@ -191,6 +194,9 @@
       "additionalProperties": {
         "$ref": "#/definitions/MeasurementValue"
       }
+    },
+    "Data": {
+      "type": "object"
     },
     "MeasurementValue": {
       "type": "object",
