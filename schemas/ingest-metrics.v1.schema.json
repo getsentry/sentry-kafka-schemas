@@ -149,6 +149,12 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 18446744073709551615
+        },
+        "sample_rate": {
+          "description": "The sample rate of the metric bucket. This is a float between 0 and 1.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
         }
       },
       "required": [
