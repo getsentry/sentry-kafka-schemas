@@ -91,6 +91,9 @@
         "measurements": {
           "$ref": "#/definitions/Measurements"
         },
+        "data": {
+          "$ref": "#/definitions/Data"
+        },
         "_metrics_summary": {
           "type": "object",
           "additionalProperties": {
@@ -103,10 +106,13 @@
         "exclusive_time_ms",
         "is_segment",
         "project_id",
+        "organization_id",
         "received",
         "retention_days",
         "span_id",
         "start_timestamp_ms",
+        "start_timestamp_precise",
+        "end_timestamp_precise",
         "trace_id"
       ]
     },
@@ -188,6 +194,9 @@
       "additionalProperties": {
         "$ref": "#/definitions/MeasurementValue"
       }
+    },
+    "Data": {
+      "type": "object"
     },
     "MeasurementValue": {
       "type": "object",
