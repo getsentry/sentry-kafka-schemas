@@ -140,6 +140,9 @@
         },
         "aggregation_option": {
           "type": "string"
+        },
+        "sample_weight": {
+          "type": "integer"
         }
       },
       "required": [
