@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.104
+
+### Various fixes & improvements
+
+- add sampling to metrics schema (#325) by @john-z-yang
+- Add start_timestamp_precise, end_timestamp_precise, and organization_id as required span attrs (#323) by @colin-sentry
+
 ## 0.1.103
 
 ### Various fixes & improvements
