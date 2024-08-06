@@ -151,7 +151,9 @@
           "maximum": 18446744073709551615
         },
         "sample_weight": {
-          "type": "integer"
+          "type": "number",
+          "minimum": 1,
+          "maximum": 18446744073709551615
         }
       },
       "required": [
