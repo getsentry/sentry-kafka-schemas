@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.105
+
+### Various fixes & improvements
+
+- fix(generic-metrics): Use floating point as sample weight (#326) by @john-z-yang
+
 ## 0.1.104
 
 ### Various fixes & improvements
