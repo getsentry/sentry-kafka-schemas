@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.106
+
+### Various fixes & improvements
+
+- ref(generic-metrics): Rename sample_weigth to sampling_weight (#327) by @john-z-yang
+
 ## 0.1.105
 
 ### Various fixes & improvements
