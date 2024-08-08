@@ -141,7 +141,7 @@
         "aggregation_option": {
           "type": "string"
         },
-        "sample_weight": {
+        "sampling_weight": {
           "type": "number",
           "minimum": 1,
           "maximum": 18446744073709551615
