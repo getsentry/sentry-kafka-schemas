@@ -9,6 +9,6 @@
     "format": "zstd",
     "data": "KLUv/QBYrQAAcAAA8D8AQAAAAAAAAAhAAgBgRgCw"
   },
-  "sample_weight": 100,
+  "sampling_weight": 100.0,
   "timestamp": 666666666666
 }
