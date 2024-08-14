@@ -115,6 +115,7 @@
         "status",
         "status_reason",
         "trace_id",
+        "span_id",
         "scheduled_check_time_ms",
         "actual_check_time_ms",
         "duration_ms",
