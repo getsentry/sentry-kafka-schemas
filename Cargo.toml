@@ -32,14 +32,13 @@ required-features = ["type_generation"]
 
 [features]
 default = ["type_generation"]
-type_generation = ["prettyplease", "schemars", "syn", "typify", "regress"]
+type_generation = ["prettyplease", "schemars", "syn", "typify"]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_yaml = "0.9"
-regress = { version = "0.5.0", optional = true }   # required by generated code
-jsonschema = "0.17.1"
+jsonschema = { version = "0.18.1", default-features = false }
 thiserror = "1.0.49"
 
 # redeclare all build-dependencies here so that the build.rs can be used
@@ -55,5 +54,3 @@ schemars = { version = "0.8.0", optional = true }
 serde_json = "1.0"
 syn = { version = "2.0.11", optional = true }
 typify = { version = "0.0.16", optional = true }
-jsonschema = "0.17.1"
-thiserror = "1.0.49"
