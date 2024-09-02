@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.107
+
+### Various fixes & improvements
+
+- build: Streamline dependencies (#329) by @jan-auer
+- fix(uptime): Require span_id (#328) by @evanpurkhiser
+
 ## 0.1.106
 
 ### Various fixes & improvements
