@@ -33,15 +33,7 @@
         "request_method": {
           "description": "The HTTP method to use for the request.",
           "type": "string",
-          "enum": [
-            "GET",
-            "POST",
-            "HEAD",
-            "PUT",
-            "DELETE",
-            "PATCH",
-            "OPTIONS"
-          ]
+          "enum": ["GET", "POST", "HEAD", "PUT", "DELETE", "PATCH", "OPTIONS"]
         },
         "request_headers": {
           "description": "Additional HTTP headers to send with the request",
