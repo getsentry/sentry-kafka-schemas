@@ -1,0 +1,18 @@
+description: Mutations updates for spans
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-eap-mutations.v1.schema.json
+    examples:
+      - snuba-eap-mutations/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
+  max.message.bytes: "10000000"
+  message.timestamp.type: LogAppendTime
