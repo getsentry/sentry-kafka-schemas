@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.109
+
+### Various fixes & improvements
+
+- chore(github): Bump `upload-artifact` to v4 (#332) by @wedamija
+- feat(uptime): Add request{method,headers,body} fields (#330) by @evanpurkhiser
+- ref(uptime): Allow additional methods in `rquest_type` (#331) by @evanpurkhiser
+
 ## 0.1.107
 
 ### Various fixes & improvements
