@@ -1,16 +1,16 @@
 {
-    "filter": {
-        "organization_id": 1500,
-        "_sort_timestamp": 150,
-        "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
-        "span_id": 1600
+  "filter": {
+    "organization_id": 1500,
+    "_sort_timestamp": 150,
+    "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
+    "span_id": 1600
+  },
+  "update": {
+    "attr_str": {
+      "a": "b"
     },
-    "update": {
-        "attr_str": {
-            "a": "b"
-        },
-        "attr_num": {
-            "c": 147174124.3
-        }
+    "attr_num": {
+      "c": 147174124.3
     }
+  }
 }
