@@ -19,7 +19,7 @@
       "title": "request_type",
       "description": "The type of HTTP method used for the check",
       "type": "string",
-      "enum": ["HEAD", "GET"]
+      "enum": ["GET", "POST", "HEAD", "PUT", "DELETE", "PATCH", "OPTIONS"]
     },
     "CheckStatusReason": {
       "title": "check_status_reason",
