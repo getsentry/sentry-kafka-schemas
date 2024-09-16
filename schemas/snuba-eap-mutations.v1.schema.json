@@ -1,50 +1,50 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$ref": "#/definitions/Main",
-    "definitions": {
-        "Main": {
-            "PrimaryKey": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "organization_id": {
-                        "type": "integer"
-                    },
-                    "_sort_timestamp": {
-                        "type": "integer"
-                    },
-                    "trace_id": {
-                        "$ref": "#/definitions/UUID",
-                        "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
-                    },
-                    "span_id": {
-                        "type": "integer"
-                    }
-                }
-            },
-            "Update": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "attr_str": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "attr_num": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "number"
-                        }
-                    }
-                }
-            }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Main",
+  "definitions": {
+    "Main": {
+      "PrimaryKey": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "organization_id": {
+            "type": "integer"
+          },
+          "_sort_timestamp": {
+            "type": "integer"
+          },
+          "trace_id": {
+            "$ref": "#/definitions/UUID",
+            "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
+          },
+          "span_id": {
+            "type": "integer"
+          }
         }
-    },
-    "UUID": {
-        "type": "string",
-        "minLength": 32,
-        "maxLength": 36
+      },
+      "Update": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "attr_str": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "attr_num": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      }
     }
+  },
+  "UUID": {
+    "type": "string",
+    "minLength": 32,
+    "maxLength": 36
+  }
 }
