@@ -29,6 +29,22 @@
         "url": {
           "description": "The actual HTTP URL to check.",
           "type": "string"
+        },
+        "request_method": {
+          "description": "The HTTP method to use for the request.",
+          "type": "string",
+          "enum": ["GET", "POST", "HEAD", "PUT", "DELETE", "PATCH", "OPTIONS"]
+        },
+        "request_headers": {
+          "description": "Additional HTTP headers to send with the request",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "request_body": {
+          "description": "Additional HTTP headers to send with the request",
+          "type": "string"
         }
       },
       "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"]
