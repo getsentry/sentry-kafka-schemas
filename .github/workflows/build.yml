@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: 3.11
       - run: make build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         if: github.event_name != 'pull_request'
         with:
           name: ${{ github.sha }}
