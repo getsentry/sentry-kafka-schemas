@@ -1,9 +1,7 @@
 # Search and storage and infra is the default owner
-
 - @getsentry/owners-snuba @getsentry/ops
 
 # Ingest topics
-
 /topics/ingest-events.yaml @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-transactions.yaml @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-attachments.yaml @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
@@ -16,7 +14,6 @@
 /topics/profiles.yaml @getsentry/profiling
 
 # DLQs for ingest topics
-
 /topics/ingest-events-dlq.yaml @getsentry/ops
 /topics/ingest-transactions-dlq.yaml @getsentry/ops
 /topics/ingest-attachments-dlq.yaml @getsentry/ops
@@ -25,7 +22,6 @@
 /topics/ingest-feedback-events-dlq.yaml @getsentry/owners-snuba @getsentry/replay
 
 # Topics consumed by Snuba
-
 /topics/events.yaml @getsentry/owners-snuba
 /topics/transactions.yaml @getsentry/owners-snuba
 /topics/outcomes.yaml @getsentry/owners-snuba
@@ -45,12 +41,10 @@
 /topics/snuba-eap-mutations.yaml @getsentry/owners-snuba
 
 # Topics produced by Sentry
-
 /topics/buffered-segments.yaml @getsentry/owners-snuba @getsentry/performance
 /topics/buffered-segments-dlq.yaml @getsentry/owners-snuba @getsentry/performance
 
 # DLQs for Snuba topics
-
 /topics/snuba-dead-letter-metrics.yaml @getsentry/owners-snuba
 /topics/snuba-dead-letter-generic-metrics.yaml @getsentry/owners-snuba
 /topics/snuba-dead-letter-querylog.yaml @getsentry/owners-snuba
@@ -59,7 +53,6 @@
 /topics/snuba-dead-letter-generic-events.yaml @getsentry/owners-snuba @getsentry/issues
 
 # Commit log topics produced by Snuba
-
 /topics/snuba-commit-log.yaml @getsentry/owners-snuba
 /topics/snuba-transactions-commit-log.yaml @getsentry/owners-snuba
 /topics/snuba-metrics-commit-log.yaml @getsentry/owners-snuba
@@ -70,21 +63,17 @@
 /topics/snuba-generic-events-commit-log.yaml @getsentry/owners-snuba @getsentry/issues
 
 # Topics produced to by Snuba and Sentry
-
 /topics/shared-resources-usage.yaml @getsentry/owners-snuba @getsentry/data
 
 # Topics related to cron monitor tasks
-
 /topics/monitors-clock-tick.yaml @getsentry/crons
 /topics/monitors-clock-tasks.yaml @getsentry/crons
 
 # Topics related to uptime
-
 /topics/uptime-results.yaml @getsentry/crons
 /topics/uptime-configs.yaml @getsentry/crons
 
 # Schemas
-
 /schemas/profile-metadata.v1.schema.json @getsentry/profiling
 /schemas/profile-functions.v1.schema.json @getsentry/profiling
 /schemas/snuba-metrics-summaries.v1.schema.json @getsentry/profiling
@@ -99,7 +88,6 @@
 /schemas/uptime-configs.v1.schema.json @getsentry/crons
 
 # Examples
-
 /examples/group-attributes/ @getsentry/owners-snuba @getsentry/issues
 /examples/group-attributes/ @getsentry/owners-snuba @getsentry/issues
 /examples/profile-metadata/ @getsentry/profiling
@@ -118,12 +106,10 @@
 /examples/uptime-configs/ @getsentry/crons
 
 # Internal Snuba topics
-
 /topics/snuba-queries.yaml @getsentry/owners-snuba
 /topics/event-replacements.yaml @getsentry/owners-snuba
 
 # Scheduled subscription topics
-
 /topics/scheduled-subscriptions-events.yaml @getsentry/owners-snuba
 /topics/scheduled-subscriptions-transactions.yaml @getsentry/owners-snuba
 /topics/scheduled-subscriptions-metrics.yaml @getsentry/owners-snuba
@@ -133,7 +119,6 @@
 /topics/scheduled-subscriptions-generic-metrics-gauges.yaml @getsentry/owners-snuba
 
 # Subscription results published by Snuba for Sentry's result consumer
-
 /topics/events-subscription-results.yaml @getsentry/owners-snuba @getsentry/issues
 /topics/transactions-subscription-results.yaml @getsentry/owners-snuba @getsentry/issues
 /topics/metrics-subscription-results.yaml @getsentry/owners-snuba @getsentry/issues
