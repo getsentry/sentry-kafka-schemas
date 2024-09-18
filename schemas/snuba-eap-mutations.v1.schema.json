@@ -11,17 +11,18 @@
           "additionalProperties": false,
           "properties": {
             "organization_id": {
-              "type": "integer"
+              "$ref": "#/definitions/UInt"
             },
             "_sort_timestamp": {
-              "type": "integer"
+              "$ref": "#/definitions/UInt"
             },
             "trace_id": {
               "$ref": "#/definitions/UUID",
               "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
             },
             "span_id": {
-              "type": "integer"
+              "type": "string",
+              "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
             }
           }
         },
@@ -45,6 +46,10 @@
         }
       },
       "additionalProperties": false
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
     },
     "UUID": {
       "type": "string",

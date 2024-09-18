@@ -3,7 +3,7 @@
     "organization_id": 1500,
     "_sort_timestamp": 150,
     "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
-    "span_id": 1600
+    "span_id": "deadbeefdeadbeef"
   },
   "update": {
     "attr_str": {
