@@ -38,6 +38,7 @@
 /topics/snuba-metrics-summaries.yaml                           @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/performance
+/topics/snuba-eap-mutations.yaml                               @getsentry/owners-snuba
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
