@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.110
+
+### Various fixes & improvements
+
+- feat(eap): Add EAP mutations topic (#333) by @ayirr7
+
 ## 0.1.109
 
 ### Various fixes & improvements
