@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.111
+
+### Various fixes & improvements
+
+- ref(uptime): Switch request_headers to a array of tuples (#334) by @evanpurkhiser
+
 ## 0.1.110
 
 ### Various fixes & improvements
