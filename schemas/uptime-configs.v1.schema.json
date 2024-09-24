@@ -9,6 +9,21 @@
       "type": "number",
       "enum": [60, 300, 600, 1200, 1800, 3600]
     },
+    "RequestHeader": {
+      "title": "request_header",
+      "description": "An individual header, consisting of a name and value as a tuple.",
+      "type": "array",
+      "prefixItems": [
+        {
+          "title": "header_name",
+          "type": "string"
+        },
+        {
+          "title": "header_value",
+          "type": "string"
+        }
+      ]
+    },
     "CheckConfig": {
       "title": "check_config",
       "description": "A message containing the configuration for a check to scheduled and executed by the uptime-checker.",
@@ -37,9 +52,9 @@
         },
         "request_headers": {
           "description": "Additional HTTP headers to send with the request",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequestHeader"
           }
         },
         "request_body": {
