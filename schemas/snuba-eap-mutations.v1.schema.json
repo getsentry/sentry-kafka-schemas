@@ -13,7 +13,7 @@
             "organization_id": {
               "$ref": "#/definitions/UInt"
             },
-            "_sort_timestamp": {
+            "start_timestamp_ms": {
               "$ref": "#/definitions/UInt"
             },
             "trace_id": {
