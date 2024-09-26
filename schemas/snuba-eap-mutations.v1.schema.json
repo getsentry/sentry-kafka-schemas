@@ -13,8 +13,9 @@
             "organization_id": {
               "$ref": "#/definitions/UInt"
             },
-            "start_timestamp_ms": {
-              "$ref": "#/definitions/UInt"
+            "start_timestamp": {
+              "description": "Corresponds to start_timestamp_precise in snuba-spans schema",
+              "$ref": "#/definitions/PositiveFloat"
             },
             "trace_id": {
               "$ref": "#/definitions/UUID",
@@ -49,6 +50,10 @@
     },
     "UInt": {
       "type": "integer",
+      "minimum": 0
+    },
+    "PositiveFloat": {
+      "type": "number",
       "minimum": 0
     },
     "UUID": {
