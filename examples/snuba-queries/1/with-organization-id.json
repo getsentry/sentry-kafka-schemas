@@ -64,6 +64,7 @@
       },
       "result_profile": {
         "bytes": 1305,
+        "progress_bytes": 0,
         "blocks": 1,
         "rows": 22,
         "elapsed": 0.009863138198852539
