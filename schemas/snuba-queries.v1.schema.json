@@ -175,6 +175,10 @@
               "type": "integer",
               "minimum": 0
             },
+            "progress_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
             "elapsed": {
               "type": "number"
             }

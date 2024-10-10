@@ -61,6 +61,7 @@
 /topics/snuba-generic-metrics-counters-commit-log.yaml         @getsentry/owners-snuba
 /topics/snuba-generic-metrics-gauges-commit-log.yaml           @getsentry/owners-snuba
 /topics/snuba-generic-events-commit-log.yaml                   @getsentry/owners-snuba @getsentry/issues
+/topics/snuba-eap-spans-commit-log.yaml                        @getsentry/owners-snuba
 
 # Topics produced to by Snuba and Sentry
 /topics/shared-resources-usage.yaml                            @getsentry/owners-snuba @getsentry/data
@@ -117,6 +118,7 @@
 /topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-gauges.yaml         @getsentry/owners-snuba
+/topics/scheduled-subscriptions-eap-spans.yaml                      @getsentry/owners-snuba @getsentry/performance
 
 # Subscription results published by Snuba for Sentry's result consumer
 /topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
@@ -125,3 +127,4 @@
 /topics/generic-metrics-subscription-results.yaml                   @getsentry/owners-snuba @getsentry/issues
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
 /examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
+/topics/eap-spans-subscription-results.yaml                         @getsentry/owners-snuba @getsentry/issues @getsentry/performance

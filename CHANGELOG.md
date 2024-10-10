@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 0.1.113
+
+### Various fixes & improvements
+
+- Add topic configurations required for EAP alerts (#337) by @shruthilayaj
+
+## 0.1.112
+
+### Various fixes & improvements
+
+- c (#336) by @xurui-c
+
 ## 0.1.111
 
 ### Various fixes & improvements
