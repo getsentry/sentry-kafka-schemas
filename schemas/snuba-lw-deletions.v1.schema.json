@@ -15,7 +15,9 @@
     },
     "tenant_ids": {
       "type": "object",
-      "anyOf": [{ "type": "string" }, { "type": "integer", "minimum": 1 }]
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "type": "integer", "minimum": 1 }]
+      }
     }
   },
   "required": ["storage_name", "rows_to_delete", "conditions"],
