@@ -7,7 +7,7 @@
       "type": "object",
       "title": "clock_tick",
       "description": "A message indicating that the ingest-monitor consumer has processed check-ins past the specified minute-bound timestamp.",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "ts": {
           "description": "The timestamp the clock ticked at.",
