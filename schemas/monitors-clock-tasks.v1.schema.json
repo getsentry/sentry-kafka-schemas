@@ -18,7 +18,7 @@
       "properties": {
         "type": {
           "description": "Discriminant marker identifying the task.",
-          "const": "mark_timeout"
+          "enum": ["mark_timeout"]
         },
         "ts": {
           "description": "The timestamp the clock ticked at.",
@@ -43,7 +43,7 @@
       "properties": {
         "type": {
           "description": "Discriminant marker identifying the task.",
-          "const": "mark_missing"
+          "enum": ["mark_missing"]
         },
         "ts": {
           "description": "The timestamp the clock ticked at.",
