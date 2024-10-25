@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 0.1.114
+
+### Various fixes & improvements
+
+- feat(crons): Add mark_unknown clock task (#340) by @evanpurkhiser
+- feat(crons): Add `volume_anomaly_result` to mark_missing task (#341) by @evanpurkhiser
+- fix(crons): Switch to `enum` as a shape Discriminator in clock tasks (#342) by @evanpurkhiser
+- feat(crons): Add "volume_anomaly_result" result to clock-tick (#339) by @evanpurkhiser
+
 ## 0.1.113
 
 ### Various fixes & improvements
