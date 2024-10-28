@@ -1,0 +1,13 @@
+{
+  "storage_name": "search_issues",
+  "rows_to_delete": 1000,
+  "conditions": {
+    "project_id": [1],
+    "group_id": [2222222, 3333333, 4444444]
+  },
+  "tenant_ids": {
+    "project_id": 1,
+    "organization_id": 1,
+    "referrer": "some_referrer"
+  }
+}

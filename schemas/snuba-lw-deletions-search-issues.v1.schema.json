@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "lw_delete_search_issues",
+  "type": "object",
+  "properties": {
+    "storage_name": {
+      "type": "string"
+    },
+    "rows_to_delete": {
+      "type": "integer"
+    },
+    "conditions": {
+      "type": "object",
+      "properties": {
+        "project_id": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "group_id": {
+          "type": "array",
+          "items": { "type": "integer" }
+        }
+      }
+    },
+    "tenant_ids": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "type": "integer", "minimum": 1 }]
+      }
+    }
+  },
+  "required": ["storage_name", "rows_to_delete", "conditions", "tenant_ids"]
+}
