@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.115
+
+### Various fixes & improvements
+
+- ref(snuba-bulk-deletes): add snuba-lw-deletions topic/schema (#338) by @MeredithAnya
+
 ## 0.1.114
 
 ### Various fixes & improvements
