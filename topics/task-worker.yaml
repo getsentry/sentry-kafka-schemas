@@ -22,4 +22,3 @@ topic_creation_config:
   delete.retention.ms: "2629800000"
   # Configurations are never dropped
   retention.ms: "-1"
-
