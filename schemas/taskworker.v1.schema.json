@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "RetryState": {
+      "title": "retry_state",
+      "description": "state from the task retry policy",
+      "type": "object",
+      "properties": {
+        "attempts": {
+          "description": "The number of attempts so far",
+          "type": "integer"
+        },
+        "kind": {
+          "description": "The kind of retry being done",
+          "type": "string"
+        },
+        "discard_after_attempt": {
+          "description": "The number of attempts after which a task is discarded",
+          "type": ["number", "null"]
+        },
+        "deadletter_after_attempt": {
+          "description": "The number of attempts after which a task is deadlettered",
+          "type": ["number", "null"]
+        }
+      },
+      "required": ["attempts", "kind"]
+    },
+    "TaskActivation": {
+      "description": "a single task activation",
+      "title": "task_activation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A GUID for the task. Used to update tasks",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "The task namespace",
+          "type": "string"
+        },
+        "taskname": {
+          "description": "The name of the task. This name is resolved within the worker",
+          "type": "string"
+        },
+        "parameters": {
+          "description": "An opaque parameter collection. Json serialized",
+          "type": "string"
+        },
+        "headers": {
+          "description": "a map of task headers",
+          "type": "object"
+        },
+        "received_at": {
+          "description": "The timestamp a task was stored in kafka",
+          "type": "number"
+        },
+        "deadline": {
+          "description": "The timestamp after which a task should not be executed",
+          "type": ["number", "null"]
+        },
+        "retry": {
+          "$ref": "#/definitions/RetryState"
+        }
+      },
+      "required": ["id", "namespace", "parameters", "headers", "received_at"]
+    }
+  }
+}

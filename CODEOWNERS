@@ -74,6 +74,8 @@
 /topics/uptime-results.yaml                                    @getsentry/crons
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
+/topics/task-worker.yaml                                       @getsentry/hybrid-cloud
+
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
 /schemas/profile-functions.v1.schema.json                      @getsentry/profiling
