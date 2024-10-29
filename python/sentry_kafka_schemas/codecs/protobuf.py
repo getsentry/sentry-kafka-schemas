@@ -1,6 +1,5 @@
 from typing import TypeVar, cast
 
-
 from google.protobuf.message import Message as ProtoMessage
 from sentry_kafka_schemas.codecs import Codec, ValidationError
 
