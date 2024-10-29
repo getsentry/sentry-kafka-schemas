@@ -3,3 +3,4 @@ PyYAML>=5.4,<7.0
 typing-extensions>=4.0.0
 fastjsonschema>=2.16.2
 msgpack>=1.0.4
+sentry-protos>=0.1.30

@@ -21,13 +21,21 @@ JsonSchema = TypedDict(
     total=False,
 )
 
+ProtobufSchema = TypedDict(
+    "ProtobufSchema",
+    {
+        "resource": str
+    },
+    total=False,
+)
+
 Schema = TypedDict(
     "Schema",
     {
         "version": int,
-        "type": Literal["json", "msgpack"],
+        "type": Literal["json", "msgpack", "protobuf"],
         "compatibility_mode": Union[Literal["none"], Literal["backward"]],
-        "schema": Union[JsonSchema],
+        "schema": Union[JsonSchema, ProtobufSchema],
         "schema_filepath": str,
         "examples": Sequence[str],
     },
@@ -37,7 +45,7 @@ Schema = TypedDict(
 @dataclasses.dataclass(frozen=True)
 class Example:
     path: Path
-    type: Literal["json", "msgpack"]
+    type: Literal["json", "msgpack", "protobuf"]
 
     _examples_basepath: Path
 
@@ -51,3 +59,5 @@ class Example:
                 return rapidjson.load(f)
             elif self.type == "msgpack":
                 return msgpack.unpackb(f.read())
+            elif self.type == "protobuf":
+                return f.read()

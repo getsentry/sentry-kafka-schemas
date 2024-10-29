@@ -18,8 +18,13 @@ _VALID_TITLE_NAMES = re.compile(r"^[a-z][a-z0-9_]+$")
 
 @pytest.mark.parametrize("topic,version", get_all_schemas())
 def test_schemas_valid(topic: str, version: int) -> None:
-    schema = _get_schema(topic, version=version)["schema"]
+    schema_meta = _get_schema(topic, version=version)
 
+    if schema_meta["type"] == "protobuf":
+        assert schema_meta["schema_filepath"]
+        return
+
+    schema = schema_meta["schema"]
     assert schema["$schema"] == "http://json-schema.org/draft-07/schema#"
 
     used_titles = set()
