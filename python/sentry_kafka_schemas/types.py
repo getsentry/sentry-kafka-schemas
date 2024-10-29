@@ -23,9 +23,7 @@ JsonSchema = TypedDict(
 
 ProtobufSchema = TypedDict(
     "ProtobufSchema",
-    {
-        "resource": str
-    },
+    {"resource": str},
     total=False,
 )
 
