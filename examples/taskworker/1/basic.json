@@ -1,0 +1,14 @@
+{
+  "id": "abcdef123",
+  "namespace": "issues",
+  "taskname": "issues.do_thing",
+  "parameters": "{\"args\": [], \"kwargs\": {}}",
+  "headers": {},
+  "received_at": 123456,
+  "deadline": null,
+  "retry": {
+    "attempts": 1,
+    "kind": "sentry.taskworker.retry.Retry",
+    "deadletter_after_attempt": 10
+  }
+}
