@@ -3,10 +3,9 @@ import time
 from pathlib import Path
 from typing import Any, TypedDict
 
+import pytest
 from google.protobuf.message import DecodeError
 from google.protobuf.timestamp_pb2 import Timestamp
-
-import pytest
 from sentry_kafka_schemas.codecs import Codec, ValidationError
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
@@ -50,7 +49,7 @@ def test_protobuf_codec() -> None:
         namespace="tests",
         parameters='{"args":[],"kwargs":{}}',
         headers={},
-        received_at=Timestamp(seconds=int(time.time()))
+        received_at=Timestamp(seconds=int(time.time())),
     )
     codec = ProtobufCodec(resource="sentry_protos.sentry.v1.taskworker_pb2.TaskActivation")
     serialized = codec.encode(activation)
