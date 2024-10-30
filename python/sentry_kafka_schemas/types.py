@@ -1,6 +1,6 @@
 import dataclasses
 from pathlib import Path
-from typing import Any, Literal, Mapping, Sequence, TypeGuard, TypedDict, Union
+from typing import Any, Literal, Mapping, Sequence, TypedDict, TypeGuard, Union
 
 import msgpack
 import rapidjson
