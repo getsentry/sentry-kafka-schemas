@@ -3,7 +3,6 @@ from pathlib import Path
 
 import fastjsonschema
 from sentry_kafka_schemas import get_codec, get_topic, list_topics
-from sentry_kafka_schemas.codecs.protobuf import ProtobufCodec
 from yaml import safe_load
 
 _SCHEMAS = Path(__file__).parents[2].joinpath("schemas/")

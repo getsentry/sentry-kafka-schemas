@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Any, TypedDict
 
 import pytest
-from google.protobuf.message import DecodeError
 from google.protobuf.timestamp_pb2 import Timestamp
 from sentry_kafka_schemas.codecs import Codec, ValidationError
 from sentry_kafka_schemas.codecs.json import JsonCodec
