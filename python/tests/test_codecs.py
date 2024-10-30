@@ -5,7 +5,7 @@ from typing import Any, TypedDict
 
 import pytest
 from google.protobuf.timestamp_pb2 import Timestamp
-from sentry_kafka_schemas.codecs import Codec, ValidationError
+from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
 from sentry_kafka_schemas.codecs.protobuf import ProtobufCodec
