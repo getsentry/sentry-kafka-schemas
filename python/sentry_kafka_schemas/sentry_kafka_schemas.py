@@ -20,7 +20,7 @@ from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
 from sentry_kafka_schemas.codecs.protobuf import ProtobufCodec
-from sentry_kafka_schemas.types import Example, Schema
+from sentry_kafka_schemas.types import Example, Schema, is_protobuf_schema
 from typing_extensions import NotRequired
 from yaml import safe_load
 
@@ -116,15 +116,17 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
             raise SchemaNotFound("Invalid version")
 
     if schema_metadata["type"] == "protobuf":
-        schema: Schema = {
+        proto_schema: Schema = {
             "version": schema_metadata["version"],
             "type": schema_metadata["type"],
             "compatibility_mode": schema_metadata["compatibility_mode"],
-            "schema": {},
+            "schema": {
+                "resource": schema_metadata["resource"],
+            },
             "schema_filepath": schema_metadata["resource"],
             "examples": schema_metadata["examples"],
         }
-        return schema
+        return proto_schema
 
     # Json and Msgpack
     resource_path = Path.joinpath(_SCHEMAS_PATH, schema_metadata["resource"])
@@ -157,12 +159,13 @@ def get_codec(topic: str, version: Optional[int] = None) -> Codec[Any]:
         raise
 
     rv: Codec[Any]
+    schema_data = schema["schema"]
     if schema["type"] == "json":
-        rv = JsonCodec(json_schema=schema["schema"])
+        rv = JsonCodec(json_schema=schema_data)
     elif schema["type"] == "msgpack":
-        rv = MsgpackCodec(json_schema=schema["schema"])
-    elif schema["type"] == "protobuf":
-        rv = ProtobufCodec(resource=schema["schema_filepath"])
+        rv = MsgpackCodec(json_schema=schema_data)
+    elif schema["type"] == "protobuf" and is_protobuf_schema(schema_data):
+        rv = ProtobufCodec(resource=schema_data["resource"])
     else:
         raise ValueError(schema["type"])
     __TOPIC_TO_CODEC[cache_key] = rv

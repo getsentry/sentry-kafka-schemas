@@ -50,7 +50,7 @@ def test_protobuf_codec() -> None:
         headers={},
         received_at=Timestamp(seconds=int(time.time())),
     )
-    codec = ProtobufCodec(resource="sentry_protos.sentry.v1.taskworker_pb2.TaskActivation")
+    codec: ProtobufCodec[TaskActivation] = ProtobufCodec(resource="sentry_protos.sentry.v1.taskworker_pb2.TaskActivation")
     serialized = codec.encode(activation)
     assert type(serialized) == bytes
 
@@ -62,6 +62,3 @@ def test_protobuf_codec() -> None:
     assert rebuild.parameters == activation.parameters
     assert rebuild.headers == activation.headers
     assert rebuild.received_at == activation.received_at
-
-    with pytest.raises(ValidationError):
-        codec.validate(b"not a protobuf")

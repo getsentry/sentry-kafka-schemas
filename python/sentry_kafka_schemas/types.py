@@ -1,6 +1,6 @@
 import dataclasses
 from pathlib import Path
-from typing import Any, Literal, Mapping, Sequence, TypedDict, Union
+from typing import Any, Literal, Mapping, Sequence, TypeGuard, TypedDict, Union
 
 import msgpack
 import rapidjson
@@ -38,6 +38,14 @@ Schema = TypedDict(
         "examples": Sequence[str],
     },
 )
+
+
+def is_json_schema(o: object) -> TypeGuard[JsonSchema]:
+    return isinstance(o, dict) and o.get("$schema") is not None
+
+
+def is_protobuf_schema(o: object) -> TypeGuard[ProtobufSchema]:
+    return isinstance(o, dict) and o.get("resource") is not None
 
 
 @dataclasses.dataclass(frozen=True)

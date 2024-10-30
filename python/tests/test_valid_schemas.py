@@ -3,11 +3,23 @@ from typing import Any, Iterator, Tuple
 
 import pytest
 from sentry_kafka_schemas.sentry_kafka_schemas import _get_schema, get_topic, list_topics
+from sentry_kafka_schemas.types import is_json_schema, is_protobuf_schema
 
 
-def get_all_schemas() -> Iterator[Tuple[str, int]]:
+def get_all_json_schemas() -> Iterator[Tuple[str, int]]:
     for topic in list_topics():
         for schema_raw in get_topic(topic)["schemas"]:
+            if schema_raw["type"] not in ("json", "msgpack"):
+                continue
+            version = schema_raw["version"]
+            yield topic, version
+
+
+def get_all_protobuf_schemas() -> Iterator[Tuple[str, int]]:
+    for topic in list_topics():
+        for schema_raw in get_topic(topic)["schemas"]:
+            if schema_raw["type"] != "protobuf":
+                continue
             version = schema_raw["version"]
             yield topic, version
 
@@ -16,15 +28,24 @@ _VALID_DEFINITION_NAMES = re.compile(r"^[A-Z]([a-zA-Z0-9]+)$")
 _VALID_TITLE_NAMES = re.compile(r"^[a-z][a-z0-9_]+$")
 
 
-@pytest.mark.parametrize("topic,version", get_all_schemas())
-def test_schemas_valid(topic: str, version: int) -> None:
+@pytest.mark.parametrize("topic,version", get_all_protobuf_schemas())
+def test_protobuf_schemas_valid(topic: str, version: int) -> None:
     schema_meta = _get_schema(topic, version=version)
 
-    if schema_meta["type"] == "protobuf":
-        assert schema_meta["schema_filepath"]
-        return
+    assert is_protobuf_schema(schema_meta["schema"])
+    assert schema_meta["type"] == "protobuf"
+    assert schema_meta["schema"]
+    assert schema_meta["schema"]["resource"]
+    assert schema_meta["schema_filepath"]
+
+
+@pytest.mark.parametrize("topic,version", get_all_json_schemas())
+def test_json_schemas_valid(topic: str, version: int) -> None:
+    schema_meta = _get_schema(topic, version=version)
+    assert schema_meta["type"] in {"json", "msgpack"}
 
     schema = schema_meta["schema"]
+    assert is_json_schema(schema)
     assert schema["$schema"] == "http://json-schema.org/draft-07/schema#"
 
     used_titles = set()

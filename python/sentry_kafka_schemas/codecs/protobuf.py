@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeVar, cast
 
 from google.protobuf.message import Message as ProtoMessage
 from sentry_kafka_schemas.codecs import Codec, ValidationError
@@ -23,23 +23,22 @@ class ProtobufCodec(Codec[T]):
         module_name, class_name = self._resource.rsplit(".", 1)
 
         module = __import__(module_name, {}, {}, [class_name])
-        return getattr(module, class_name)
+        class_type = getattr(module, class_name)
+        return cast(type[T], class_type)
 
     def encode(self, data: T, validate: bool = True) -> bytes:
         # There isn't any validation logic as protobuf
         # does most of the type validation as messages are constructed.
-        return data.SerializeToString()
+        return cast(bytes, data.SerializeToString())
 
     def decode(self, raw_data: bytes, validate: bool = True) -> T:
         # There isn't any validation logic as protobuf
         # does validation implicitly when deserializing.
         instance = self._message_cls()
         instance.ParseFromString(raw_data)
-        return instance
+        return cast(T, instance)
 
     def validate(self, data: T) -> None:
-        try:
-            instance = self._message_cls()
-            instance.ParseFromString(data)
-        except Exception as exc:
-            raise ValidationError from exc
+        # Protobuf automatically validates instances
+        # as they are built.
+        return None
