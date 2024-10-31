@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.116
+
+### Various fixes & improvements
+
+- feat: Add taskworker schema (#343) by @markstory
+
 ## 0.1.115
 
 ### Various fixes & improvements
