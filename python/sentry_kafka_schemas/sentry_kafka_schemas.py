@@ -19,7 +19,8 @@ import rapidjson
 from sentry_kafka_schemas.codecs import Codec
 from sentry_kafka_schemas.codecs.json import JsonCodec
 from sentry_kafka_schemas.codecs.msgpack import MsgpackCodec
-from sentry_kafka_schemas.types import Example, Schema
+from sentry_kafka_schemas.codecs.protobuf import ProtobufCodec
+from sentry_kafka_schemas.types import Example, Schema, is_protobuf_schema
 from typing_extensions import NotRequired
 from yaml import safe_load
 
@@ -32,7 +33,7 @@ class SchemaNotFound(Exception):
 
 class TopicSchema(TypedDict):
     version: int
-    type: Literal["json", "msgpack"]
+    type: Literal["json", "msgpack", "protobuf"]
     compatibility_mode: Literal["none", "backward"]
     resource: str
     examples: Sequence[str]
@@ -96,7 +97,7 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
 
     If a matching schema can't be found, raise SchemaNotFound.
 
-    Only JSON schemas are currently supported.
+    JSON schema and protobufs are supported
     """
     topic_data = get_topic(topic)
 
@@ -114,6 +115,20 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
         if schema_metadata is None:
             raise SchemaNotFound("Invalid version")
 
+    if schema_metadata["type"] == "protobuf":
+        proto_schema: Schema = {
+            "version": schema_metadata["version"],
+            "type": schema_metadata["type"],
+            "compatibility_mode": schema_metadata["compatibility_mode"],
+            "schema": {
+                "resource": schema_metadata["resource"],
+            },
+            "schema_filepath": schema_metadata["resource"],
+            "examples": schema_metadata["examples"],
+        }
+        return proto_schema
+
+    # Json and Msgpack
     resource_path = Path.joinpath(_SCHEMAS_PATH, schema_metadata["resource"])
     with open(resource_path) as f:
         json_schema = rapidjson.load(f)
@@ -144,10 +159,13 @@ def get_codec(topic: str, version: Optional[int] = None) -> Codec[Any]:
         raise
 
     rv: Codec[Any]
+    schema_data = schema["schema"]
     if schema["type"] == "json":
-        rv = JsonCodec(json_schema=schema["schema"])
+        rv = JsonCodec(json_schema=schema_data)
     elif schema["type"] == "msgpack":
-        rv = MsgpackCodec(json_schema=schema["schema"])
+        rv = MsgpackCodec(json_schema=schema_data)
+    elif schema["type"] == "protobuf" and is_protobuf_schema(schema_data):
+        rv = ProtobufCodec(resource=schema_data["resource"])
     else:
         raise ValueError(schema["type"])
     __TOPIC_TO_CODEC[cache_key] = rv

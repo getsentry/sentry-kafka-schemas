@@ -19,6 +19,12 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
             version = schema_meta["version"]
             schema_data = sentry_kafka_schemas.sentry_kafka_schemas._get_schema(topic_name, version)
 
+            if schema_data["type"] == "protobuf":
+                print(
+                    f"Skipping generating types for protobuf message {schema_data['schema_filepath']}"
+                )
+                continue
+
             schema_tmp_typename_base = f"{topic_name.replace('-', '_')}_v{version}"
             schema_tmp_module_name = schema_tmp_typename_base.lower()
             if schema_tmp_module_name in already_used_filenames:

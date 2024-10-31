@@ -9,9 +9,8 @@ services:
 schemas:
   - version: 1
     compatibility_mode: none
-    # TODO(mark) protobuf support
-    type: json
-    resource: taskworker.v1.schema.json
+    type: protobuf
+    resource: sentry_protos.sentry.v1.taskworker_pb2.TaskActivation
     examples:
       - taskworker/1/
 topic_creation_config:

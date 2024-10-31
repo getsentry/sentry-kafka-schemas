@@ -33,7 +33,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                 "items": {
                     "properties": {
                         "version": {"type": "integer", "minimum": 1},
-                        "type": {"enum": ["msgpack", "json"]},
+                        "type": {"enum": ["msgpack", "json", "protobuf"]},
                         "compatibility_mode": {"enum": ["none", "backward"]},
                         "resource": {"type": "string"},
                         "examples": {"type": "array", "items": {"type": "string"}},
@@ -105,7 +105,9 @@ def test_all_topics() -> None:
             # Check valid schema versions
             topic_schemas = topic_data["schemas"]
             for i, schema_raw in enumerate(topic_schemas):
-                used_schema_filepaths.add(_SCHEMAS.joinpath(schema_raw["resource"]))
+                if schema_raw["type"] != "protobuf":
+                    used_schema_filepaths.add(_SCHEMAS.joinpath(schema_raw["resource"]))
+
                 for example_path in schema_raw["examples"]:
                     for entry in _EXAMPLES.joinpath(example_path).rglob("*"):
                         if entry.is_file():

@@ -109,7 +109,7 @@
 /examples/monitors-clock-tasks/                                @getsentry/crons
 /examples/uptime-results/                                      @getsentry/crons
 /examples/uptime-configs/                                      @getsentry/crons
-/examples/taskworker/                                          @getsentry/hybrid-cloud
+/examples/taskworker/                                          @getsentry/taskworker
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
