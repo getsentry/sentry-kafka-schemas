@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.117
+
+### Various fixes & improvements
+
+- ref(deletes): search-issues -> generic-events (#347) by @MeredithAnya
+- feat(protobuf) Add support for protobuf message topics (#344) by @markstory
+
 ## 0.1.116
 
 ### Various fixes & improvements
