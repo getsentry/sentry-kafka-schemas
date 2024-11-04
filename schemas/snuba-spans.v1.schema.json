@@ -71,6 +71,9 @@
         "description": {
           "type": "string"
         },
+        "ingest_in_eap": {
+          "type": ["boolean", "null"]
+        },
         "tags": {
           "description": " Manual key/value tag pairs.",
           "anyOf": [

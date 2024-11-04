@@ -15,6 +15,7 @@
   "start_timestamp_ms": 1715868485371,
   "start_timestamp_precise": 1715868485.370551,
   "end_timestamp_precise": 1715868486.370551,
+  "ingest_in_eap": true,
   "tags": {
     "tag1": "value1",
     "tag2": "123",
