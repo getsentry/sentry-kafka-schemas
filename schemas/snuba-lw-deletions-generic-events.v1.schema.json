@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "lw_delete_search_issues",
+  "title": "lw_delete_generic_events",
   "type": "object",
   "properties": {
     "storage_name": {
