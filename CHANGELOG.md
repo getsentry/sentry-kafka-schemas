@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.118
+
+### Various fixes & improvements
+
+- feat(crons): Add monitors-incident-occurrences (#348) by @evanpurkhiser
+
 ## 0.1.117
 
 ### Various fixes & improvements
