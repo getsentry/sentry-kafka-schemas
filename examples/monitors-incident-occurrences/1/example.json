@@ -1,0 +1,7 @@
+{
+  "clock_tick_ts": 1617895645,
+  "received_ts": 1617895650,
+  "failed_checkin_id": 123456,
+  "incident_id": 987654,
+  "previous_checkin_ids": [111222, 333444, 555666]
+}
