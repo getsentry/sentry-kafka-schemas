@@ -69,6 +69,7 @@
 # Topics related to cron monitor tasks
 /topics/monitors-clock-tick.yaml                               @getsentry/crons
 /topics/monitors-clock-tasks.yaml                              @getsentry/crons
+/topics/monitors-incident-occurrences.yaml                     @getsentry/crons
 
 # Topics related to uptime
 /topics/uptime-results.yaml                                    @getsentry/crons

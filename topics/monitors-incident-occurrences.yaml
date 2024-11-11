@@ -1,0 +1,18 @@
+pipeline: monitors
+description: stores data used to create issue occurrences for cron incidents
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: monitors-incident-occurrences.v1.schema.json
+    examples:
+      - monitors-incident-occurrences/1/
+topic_creation_config:
+  compression.type: lz4
+  message.timestamp.type: LogAppendTime
+  retention.ms: "86400000"

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "monitors_incident_occurrence",
+  "$ref": "#/definitions/MonitorsIncidentOccurrence",
+  "definitions": {
+    "MonitorsIncidentOccurrence": {
+      "type": "object",
+      "title": "incident_occurrence",
+      "description": "A message containing the intent to create an issue occurrence for a monitor incident.",
+      "additionalProperties": false,
+      "properties": {
+        "clock_tick_ts": {
+          "description": "Timestamp of the clock-tick which triggered this occurrence.",
+          "type": "number"
+        },
+        "received_ts": {
+          "description": "Timestamp indicating when the offending check-in was recieved.",
+          "type": "number"
+        },
+        "failed_checkin_id": {
+          "description": "Database id of the offending check-in",
+          "type": "number"
+        },
+        "incident_id": {
+          "description": "Database id of the incident assoicated to this failure.",
+          "type": "number"
+        },
+        "previous_checkin_ids": {
+          "description": "Database ids of previously failed check-ins which led to the production of this occurrence.",
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      },
+      "required": [
+        "clock_tick_ts",
+        "received_ts",
+        "failed_checkin_id",
+        "previous_checkin_ids"
+      ]
+    }
+  }
+}
