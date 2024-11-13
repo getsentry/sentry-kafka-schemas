@@ -77,11 +77,6 @@
           "description": "The timestamp the clock ticked at.",
           "type": "number"
         },
-        "volume_anomaly_result": {
-          "description": "The result of the volume anomaly detection for the minute that has been ticked past. Abnormal ticks cause misses to be recored as unknown.",
-          "type": "string",
-          "enum": ["normal", "abnormal"]
-        },
         "monitor_environment_id": {
           "description": "The monitor environment ID to generate a missed check-in for.",
           "type": "number"
