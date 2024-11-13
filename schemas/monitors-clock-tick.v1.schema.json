@@ -12,11 +12,6 @@
         "ts": {
           "description": "The timestamp the clock ticked at.",
           "type": "number"
-        },
-        "volume_anomaly_result": {
-          "description": "The result of the volume anomaly detection for the minute that has been ticked past.",
-          "type": "string",
-          "enum": ["normal", "abnormal"]
         }
       },
       "required": ["ts"]
