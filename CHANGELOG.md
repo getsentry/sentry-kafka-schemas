@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 0.1.119
+
+### Various fixes & improvements
+
+- ref(crons): Remove volume_anomaly_result from mark_missing task (#350) by @evanpurkhiser
+- ref(crons): Remove unused `volume_anomaly_result` from clock_tick (#349) by @evanpurkhiser
+
 ## 0.1.118
 
 ### Various fixes & improvements
