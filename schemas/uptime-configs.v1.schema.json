@@ -60,6 +60,10 @@
         "request_body": {
           "description": "Additional HTTP headers to send with the request",
           "type": "string"
+        },
+        "trace_sampling": {
+          "description": "Whether to allow for sampled trace spans for the request.",
+          "type": "boolean"
         }
       },
       "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"]
