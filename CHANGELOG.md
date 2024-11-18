@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.120
+
+### Various fixes & improvements
+
+- feat(uptime): add trace_sampling to kafka schema (#351) by @JoshFerge
+
 ## 0.1.119
 
 ### Various fixes & improvements
