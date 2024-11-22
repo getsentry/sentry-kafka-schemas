@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.121
+
+### Various fixes & improvements
+
+- chore(metrics-summaries): Remove metrics summaries related code (#352) by @phacops
+
 ## 0.1.120
 
 ### Various fixes & improvements
