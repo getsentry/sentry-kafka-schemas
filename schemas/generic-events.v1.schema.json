@@ -378,12 +378,6 @@
         "version": {
           "description": " Version",
           "type": ["string", "null"]
-        },
-        "hierarchical_hashes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
