@@ -8,12 +8,10 @@
     { "$ref": "#/definitions/StartDeleteGroupsMessage" },
     { "$ref": "#/definitions/StartMergeMessage" },
     { "$ref": "#/definitions/StartUnmergeMessage" },
-    { "$ref": "#/definitions/StartUnmergeHierarchicalMessage" },
     { "$ref": "#/definitions/StartDeleteTagMessage" },
     { "$ref": "#/definitions/EndDeleteGroupsMessage" },
     { "$ref": "#/definitions/EndMergeMessage" },
     { "$ref": "#/definitions/EndUnmergeMessage" },
-    { "$ref": "#/definitions/EndUnmergeHierarchicalMessage" },
     { "$ref": "#/definitions/EndDeleteTagMessage" },
     { "$ref": "#/definitions/TombstoneEventsMessage" },
     { "$ref": "#/definitions/ReplaceGroupMessage" },
@@ -140,18 +138,6 @@
         }
       ]
     },
-    "StartUnmergeHierarchicalMessage": {
-      "type": "array",
-      "items": [
-        { "const": 2, "type": "integer" },
-        { "const": "start_unmerge_hierarchical" },
-        {
-          "type": "object",
-          "properties": { "project_id": { "type": "integer", "minimum": 0 } },
-          "required": ["project_id"]
-        }
-      ]
-    },
     "StartDeleteTagMessage": {
       "type": "array",
       "items": [
@@ -191,34 +177,6 @@
             "previous_group_id",
             "new_group_id",
             "hashes",
-            "datetime"
-          ]
-        }
-      ]
-    },
-    "EndUnmergeHierarchicalMessage": {
-      "type": "array",
-      "items": [
-        { "const": 2, "type": "integer" },
-        { "const": "end_unmerge_hierarchical" },
-        {
-          "type": "object",
-          "title": "end_unmerge_hierarchical_message_body",
-          "properties": {
-            "project_id": { "type": "integer", "minimum": 0 },
-            "previous_group_id": { "type": "integer" },
-            "new_group_id": { "type": "integer" },
-            "primary_hash": { "type": "string" },
-            "hierarchical_hash": { "type": "string" },
-            "datetime": { "$ref": "#/definitions/SnubaDatetime" }
-          },
-          "additionalProperties": true,
-          "required": [
-            "project_id",
-            "previous_group_id",
-            "new_group_id",
-            "primary_hash",
-            "hierarchical_hash",
             "datetime"
           ]
         }
@@ -362,13 +320,6 @@
               "type": "null"
             }
           ]
-        },
-        "hierarchical_hashes": {
-          "default": [],
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         },
         "location": {
           "default": null,
