@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.122
+
+### Various fixes & improvements
+
+- deprecate(hierarchical_hashes): Remove references to hierarchical hashes (#353) by @armenzg
+
 ## 0.1.121
 
 ### Various fixes & improvements
