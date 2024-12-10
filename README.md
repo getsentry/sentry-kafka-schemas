@@ -37,8 +37,8 @@ The yaml file of a topic has the following keys:
 
 2. `topic_configuration_config`. Configuration used to create the topic
 3. `services`. Which Sentry services produce to and consume from the topic.
-4. `description`.
-5. `pipeline`.
+4. `description`. Freeform description of what this is doing.
+5. `pipeline`. (optional) Is this related to other topics? use the same "pipeline" value across all of them.
 
 ## Using the schema (in Python)
 

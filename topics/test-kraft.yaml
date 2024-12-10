@@ -1,0 +1,2 @@
+description: A temporary copy of snuba-spans on a newer version of Kafka for testing incremental rebalancing.
+schemas: []
