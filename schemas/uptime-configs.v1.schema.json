@@ -5,9 +5,9 @@
   "definitions": {
     "CheckInterval": {
       "title": "check_interval",
-      "description": "The interval between each check run in seconds.",
+      "description": "The interval between each check run in seconds. In the uptime monitors themselves we support intervals of 60, 300, 1200, 1800 and 3600. Other values in the list are for support of multi region. We'll need to support larger values than an hour at some point, but that requires changes to the scheduler in uptime-checker",
       "type": "number",
-      "enum": [60, 300, 600, 1200, 1800, 3600]
+      "enum": [60, 120, 180, 300, 600, 900, 1200, 1800, 2400, 3600]
     },
     "RequestHeader": {
       "title": "request_header",
@@ -64,9 +64,21 @@
         "trace_sampling": {
           "description": "Whether to allow for sampled trace spans for the request.",
           "type": "boolean"
+        },
+        "execution_window_start_seconds": {
+          "description": "The start of the execution window (inclusive).",
+          "type": "number"
+        },
+        "execution_window_end_seconds": {
+          "description": "The end of the execution window (exclusive).",
+          "type": "number"
         }
       },
-      "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"]
+      "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"],
+      "dependencies": {
+        "execution_window_start_seconds": ["execution_window_end_seconds"],
+        "execution_window_end_seconds": ["execution_window_start_seconds"]
+      }
     }
   }
 }
