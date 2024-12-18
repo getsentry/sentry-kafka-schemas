@@ -72,7 +72,7 @@
           }
         },
         "region_schedule_mode": {
-          "description": "Defines how we'll schedule checks based on other active regions .",
+          "description": "Defines how we'll schedule checks based on other active regions.",
           "type": "string",
           "enum": ["round_robin"]
         }
