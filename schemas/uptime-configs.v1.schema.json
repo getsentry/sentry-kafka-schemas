@@ -66,6 +66,7 @@
           "type": "boolean"
         },
         "active_regions": {
+          "description": "A list of region slugs the uptime check is configured to run in.",
           "type": "array",
           "items": {
             "type": "string"
