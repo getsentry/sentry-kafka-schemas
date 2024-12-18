@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.123
+
+### Various fixes & improvements
+
+- feat(uptime): Add regions to uptime config (#357) by @wedamija
+
 ## 0.1.122
 
 ### Various fixes & improvements
