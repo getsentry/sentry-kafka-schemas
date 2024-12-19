@@ -24,6 +24,12 @@
         }
       ]
     },
+    "RegionScheduleMode": {
+      "title": "region_schedule_mode",
+      "description": "Defines how we'll schedule checks based on other active regions.",
+      "type": "string",
+      "enum": ["round_robin"]
+    },
     "CheckConfig": {
       "title": "check_config",
       "description": "A message containing the configuration for a check to scheduled and executed by the uptime-checker.",
@@ -73,9 +79,7 @@
           }
         },
         "region_schedule_mode": {
-          "description": "Defines how we'll schedule checks based on other active regions.",
-          "type": "string",
-          "enum": ["round_robin"]
+          "$ref": "#/definitions/RegionScheduleMode"
         }
       },
       "required": ["subscription_id", "interval_seconds", "timeout_ms", "url"]
