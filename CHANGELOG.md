@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.124
+
+### Various fixes & improvements
+
+- chore(uptime): Improve generated schema for uptime region configs (#358) by @wedamija
+
 ## 0.1.123
 
 ### Various fixes & improvements
