@@ -1,0 +1,18 @@
+topic: snuba-uptime-results
+description: Contains uptime monitor check results from monitoring endpoints
+schemas:
+  - version: 1
+    type: json
+    compatibility_mode: backward
+    resource: snuba-uptime-results.v1.schema.json
+
+topic_configuration:
+  cleanup.policy: delete
+  retention.ms: 2592000000  # 30 days
+  segment.bytes: 107374182  # 100MB
+
+services:
+  producers:
+    - getsentry/sentry
+  consumers:
+    - snuba
