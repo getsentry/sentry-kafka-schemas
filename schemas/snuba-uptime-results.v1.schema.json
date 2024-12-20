@@ -1,53 +1,180 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "snuba_uptime_result",
-  "definitions": {
-    "CheckStatus": {
-      "$ref": "uptime-results.v1.schema.json#/definitions/CheckStatus"
-    },
-    "CheckStatusReason": {
-      "$ref": "uptime-results.v1.schema.json#/definitions/CheckStatusReason"
-    },
-    "CheckStatusReasonType": {
-      "$ref": "uptime-results.v1.schema.json#/definitions/CheckStatusReasonType"
-    },
-    "RequestInfo": {
-      "$ref": "uptime-results.v1.schema.json#/definitions/RequestInfo"
-    },
-    "RequestType": {
-      "$ref": "uptime-results.v1.schema.json#/definitions/RequestType"
-    }
-  },
-  "allOf": [
-    {
-      "$ref": "uptime-results.v1.schema.json#/definitions/CheckResult"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "organization_id": {
-          "type": "integer",
-          "description": "The organization ID associated with this check",
-          "minimum": 0
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "snuba_uptime_result",
+    "definitions": {
+        "CheckStatus": {
+            "title": "check_status",
+            "description": "The status of the check",
+            "type": "string",
+            "enum": [
+                "success",
+                "failure",
+                "missed_window"
+            ]
         },
-        "project_id": {
-          "type": "integer",
-          "description": "The project ID associated with this check",
-          "minimum": 0
+        "CheckStatusReasonType": {
+            "title": "check_status_reason_type",
+            "description": "The type of the status reason",
+            "type": "string",
+            "enum": [
+                "timeout",
+                "dns_error",
+                "failure"
+            ]
         },
-        "retention_days": {
-          "type": "integer",
-          "description": "Number of days to retain this data",
-          "minimum": 0,
-          "maximum": 65535
+        "RequestType": {
+            "title": "request_type",
+            "description": "The type of HTTP method used for the check",
+            "type": "string",
+            "enum": [
+                "GET",
+                "POST",
+                "HEAD",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS"
+            ]
         },
-        "region_slug": {
-          "type": ["string", "null"],
-          "description": "The region identifier where this check was performed"
+        "CheckStatusReason": {
+            "title": "check_status_reason",
+            "description": "Reason for the status, primairly used for failure",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "$ref": "#/definitions/CheckStatusReasonType"
+                },
+                "description": {
+                    "description": "A human readable description of the status reason",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "description"
+            ]
+        },
+        "RequestInfo": {
+            "title": "request_info",
+            "description": "Additional information about the request made",
+            "type": "object",
+            "properties": {
+                "request_type": {
+                    "$ref": "#/definitions/RequestType"
+                },
+                "http_status_code": {
+                    "description": "Status code of the successful check-in",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "request_type",
+                "http_status_code"
+            ]
+        },
+        "CheckResult": {
+            "title": "check_result",
+            "description": "A message containing the result of the uptime check.",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "guid": {
+                    "description": "Unique identifier of the uptime check",
+                    "type": "string"
+                },
+                "subscription_id": {
+                    "description": "Identifier of the subscription that this check was run for",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/CheckStatus"
+                },
+                "status_reason": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/CheckStatusReason"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "trace_id": {
+                    "description": "Trace ID associated with the check-in made",
+                    "type": "string"
+                },
+                "span_id": {
+                    "description": "Span ID associated with the check-in made. This is a phantom span generated by the uptime-checker, no real span is ingested.",
+                    "type": "string"
+                },
+                "scheduled_check_time_ms": {
+                    "description": "Timestamp in milliseconds of when the check was schedule to run",
+                    "type": "number"
+                },
+                "actual_check_time_ms": {
+                    "description": "Timestamp in milliseconds of when the check was actually ran",
+                    "type": "number"
+                },
+                "duration_ms": {
+                    "description": "Duration of the check in ms. Will be null when the status is missed_window",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "request_info": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/RequestInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            }
         }
-      },
-      "required": ["organization_id", "project_id", "retention_days"]
-    }
-  ],
-  "description": "A message containing the result of the uptime check for Snuba ingestion."
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/CheckResult"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "organization_id": {
+                    "type": "integer",
+                    "description": "The organization ID associated with this check",
+                    "minimum": 0
+                },
+                "project_id": {
+                    "type": "integer",
+                    "description": "The project ID associated with this check",
+                    "minimum": 0
+                },
+                "retention_days": {
+                    "type": "integer",
+                    "description": "Number of days to retain this data",
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "region_slug": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The region identifier where this check was performed"
+                }
+            },
+            "required": [
+                "organization_id",
+                "project_id",
+                "retention_days"
+            ]
+        }
+    ],
+    "description": "A message containing the result of the uptime check for Snuba ingestion."
 }
