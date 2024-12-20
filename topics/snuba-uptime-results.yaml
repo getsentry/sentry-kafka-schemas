@@ -18,4 +18,4 @@ services:
   producers:
     - getsentry/sentry
   consumers:
-    - snuba
+    - getsentry/snuba
