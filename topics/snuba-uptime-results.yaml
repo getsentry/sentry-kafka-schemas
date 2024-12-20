@@ -11,8 +11,8 @@ schemas:
 
 topic_configuration:
   cleanup.policy: delete
-  retention.ms: 2592000000  # 30 days
-  segment.bytes: 107374182  # 100MB
+  retention.ms: 2592000000 # 30 days
+  segment.bytes: 107374182 # 100MB
 
 services:
   producers:
