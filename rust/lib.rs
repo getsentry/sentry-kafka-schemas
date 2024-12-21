@@ -238,6 +238,7 @@ mod tests {
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();
         get_schema("transactions", Some(1)).unwrap();
+        get_schema("snuba-uptime-results", Some(1)).unwrap();
     }
 
     fn validate_schema(schema_name: &str) {
@@ -259,5 +260,6 @@ mod tests {
     fn test_validate() {
         validate_schema("snuba-queries");
         validate_schema("uptime-results");
+        validate_schema("snuba-uptime-results");
     }
 }
