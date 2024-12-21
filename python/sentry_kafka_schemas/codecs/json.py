@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import pathlib
 from typing import Any, Optional, TypeVar, cast
 
 import fastjsonschema
@@ -8,6 +9,16 @@ from sentry_kafka_schemas.codecs import Codec, ValidationError
 
 T = TypeVar("T")
 
+BASE_DIR = pathlib.Path(__file__).parent.parent / "schemas"
+
+
+def file_handler(uri):
+    absolute_path = BASE_DIR / uri[7:]
+    if not absolute_path.exists():
+        raise FileNotFoundError(f"Schema file not found: {absolute_path}")
+    with open(absolute_path) as f:
+        return rapidjson.load(f)
+
 
 class JsonCodec(Codec[T]):
     def __init__(
@@ -15,7 +26,7 @@ class JsonCodec(Codec[T]):
         json_schema: Optional[object],
     ) -> None:
         if json_schema is not None:
-            self.__validate = fastjsonschema.compile(json_schema)
+            self.__validate = fastjsonschema.compile(json_schema, handlers={"file": file_handler})
         else:
             self.__validate = lambda _: None
 

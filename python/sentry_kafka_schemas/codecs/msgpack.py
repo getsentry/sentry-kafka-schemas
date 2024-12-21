@@ -3,6 +3,7 @@ from typing import Optional, TypeVar, cast
 import fastjsonschema
 import msgpack
 from sentry_kafka_schemas.codecs import Codec, ValidationError
+from sentry_kafka_schemas.codecs.json import file_handler
 
 T = TypeVar("T")
 
@@ -14,7 +15,7 @@ class MsgpackCodec(Codec[T]):
 
     def __init__(self, json_schema: Optional[object]) -> None:
         if json_schema is not None:
-            self.__validate = fastjsonschema.compile(json_schema)
+            self.__validate = fastjsonschema.compile(json_schema, handlers={"file": file_handler})
         else:
             self.__validate = lambda _: None
 
