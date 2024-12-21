@@ -12,7 +12,7 @@ T = TypeVar("T")
 BASE_DIR = pathlib.Path(__file__).parent.parent / "schemas"
 
 
-def file_handler(uri):
+def file_handler(uri: str) -> Any:
     absolute_path = BASE_DIR / uri[7:]
     if not absolute_path.exists():
         raise FileNotFoundError(f"Schema file not found: {absolute_path}")

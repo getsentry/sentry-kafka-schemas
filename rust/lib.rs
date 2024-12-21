@@ -1,7 +1,9 @@
-use jsonschema::JSONSchema;
+use jsonschema::{JSONSchema, SchemaResolver, SchemaResolverError};
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
-
+use serde_json::Value;
+use std::{sync::Arc};
+use url::Url;
 // This file is supposed to be auto-generated via rust/build.rs
 pub mod schema_types {
     include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
@@ -148,6 +150,32 @@ fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, Sc
     Ok(schema_metadata)
 }
 
+struct FileSchemaResolver { }
+
+impl FileSchemaResolver {
+    fn new() -> Self {
+        Self { }
+    }
+}
+
+impl SchemaResolver for FileSchemaResolver {
+    fn resolve(&self, _root_schema: &Value, url: &Url, _original_reference: &str) -> Result<Arc<Value>, SchemaResolverError> {
+        if url.scheme() == "file" {
+           let url_str = url.as_str();
+            let relative_path = &url_str[7..url_str.len() - 1];
+            let schema = find_entry(SCHEMAS, relative_path).ok_or(SchemaError::InvalidSchema)?;
+            let schema_json = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
+            return Ok(Arc::new(schema_json));
+
+        }
+
+        Err(SchemaResolverError::new(Box::new(std::io::Error::new(
+            std::io::ErrorKind::NotFound,
+            format!("Unsupported URL scheme: {}", url.scheme()),
+        ))))
+    }
+}
+
 /// Returns the schema for a topic. If `version` is passed, return the schema for
 /// the specified version, otherwise the latest version is returned.
 ///
@@ -163,7 +191,8 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
 
     let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
-    let compiled_json_schema = JSONSchema::compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
+    let resolver = FileSchemaResolver::new();
+    let compiled_json_schema = JSONSchema::options().with_resolver(resolver).compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
 
     // FIXME(swatinem): This assumes that there is only a single `examples` entry in the definition.
     // If we would want to support multiple, we would have to either merge those in code generation,
@@ -209,11 +238,11 @@ mod tests {
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();
         get_schema("transactions", Some(1)).unwrap();
+        get_schema("snuba-uptime-results", Some(1)).unwrap();
     }
 
-    #[test]
-    fn test_validate() {
-        let schema = get_schema("snuba-queries", None).unwrap();
+    fn validate_schema(schema_name: &str) {
+        let schema = get_schema(schema_name, None).unwrap();
 
         let examples = schema.examples();
         assert!(!examples.is_empty());
@@ -225,5 +254,12 @@ mod tests {
             schema.validate_json(b"{}"),
             Err(SchemaError::InvalidMessage)
         ));
+    }
+
+    #[test]
+    fn test_validate() {
+        validate_schema("snuba-queries");
+        validate_schema("uptime-results");
+        validate_schema("snuba-uptime-results");
     }
 }
