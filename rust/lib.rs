@@ -1,8 +1,8 @@
 use jsonschema::{JSONSchema, SchemaResolver, SchemaResolverError};
 use serde::{Deserialize, Serialize};
-use thiserror::Error;
 use serde_json::Value;
-use std::{sync::Arc};
+use std::sync::Arc;
+use thiserror::Error;
 use url::Url;
 // This file is supposed to be auto-generated via rust/build.rs
 pub mod schema_types {
@@ -150,23 +150,28 @@ fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, Sc
     Ok(schema_metadata)
 }
 
-struct FileSchemaResolver { }
+struct FileSchemaResolver {}
 
 impl FileSchemaResolver {
     fn new() -> Self {
-        Self { }
+        Self {}
     }
 }
 
 impl SchemaResolver for FileSchemaResolver {
-    fn resolve(&self, _root_schema: &Value, url: &Url, _original_reference: &str) -> Result<Arc<Value>, SchemaResolverError> {
+    fn resolve(
+        &self,
+        _root_schema: &Value,
+        url: &Url,
+        _original_reference: &str,
+    ) -> Result<Arc<Value>, SchemaResolverError> {
         if url.scheme() == "file" {
-           let url_str = url.as_str();
+            let url_str = url.as_str();
             let relative_path = &url_str[7..url_str.len() - 1];
             let schema = find_entry(SCHEMAS, relative_path).ok_or(SchemaError::InvalidSchema)?;
-            let schema_json = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
+            let schema_json =
+                serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
             return Ok(Arc::new(schema_json));
-
         }
 
         Err(SchemaResolverError::new(Box::new(std::io::Error::new(
@@ -192,7 +197,10 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
 
     let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
     let resolver = FileSchemaResolver::new();
-    let compiled_json_schema = JSONSchema::options().with_resolver(resolver).compile(&s).map_err(|_| SchemaError::InvalidSchema)?;
+    let compiled_json_schema = JSONSchema::options()
+        .with_resolver(resolver)
+        .compile(&s)
+        .map_err(|_| SchemaError::InvalidSchema)?;
 
     // FIXME(swatinem): This assumes that there is only a single `examples` entry in the definition.
     // If we would want to support multiple, we would have to either merge those in code generation,
