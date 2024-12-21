@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "snuba_uptime_result",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "file://uptime-results.v1.schema.json#/definitions/CheckResult"
+    }
+  ],
+  "properties": {
+    "organization_id": {
+      "type": "integer",
+      "description": "The organization ID associated with this check",
+      "minimum": 0
+    },
+    "project_id": {
+      "type": "integer",
+      "description": "The project ID associated with this check",
+      "minimum": 0
+    },
+    "retention_days": {
+      "type": "integer",
+      "description": "Number of days to retain this data",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "region_slug": {
+      "type": ["string", "null"],
+      "description": "The region identifier where this check was performed"
+    }
+  },
+  "required": ["organization_id", "project_id", "retention_days"]
+}
