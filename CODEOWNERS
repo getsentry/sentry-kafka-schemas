@@ -71,6 +71,7 @@
 /topics/monitors-incident-occurrences.yaml                     @getsentry/crons
 
 # Topics related to uptime
+/topics/snuba-uptime-results.yaml                              @getsentry/crons
 /topics/uptime-results.yaml                                    @getsentry/crons
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
@@ -89,6 +90,7 @@
 /schemas/monitors-clock-tasks.v1.schema.json                   @getsentry/crons
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
 /schemas/uptime-configs.v1.schema.json                         @getsentry/crons
+/schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
 /schemas/taskworker.v1.schema.json                             @getsentry/hybrid-cloud
 
 # Examples
@@ -107,6 +109,7 @@
 /examples/monitors-clock-tasks/                                @getsentry/crons
 /examples/uptime-results/                                      @getsentry/crons
 /examples/uptime-configs/                                      @getsentry/crons
+/examples/snuba-uptime-results/                                @getsentry/crons
 /examples/taskworker/                                          @getsentry/taskworker
 
 # Internal Snuba topics
