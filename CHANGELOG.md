@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 0.1.125
+
+### Various fixes & improvements
+
+- chore: Tidy up a few things related to file references (#362) by @wedamija
+- feat(uptime): new snuba-uptime-results topic (#361) by @wedamija
+- feat: Allow schemas to reference other schemas (#360) by @wedamija
+
 ## 0.1.124
 
 ### Various fixes & improvements
