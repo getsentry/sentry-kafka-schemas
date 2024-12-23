@@ -115,7 +115,7 @@ class FileRefResolver(RefResolver):
         for part in parts:
             if not isinstance(current, dict) or part not in current:
                 raise UnRedolvedException(f"Reference not found: {ref_path}")
-            current = current[part]
+            current = current[part]  # type: ignore[literal-required]
         return current
 
 
