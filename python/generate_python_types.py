@@ -57,7 +57,7 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 class FileRefResolver(RefResolver):
     """Extended RefResolver that can handle file:// references"""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args: Any, **kwargs: Any):
         super().__init__(*args, **kwargs)
         self.loaded_schemas: dict[str, Any] = {}
 
