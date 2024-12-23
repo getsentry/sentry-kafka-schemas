@@ -1,11 +1,11 @@
 import os
 import shutil
 import sys
-from typing import Any, Optional, Union
+from typing import Any
 
 import sentry_kafka_schemas
 import sentry_kafka_schemas.sentry_kafka_schemas
-from jsonschema_gentypes import cli, jsonschema_draft_06, jsonschema_draft_2020_12_applicator
+from jsonschema_gentypes import cli
 from jsonschema_gentypes.resolver import RefResolver, UnRedolvedException
 from sentry_kafka_schemas.codecs.json import file_handler
 
@@ -57,20 +57,8 @@ def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> Non
 class FileRefResolver(RefResolver):
     """Extended RefResolver that can handle file:// references"""
 
-    def __init__(
-        self,
-        base_url: str,
-        schema: Optional[
-            Union[
-                jsonschema_draft_06.JSONSchemaItemD6,
-                jsonschema_draft_2020_12_applicator.JSONSchemaItemD2020,
-            ]
-        ] = None,
-        schemas_dir: str = "schemas",
-    ):
-        super().__init__(base_url, schema)
-        self.schemas_dir = schemas_dir
-        self.base_path = os.path.dirname(base_url) if isinstance(base_url, str) else None
+    def __init__(self, *args: Any, **kwargs: Any):
+        super().__init__(*args, **kwargs)
         self.loaded_schemas: dict[str, Any] = {}
 
     def lookup(self, uri: str) -> Any:
