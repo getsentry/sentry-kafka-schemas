@@ -4,11 +4,11 @@ import fastjsonschema
 import jsonschema
 import pytest
 import rapidjson
+from jsonschema import RefResolver
 from sentry_kafka_schemas import iter_examples
-from sentry_kafka_schemas.codecs.json import file_handler, BASE_DIR
+from sentry_kafka_schemas.codecs.json import BASE_DIR, file_handler
 from sentry_kafka_schemas.sentry_kafka_schemas import _get_schema, get_codec, get_topic, list_topics
 from sentry_kafka_schemas.types import Example
-from jsonschema import RefResolver
 
 
 def get_all_examples() -> Iterator[Tuple[str, int, Example]]:
@@ -71,11 +71,11 @@ def test_json_examples(
         compiled(example_data)
     elif jsonschema_library == "jsonschema":
         try:
-            #TODO: Is this even necessary? Looks like we removed usage of jsonschema?
+            # TODO: Is this even necessary? Looks like we removed usage of jsonschema?
             resolver = RefResolver(
                 base_uri=f"file:/{BASE_DIR}",
                 referrer=schema,
-                handlers={"file": file_handler}  # Use the custom_resolver function
+                handlers={"file": file_handler},  # Use the custom_resolver function
             )
             jsonschema.validate(example_data, schema, resolver=resolver)
         except jsonschema.ValidationError as e:
