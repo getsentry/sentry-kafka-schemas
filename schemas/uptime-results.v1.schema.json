@@ -107,6 +107,10 @@
               "type": "null"
             }
           ]
+        },
+        "region": {
+          "description": "The region that this check was performed in",
+          "type": "string"
         }
       },
       "required": [
