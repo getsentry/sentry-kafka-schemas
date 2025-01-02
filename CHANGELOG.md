@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.126
+
+### Various fixes & improvements
+
+- feat(uptime): Include region in uptime results (#363) by @wedamija
+
 ## 0.1.125
 
 ### Various fixes & improvements
