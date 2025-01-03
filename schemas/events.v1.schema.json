@@ -551,6 +551,7 @@
     },
     "FeatureContext": {
       "type": "object",
+      "required": ["values"],
       "properties": {
         "version": {
           "type": ["number"]
