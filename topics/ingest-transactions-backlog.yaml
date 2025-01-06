@@ -10,7 +10,7 @@ schemas:
     type: json
     resource: ingest-transactions.v1.schema.json
     examples:
-      - ingest-transactions/
+      - ingest-transactions/1/
 topic_creation_config:
   compression.type: lz4
   retention.ms: "604800000" # 7 days
