@@ -7,7 +7,7 @@ services:
 schemas:
   - version: 1
     compatibility_mode: none
-    type: json
+    type: msgpack
     resource: ingest-transactions.v1.schema.json
     examples:
       - ingest-transactions/1/
