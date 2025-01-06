@@ -8,9 +8,9 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: any.json
+    resource: ingest-transactions.v1.schema.json
     examples:
-      - any/
+      - ingest-transactions/
 topic_creation_config:
   compression.type: lz4
   retention.ms: "604800000" # 7 days
