@@ -1,0 +1,17 @@
+pipeline: transactions
+description: Backlog queue for ingest-transactions
+services:
+  producers:
+    - getsentry/sentry
+  consumers: []
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: msgpack
+    resource: ingest-transactions.v1.schema.json
+    examples:
+      - ingest-transactions/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "604800000" # 7 days
+  max.message.bytes: "10000000"
