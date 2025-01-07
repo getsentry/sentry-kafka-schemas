@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.128
+
+### Various fixes & improvements
+
+- release: 0.1.127 (08569708) by @getsentry-bot
+
 ## 0.1.127
 
 - No documented changes.
