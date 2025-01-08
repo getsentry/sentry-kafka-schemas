@@ -2,12 +2,15 @@
   "organization_id": 69,
   "project_id": 1,
   "trace_id": "3c8c20d5-0a54-4a1c-ba10-f76f574d856f",
-  "received": 1715868485.381,
+  "trace_flags": 1024,
+  "span_id": "11002233AABBCCDD",
+  "severity_text": "WARNING",
+  "severity_number": 1,
   "retention_days": 90,
-  "timestamp_micros": 1715868485371,
-  "received_micros": 1715868485371,
-  "message": "hello world!",
-  "tags": {
+  "timestamp_nanos": 1715868485371000,
+  "observed_timestamp_nanos": 1715868485371000,
+  "body": "hello world!",
+  "attributes": {
     "some.user.tag": "hello",
     "another.user.tag": 100
   }

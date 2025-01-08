@@ -18,23 +18,35 @@
           "$ref": "#/definitions/UUID",
           "description": "The trace ID is a unique identifier for a trace."
         },
-        "timestamp_micros": {
+        "trace_flags": {
+          "$ref": "#/definitions/UInt8",
+          "description": "Flags are sent by OTEL clients, bitmask (e.g., SAMPLED)"
+        },
+        "timestamp_nanos": {
           "$ref": "#/definitions/UInt",
-          "description": "The timestamp of the log in microseconds since epoch."
+          "description": "The timestamp of the log in nanoseconds since epoch."
         },
         "retention_days": {
           "$ref": "#/definitions/UInt16",
           "description": "The minimum time we should store this log until it's deleted"
         },
-        "received_micros": {
+        "observed_timestamp_nanos": {
           "$ref": "#/definitions/UInt",
-          "description": "Unix timestamp (in microseconds) when the log was received by Sentry."
+          "description": "Unix timestamp (in nanoseconds) when the log was received by Sentry."
         },
-        "message": {
+        "body": {
           "type": "string",
-          "description": "The message of the log."
+          "description": "The body of the log."
         },
-        "tags": {
+        "severity_text": {
+          "type": "string",
+          "description": "The name of the severity level (e.g., WARNING)"
+        },
+        "severity_number": {
+          "$ref": "#/definitions/UInt8",
+          "description": "Numerical value of the severity (1-24 in otel)"
+        },
+        "attributes": {
           "description": "Manual key/value tag pairs.",
           "type": "object",
           "additionalProperties": {
@@ -45,10 +57,10 @@
       "required": [
         "project_id",
         "organization_id",
-        "received_micros",
+        "observed_timestamp_nanos",
         "retention_days",
-        "timestamp_micros",
-        "message"
+        "timestamp_nanos",
+        "body"
       ]
     },
     "UUID": {
@@ -56,9 +68,19 @@
       "minLength": 32,
       "maxLength": 36
     },
+    "SpanID": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 16
+    },
     "UInt": {
       "type": "integer",
       "minimum": 0
+    },
+    "UInt8": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
     },
     "UInt16": {
       "type": "integer",

@@ -3,7 +3,7 @@
   "project_id": 1,
   "received": 1715868485.381,
   "retention_days": 90,
-  "timestamp_micros": 1715868485371,
-  "received_micros": 1715868485371,
-  "message": "hello world!"
+  "timestamp_nanos": 1715868485371000,
+  "observed_timestamp_nanos": 1715868485371000,
+  "body": "hello world!"
 }
