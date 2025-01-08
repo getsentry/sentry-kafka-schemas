@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ourlogs_stream_message",
+  "$ref": "#/definitions/OurlogEvent",
+  "definitions": {
+    "OurlogEvent": {
+      "type": "object",
+      "title": "ourlog_event",
+      "additionalProperties": true,
+      "properties": {
+        "organization_id": {
+          "$ref": "#/definitions/UInt"
+        },
+        "project_id": {
+          "$ref": "#/definitions/UInt"
+        },
+        "trace_id": {
+          "$ref": "#/definitions/UUID",
+          "description": "The trace ID is a unique identifier for a trace."
+        },
+        "timestamp_micros": {
+          "$ref": "#/definitions/UInt",
+          "description": "The timestamp of the log in microseconds since epoch."
+        },
+        "retention_days": {
+          "$ref": "#/definitions/UInt16",
+          "description": "The minimum time we should store this log until it's deleted"
+        },
+        "received_micros": {
+          "$ref": "#/definitions/UInt",
+          "description": "Unix timestamp (in microseconds) when the log was received by Sentry."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message of the log."
+        },
+        "tags": {
+          "description": "Manual key/value tag pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": ["string", "number"]
+          }
+        }
+      },
+      "required": [
+        "project_id",
+        "organization_id",
+        "received_micros",
+        "retention_days",
+        "timestamp_micros",
+        "message"
+      ]
+    },
+    "UUID": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 36
+    },
+    "UInt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "UInt16": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    }
+  }
+}
