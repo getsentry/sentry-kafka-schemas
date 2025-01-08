@@ -11,7 +11,17 @@
   "observed_timestamp_nanos": 1715868485371000,
   "body": "hello world!",
   "attributes": {
-    "some.user.tag": "hello",
-    "another.user.tag": 100
+    "some.user.tag": {
+      "string_value": "hello"
+    },
+    "another.user.tag": {
+      "int_value": 10
+    },
+    "double.user.tag": {
+      "double_value": -10.59
+    },
+    "bool.user.tag": {
+      "bool_value": true
+    }
   }
 }

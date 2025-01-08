@@ -47,10 +47,27 @@
           "description": "Numerical value of the severity (1-24 in otel)"
         },
         "attributes": {
-          "description": "Manual key/value tag pairs.",
           "type": "object",
+          "description": "key-value tag pairs on this log",
           "additionalProperties": {
-            "type": ["string", "number"]
+            "type": "object",
+            "properties": {
+              "string_value": {
+                "type": "string"
+              },
+              "int_value": {
+                "type": "integer"
+              },
+              "double_value": {
+                "type": "number"
+              },
+              "bool_value": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1
           }
         }
       },
