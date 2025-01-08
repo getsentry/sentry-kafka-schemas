@@ -2,7 +2,7 @@
   "organization_id": 69,
   "project_id": 1,
   "trace_id": "3c8c20d5-0a54-4a1c-ba10-f76f574d856f",
-  "trace_flags": 1024,
+  "trace_flags": 255,
   "span_id": "11002233AABBCCDD",
   "severity_text": "WARNING",
   "severity_number": 1,
