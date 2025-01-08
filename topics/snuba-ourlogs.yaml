@@ -1,7 +1,7 @@
 description: User-sent logs to us for our logging product, 'ourlogs'
 services:
   producers:
-    - getsentry/sentry
+    - getsentry/relay
   consumers:
     - getsentry/snuba
 schemas:
