@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 0.1.129
+
+### Various fixes & improvements
+
+- feat: add schemas for ourlogs (#367) by @colin-sentry
+
 ## 0.1.128
 
 ### Various fixes & improvements
