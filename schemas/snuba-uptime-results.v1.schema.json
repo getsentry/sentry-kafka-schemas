@@ -23,10 +23,6 @@
       "description": "Number of days to retain this data",
       "minimum": 0,
       "maximum": 65535
-    },
-    "region_slug": {
-      "type": ["string", "null"],
-      "description": "The region identifier where this check was performed"
     }
   },
   "required": ["organization_id", "project_id", "retention_days"]
