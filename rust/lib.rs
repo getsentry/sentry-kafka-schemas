@@ -18,6 +18,8 @@ pub enum SchemaType {
     Json,
     #[serde(rename = "msgpack")]
     Msgpack,
+    #[serde(rename = "protobuf")]
+    Protobuf,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -79,7 +81,7 @@ pub struct Schema {
     pub schema_type: SchemaType,
     pub compatibility_mode: CompatibilityMode,
     schema: &'static str,
-    compiled_json_schema: JSONSchema,
+    compiled_json_schema: Option<JSONSchema>,
     examples: &'static [Example],
 }
 
@@ -94,13 +96,21 @@ impl PartialEq for Schema {
 
 impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
+        if self.schema_type == SchemaType::Protobuf {
+            return Err(SchemaError::InvalidMessage);
+        }
+
         let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
 
-        if self.compiled_json_schema.is_valid(&message) {
-            Ok(message)
-        } else {
-            Err(SchemaError::InvalidMessage)
+        if let Some(json_schema) = &self.compiled_json_schema {
+            if json_schema.is_valid(&message) {
+                return Ok(message);
+            }
+
+            return Err(SchemaError::InvalidMessage);
         }
+
+        Err(SchemaError::InvalidSchema)
     }
 
     /// Returns the raw JSON Schema definition.
@@ -192,16 +202,6 @@ impl SchemaResolver for FileSchemaResolver {
 pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaError> {
     let schema_metadata = get_topic_schema(topic, version)?;
 
-    let schema =
-        find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
-
-    let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
-    let resolver = FileSchemaResolver::new();
-    let compiled_json_schema = JSONSchema::options()
-        .with_resolver(resolver)
-        .compile(&s)
-        .map_err(|_| SchemaError::InvalidSchema)?;
-
     // FIXME(swatinem): This assumes that there is only a single `examples` entry in the definition.
     // If we would want to support multiple, we would have to either merge those in code generation,
     // or rather use a `fn examples() -> impl Iterator`.
@@ -212,14 +212,37 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
         .copied()
         .unwrap_or_default();
 
-    Ok(Schema {
-        version: schema_metadata.version,
-        schema_type: schema_metadata.schema_type,
-        compatibility_mode: schema_metadata.compatibility_mode,
-        schema,
-        compiled_json_schema,
-        examples,
-    })
+    if schema_metadata.schema_type == SchemaType::Protobuf {
+        let schema_str = Box::leak(schema_metadata.resource.into_boxed_str());
+        Ok(Schema {
+            version: schema_metadata.version,
+            schema_type: schema_metadata.schema_type,
+            compatibility_mode: schema_metadata.compatibility_mode,
+            schema: schema_str,
+            compiled_json_schema: None,
+            examples,
+        })
+    } else {
+        let schema =
+            find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
+
+        let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
+        let resolver = FileSchemaResolver::new();
+        let json_schema = JSONSchema::options()
+            .with_resolver(resolver)
+            .compile(&s)
+            .map_err(|_| SchemaError::InvalidSchema)?;
+
+        Ok(Schema {
+            version: schema_metadata.version,
+            schema_type: schema_metadata.schema_type,
+            compatibility_mode: schema_metadata.compatibility_mode,
+            compiled_json_schema: Some(json_schema),
+            schema,
+            examples,
+        })
+    }
+
 }
 
 #[cfg(test)]
@@ -237,11 +260,22 @@ mod tests {
         let schema = get_schema("snuba-queries", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Json);
+        assert_eq!(schema.examples.len(), 4);
+        assert!(schema.schema.starts_with("{"));
 
         // Msgpack topic
         let schema = get_schema("ingest-events", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Msgpack);
+        assert_eq!(schema.examples.len(), 1);
+        assert!(schema.schema.starts_with("{"));
+
+        // Protobuf topic
+        let schema = get_schema("task-worker", None).unwrap();
+        assert_eq!(schema.version, 1);
+        assert_eq!(schema.schema_type, SchemaType::Protobuf);
+        assert_eq!(schema.examples.len(), 1);
+        assert!(schema.schema.starts_with("sentry_protos"));
 
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();
