@@ -1,4 +1,5 @@
 use std::path::Path;
+use serde::Deserialize;
 
 #[cfg(feature = "type_generation")]
 use {
@@ -109,6 +110,79 @@ fn generate_embedded_data() -> String {
     code
 }
 
+#[derive(Debug, Deserialize)]
+struct TopicData {
+    schemas: Vec<SchemaData>,
+}
+
+#[derive(Debug, Deserialize)]
+struct SchemaData {
+    #[serde(rename = "type")]
+    schema_type: String,
+    resource: String,
+}
+
+fn mangle_resource_name(resource: &str) -> String {
+    // Remove the foo_pb2 module name.
+    // While python codegen includes the module name,
+    // generated rust code does not.
+    let parts: Vec<&str> = resource
+        .split(".")
+        .into_iter()
+        .filter(|part| !part.ends_with("_pb2"))
+        .collect();
+    parts.join("::")
+}
+
+fn generate_proto_shim() -> String {
+    let mut imports = String::new();
+    let mut tuples = String::new();
+    use std::fmt::Write;
+
+    writeln!(imports, "use std::any::Any;").unwrap();
+    writeln!(imports, "use prost::Message;").unwrap();
+
+    let mut topics = enumerate_dir("topics");
+    let manifest_root = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+
+    let key_fn = |topic: &String| topic.strip_suffix(".yaml").unwrap().to_owned();
+    topics.sort_by_key(key_fn);
+    for topic in &topics {
+        let path = format!("{manifest_root}/topics/{topic}");
+        let yaml_data = std::fs::read_to_string(&path).unwrap();
+
+        let yaml_result: Result<TopicData, _> = serde_yaml::from_str(&yaml_data);
+        if yaml_result.is_err() {
+            continue;
+        }
+        let topic_data = yaml_result.unwrap();
+        let schema_version = topic_data.schemas.first().unwrap();
+        if schema_version.schema_type != "protobuf" {
+            continue;
+        }
+        let resource = schema_version.resource.clone();
+        let struct_path = mangle_resource_name(&resource);
+        let struct_name = struct_path.split("::").last().unwrap();
+        writeln!(imports, "use {struct_path};").unwrap();
+
+        writeln!(tuples, "    (\"{resource}\", |input: &[u8]| {{").unwrap();
+        writeln!(tuples, "        let parsed = {struct_name}::decode(input);").unwrap();
+        writeln!(tuples, "        match parsed {{").unwrap();
+        writeln!(tuples, "            Ok(value) => Ok(Box::new(value) as Box<dyn Any>),").unwrap();
+        writeln!(tuples, "            Err(err) => Err(err),").unwrap();
+        writeln!(tuples, "        }}").unwrap();
+        writeln!(tuples, "    }}),").unwrap();
+    }
+    let mut code = String::new();
+    writeln!(code, "// Imports for protobuf topic schemas").unwrap();
+    code.push_str(&imports);
+    writeln!(code, "pub const PROTOS: &[(&str, fn(input: &[u8]) -> Result<Box<dyn Any>, prost::DecodeError>)] = &[").unwrap();
+    code.push_str(&tuples);
+    writeln!(code, "];").unwrap();
+
+    code
+}
+
 fn enumerate_dir(dir: &str) -> Vec<String> {
     let mut files = vec![];
 
@@ -139,7 +213,11 @@ fn main() {
     let module_code = {
         #[cfg(feature = "type_generation")]
         {
-            generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1")
+            let mut code = generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1");
+            let proto_code = generate_proto_shim();
+            code.push_str(&proto_code);
+
+            code
         }
         #[cfg(not(feature = "type_generation"))]
         {

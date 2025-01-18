@@ -2,6 +2,7 @@ use jsonschema::{JSONSchema, SchemaResolver, SchemaResolverError};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::sync::Arc;
+use std::any::Any;
 use thiserror::Error;
 use url::Url;
 // This file is supposed to be auto-generated via rust/build.rs
@@ -97,7 +98,7 @@ impl PartialEq for Schema {
 impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
         if self.schema_type == SchemaType::Protobuf {
-            return Err(SchemaError::InvalidMessage);
+            return Err(SchemaError::InvalidType);
         }
 
         let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
@@ -108,6 +109,20 @@ impl Schema {
             }
 
             return Err(SchemaError::InvalidMessage);
+        }
+
+        Err(SchemaError::InvalidSchema)
+    }
+
+    pub fn validate_protobuf(&self, input: &[u8]) -> Result<Box<dyn Any>, SchemaError> {
+        if self.schema_type != SchemaType::Protobuf {
+            return Err(SchemaError::InvalidType);
+        }
+        let proto_factory = find_entry( schema_types::PROTOS, self.schema)
+            .ok_or(SchemaError::InvalidSchema)?;
+        let parse_result = proto_factory(input);
+        if let Ok(parsed) = parse_result {
+            return Ok(parsed);
         }
 
         Err(SchemaError::InvalidSchema)
@@ -281,6 +296,18 @@ mod tests {
         get_schema("snuba-queries", Some(1)).unwrap();
         get_schema("transactions", Some(1)).unwrap();
         get_schema("snuba-uptime-results", Some(1)).unwrap();
+    }
+
+    #[test]
+    fn test_proto_validate() {
+        let schema = get_schema("task-worker", None).unwrap();
+        let example = schema.examples[0].payload();
+        let result = schema.validate_protobuf(example);
+        assert!(result.is_ok());
+
+        let parsed = result.unwrap();
+        let contents = parsed.downcast::<sentry_protos::sentry::v1::TaskActivation>().unwrap();
+        assert_eq!(contents.id, "abc123");
     }
 
     fn validate_schema(schema_name: &str) {
