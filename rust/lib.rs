@@ -1,8 +1,8 @@
 use jsonschema::{JSONSchema, SchemaResolver, SchemaResolverError};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::sync::Arc;
 use std::any::Any;
+use std::sync::Arc;
 use thiserror::Error;
 use url::Url;
 // This file is supposed to be auto-generated via rust/build.rs
@@ -118,8 +118,8 @@ impl Schema {
         if self.schema_type != SchemaType::Protobuf {
             return Err(SchemaError::InvalidType);
         }
-        let proto_factory = find_entry( schema_types::PROTOS, self.schema)
-            .ok_or(SchemaError::InvalidSchema)?;
+        let proto_factory =
+            find_entry(schema_types::PROTOS, self.schema).ok_or(SchemaError::InvalidSchema)?;
         let parse_result = proto_factory(input);
         if let Ok(parsed) = parse_result {
             return Ok(parsed);
@@ -257,7 +257,6 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
             examples,
         })
     }
-
 }
 
 #[cfg(test)]
@@ -306,7 +305,9 @@ mod tests {
         assert!(result.is_ok());
 
         let parsed = result.unwrap();
-        let contents = parsed.downcast::<sentry_protos::sentry::v1::TaskActivation>().unwrap();
+        let contents = parsed
+            .downcast::<sentry_protos::sentry::v1::TaskActivation>()
+            .unwrap();
         assert_eq!(contents.id, "abc123");
         assert_eq!(contents.taskname, "tests.do_things");
     }

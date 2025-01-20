@@ -1,5 +1,5 @@
-use std::path::Path;
 use serde::Deserialize;
+use std::path::Path;
 
 #[cfg(feature = "type_generation")]
 use {
@@ -128,7 +128,6 @@ fn mangle_resource_name(resource: &str) -> String {
     // generated rust code does not.
     let parts: Vec<&str> = resource
         .split(".")
-        .into_iter()
         .filter(|part| !part.ends_with("_pb2"))
         .collect();
     parts.join("::")
@@ -168,17 +167,21 @@ fn generate_proto_shim() -> String {
         writeln!(tuples, "    (\"{resource}\", |input: &[u8]| {{").unwrap();
         writeln!(tuples, "        let parsed = {struct_name}::decode(input);").unwrap();
         writeln!(tuples, "        match parsed {{").unwrap();
-        writeln!(tuples, "            Ok(value) => Ok(Box::new(value) as Box<dyn Any>),").unwrap();
+        writeln!(
+            tuples,
+            "            Ok(value) => Ok(Box::new(value) as Box<dyn Any>),"
+        )
+        .unwrap();
         writeln!(tuples, "            Err(err) => Err(err),").unwrap();
         writeln!(tuples, "        }}").unwrap();
         writeln!(tuples, "    }}),").unwrap();
     }
     let mut code = String::new();
-    writeln!(code, "").unwrap();
-    writeln!(code, "").unwrap();
+    writeln!(code).unwrap();
+    writeln!(code).unwrap();
     writeln!(code, "// Imports for protobuf topic schemas").unwrap();
     code.push_str(&imports);
-    writeln!(code, "").unwrap();
+    writeln!(code).unwrap();
     writeln!(code, "pub const PROTOS: &[(&str, fn(input: &[u8]) -> Result<Box<dyn Any>, prost::DecodeError>)] = &[").unwrap();
     code.push_str(&tuples);
     writeln!(code, "];").unwrap();
@@ -216,7 +219,8 @@ fn main() {
     let module_code = {
         #[cfg(feature = "type_generation")]
         {
-            let mut code = generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1");
+            let mut code =
+                generate_schema("schemas/ingest-metrics.v1.schema.json", "ingest_metrics_v1");
             let proto_code = generate_proto_shim();
             code.push_str(&proto_code);
 
