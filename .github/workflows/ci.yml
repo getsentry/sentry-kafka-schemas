@@ -116,6 +116,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Checkout code
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
       - uses: actions/cache@v3
         name: Restore build cache
         with:
