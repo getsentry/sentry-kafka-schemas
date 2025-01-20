@@ -290,7 +290,7 @@ mod tests {
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Protobuf);
         assert_eq!(schema.examples.len(), 1);
-        assert!(schema.schema.starts_with("sentry_protos"));
+        assert!(schema.schema.starts_with("sentry_protos.sentry.v1"));
 
         // Did not error
         get_schema("snuba-queries", Some(1)).unwrap();
@@ -308,6 +308,7 @@ mod tests {
         let parsed = result.unwrap();
         let contents = parsed.downcast::<sentry_protos::sentry::v1::TaskActivation>().unwrap();
         assert_eq!(contents.id, "abc123");
+        assert_eq!(contents.taskname, "tests.do_things");
     }
 
     fn validate_schema(schema_name: &str) {

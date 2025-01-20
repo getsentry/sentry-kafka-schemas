@@ -174,8 +174,11 @@ fn generate_proto_shim() -> String {
         writeln!(tuples, "    }}),").unwrap();
     }
     let mut code = String::new();
+    writeln!(code, "").unwrap();
+    writeln!(code, "").unwrap();
     writeln!(code, "// Imports for protobuf topic schemas").unwrap();
     code.push_str(&imports);
+    writeln!(code, "").unwrap();
     writeln!(code, "pub const PROTOS: &[(&str, fn(input: &[u8]) -> Result<Box<dyn Any>, prost::DecodeError>)] = &[").unwrap();
     code.push_str(&tuples);
     writeln!(code, "];").unwrap();
