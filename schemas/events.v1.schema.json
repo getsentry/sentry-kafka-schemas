@@ -271,7 +271,7 @@
         "flags": {
           "anyOf": [
             {
-              "$ref": "#/definitions/FeatureContext"
+              "$ref": "#/definitions/FlagContext"
             },
             {
               "type": "null"
@@ -549,7 +549,7 @@
       "maxItems": 4,
       "minItems": 4
     },
-    "FeatureContext": {
+    "FlagContext": {
       "type": "object",
       "required": ["values"],
       "properties": {
@@ -559,12 +559,12 @@
         "values": {
           "type": ["array"],
           "items": {
-            "$ref": "#/definitions/FeatureContextItem"
+            "$ref": "#/definitions/FlagContextItem"
           }
         }
       }
     },
-    "FeatureContextItem": {
+    "FlagContextItem": {
       "type": "object",
       "properties": {
         "flag": { "type": ["string"] },
