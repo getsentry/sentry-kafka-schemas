@@ -567,8 +567,8 @@
     "FeatureContextItem": {
       "type": "object",
       "properties": {
-        "key": { "type": ["string"] },
-        "value": {}
+        "flag": { "type": ["string"] },
+        "result": {}
       }
     },
     "ReplayContext": {
