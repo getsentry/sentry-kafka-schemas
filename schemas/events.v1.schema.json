@@ -268,6 +268,16 @@
     "Contexts": {
       "type": "object",
       "properties": {
+        "flags": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/FlagContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "replay": {
           "anyOf": [
             {
@@ -538,6 +548,28 @@
       ],
       "maxItems": 4,
       "minItems": 4
+    },
+    "FlagContext": {
+      "type": "object",
+      "required": ["values"],
+      "properties": {
+        "version": {
+          "type": ["number"]
+        },
+        "values": {
+          "type": ["array"],
+          "items": {
+            "$ref": "#/definitions/FlagContextItem"
+          }
+        }
+      }
+    },
+    "FlagContextItem": {
+      "type": "object",
+      "properties": {
+        "flag": { "type": ["string"] },
+        "result": {}
+      }
     },
     "ReplayContext": {
       "type": "object",
