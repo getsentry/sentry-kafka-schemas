@@ -29,3 +29,11 @@ def test_get_schema() -> None:
     assert get_codec(topic_name) is not None
     assert get_codec(topic_name, 1) is not None
     assert get_codec(topic_name, 1) == get_codec(topic_name, 1)
+
+
+def test_bytes_in_ingest_monitors_codec() -> None:
+    # preventing a regression since this msgpack contains `bytes` values
+    payload = b'\x87\xa4type\xa8check_in\xacmessage_type\xa8check_in\xa7payload\xc4\xa9{"check_in_id":"cafecafecafecafe","monitor_slug":"some-monitor-slug","status":"in_progress","environment":"SANDBOX","contexts":{"trace":{"trace_id":"deadbeefdeadbeef"}}}\xaastart_time\xceg\x91(\xc0\xa3sdk\xb4sentry.python/2.19.0\xaaproject_id\xce\x00\x01\x86\x9f\xaeretention_days\x1e'
+    codec = get_codec("ingest-monitors")
+    # should not crash!
+    codec.decode(payload)
