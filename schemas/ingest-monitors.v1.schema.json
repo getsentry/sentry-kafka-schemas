@@ -34,8 +34,7 @@
           "const": "check_in"
         },
         "payload": {
-          "description": "bytes. JSON string of the wrapped monitor check-in event.",
-          "type": "string"
+          "description": "bytes. JSON string of the wrapped monitor check-in event."
         },
         "start_time": {
           "description": "The time relay produced the check-in to kafka. In seconds with floating precision.",
