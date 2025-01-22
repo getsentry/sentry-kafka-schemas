@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.0.1
+
+### Various fixes & improvements
+
+- Revert "fill out type for MonitorCheckIn.payload (#372)" (#373) by @asottile-sentry
+
 ## 1.0.0
 
 ### Various fixes & improvements
