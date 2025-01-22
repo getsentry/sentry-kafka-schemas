@@ -1,5 +1,14 @@
 # Changelog and versioning
 
+## 1.0.0
+
+### Various fixes & improvements
+
+- fill out type for MonitorCheckIn.payload (#372) by @asottile-sentry
+- Add feature flag context (#364) by @cmanallen
+- ref(uptime): remove region_slug from schema (#368) by @JoshFerge
+- codeowners replay backend (#369) by @bruno-garcia
+
 ## 0.1.129
 
 ### Various fixes & improvements
