@@ -23,6 +23,10 @@
       "description": "Number of days to retain this data",
       "minimum": 0,
       "maximum": 65535
+    },
+    "environment": {
+      "type": "string",
+      "description": "The environment associated with this check"
     }
   },
   "required": ["organization_id", "project_id", "retention_days"]
