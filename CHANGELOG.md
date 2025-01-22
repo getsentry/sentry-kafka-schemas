@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.0.2
+
+### Various fixes & improvements
+
+- add a `$bytes: true` schema extension and use it for monitor payload (#374) by @asottile-sentry
+
 ## 1.0.1
 
 ### Various fixes & improvements
