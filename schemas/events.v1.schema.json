@@ -622,6 +622,13 @@
         }
       }
     },
+    "StackFrameMetadata": {
+      "default": null,
+      "type": ["object", "null"],
+      "additionalProperties": {
+        "symbolicated": ["boolean", "null"]
+      }
+    },
     "StackFrame": {
       "type": "object",
       "properties": {
@@ -653,6 +660,9 @@
         },
         "package": {
           "$ref": "#/definitions/Unicodify"
+        },
+        "data": {
+          "$ref": "#/definitions/StackFrameMetadata"
         }
       }
     },
