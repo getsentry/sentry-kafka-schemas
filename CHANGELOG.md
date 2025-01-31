@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 1.0.3
+
+### Various fixes & improvements
+
+- feat(uptime): add new failure types (#377) by @JoshFerge
+- Improve support for protocol buffer topics in rust library (#370) by @markstory
+- feat(uptime): add environment to snuba uptime results schema (#375) by @JoshFerge
+
 ## 1.0.2
 
 ### Various fixes & improvements
