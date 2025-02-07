@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.0.4
+
+### Various fixes & improvements
+
+- Revert "Add feature flag context (#364)" (#379) by @cmanallen
+
 ## 1.0.3
 
 ### Various fixes & improvements
