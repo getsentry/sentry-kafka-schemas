@@ -5,9 +5,26 @@ from typing import Any
 
 import sentry_kafka_schemas
 import sentry_kafka_schemas.sentry_kafka_schemas
-from jsonschema_gentypes import cli
+from jsonschema_gentypes import BuiltinType, Type, api_draft_07, cli
+from jsonschema_gentypes.jsonschema_draft_04 import JSONSchemaD4
+from jsonschema_gentypes.jsonschema_draft_2020_12_applicator import JSONSchemaItemD2020
 from jsonschema_gentypes.resolver import RefResolver, UnRedolvedException
 from sentry_kafka_schemas.codecs.json import file_handler
+
+
+class BytesExtensionForMypy(api_draft_07.APIv7):
+    def build_type(
+        self,
+        schema: JSONSchemaD4 | JSONSchemaItemD2020,
+        proposed_name: str,
+    ) -> Type:
+        if schema.get("$bytes"):
+            return BuiltinType("bytes")
+        else:
+            return super().build_type(schema, proposed_name)
+
+
+api_draft_07.APIv7 = BytesExtensionForMypy  # type: ignore[misc]
 
 
 def run(target_folder: str = "python/sentry_kafka_schemas/schema_types/") -> None:

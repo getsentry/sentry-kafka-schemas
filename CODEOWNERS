@@ -7,8 +7,8 @@
 /topics/ingest-attachments.yaml                                @getsentry/owners-snuba @getsentry/ingest @getsentry/ops
 /topics/ingest-metrics.yaml                                    @getsentry/owners-snuba @getsentry/ingest
 /topics/ingest-performance-metrics.yaml                        @getsentry/owners-snuba @getsentry/ingest
-/topics/ingest-replay-recordings.yaml                          @getsentry/owners-snuba @getsentry/ingest @getsentry/replay
-/topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-replay-recordings.yaml                          @getsentry/owners-snuba @getsentry/ingest @getsentry/replay-backend
+/topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay-backend
 /topics/ingest-monitors.yaml                                   @getsentry/crons
 /topics/ingest-occurrences.yaml                                @getsentry/issues
 /topics/profiles.yaml                                          @getsentry/profiling
@@ -19,7 +19,7 @@
 /topics/ingest-attachments-dlq.yaml                            @getsentry/ops
 /topics/ingest-metrics-dlq.yaml                                @getsentry/owners-snuba
 /topics/ingest-generic-metrics-dlq.yaml                        @getsentry/owners-snuba
-/topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba @getsentry/replay-backend
 
 # BLQs for ingest topics
 /topics/ingest-transactions-backlog.yaml                       @getsentry/ops
@@ -32,10 +32,11 @@
 /topics/outcomes-billing.yaml                                  @getsentry/owners-snuba @getsentry/revenue
 /topics/outcomes-billing-dlq.yaml                              @getsentry/owners-snuba @getsentry/revenue
 /topics/snuba-metrics.yaml                                     @getsentry/owners-snuba
+/topics/snuba-ourlogs.yaml                                     @getsentry/owners-snuba
 /topics/snuba-generic-metrics.yaml                             @getsentry/owners-snuba
 /topics/generic-events.yaml                                    @getsentry/owners-snuba @getsentry/issues
 /topics/group-attributes.yaml                                  @getsentry/owners-snuba @getsentry/issues
-/topics/ingest-replay-events.yaml                              @getsentry/owners-snuba @getsentry/replay
+/topics/ingest-replay-events.yaml                              @getsentry/owners-snuba @getsentry/replay-backend
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
@@ -50,7 +51,7 @@
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
 /topics/snuba-dead-letter-generic-metrics.yaml                 @getsentry/owners-snuba
 /topics/snuba-dead-letter-querylog.yaml                        @getsentry/owners-snuba
-/topics/snuba-dead-letter-replays.yaml                         @getsentry/owners-snuba @getsentry/replay
+/topics/snuba-dead-letter-replays.yaml                         @getsentry/owners-snuba @getsentry/replay-backend
 /topics/snuba-dead-letter-group-attributes.yaml                @getsentry/owners-snuba @getsentry/issues
 /topics/snuba-dead-letter-generic-events.yaml                  @getsentry/owners-snuba @getsentry/issues
 

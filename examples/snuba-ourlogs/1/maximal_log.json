@@ -1,0 +1,27 @@
+{
+  "organization_id": 69,
+  "project_id": 1,
+  "trace_id": "3c8c20d5-0a54-4a1c-ba10-f76f574d856f",
+  "trace_flags": 255,
+  "span_id": "11002233AABBCCDD",
+  "severity_text": "WARNING",
+  "severity_number": 1,
+  "retention_days": 90,
+  "timestamp_nanos": 1715868485371000,
+  "observed_timestamp_nanos": 1715868485371000,
+  "body": "hello world!",
+  "attributes": {
+    "some.user.tag": {
+      "string_value": "hello"
+    },
+    "another.user.tag": {
+      "int_value": 10
+    },
+    "double.user.tag": {
+      "double_value": -10.59
+    },
+    "bool.user.tag": {
+      "bool_value": true
+    }
+  }
+}

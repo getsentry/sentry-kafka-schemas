@@ -24,9 +24,9 @@
       "minimum": 0,
       "maximum": 65535
     },
-    "region_slug": {
-      "type": ["string", "null"],
-      "description": "The region identifier where this check was performed"
+    "environment": {
+      "type": "string",
+      "description": "The environment associated with this check"
     }
   },
   "required": ["organization_id", "project_id", "retention_days"]

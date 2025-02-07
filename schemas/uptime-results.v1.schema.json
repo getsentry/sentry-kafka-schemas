@@ -13,7 +13,13 @@
       "title": "check_status_reason_type",
       "description": "The type of the status reason",
       "type": "string",
-      "enum": ["timeout", "dns_error", "failure"]
+      "enum": [
+        "timeout",
+        "dns_error",
+        "failure",
+        "tls_error",
+        "connection_error"
+      ]
     },
     "RequestType": {
       "title": "request_type",

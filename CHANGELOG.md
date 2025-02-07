@@ -1,5 +1,52 @@
 # Changelog and versioning
 
+## 1.0.4
+
+### Various fixes & improvements
+
+- Revert "Add feature flag context (#364)" (#379) by @cmanallen
+
+## 1.0.3
+
+### Various fixes & improvements
+
+- feat(uptime): add new failure types (#377) by @JoshFerge
+- Improve support for protocol buffer topics in rust library (#370) by @markstory
+- feat(uptime): add environment to snuba uptime results schema (#375) by @JoshFerge
+
+## 1.0.2
+
+### Various fixes & improvements
+
+- add a `$bytes: true` schema extension and use it for monitor payload (#374) by @asottile-sentry
+
+## 1.0.1
+
+### Various fixes & improvements
+
+- Revert "fill out type for MonitorCheckIn.payload (#372)" (#373) by @asottile-sentry
+
+## 1.0.0
+
+### Various fixes & improvements
+
+- fill out type for MonitorCheckIn.payload (#372) by @asottile-sentry
+- Add feature flag context (#364) by @cmanallen
+- ref(uptime): remove region_slug from schema (#368) by @JoshFerge
+- codeowners replay backend (#369) by @bruno-garcia
+
+## 0.1.129
+
+### Various fixes & improvements
+
+- feat: add schemas for ourlogs (#367) by @colin-sentry
+
+## 0.1.128
+
+### Various fixes & improvements
+
+- release: 0.1.127 (08569708) by @getsentry-bot
+
 ## 0.1.127
 
 - No documented changes.
