@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.0.5
+
+### Various fixes & improvements
+
+- fix: bump sentry-protos (#381) by @JoshFerge
+
 ## 1.0.4
 
 ### Various fixes & improvements
