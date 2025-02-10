@@ -34,7 +34,7 @@ jobs:
           make docs
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ./docs/build/
 
@@ -49,4 +49,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3.0.1
+        uses: actions/deploy-pages@v4.0.5
