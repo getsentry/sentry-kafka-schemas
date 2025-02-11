@@ -22,6 +22,7 @@
 /topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba @getsentry/replay-backend
 
 # BLQs for ingest topics
+/topics/ingest-events-backlog.yaml			       @getsentry/ops
 /topics/ingest-transactions-backlog.yaml                       @getsentry/ops
 
 # Topics consumed by Snuba

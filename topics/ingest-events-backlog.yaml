@@ -1,5 +1,5 @@
-pipeline: transactions
-description: Backlog queue for ingest-transactions
+Pipeline: errors
+description: Backlog queue for ingest-events
 services:
   producers:
     - getsentry/sentry
@@ -9,9 +9,9 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: msgpack
-    resource: ingest-transactions.v1.schema.json
+    resource: ingest-events.v1.schema.json
     examples:
-      - ingest-transactions/1/
+      - ingest-events/1/
 topic_creation_config:
   compression.type: lz4
   retention.ms: "86400000"
