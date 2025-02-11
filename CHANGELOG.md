@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 1.0.6
+
+### Various fixes & improvements
+
+- Creating the events backlog topic (#380) by @kneeyo1
+- bump version (#382) by @kneeyo1
+
 ## 1.0.5
 
 ### Various fixes & improvements
