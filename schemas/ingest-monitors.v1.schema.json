@@ -38,7 +38,7 @@
           "$bytes": true
         },
         "start_time": {
-          "description": "The time relay produced the check-in to kafka. In seconds with floating precision.",
+          "description": "The time relay received the envelope containing the check-in. In seconds.",
           "type": "number"
         },
         "project_id": {
