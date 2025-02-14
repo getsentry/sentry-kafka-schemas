@@ -27,6 +27,12 @@
     "environment": {
       "type": "string",
       "description": "The environment associated with this check"
+    },
+    "incident_status": {
+      "type": "integer",
+      "description": "Indicates this results is part of a detected incident",
+      "minimum": 0,
+      "maximum": 1
     }
   },
   "required": ["organization_id", "project_id", "retention_days"]
