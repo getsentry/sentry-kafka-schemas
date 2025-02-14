@@ -1,3 +1,4 @@
+pipeline: spans
 description: List of buffered spans for a segment
 services:
   producers:
