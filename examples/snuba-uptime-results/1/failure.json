@@ -19,5 +19,6 @@
   "project_id": 456,
   "retention_days": 90,
   "region": "us-east-1",
-  "environment": "production"
+  "environment": "production",
+  "incident_status": 1
 }

@@ -17,5 +17,6 @@
   },
   "organization_id": 123,
   "project_id": 456,
-  "retention_days": 90
+  "retention_days": 90,
+  "incident_status": 0
 }
