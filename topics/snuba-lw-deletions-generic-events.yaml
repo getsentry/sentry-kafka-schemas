@@ -1,3 +1,4 @@
+pipeline: generic-events
 description: Snuba Lightweight Deletes Generic Events (search issues)
 services:
   consumers:
