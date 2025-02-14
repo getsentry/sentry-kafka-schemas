@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 1.0.8
+
+### Various fixes & improvements
+
+- feat(uptime): Add additional "incident_status" to snuba results (#386) by @evanpurkhiser
+- add more missing pipeline annotations (#385) by @lynnagara
+
 ## 1.0.7
 
 ### Various fixes & improvements
