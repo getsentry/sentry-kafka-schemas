@@ -1,4 +1,3 @@
-pipeline: errors
 description: DLQ for group-attributes
 services:
   producers:

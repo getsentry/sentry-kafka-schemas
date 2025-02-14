@@ -1,4 +1,4 @@
-pipeline: errors
+pipeline: generic-metrics
 description: DLQ for snuba-generic-metrics
 services:
   producers:

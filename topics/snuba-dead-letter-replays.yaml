@@ -1,4 +1,4 @@
-pipeline: errors
+pipeline: replays
 description: DLQ for ingest-replay-events
 services:
   producers:
