@@ -1,3 +1,4 @@
+pipeline: spans
 description: Snuba spans only
 services:
   producers:

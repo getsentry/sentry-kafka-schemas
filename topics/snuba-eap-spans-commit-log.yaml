@@ -1,3 +1,4 @@
+pipeline: spans
 description: Commit log topic for eap spans pipeline
 services:
   producers:

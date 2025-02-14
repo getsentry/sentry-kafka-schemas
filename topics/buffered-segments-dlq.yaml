@@ -1,3 +1,4 @@
+pipeline: spans
 description: DLQ for buffered-segments
 services:
   producers:

@@ -1,3 +1,4 @@
+pipeline: spans
 description: Scheduled subscriptions EAP spans
 services:
   producers:

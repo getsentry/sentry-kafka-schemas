@@ -1,3 +1,4 @@
+pipeline: spans
 description: Mutations updates for spans
 services:
   producers:

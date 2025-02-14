@@ -1,4 +1,4 @@
-Pipeline: errors
+pipeline: errors
 description: Backlog queue for ingest-events
 services:
   producers:

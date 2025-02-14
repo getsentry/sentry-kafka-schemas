@@ -1,3 +1,4 @@
+pipeline: errors
 description: Error replacements
 services:
   producers:

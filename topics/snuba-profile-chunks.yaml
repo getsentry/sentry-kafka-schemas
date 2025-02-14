@@ -1,3 +1,4 @@
+pipeline: profiles
 description: Profile chunks for continuous profiling
 services:
   producers:
