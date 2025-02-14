@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 1.0.7
+
+### Various fixes & improvements
+
+- fix incorrect pipeline annotations (#384) by @lynnagara
+- fix(crons): Correct description of start_time (#383) by @evanpurkhiser
+
 ## 1.0.6
 
 ### Various fixes & improvements
