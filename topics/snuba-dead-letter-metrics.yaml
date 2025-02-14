@@ -1,4 +1,4 @@
-pipeline: errors
+pipeline: release-health
 description: DLQ for snuba-metrics
 services:
   producers:
