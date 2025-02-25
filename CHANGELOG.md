@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.1.0
+
+### Various fixes & improvements
+
+- feat(uptime): add redirect error (#387) by @JoshFerge
+
 ## 1.0.8
 
 ### Various fixes & improvements
