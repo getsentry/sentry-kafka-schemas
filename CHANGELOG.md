@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.1.1
+
+### Various fixes & improvements
+
+- feat: Introduce ingest-spans (#388) by @jan-auer
+
 ## 1.1.0
 
 ### Various fixes & improvements
