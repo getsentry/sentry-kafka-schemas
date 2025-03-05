@@ -26,11 +26,11 @@
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "segment_id": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
         },
         "profile_id": {
@@ -93,12 +93,6 @@
         },
         "data": {
           "$ref": "#/definitions/Data"
-        },
-        "_metrics_summary": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/MetricsSummary"
-          }
         }
       },
       "required": [
@@ -209,35 +203,6 @@
         }
       },
       "required": ["value"]
-    },
-    "MetricsSummary": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/MetricSummaryValue"
-      }
-    },
-    "MetricSummaryValue": {
-      "type": "object",
-      "properties": {
-        "min": {
-          "type": "number"
-        },
-        "max": {
-          "type": "number"
-        },
-        "sum": {
-          "type": "number"
-        },
-        "count": {
-          "type": "number"
-        },
-        "tags": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
     }
   }
 }

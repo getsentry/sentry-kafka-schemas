@@ -26,20 +26,12 @@
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
-        },
-        "segment_id": {
-          "type": "string",
-          "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
         },
         "profile_id": {
           "$ref": "#/definitions/UUID",
           "description": "The profile ID. It is an 16 byte hexadecimal string."
-        },
-        "is_segment": {
-          "type": "boolean",
-          "description": "Whether this span is a segment or not."
         },
         "start_timestamp_ms": {
           "$ref": "#/definitions/UInt",
@@ -56,10 +48,6 @@
         "duration_ms": {
           "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."
-        },
-        "exclusive_time_ms": {
-          "$ref": "#/definitions/PositiveFloat",
-          "description": "The exclusive time of the span in milliseconds."
         },
         "retention_days": {
           "$ref": "#/definitions/UInt16"
@@ -93,18 +81,10 @@
         },
         "data": {
           "$ref": "#/definitions/Data"
-        },
-        "_metrics_summary": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/MetricsSummary"
-          }
         }
       },
       "required": [
         "duration_ms",
-        "exclusive_time_ms",
-        "is_segment",
         "project_id",
         "organization_id",
         "received",
@@ -209,35 +189,6 @@
         }
       },
       "required": ["value"]
-    },
-    "MetricsSummary": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/MetricSummaryValue"
-      }
-    },
-    "MetricSummaryValue": {
-      "type": "object",
-      "properties": {
-        "min": {
-          "type": "number"
-        },
-        "max": {
-          "type": "number"
-        },
-        "sum": {
-          "type": "number"
-        },
-        "count": {
-          "type": "number"
-        },
-        "tags": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
     }
   }
 }
