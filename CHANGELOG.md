@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.1.2
+
+### Various fixes & improvements
+
+- fix(spans): Align the spans topics with reality (#389) by @jan-auer
+
 ## 1.1.1
 
 ### Various fixes & improvements
