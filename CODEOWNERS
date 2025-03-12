@@ -44,6 +44,7 @@
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/performance
 /topics/snuba-eap-mutations.yaml                               @getsentry/owners-snuba
+/topics/snuba-items.yaml                                       @getsentry/events-analytics-platform
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
@@ -99,6 +100,7 @@
 /schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
 /schemas/taskworker.v1.schema.json                             @getsentry/hybrid-cloud
+/schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 
 # Examples
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
@@ -118,6 +120,7 @@
 /examples/uptime-configs/                                      @getsentry/crons
 /examples/snuba-uptime-results/                                @getsentry/crons
 /examples/taskworker/                                          @getsentry/taskworker
+/examples/snuba-items/                                         @getsentry/events-analytics-platform
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
