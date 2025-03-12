@@ -1,4 +1,4 @@
-description: items
+description: A generic item topic to insert into EAP
 services:
   producers:
     - getsentry/relay
