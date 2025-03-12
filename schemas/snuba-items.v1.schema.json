@@ -10,7 +10,7 @@
       "$ref": "#/definitions/UInt"
     },
     "trace_id": {
-      "$ref": "#/definitions/UUID",
+      "$ref": "#/definitions/UUID"
     },
     "item_id": {
       "$ref": "#/definitions/UInt"
@@ -23,7 +23,7 @@
       "$ref": "#/definitions/Attributes"
     },
     "received": {
-      "$ref": "#/definitions/Timestamp",
+      "$ref": "#/definitions/Timestamp"
     },
     "retention_days": {
       "$ref": "#/definitions/UInt"
@@ -41,7 +41,7 @@
   ],
   "definitions": {
     "Attributes": {
-      "type": "object",
+      "type": "object"
     },
     "UUID": {
       "type": "string",
