@@ -117,6 +117,9 @@
             "group": {
               "type": "string"
             },
+            "sdk.name": {
+              "type": "string"
+            },
             "system": {
               "type": "string"
             },
