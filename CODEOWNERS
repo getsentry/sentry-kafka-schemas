@@ -98,7 +98,7 @@
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
 /schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
-/schemas/taskworker.v1.schema.json                             @getsentry/hybrid-cloud
+/schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
 
 # Examples
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
