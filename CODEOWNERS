@@ -82,7 +82,7 @@
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
-/topics/task-worker.yaml                                       @getsentry/hybrid-cloud
+/topics/taskworker.yaml                                        @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
@@ -98,7 +98,7 @@
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
 /schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
-/schemas/taskworker.v1.schema.json                             @getsentry/hybrid-cloud
+/schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
 
 # Examples
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
@@ -117,7 +117,7 @@
 /examples/uptime-results/                                      @getsentry/crons
 /examples/uptime-configs/                                      @getsentry/crons
 /examples/snuba-uptime-results/                                @getsentry/crons
-/examples/taskworker/                                          @getsentry/taskworker
+/examples/taskworker/                                          @getsentry/taskbroker
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba

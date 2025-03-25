@@ -64,6 +64,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     "getsentry/vroom",
                     "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
+                    "getsentry/taskbroker",
                 ]
             }
         },

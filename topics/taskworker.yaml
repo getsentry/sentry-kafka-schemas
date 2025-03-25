@@ -5,7 +5,7 @@ services:
   producers:
     - getsentry/sentry
   consumers:
-    - getsentry/sentry
+    - getsentry/taskbroker
 schemas:
   - version: 1
     compatibility_mode: none
