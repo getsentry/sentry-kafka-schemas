@@ -82,7 +82,7 @@
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
-/topics/task-worker.yaml                                       @getsentry/hybrid-cloud
+/topics/taskworker.yaml                                        @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling

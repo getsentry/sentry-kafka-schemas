@@ -285,7 +285,7 @@ mod tests {
         assert!(schema.schema.starts_with("{"));
 
         // Protobuf topic
-        let schema = get_schema("task-worker", None).unwrap();
+        let schema = get_schema("taskworker", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Protobuf);
         assert_eq!(schema.examples.len(), 1);
@@ -299,7 +299,7 @@ mod tests {
 
     #[test]
     fn test_proto_validate() {
-        let schema = get_schema("task-worker", None).unwrap();
+        let schema = get_schema("taskworker", None).unwrap();
         let example = schema.examples[0].payload();
         let result = schema.validate_protobuf(example);
         assert!(result.is_ok());
