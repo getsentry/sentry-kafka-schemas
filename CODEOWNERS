@@ -83,6 +83,7 @@
 
 # Topic for taskworker
 /topics/taskworker.yaml                                        @getsentry/taskbroker
+/topics/task-worker.yaml                                        @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
