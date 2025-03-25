@@ -83,6 +83,9 @@
 
 # Topic for taskworker
 /topics/task-worker.yaml                                       @getsentry/hybrid-cloud
+/topics/task-worker-dlq.yaml                                   @getsentry/taskbroker
+/topics/task-worker-ingest.yaml                                @getsentry/taskbroker
+/topics/task-worker-ingest-dlq.yaml                            @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
