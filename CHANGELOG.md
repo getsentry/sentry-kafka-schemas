@@ -1,5 +1,17 @@
 # Changelog and versioning
 
+## 1.1.4
+
+### Various fixes & improvements
+
+- chore(taskworker): Temporarily add task-worker (#393) by @enochtangg
+
+## 1.1.3
+
+### Various fixes & improvements
+
+- fix(taskworker): Rename taskworker topic (#392) by @enochtangg
+
 ## 1.1.2
 
 ### Various fixes & improvements
