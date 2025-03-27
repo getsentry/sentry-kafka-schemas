@@ -82,8 +82,12 @@
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
-/topics/taskworker.yaml                                        @getsentry/taskbroker
-/topics/task-worker.yaml                                        @getsentry/taskbroker
+/topics/task-worker.yaml                                      @getsentry/taskbroker
+/topics/taskworker.yaml                                       @getsentry/taskbroker
+/topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
+/topics/taskworker-ingest.yaml                                @getsentry/taskbroker
+/topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
