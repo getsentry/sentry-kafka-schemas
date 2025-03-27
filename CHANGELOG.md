@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.1.5
+
+### Various fixes & improvements
+
+- feat(taskworker): Add taskworker ingest and dlq topics (#394) by @enochtangg
+
 ## 1.1.4
 
 ### Various fixes & improvements
