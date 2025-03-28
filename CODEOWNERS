@@ -82,7 +82,6 @@
 /topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
-/topics/task-worker.yaml                                      @getsentry/taskbroker
 /topics/taskworker.yaml                                       @getsentry/taskbroker
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
