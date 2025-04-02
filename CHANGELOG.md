@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 1.1.6
+
+### Various fixes & improvements
+
+- chore(sourcemaps) - Update ErrorDate kafka schema (#396) by @yuvmen
+- remove old task-worker topic (#395) by @enochtangg
+
 ## 1.1.5
 
 ### Various fixes & improvements
