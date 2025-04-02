@@ -400,6 +400,10 @@
         "version": {
           "default": null,
           "type": ["string", "null"]
+        },
+        "symbolicated_in_app": {
+          "default": null,
+          "type": ["boolean", "null"]
         }
       },
       "required": ["received"]
