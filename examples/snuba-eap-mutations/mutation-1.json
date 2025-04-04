@@ -1,7 +1,7 @@
 {
   "filter": {
     "organization_id": 1500,
-    "_sort_timestamp": 150,
+    "start_timestamp_ms": 150,
     "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
     "span_id": "deadbeefdeadbeef"
   },
