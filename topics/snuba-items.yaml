@@ -7,10 +7,11 @@ services:
 schemas:
   - version: 1
     compatibility_mode: none
-    type: json
-    resource: snuba-items.v1.schema.json
+    type: protobuf
+    resource: sentry_protos.snuba.v1.trace_item_pb2.TraceItem
     examples:
       - snuba-items/1/
+
 topic_creation_config:
   compression.type: lz4
   retention.ms: "86400000"
