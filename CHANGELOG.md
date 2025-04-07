@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.1.7
+
+### Various fixes & improvements
+
+- feat(eap): Add schema for snuba-items (#390) by @phacops
+
 ## 1.1.6
 
 ### Various fixes & improvements
