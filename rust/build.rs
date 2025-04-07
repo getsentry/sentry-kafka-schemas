@@ -136,6 +136,7 @@ fn mangle_resource_name(resource: &str) -> String {
 fn generate_proto_shim() -> String {
     let mut imports = String::new();
     let mut tuples = String::new();
+    let mut imported_resources = std::collections::HashSet::new();
     use std::fmt::Write;
 
     writeln!(imports, "use std::any::Any;").unwrap();
@@ -162,7 +163,11 @@ fn generate_proto_shim() -> String {
         let resource = schema_version.resource.clone();
         let struct_path = mangle_resource_name(&resource);
         let struct_name = struct_path.split("::").last().unwrap();
-        writeln!(imports, "use {struct_path};").unwrap();
+
+        // Only add import if we haven't seen the resource before
+        if imported_resources.insert(struct_path.clone()) {
+            writeln!(imports, "use {struct_path};").unwrap();
+        }
 
         writeln!(tuples, "    (\"{resource}\", |input: &[u8]| {{").unwrap();
         writeln!(tuples, "        let parsed = {struct_name}::decode(input);").unwrap();
