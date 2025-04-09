@@ -80,7 +80,6 @@
 # Topics related to uptime
 /topics/snuba-uptime-results.yaml                              @getsentry/crons
 /topics/uptime-results.yaml                                    @getsentry/crons
-/topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
 /topics/taskworker.yaml                                       @getsentry/taskbroker
@@ -101,7 +100,6 @@
 /schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
 /schemas/monitors-clock-tasks.v1.schema.json                   @getsentry/crons
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
-/schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
 /schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 /schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
@@ -121,7 +119,6 @@
 /examples/monitors-clock-tick/                                 @getsentry/crons
 /examples/monitors-clock-tasks/                                @getsentry/crons
 /examples/uptime-results/                                      @getsentry/crons
-/examples/uptime-configs/                                      @getsentry/crons
 /examples/snuba-uptime-results/                                @getsentry/crons
 /examples/snuba-items/                                         @getsentry/events-analytics-platform
 /examples/taskworker/                                          @getsentry/taskbroker
