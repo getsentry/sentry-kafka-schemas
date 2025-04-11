@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.2.0
+
+### Various fixes & improvements
+
+- ref(uptime): Remove uptime-configs topic (#398) by @evanpurkhiser
+
 ## 1.1.7
 
 ### Various fixes & improvements
