@@ -9,6 +9,7 @@
   "duration_ms": 1000,
   "exclusive_time_ms": 1000,
   "is_segment": false,
+  "kind": "internal",
   "profile_id": "deadbeefdeadbeefdeadbeefdeadbeef",
   "received": 1715868485.381,
   "retention_days": 90,
