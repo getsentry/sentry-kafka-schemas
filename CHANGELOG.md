@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 1.2.1
+
+### Various fixes & improvements
+
+- feat(taskworker): Add taskworker control and dlq topic configurations (#401) by @enochtangg
+- feat(snuba-spans): add `kind` field (#400) by @mjq
+- ref: bump sentry-protos to 0.1.69 (#399) by @phacops
+
 ## 1.2.0
 
 ### Various fixes & improvements
