@@ -86,6 +86,8 @@
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
 /topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+/topics/taskworker-control.yaml                               @getsentry/taskbroker
+/topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
 
 
 # Schemas
