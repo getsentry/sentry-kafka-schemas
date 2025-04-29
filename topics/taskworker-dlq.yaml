@@ -1,6 +1,6 @@
 pipeline: taskworker
 description: |
-  Taskworker tasks to be executed
+  DLQ for taskworker
 services:
   producers:
     - getsentry/taskbroker
