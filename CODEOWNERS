@@ -88,7 +88,8 @@
 /topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
 /topics/taskworker-control.yaml                               @getsentry/taskbroker
 /topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
-
+/topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
+/topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
