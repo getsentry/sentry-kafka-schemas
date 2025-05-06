@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.2.2
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.1.74 (#402) by @phacops
+
 ## 1.2.1
 
 ### Various fixes & improvements
