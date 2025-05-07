@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.1
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.2.0 for real (#406) by @phacops
+
 ## 1.3.0
 
 ### Various fixes & improvements
