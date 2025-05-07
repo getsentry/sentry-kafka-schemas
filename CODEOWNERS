@@ -84,12 +84,31 @@
 # Topic for taskworker
 /topics/taskworker.yaml                                       @getsentry/taskbroker
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
-/topics/taskworker-ingest.yaml                                @getsentry/taskbroker
-/topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+/topics/taskworker-billing.yaml                               @getsentry/taskbroker
+/topics/taskworker-billing-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-control.yaml                               @getsentry/taskbroker
 /topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-ingest.yaml                                @getsentry/taskbroker
+/topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
 /topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
 /topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
+/topics/taskworker-ingest-transactions.yaml                   @getsentry/taskbroker
+/topics/taskworker-ingest-transactions-dlq.yaml               @getsentry/taskbroker
+/topics/taskworker-internal.yaml                              @getsentry/taskbroker
+/topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-limited.yaml                               @getsentry/taskbroker
+/topics/taskworker-limited-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-long.yaml                                  @getsentry/taskbroker
+/topics/taskworker-long-dlq.yaml                              @getsentry/taskbroker
+/topics/taskworker-products.yaml                              @getsentry/taskbroker
+/topics/taskworker-products-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-sentryapp.yaml                             @getsentry/taskbroker
+/topics/taskworker-sentryapp-dlq.yaml                         @getsentry/taskbroker
+/topics/taskworker-symbolication.yaml                         @getsentry/taskbroker
+/topics/taskworker-symbolication-dlq.yaml                     @getsentry/taskbroker
+/topics/taskworker-usage.yaml                                 @getsentry/taskbroker
+/topics/taskworker-usage-dlq.yaml                             @getsentry/taskbroker
+
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
