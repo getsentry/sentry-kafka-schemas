@@ -1,5 +1,13 @@
 # Changelog and versioning
 
+## 1.3.0
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.2.0 (#405) by @phacops
+- ref(taskworker): Add all the remaining topics needed for the taskworker (#404) by @evanh
+- add ingest errors topic config (#403) by @enochtangg
+
 ## 1.2.2
 
 ### Various fixes & improvements
