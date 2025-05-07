@@ -18,7 +18,3 @@ topic_creation_config:
   message.timestamp.type: LogAppendTime
   max.message.bytes: "10000000"
   retention.ms: "86400000"
-<<<<<<< HEAD
-
-=======
->>>>>>> main
