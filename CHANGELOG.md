@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.2
+
+### Various fixes & improvements
+
+- fix(rust): Fix compilation with no default features enabled (#407) by @Dav1dde
+
 ## 1.3.1
 
 ### Various fixes & improvements
