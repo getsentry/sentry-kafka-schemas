@@ -48,7 +48,8 @@ lint-python:
 .PHONY: lint-python
 
 lint-rust:
-	cargo clippy -- -W clippy::pedantic
+	cargo clippy --no-default-features --all-targets -- -W clippy::pedantic
+	cargo clippy --all-features --all-targets -- -W clippy::pedantic
 .PHONY: lint-rust
 
 tests:

@@ -114,6 +114,7 @@ impl Schema {
         Err(SchemaError::InvalidSchema)
     }
 
+    #[cfg(feature = "type_generation")]
     pub fn validate_protobuf(&self, input: &[u8]) -> Result<Box<dyn Any>, SchemaError> {
         if self.schema_type != SchemaType::Protobuf {
             return Err(SchemaError::InvalidType);
@@ -298,6 +299,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "type_generation")]
     fn test_proto_validate() {
         let schema = get_schema("taskworker", None).unwrap();
         let example = schema.examples[0].payload();
