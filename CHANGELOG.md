@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.3
+
+### Various fixes & improvements
+
+- fix: Sort slice by resource instead of topic (#408) by @phacops
+
 ## 1.3.2
 
 ### Various fixes & improvements
