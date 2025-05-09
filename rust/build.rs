@@ -142,11 +142,10 @@ fn generate_proto_shim() -> String {
     writeln!(imports, "use std::any::Any;").unwrap();
     writeln!(imports, "use prost::Message;").unwrap();
 
-    let mut topics = enumerate_dir("topics");
+    let topics = enumerate_dir("topics");
     let manifest_root = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    let mut resources: Vec<String> = Vec::new();
 
-    let key_fn = |topic: &String| topic.strip_suffix(".yaml").unwrap().to_owned();
-    topics.sort_by_key(key_fn);
     for topic in &topics {
         let path = format!("{manifest_root}/topics/{topic}");
         let yaml_data = std::fs::read_to_string(&path).unwrap();
@@ -161,6 +160,13 @@ fn generate_proto_shim() -> String {
             continue;
         }
         let resource = schema_version.resource.clone();
+
+        resources.push(resource);
+    }
+
+    resources.sort();
+
+    for resource in &resources {
         let struct_path = mangle_resource_name(&resource);
         let struct_name = struct_path.split("::").last().unwrap();
 
@@ -181,7 +187,9 @@ fn generate_proto_shim() -> String {
         writeln!(tuples, "        }}").unwrap();
         writeln!(tuples, "    }}),").unwrap();
     }
+
     let mut code = String::new();
+
     writeln!(code).unwrap();
     writeln!(code).unwrap();
     writeln!(code, "// Imports for protobuf topic schemas").unwrap();
