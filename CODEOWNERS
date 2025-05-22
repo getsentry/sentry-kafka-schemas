@@ -44,7 +44,6 @@
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/performance
 /topics/snuba-eap-mutations.yaml                               @getsentry/owners-snuba
-/topics/snuba-items.yaml                                       @getsentry/events-analytics-platform
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
@@ -168,3 +167,9 @@
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
 /examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
 /topics/eap-spans-subscription-results.yaml                         @getsentry/owners-snuba @getsentry/issues @getsentry/performance
+
+# Items pipeline
+/topics/snuba-items.yaml                       @getsentry/events-analytics-platform
+/topics/snuba-items-commit-log.yaml            @getsentry/events-analytics-platform
+/topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
+/topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
