@@ -170,6 +170,6 @@
 
 # Items pipeline
 /topics/snuba-items.yaml                       @getsentry/events-analytics-platform
-/topics/eap-items-scheduled-subscriptions.yaml @getsentry/events-analytics-platform
-/topics/eap-items-subscription-results.yaml    @getsentry/events-analytics-platform
 /topics/snuba-items-commit-log.yaml            @getsentry/events-analytics-platform
+/topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
+/topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
