@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.4
+
+### Various fixes & improvements
+
+- chore(eap): Add item subscription related topics (#409) by @phacops
+
 ## 1.3.3
 
 ### Various fixes & improvements
