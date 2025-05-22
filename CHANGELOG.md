@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.5
+
+### Various fixes & improvements
+
+- add taskworker email and cutover topics configs (#410) by @enochtangg
+
 ## 1.3.4
 
 ### Various fixes & improvements
