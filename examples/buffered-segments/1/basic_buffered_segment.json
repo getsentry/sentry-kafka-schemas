@@ -21,7 +21,9 @@
         "user": "ip:127.0.0.1"
       },
       "span_id": "95acbe6d30a66717",
-      "start_timestamp_ms": 1706734066840,
+      "start_timestamp_ms": 1715868485371,
+      "start_timestamp_precise": 1715868485.370551,
+      "end_timestamp_precise": 1715868486.370551,
       "trace_id": "8e6f22e6169545cc963255d0f29cb76b"
     },
     {
@@ -45,7 +47,9 @@
         "user": "ip:127.0.0.1"
       },
       "span_id": "95acbe6d30a66717",
-      "start_timestamp_ms": 1706734066840,
+      "start_timestamp_ms": 1715868485371,
+      "start_timestamp_precise": 1715868485.370551,
+      "end_timestamp_precise": 1715868486.370551,
       "trace_id": "8e6f22e6169545cc963255d0f29cb76b"
     }
   ]
