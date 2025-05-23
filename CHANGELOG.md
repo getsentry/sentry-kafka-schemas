@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.6
+
+### Various fixes & improvements
+
+- fix: Add missing fields to buffered-segments and ingest-spans (#411) by @jan-auer
+
 ## 1.3.5
 
 ### Various fixes & improvements
