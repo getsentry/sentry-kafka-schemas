@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.7
+
+### Various fixes & improvements
+
+- feature(errors) - Add `sample_rate` field to ErrorData on error events (#412) by @yuvmen
+
 ## 1.3.6
 
 ### Various fixes & improvements
