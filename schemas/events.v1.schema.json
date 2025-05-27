@@ -404,6 +404,10 @@
         "symbolicated_in_app": {
           "default": null,
           "type": ["boolean", "null"]
+        },
+        "sample_rate": {
+          "default": null,
+          "type": ["number", "null"]
         }
       },
       "required": ["received"]
