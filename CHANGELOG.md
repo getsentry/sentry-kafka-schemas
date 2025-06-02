@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.8
+
+### Various fixes & improvements
+
+- Upgrade rapidjson (#413) by @fpacifici
+
 ## 1.3.7
 
 ### Various fixes & improvements
