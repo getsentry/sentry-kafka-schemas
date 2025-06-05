@@ -93,6 +93,10 @@
 /topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
 /topics/taskworker-ingest-transactions.yaml                   @getsentry/taskbroker
 /topics/taskworker-ingest-transactions-dlq.yaml               @getsentry/taskbroker
+/topics/taskworker-ingest-attachments.yaml                    @getsentry/taskbroker
+/topics/taskworker-ingest-attachments-dlq.yaml                @getsentry/taskbroker
+/topics/taskworker-ingest-profiling.yaml                      @getsentry/taskbroker
+/topics/taskworker-ingest-profiling-dlq.yaml                  @getsentry/taskbroker
 /topics/taskworker-internal.yaml                              @getsentry/taskbroker
 /topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
 /topics/taskworker-limited.yaml                               @getsentry/taskbroker
