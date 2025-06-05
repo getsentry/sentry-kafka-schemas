@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.9
+
+### Various fixes & improvements
+
+- create taskworker ingest and attachments topics (#414) by @enochtangg
+
 ## 1.3.8
 
 ### Various fixes & improvements
