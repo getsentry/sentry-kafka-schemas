@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.10
+
+### Various fixes & improvements
+
+- Add ingest-spans-dlq (#415) by @untitaker
+
 ## 1.3.9
 
 ### Various fixes & improvements
