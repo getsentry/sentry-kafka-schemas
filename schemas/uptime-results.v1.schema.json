@@ -54,6 +54,61 @@
         "http_status_code": {
           "description": "Status code of the successful check-in",
           "type": ["number", "null"]
+        },
+        "request_body_size_bytes": {
+          "description": "Size of the request body in bytes (per OTEL).",
+          "type": ["number", "null"]
+        },
+        "response_body_size_bytes": {
+          "description": "Size of the response body in bytes (per OTEL).",
+          "type": ["number", "null"]
+        },
+        "redirect_count": {
+          "description": "Number of redirects encountered before the final request or max threshold.",
+          "type": ["number", "null"]
+        },
+        "durations_us": {
+          "type": "object",
+          "description": "Durations of each operation in the request, in microseconds",
+          "properties": {
+            "dns_lookup": {
+              "description": "Total time from request initiation until DNS resolution completes. Includes timings from all redirects.",
+              "type": ["number", "null"]
+            },
+            "tcp_connection": {
+              "description": "Time to establish a TCP connection (excluding TLS). Includes timings from all redirects.",
+              "type": ["number", "null"]
+            },
+            "tls_handshake": {
+              "description": "Time spent on the TLS handshake. Includes timings from all redirects.",
+              "type": ["number", "null"]
+            },
+            "time_to_first_byte": {
+              "description": "Time from request start to receiving the first response byte. Includes timings from all redirects.",
+              "type": ["number", "null"]
+            },
+            "send_request": {
+              "description": "Time spent sending the request (per OTEL conventions).",
+              "type": ["number", "null"]
+            },
+            "receive_response": {
+              "description": "Time spent receiving the response (per OTEL).",
+              "type": ["number", "null"]
+            },
+            "redirect": {
+              "description": "Cumulative duration of all redirects before the final request.",
+              "type": ["number", "null"]
+            }
+          },
+          "required": [
+            "dns_lookup",
+            "tcp_connection",
+            "tls_handshake",
+            "time_to_first_byte",
+            "send_request",
+            "receive_response",
+            "redirect"
+          ]
         }
       },
       "required": ["request_type", "http_status_code"]
