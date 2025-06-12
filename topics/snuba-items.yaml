@@ -1,0 +1,18 @@
+description: A generic item topic to insert into EAP
+services:
+  producers:
+    - getsentry/relay
+  consumers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: protobuf
+    resource: sentry_protos.snuba.v1.trace_item_pb2.TraceItem
+    examples:
+      - snuba-items/1/
+
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
+  max.message.bytes: "10000000"

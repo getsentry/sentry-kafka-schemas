@@ -1,6 +1,6 @@
 pipeline: taskworker
 description: |
-  Taskworker tasks to be executed
+  A spare topic for maintenance or emergency cutovers
 services:
   producers:
     - getsentry/sentry

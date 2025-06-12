@@ -79,11 +79,42 @@
 # Topics related to uptime
 /topics/snuba-uptime-results.yaml                              @getsentry/crons
 /topics/uptime-results.yaml                                    @getsentry/crons
-/topics/uptime-configs.yaml                                    @getsentry/crons
 
 # Topic for taskworker
-/topics/taskworker.yaml                                        @getsentry/taskbroker
-/topics/task-worker.yaml                                        @getsentry/taskbroker
+/topics/taskworker.yaml                                       @getsentry/taskbroker
+/topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
+/topics/taskworker-billing.yaml                               @getsentry/taskbroker
+/topics/taskworker-billing-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-control.yaml                               @getsentry/taskbroker
+/topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-ingest.yaml                                @getsentry/taskbroker
+/topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+/topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
+/topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
+/topics/taskworker-ingest-transactions.yaml                   @getsentry/taskbroker
+/topics/taskworker-ingest-transactions-dlq.yaml               @getsentry/taskbroker
+/topics/taskworker-ingest-attachments.yaml                    @getsentry/taskbroker
+/topics/taskworker-ingest-attachments-dlq.yaml                @getsentry/taskbroker
+/topics/taskworker-ingest-profiling.yaml                      @getsentry/taskbroker
+/topics/taskworker-ingest-profiling-dlq.yaml                  @getsentry/taskbroker
+/topics/taskworker-internal.yaml                              @getsentry/taskbroker
+/topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-limited.yaml                               @getsentry/taskbroker
+/topics/taskworker-limited-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-long.yaml                                  @getsentry/taskbroker
+/topics/taskworker-long-dlq.yaml                              @getsentry/taskbroker
+/topics/taskworker-products.yaml                              @getsentry/taskbroker
+/topics/taskworker-products-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-sentryapp.yaml                             @getsentry/taskbroker
+/topics/taskworker-sentryapp-dlq.yaml                         @getsentry/taskbroker
+/topics/taskworker-symbolication.yaml                         @getsentry/taskbroker
+/topics/taskworker-symbolication-dlq.yaml                     @getsentry/taskbroker
+/topics/taskworker-usage.yaml                                 @getsentry/taskbroker
+/topics/taskworker-usage-dlq.yaml                             @getsentry/taskbroker
+/topics/taskworker-email.yaml                                 @getsentry/taskbroker
+/topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
+/topics/taskworker-cutover.yaml                               @getsentry/taskbroker
+
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
@@ -97,8 +128,8 @@
 /schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
 /schemas/monitors-clock-tasks.v1.schema.json                   @getsentry/crons
 /schemas/uptime-results.v1.schema.json                         @getsentry/crons
-/schemas/uptime-configs.v1.schema.json                         @getsentry/crons
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
+/schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 /schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
 
 # Examples
@@ -116,8 +147,8 @@
 /examples/monitors-clock-tick/                                 @getsentry/crons
 /examples/monitors-clock-tasks/                                @getsentry/crons
 /examples/uptime-results/                                      @getsentry/crons
-/examples/uptime-configs/                                      @getsentry/crons
 /examples/snuba-uptime-results/                                @getsentry/crons
+/examples/snuba-items/                                         @getsentry/events-analytics-platform
 /examples/taskworker/                                          @getsentry/taskbroker
 
 # Internal Snuba topics
@@ -143,3 +174,9 @@
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
 /examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
 /topics/eap-spans-subscription-results.yaml                         @getsentry/owners-snuba @getsentry/issues @getsentry/performance
+
+# Items pipeline
+/topics/snuba-items.yaml                       @getsentry/events-analytics-platform
+/topics/snuba-items-commit-log.yaml            @getsentry/events-analytics-platform
+/topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
+/topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform

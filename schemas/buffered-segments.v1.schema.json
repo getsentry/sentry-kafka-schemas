@@ -59,6 +59,14 @@
           "$ref": "#/definitions/UInt",
           "description": "The start timestamp of the span in milliseconds since epoch."
         },
+        "start_timestamp_precise": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
+        },
+        "end_timestamp_precise": {
+          "$ref": "#/definitions/PositiveFloat",
+          "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
+        },
         "duration_ms": {
           "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."
@@ -92,6 +100,9 @@
         },
         "measurements": {
           "$ref": "#/definitions/Measurements"
+        },
+        "data": {
+          "$ref": "#/definitions/Data"
         }
       },
       "required": [
@@ -102,6 +113,8 @@
         "retention_days",
         "span_id",
         "start_timestamp_ms",
+        "start_timestamp_precise",
+        "end_timestamp_precise",
         "trace_id"
       ]
     },
@@ -184,8 +197,12 @@
         "$ref": "#/definitions/MeasurementValue"
       }
     },
+    "Data": {
+      "type": "object"
+    },
     "MeasurementValue": {
       "type": "object",
+      "title": "measurement_value",
       "properties": {
         "value": {
           "type": "number"

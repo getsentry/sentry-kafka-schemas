@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pathlib
-from typing import Any, Optional, TypeVar, cast
+from typing import Any, Optional, TypeVar
 
 import fastjsonschema
 import rapidjson
@@ -33,7 +33,7 @@ class JsonCodec(Codec[T]):
     def encode(self, data: T, validate: bool = True) -> bytes:
         if validate:
             self.validate(data)
-        return cast(bytes, rapidjson.dumps(data).encode("utf-8"))
+        return rapidjson.dumps(data).encode("utf-8")
 
     def decode(self, raw_data: bytes, validate: bool = True) -> Any:
         decoded = rapidjson.loads(raw_data)

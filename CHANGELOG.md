@@ -1,5 +1,106 @@
 # Changelog and versioning
 
+## 1.3.9
+
+### Various fixes & improvements
+
+- create taskworker ingest and attachments topics (#414) by @enochtangg
+
+## 1.3.8
+
+### Various fixes & improvements
+
+- Upgrade rapidjson (#413) by @fpacifici
+
+## 1.3.7
+
+### Various fixes & improvements
+
+- feature(errors) - Add `sample_rate` field to ErrorData on error events (#412) by @yuvmen
+
+## 1.3.6
+
+### Various fixes & improvements
+
+- fix: Add missing fields to buffered-segments and ingest-spans (#411) by @jan-auer
+
+## 1.3.5
+
+### Various fixes & improvements
+
+- add taskworker email and cutover topics configs (#410) by @enochtangg
+
+## 1.3.4
+
+### Various fixes & improvements
+
+- chore(eap): Add item subscription related topics (#409) by @phacops
+
+## 1.3.3
+
+### Various fixes & improvements
+
+- fix: Sort slice by resource instead of topic (#408) by @phacops
+
+## 1.3.2
+
+### Various fixes & improvements
+
+- fix(rust): Fix compilation with no default features enabled (#407) by @Dav1dde
+
+## 1.3.1
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.2.0 for real (#406) by @phacops
+
+## 1.3.0
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.2.0 (#405) by @phacops
+- ref(taskworker): Add all the remaining topics needed for the taskworker (#404) by @evanh
+- add ingest errors topic config (#403) by @enochtangg
+
+## 1.2.2
+
+### Various fixes & improvements
+
+- chore: Update sentry-protos to 0.1.74 (#402) by @phacops
+
+## 1.2.1
+
+### Various fixes & improvements
+
+- feat(taskworker): Add taskworker control and dlq topic configurations (#401) by @enochtangg
+- feat(snuba-spans): add `kind` field (#400) by @mjq
+- ref: bump sentry-protos to 0.1.69 (#399) by @phacops
+
+## 1.2.0
+
+### Various fixes & improvements
+
+- ref(uptime): Remove uptime-configs topic (#398) by @evanpurkhiser
+
+## 1.1.7
+
+### Various fixes & improvements
+
+- feat(eap): Add schema for snuba-items (#390) by @phacops
+
+## 1.1.6
+
+### Various fixes & improvements
+
+- chore(sourcemaps) - Update ErrorDate kafka schema (#396) by @yuvmen
+- remove old task-worker topic (#395) by @enochtangg
+
+## 1.1.5
+
+### Various fixes & improvements
+
+- feat(taskworker): Add taskworker ingest and dlq topics (#394) by @enochtangg
+
 ## 1.1.4
 
 ### Various fixes & improvements

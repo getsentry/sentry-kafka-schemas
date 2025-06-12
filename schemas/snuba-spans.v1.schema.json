@@ -41,6 +41,10 @@
           "type": "boolean",
           "description": "Whether this span is a segment or not."
         },
+        "kind": {
+          "type": "string",
+          "description": "The span kind (one of internal, server, client, producer or consumer)."
+        },
         "start_timestamp_ms": {
           "$ref": "#/definitions/UInt",
           "description": "The start timestamp of the span in milliseconds since epoch."
