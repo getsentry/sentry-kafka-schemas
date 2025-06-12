@@ -11,7 +11,7 @@
 /topics/ingest-feedback-events.yaml                            @getsentry/owners-snuba @getsentry/replay-backend
 /topics/ingest-monitors.yaml                                   @getsentry/crons
 /topics/ingest-occurrences.yaml                                @getsentry/issues
-/topics/ingest-spans.yaml                                      @getsentry/ingest
+/topics/ingest-spans.yaml                                      @getsentry/ingest @getsentry/streaming-platform
 /topics/profiles.yaml                                          @getsentry/profiling
 
 # DLQs for ingest topics
@@ -21,6 +21,7 @@
 /topics/ingest-metrics-dlq.yaml                                @getsentry/owners-snuba
 /topics/ingest-generic-metrics-dlq.yaml                        @getsentry/owners-snuba
 /topics/ingest-feedback-events-dlq.yaml                        @getsentry/owners-snuba @getsentry/replay-backend
+/topics/ingest-spans-dlq.yaml                                  @getsentry/ingest @getsentry/streaming-platform
 
 # BLQs for ingest topics
 /topics/ingest-events-backlog.yaml			       @getsentry/ops
