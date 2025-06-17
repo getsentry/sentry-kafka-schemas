@@ -30,7 +30,7 @@
     },
     "CheckStatusReason": {
       "title": "check_status_reason",
-      "description": "Reason for the status, primairly used for failure",
+      "description": "Reason for the status, primarily used for failure",
       "type": "object",
       "properties": {
         "type": {
@@ -43,16 +43,39 @@
       },
       "required": ["type", "description"]
     },
+    "Timing": {
+      "title": "timing",
+      "description": "The time that something started at, and how long it took to finish",
+      "type": "object",
+      "properties": {
+        "start_us": {
+          "description": "Start of the timing, timestamp in microseconds.",
+          "type": "number"
+        },
+        "duration_us": {
+          "description": "Duration of the timing, in microseconds",
+          "type": "number"
+        }
+      },
+      "required": ["start_us", "duration_us"]
+    },
+    "NullableTiming": {
+      "oneOf": [
+        { "$ref": "#/definitions/Timing" },
+        { "type": "null" }
+      ]
+    },
+
     "RequestInfo": {
       "title": "request_info",
-      "description": "Additional information about the request made",
+      "description": "Additional information about each request made",
       "type": "object",
       "properties": {
         "request_type": {
           "$ref": "#/definitions/RequestType"
         },
         "http_status_code": {
-          "description": "Status code of the successful check-in",
+          "description": "Status code of the request",
           "type": ["number", "null"]
         },
         "request_body_size_bytes": {
@@ -63,41 +86,33 @@
           "description": "Size of the response body in bytes (per OTEL).",
           "type": ["number", "null"]
         },
-        "redirect_count": {
-          "description": "Number of redirects encountered before the final request or max threshold.",
-          "type": ["number", "null"]
-        },
         "durations_us": {
           "type": "object",
           "description": "Durations of each operation in the request, in microseconds",
           "properties": {
             "dns_lookup": {
-              "description": "Total time from request initiation until DNS resolution completes. Includes timings from all redirects.",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Total time from request initiation until DNS resolution completes."
             },
             "tcp_connection": {
-              "description": "Time to establish a TCP connection (excluding TLS). Includes timings from all redirects.",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Time to establish a TCP connection (excluding TLS)."
             },
             "tls_handshake": {
-              "description": "Time spent on the TLS handshake. Includes timings from all redirects.",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Time spent on the TLS handshake."
             },
             "time_to_first_byte": {
-              "description": "Time from request start to receiving the first response byte. Includes timings from all redirects.",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Time from request start to receiving the first response byte."
             },
             "send_request": {
-              "description": "Time spent sending the request (per OTEL conventions).",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Time spent sending the request (per OTEL conventions)."
             },
             "receive_response": {
-              "description": "Time spent receiving the response (per OTEL).",
-              "type": ["number", "null"]
-            },
-            "redirect": {
-              "description": "Cumulative duration of all redirects before the final request.",
-              "type": ["number", "null"]
+              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
+              "description": "Time spent receiving the response (per OTEL)."
             }
           },
           "required": [
@@ -106,8 +121,7 @@
             "tls_handshake",
             "time_to_first_byte",
             "send_request",
-            "receive_response",
-            "redirect"
+            "receive_response"
           ]
         }
       },
@@ -161,6 +175,7 @@
           "type": ["number", "null"]
         },
         "request_info": {
+          "$comment": "This is deprecated and can be removed once we are sending and using `request_info_list`",
           "oneOf": [
             {
               "$ref": "#/definitions/RequestInfo"
@@ -169,6 +184,13 @@
               "type": "null"
             }
           ]
+        },
+        "request_info_list": {
+          "description": "List of all request attempts, in order of execution",
+          "type": ["array"],
+          "items": {
+            "$ref": "#/definitions/RequestInfo"
+          }
         },
         "region": {
           "description": "The region that this check was performed in",
