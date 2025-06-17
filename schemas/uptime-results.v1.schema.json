@@ -74,6 +74,10 @@
           "description": "Status code of the request",
           "type": ["number", "null"]
         },
+        "url": {
+          "description": "The full URL being requested",
+          "type": ["string"]
+        },
         "request_body_size_bytes": {
           "description": "Size of the request body in bytes (per OTEL).",
           "type": ["number", "null"]
