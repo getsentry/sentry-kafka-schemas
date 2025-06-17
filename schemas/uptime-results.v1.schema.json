@@ -60,10 +60,7 @@
       "required": ["start_us", "duration_us"]
     },
     "NullableTiming": {
-      "oneOf": [
-        { "$ref": "#/definitions/Timing" },
-        { "type": "null" }
-      ]
+      "oneOf": [{ "$ref": "#/definitions/Timing" }, { "type": "null" }]
     },
 
     "RequestInfo": {
