@@ -45,7 +45,6 @@
     },
     "Timing": {
       "title": "timing",
-      "description": "The time that something started at, and how long it took to finish",
       "type": "object",
       "properties": {
         "start_us": {
