@@ -86,9 +86,9 @@
           "description": "Size of the response body in bytes (per OTEL).",
           "type": ["number", "null"]
         },
-        "durations_us": {
+        "durations": {
           "type": "object",
-          "description": "Durations of each operation in the request, in microseconds",
+          "description": "Durations of each operation in the request",
           "properties": {
             "dns_lookup": {
               "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
