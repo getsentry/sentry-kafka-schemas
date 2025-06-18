@@ -86,6 +86,10 @@
           "description": "Size of the response body in bytes (per OTEL).",
           "type": ["number", "null"]
         },
+        "request_duration_us": {
+          "description": "Total measured duration for this specific request in microseconds. This is the actual wall clock time and may differ from summing individual timing components.",
+          "type": ["number", "null"]
+        },
         "durations": {
           "type": "object",
           "description": "Durations of each operation in the request",
