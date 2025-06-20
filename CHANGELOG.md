@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.11
+
+### Various fixes & improvements
+
+- feat(uptime): Add optional fields to the `RequestInfo` schema to track more request detail (#416) by @wedamija
+
 ## 1.3.10
 
 ### Various fixes & improvements
