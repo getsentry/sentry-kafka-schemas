@@ -108,7 +108,7 @@
             },
             "time_to_first_byte": {
               "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time from request start to receiving the first response byte."
+              "description": "Time from request start to receiving the first response header byte."
             },
             "send_request": {
               "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
