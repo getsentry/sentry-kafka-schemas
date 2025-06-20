@@ -179,7 +179,6 @@
           "type": ["number", "null"]
         },
         "request_info": {
-          "$comment": "This is deprecated and can be removed once we are sending and using `request_info_list`",
           "oneOf": [
             {
               "$ref": "#/definitions/RequestInfo"
