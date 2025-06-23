@@ -1,4 +1,4 @@
-pipeline: generic-metrics
+pipeline: preprod-artifacts
 description: Artifact upload signal to begin processing via Launchpad service
 services:
   producers:
