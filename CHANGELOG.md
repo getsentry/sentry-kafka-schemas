@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.12
+
+### Various fixes & improvements
+
+- feat(launchpad): Create new kafka schema for launchpad (#417) by @NicoHinderling
+
 ## 1.3.11
 
 ### Various fixes & improvements
