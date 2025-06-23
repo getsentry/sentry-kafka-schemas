@@ -183,4 +183,4 @@
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
 
 # Launchpad topics
-/topics/preprod-artifact-upload.yaml @getsentry/emerge-tools
+/topics/preprod-artifact-events.yaml @getsentry/emerge-tools
