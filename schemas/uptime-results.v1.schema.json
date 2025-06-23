@@ -58,10 +58,37 @@
       },
       "required": ["start_us", "duration_us"]
     },
-    "NullableTiming": {
-      "oneOf": [{ "$ref": "#/definitions/Timing" }, { "type": "null" }]
+    "RequestDurations": {
+      "title": "request_durations",
+      "description": "Durations of each operation in the request",
+      "type": "object",
+      "properties": {
+        "dns_lookup": {
+          "$ref": "#/definitions/Timing",
+          "description": "Total time from request initiation until DNS resolution completes."
+        },
+        "tcp_connection": {
+          "$ref": "#/definitions/Timing",
+          "description": "Time to establish a TCP connection (excluding TLS)."
+        },
+        "tls_handshake": {
+          "$ref": "#/definitions/Timing",
+          "description": "Time spent on the TLS handshake."
+        },
+        "time_to_first_byte": {
+          "$ref": "#/definitions/Timing",
+          "description": "Time from request start to receiving the first response header byte."
+        },
+        "send_request": {
+          "$ref": "#/definitions/Timing",
+          "description": "Time spent sending the request (per OTEL conventions)."
+        },
+        "receive_response": {
+          "$ref": "#/definitions/Timing",
+          "description": "Time spent receiving the response (per OTEL)."
+        }
+      }
     },
-
     "RequestInfo": {
       "title": "request_info",
       "description": "Additional information about each request made",
@@ -80,53 +107,18 @@
         },
         "request_body_size_bytes": {
           "description": "Size of the request body in bytes (per OTEL).",
-          "type": ["number", "null"]
+          "type": ["number"]
         },
         "response_body_size_bytes": {
           "description": "Size of the response body in bytes (per OTEL).",
-          "type": ["number", "null"]
+          "type": ["number"]
         },
         "request_duration_us": {
           "description": "Total measured duration for this specific request in microseconds. This is the actual wall clock time and may differ from summing individual timing components.",
-          "type": ["number", "null"]
+          "type": ["number"]
         },
         "durations": {
-          "type": "object",
-          "description": "Durations of each operation in the request",
-          "properties": {
-            "dns_lookup": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Total time from request initiation until DNS resolution completes."
-            },
-            "tcp_connection": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time to establish a TCP connection (excluding TLS)."
-            },
-            "tls_handshake": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time spent on the TLS handshake."
-            },
-            "time_to_first_byte": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time from request start to receiving the first response header byte."
-            },
-            "send_request": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time spent sending the request (per OTEL conventions)."
-            },
-            "receive_response": {
-              "allOf": [{ "$ref": "#/definitions/NullableTiming" }],
-              "description": "Time spent receiving the response (per OTEL)."
-            }
-          },
-          "required": [
-            "dns_lookup",
-            "tcp_connection",
-            "tls_handshake",
-            "time_to_first_byte",
-            "send_request",
-            "receive_response"
-          ]
+          "$ref": "#/definitions/RequestDurations"
         }
       },
       "required": ["request_type", "http_status_code"]
