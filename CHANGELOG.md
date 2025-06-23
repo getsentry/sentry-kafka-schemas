@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.13
+
+### Various fixes & improvements
+
+- fix(uptime): Refine new fields on the `uptime-results` schema (#418) by @wedamija
+
 ## 1.3.12
 
 ### Various fixes & improvements
