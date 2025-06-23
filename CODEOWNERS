@@ -181,3 +181,6 @@
 /topics/snuba-items-commit-log.yaml            @getsentry/events-analytics-platform
 /topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
+
+# Launchpad topics
+/topics/preprod-artifact-events.yaml @getsentry/emerge-tools

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "preprod_artifact_events",
+  "description": "Preprod artifact events",
+  "type": "object",
+  "required": ["artifact_id", "project_id", "organization_id"],
+  "additionalProperties": true,
+  "properties": {
+    "artifact_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "organization_id": { "type": "string" }
+  }
+}
