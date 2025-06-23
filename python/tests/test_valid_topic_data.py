@@ -65,6 +65,7 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
                     "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
                     "getsentry/taskbroker",
+                    "getsentry/launchpad",
                 ]
             }
         },
