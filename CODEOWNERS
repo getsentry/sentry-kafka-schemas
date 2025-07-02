@@ -85,6 +85,8 @@
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
 /topics/taskworker-billing.yaml                               @getsentry/taskbroker
 /topics/taskworker-billing-dlq.yaml                           @getsentry/taskbroker
+/topics/taskworker-buffer.yaml                                @getsentry/taskbroker
+/topics/taskworker-buffer-dlq.yaml                            @getsentry/taskbroker
 /topics/taskworker-control.yaml                               @getsentry/taskbroker
 /topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
