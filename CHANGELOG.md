@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.14
+
+### Various fixes & improvements
+
+- feat(taskworker) Add new topic for buffer tasks (#419) by @markstory
+
 ## 1.3.13
 
 ### Various fixes & improvements
