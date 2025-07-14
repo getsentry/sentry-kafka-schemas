@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.15
+
+### Various fixes & improvements
+
+- ref(snuba-items): add LogAppendTime to snuba-items topic (#421) by @MeredithAnya
+
 ## 1.3.14
 
 ### Various fixes & improvements
