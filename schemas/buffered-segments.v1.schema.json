@@ -113,7 +113,6 @@
         "is_segment",
         "organization_id",
         "project_id",
-        "key_id",
         "received",
         "retention_days",
         "span_id",
