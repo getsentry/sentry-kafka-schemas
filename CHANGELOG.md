@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.16
+
+### Various fixes & improvements
+
+- feat(tasks) Add taskworker-ingest-errors-postprocess topics (#423) by @markstory
+
 ## 1.3.15
 
 ### Various fixes & improvements
