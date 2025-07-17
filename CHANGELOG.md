@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 1.3.17
+
+### Various fixes & improvements
+
+- Add definitions for span links (#422) by @gggritso
+
 ## 1.3.16
 
 ### Various fixes & improvements
