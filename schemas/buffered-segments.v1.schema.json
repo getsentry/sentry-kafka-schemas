@@ -103,6 +103,13 @@
         },
         "data": {
           "$ref": "#/definitions/Data"
+        },
+        "links": {
+          "description": "Relationships to other spans",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpanLink"
+          }
         }
       },
       "required": [
@@ -212,6 +219,25 @@
         }
       },
       "required": ["value"]
+    },
+    "SpanLink": {
+      "type": "object",
+      "title": "span_link",
+      "properties": {
+        "trace_id": {
+          "$ref": "#/definitions/UUID"
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "sampled": {
+          "type": "boolean"
+        },
+        "attributes": {
+          "type": "object"
+        }
+      },
+      "required": ["trace_id", "span_id"]
     }
   }
 }
