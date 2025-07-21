@@ -35,7 +35,6 @@
 /topics/outcomes-billing.yaml                                  @getsentry/owners-snuba @getsentry/revenue
 /topics/outcomes-billing-dlq.yaml                              @getsentry/owners-snuba @getsentry/revenue
 /topics/snuba-metrics.yaml                                     @getsentry/owners-snuba
-/topics/snuba-ourlogs.yaml                                     @getsentry/owners-snuba
 /topics/snuba-generic-metrics.yaml                             @getsentry/owners-snuba
 /topics/generic-events.yaml                                    @getsentry/owners-snuba @getsentry/issues
 /topics/group-attributes.yaml                                  @getsentry/owners-snuba @getsentry/issues
@@ -43,8 +42,6 @@
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
-/topics/snuba-spans.yaml                                       @getsentry/owners-snuba @getsentry/performance
-/topics/snuba-eap-mutations.yaml                               @getsentry/owners-snuba
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/performance
@@ -67,7 +64,6 @@
 /topics/snuba-generic-metrics-counters-commit-log.yaml         @getsentry/owners-snuba
 /topics/snuba-generic-metrics-gauges-commit-log.yaml           @getsentry/owners-snuba
 /topics/snuba-generic-events-commit-log.yaml                   @getsentry/owners-snuba @getsentry/issues
-/topics/snuba-eap-spans-commit-log.yaml                        @getsentry/owners-snuba
 
 # Topics produced to by Snuba and Sentry
 /topics/shared-resources-usage.yaml                            @getsentry/owners-snuba @getsentry/data
@@ -127,7 +123,6 @@
 /schemas/profile-functions.v1.schema.json                      @getsentry/profiling
 /schemas/snuba-profile-chunks.v1.schema.json                   @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
-/schemas/snuba-spans.v1.schema.json                            @getsentry/performance
 /schemas/ingest-spans.v1.schema.json                           @getsentry/ingest
 /schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
 /schemas/ingest-monitors.v1.schema.json                        @getsentry/crons
@@ -147,7 +142,6 @@
 /examples/profile-metadata/                                    @getsentry/profiling
 /examples/profile-functions/                                   @getsentry/profiling
 /examples/snuba-profile-chunks/                                @getsentry/profiling
-/examples/snuba-spans/                                         @getsentry/performance
 /examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/performance
 /examples/ingest-monitors/                                     @getsentry/crons
 /examples/monitors-clock-tick/                                 @getsentry/crons
@@ -170,7 +164,6 @@
 /topics/scheduled-subscriptions-generic-metrics-sets.yaml           @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-distributions.yaml  @getsentry/owners-snuba
 /topics/scheduled-subscriptions-generic-metrics-gauges.yaml         @getsentry/owners-snuba
-/topics/scheduled-subscriptions-eap-spans.yaml                      @getsentry/owners-snuba @getsentry/performance
 
 # Subscription results published by Snuba for Sentry's result consumer
 /topics/events-subscription-results.yaml                            @getsentry/owners-snuba @getsentry/issues
@@ -179,7 +172,6 @@
 /topics/generic-metrics-subscription-results.yaml                   @getsentry/owners-snuba @getsentry/issues
 /schemas/subscription-result.v1.schema.json                         @getsentry/owners-snuba @getsentry/issues
 /examples/subscription-results/                                     @getsentry/owners-snuba @getsentry/issues
-/topics/eap-spans-subscription-results.yaml                         @getsentry/owners-snuba @getsentry/issues @getsentry/performance
 
 # Items pipeline
 /topics/snuba-items.yaml                       @getsentry/events-analytics-platform
