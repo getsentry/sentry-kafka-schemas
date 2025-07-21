@@ -120,6 +120,7 @@
 /topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
 /topics/taskworker-cutover.yaml                               @getsentry/taskbroker
 /topics/taskworker-workflows-engine.yaml                      @getsentry/taskbroker
+/topics/taskworker-workflows-engine-dlq.yaml                  @getsentry/taskbroker
 
 
 # Schemas
