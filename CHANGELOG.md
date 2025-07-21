@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 1.3.18
+
+### Various fixes & improvements
+
+- feat(taskworker): Define default topic config for taskworker workflows engine dlq (#425) by @enochtangg
+- feat(tasks): Add taskworker-workflows-events kafka topic (#424) by @kcons
+
 ## 1.3.17
 
 ### Various fixes & improvements
