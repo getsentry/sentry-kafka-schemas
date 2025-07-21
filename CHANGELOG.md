@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.0.0
+
+### Various fixes & improvements
+
+- chore: Delete unused topics (#426) by @phacops
+
 ## 1.3.18
 
 ### Various fixes & improvements
