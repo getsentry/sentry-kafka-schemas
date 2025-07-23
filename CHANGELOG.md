@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.0.1
+
+### Various fixes & improvements
+
+- feat: snuba-items items dlq topic definition (#427) by @kylemumma
+
 ## 2.0.0
 
 ### Various fixes & improvements
