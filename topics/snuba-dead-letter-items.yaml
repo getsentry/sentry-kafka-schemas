@@ -1,0 +1,19 @@
+pipeline: items
+description: DLQ for snuba-items
+services:
+  producers:
+    - getsentry/snuba
+  consumers: []
+schemas:
+  # this schema is just a placeholder bc its required, ideally the dlq shouldnt
+  # have a schema but its required.
+  - version: 1
+    compatibility_mode: none
+    type: protobuf
+    resource: sentry_protos.snuba.v1.trace_item_pb2.TraceItem
+    examples:
+      - snuba-items/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "604800000" # 7 days
+  max.message.bytes: "10000000"
