@@ -177,6 +177,7 @@ def test_dlq_configuration() -> None:
         "snuba-dead-letter-metrics": "snuba-metrics",
         "snuba-dead-letter-querylog": "snuba-queries",
         "snuba-dead-letter-generic-metrics": "snuba-generic-metrics",
+        "snuba-dead-letter-items": "snuba-items",
     }
 
     topics_dir = _TOPICS
