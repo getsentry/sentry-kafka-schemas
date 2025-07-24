@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.0.2
+
+### Various fixes & improvements
+
+- Allow span link attributes to be null (#428) by @gggritso
+
 ## 2.0.1
 
 ### Various fixes & improvements
