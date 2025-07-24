@@ -29,9 +29,17 @@
           "type": ["string", "null"],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
+        "segment_id": {
+          "type": ["string", "null"],
+          "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
+        },
         "profile_id": {
           "$ref": "#/definitions/UUID",
           "description": "The profile ID. It is an 16 byte hexadecimal string."
+        },
+        "is_segment": {
+          "type": "boolean",
+          "description": "Indicates whether the span is a segment."
         },
         "start_timestamp_ms": {
           "$ref": "#/definitions/UInt",
@@ -48,6 +56,10 @@
         "duration_ms": {
           "$ref": "#/definitions/UInt32",
           "description": "The duration of the span in milliseconds."
+        },
+        "exclusive_time_ms": {
+          "$ref": "#/definitions/UInt32",
+          "description": "The exclusive time of the span in milliseconds."
         },
         "retention_days": {
           "$ref": "#/definitions/UInt16"
