@@ -234,7 +234,14 @@
           "type": "boolean"
         },
         "attributes": {
-          "type": "object"
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": ["trace_id", "span_id"]
