@@ -39,6 +39,7 @@
               }
             },
             "new_group_id": { "type": "integer" },
+            "new_group_first_seen": { "$ref": "#/definitions/SnubaDatetime" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
           "additionalProperties": true,
@@ -67,6 +68,7 @@
               "items": { "type": "integer" }
             },
             "new_group_id": { "type": "integer" },
+            "new_group_first_seen": { "$ref": "#/definitions/SnubaDatetime" },
             "datetime": { "$ref": "#/definitions/SnubaDatetime" }
           },
           "additionalProperties": true,
