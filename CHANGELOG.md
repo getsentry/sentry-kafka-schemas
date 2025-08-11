@@ -1,5 +1,9 @@
 # Changelog and versioning
 
+## 2.0.3
+
+- No documented changes.
+
 ## 2.0.2
 
 ### Various fixes & improvements
