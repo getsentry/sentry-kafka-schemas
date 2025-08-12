@@ -162,12 +162,24 @@
           "description": "Timestamp in milliseconds of when the check was schedule to run",
           "type": "number"
         },
+        "scheduled_check_time_us": {
+          "description": "Timestamp in microseconds of when the check was schedule to run",
+          "type": "number"
+        },
         "actual_check_time_ms": {
           "description": "Timestamp in milliseconds of when the check was actually ran",
           "type": "number"
         },
+        "actual_check_time_us": {
+          "description": "Timestamp in microseconds of when the check was actually ran",
+          "type": "number"
+        },
         "duration_ms": {
           "description": "Duration of the check in ms. Will be null when the status is missed_window",
+          "type": ["number", "null"]
+        },
+        "duration_us": {
+          "description": "Duration of the check in us. Will be null when the status is missed_window",
           "type": ["number", "null"]
         },
         "request_info": {
