@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.0
+
+### Various fixes & improvements
+
+- chore(span-buffer): Add downsampled_retention_days to the SegmentSpan schema (#432) by @phacops
+
 ## 2.0.4
 
 - No documented changes.
