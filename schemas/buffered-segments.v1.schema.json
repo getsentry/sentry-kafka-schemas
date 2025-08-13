@@ -74,6 +74,9 @@
         "retention_days": {
           "$ref": "#/definitions/UInt16"
         },
+        "downsampled_retention_days": {
+          "$ref": "#/definitions/UInt16"
+        },
         "received": {
           "$ref": "#/definitions/PositiveFloat",
           "description": "Unix timestamp when the span was received by Sentry."
