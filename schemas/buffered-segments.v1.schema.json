@@ -45,7 +45,7 @@
         },
         "segment_id": {
           "type": ["string", "null"],
-          "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
+          "description": "The ID of the segment span that this span is nested within. It is an 8 byte hexadecimal string."
         },
         "profile_id": {
           "$ref": "#/definitions/UUID",
