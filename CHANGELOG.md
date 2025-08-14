@@ -1,5 +1,58 @@
 # Changelog and versioning
 
+## 2.1.0
+
+### Various fixes & improvements
+
+- chore(span-buffer): Add downsampled_retention_days to the SegmentSpan schema (#432) by @phacops
+
+## 2.0.4
+
+- No documented changes.
+
+## 2.0.2
+
+### Various fixes & improvements
+
+- Allow span link attributes to be null (#428) by @gggritso
+
+## 2.0.1
+
+### Various fixes & improvements
+
+- feat: snuba-items items dlq topic definition (#427) by @kylemumma
+
+## 2.0.0
+
+### Various fixes & improvements
+
+- chore: Delete unused topics (#426) by @phacops
+
+## 1.3.18
+
+### Various fixes & improvements
+
+- feat(taskworker): Define default topic config for taskworker workflows engine dlq (#425) by @enochtangg
+- feat(tasks): Add taskworker-workflows-events kafka topic (#424) by @kcons
+
+## 1.3.17
+
+### Various fixes & improvements
+
+- Add definitions for span links (#422) by @gggritso
+
+## 1.3.16
+
+### Various fixes & improvements
+
+- feat(tasks) Add taskworker-ingest-errors-postprocess topics (#423) by @markstory
+
+## 1.3.15
+
+### Various fixes & improvements
+
+- ref(snuba-items): add LogAppendTime to snuba-items topic (#421) by @MeredithAnya
+
 ## 1.3.14
 
 ### Various fixes & improvements

@@ -48,7 +48,7 @@
         },
         "segment_id": {
           "type": ["string", "null"],
-          "description": "The segment ID is a unique identifier for a segment within a trace. It is an 8 byte hexadecimal string."
+          "description": "The ID of the segment span that this span is nested within. It is an 8 byte hexadecimal string."
         },
         "profile_id": {
           "$ref": "#/definitions/UUID",
@@ -75,6 +75,9 @@
           "description": "The duration of the span in milliseconds."
         },
         "retention_days": {
+          "$ref": "#/definitions/UInt16"
+        },
+        "downsampled_retention_days": {
           "$ref": "#/definitions/UInt16"
         },
         "received": {
@@ -106,6 +109,13 @@
         },
         "data": {
           "$ref": "#/definitions/Data"
+        },
+        "links": {
+          "description": "Relationships to other spans",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpanLink"
+          }
         }
       },
       "required": [
@@ -216,6 +226,32 @@
         }
       },
       "required": ["value"]
+    },
+    "SpanLink": {
+      "type": "object",
+      "title": "span_link",
+      "properties": {
+        "trace_id": {
+          "$ref": "#/definitions/UUID"
+        },
+        "span_id": {
+          "type": "string"
+        },
+        "sampled": {
+          "type": "boolean"
+        },
+        "attributes": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": ["trace_id", "span_id"]
     }
   }
 }

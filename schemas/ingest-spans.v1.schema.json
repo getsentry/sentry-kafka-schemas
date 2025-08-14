@@ -32,6 +32,10 @@
           "type": ["string", "null"],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
+        "segment_id": {
+          "type": ["string", "null"],
+          "description": "The ID of the segment span that this span is nested within. It is an 8 byte hexadecimal string."
+        },
         "profile_id": {
           "$ref": "#/definitions/UUID",
           "description": "The profile ID. It is an 16 byte hexadecimal string."
