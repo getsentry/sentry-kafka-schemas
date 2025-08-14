@@ -17,6 +17,9 @@
         "project_id": {
           "$ref": "#/definitions/UInt"
         },
+        "key_id": {
+          "$ref": "#/definitions/UInt"
+        },
         "trace_id": {
           "$ref": "#/definitions/UUID",
           "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
@@ -89,8 +92,8 @@
       },
       "required": [
         "duration_ms",
-        "project_id",
         "organization_id",
+        "project_id",
         "received",
         "retention_days",
         "span_id",
