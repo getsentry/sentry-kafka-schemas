@@ -77,9 +77,8 @@ def main() -> None:
     check_for_outdated_repos(consumers, producers)
 
     if breaking_changes:
-        print("<details><summary><strong>changes considered breaking</strong></summary>")
+        print("<strong>changes that might be breaking:</strong>")
         print_files_and_changes(breaking_changes)
-        print("</details>")
 
     if non_breaking_changes:
         print("<details><summary><strong>benign changes</strong></summary>")
