@@ -41,7 +41,7 @@
       "type": "integer",
       "default": 0
     },
-    "replay_relay_snuba_publish_disabled": {
+    "relay_snuba_publish_disabled": {
       "type": "boolean",
       "default": false
     }
