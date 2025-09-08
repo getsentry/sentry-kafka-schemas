@@ -183,3 +183,4 @@
 
 # Launchpad topics
 /topics/preprod-artifact-events.yaml @getsentry/emerge-tools
+/topics/preprod-artifact-events-dlq.yaml @getsentry/emerge-tools
