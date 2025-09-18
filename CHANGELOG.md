@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 2.1.1
+
+### Various fixes & improvements
+
+- feat(preprod): add requested_features field to PreprodArtifact event schema (#437) by @trevor-e
+- chore(preprod): Create DLQ for preprod kafka topic (#436) by @NicoHinderling
+- ref(schemas-diff): Expand details by default (#435) by @untitaker
+- feat: Add key_id as required field to ingest-spans and buffered-segments (#420) by @jan-auer
+- feat(ingest-spans): Add segment_id to spans (#433) by @jan-auer
+
 ## 2.1.0
 
 ### Various fixes & improvements
