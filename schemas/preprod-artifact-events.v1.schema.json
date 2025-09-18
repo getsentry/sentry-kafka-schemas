@@ -8,6 +8,7 @@
   "properties": {
     "artifact_id": { "type": "string" },
     "project_id": { "type": "string" },
-    "organization_id": { "type": "string" }
+    "organization_id": { "type": "string" },
+    "requested_features": { "type": "array", "items": { "type": "string" } }
   }
 }
