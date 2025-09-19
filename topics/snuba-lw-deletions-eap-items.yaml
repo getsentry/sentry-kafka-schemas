@@ -9,7 +9,7 @@ schemas:
   - version: 1
     compatibility_mode: none
     type: json
-    resource: snuba-lw-deletions-eap-items.v1.schema.json
+    resource: snuba-lw-deletions-eap-items.v1.json
     examples:
       - snuba-lw-deletions-eap-items/1/
 topic_creation_config:
