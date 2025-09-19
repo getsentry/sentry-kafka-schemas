@@ -1,0 +1,19 @@
+pipeline: items
+description: Snuba Lightweight Deletes (EAP Items)
+services:
+  consumers:
+    - getsentry/snuba
+  producers:
+    - getsentry/snuba
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: snuba-lw-deletions-eap-items.v1.json
+    examples:
+      - snuba-lw-deletions-eap-items/1/
+topic_creation_config:
+  compression.type: lz4
+  max.message.bytes: "50000000"
+  retention.ms: "86400000"
+  message.timestamp.type: LogAppendTime

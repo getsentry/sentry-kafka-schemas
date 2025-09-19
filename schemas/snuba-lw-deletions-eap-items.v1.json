@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "lw_delete_eap_items",
+  "type": "object",
+  "properties": {
+    "storage_name": {
+      "type": "string"
+    },
+    "rows_to_delete": {
+      "type": "integer"
+    },
+    "conditions": {
+      "type": "object",
+      "properties": {
+        "organization_id": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "project_id": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "trace_id": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "tenant_ids": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "type": "integer", "minimum": 1 }]
+      }
+    }
+  },
+  "required": ["storage_name", "rows_to_delete", "conditions", "tenant_ids"]
+}
