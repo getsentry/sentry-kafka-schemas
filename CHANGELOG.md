@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.2
+
+### Various fixes & improvements
+
+- feat(eap): create LW delete eap-items schema and topic (#438) by @onewland
+
 ## 2.1.1
 
 ### Various fixes & improvements
