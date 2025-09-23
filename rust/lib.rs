@@ -43,10 +43,22 @@ pub enum SchemaError {
     InvalidType,
     #[error("Invalid schema")]
     InvalidSchema,
-    // FIXME(swatinem): maybe a dedicated `ValidationError` would be nice which
-    // carries a JSON error as well as the exact Schema error.
-    #[error("Invalid message")]
-    InvalidMessage,
+    #[error("Invalid message: {0:?}")]
+    InvalidMessage(#[from] ValidationError),
+}
+#[derive(Debug, Error)]
+pub enum ValidationError {
+    InvalidJson(#[from] serde_json::Error),
+    SchemaViolation(String),
+}
+
+impl std::fmt::Display for ValidationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ValidationError::InvalidJson(error) => error.fmt(f),
+            ValidationError::SchemaViolation(s) => s.fmt(f),
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -97,21 +109,27 @@ impl PartialEq for Schema {
 
 impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
-        if self.schema_type == SchemaType::Protobuf {
+        if self.schema_type != SchemaType::Json {
             return Err(SchemaError::InvalidType);
         }
 
-        let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
+        let json_schema = self
+            .compiled_json_schema
+            .as_ref()
+            .expect("Schema of type JSON without content");
 
-        if let Some(json_schema) = &self.compiled_json_schema {
-            if json_schema.is_valid(&message) {
-                return Ok(message);
-            }
+        let message = serde_json::from_slice(input).map_err(ValidationError::InvalidJson)?;
 
-            return Err(SchemaError::InvalidMessage);
-        }
-
-        Err(SchemaError::InvalidSchema)
+        json_schema
+            .validate(&message)
+            .map_err(|errors| {
+                errors
+                    .map(|e| format!("{:?}", e))
+                    .collect::<Vec<_>>()
+                    .join(". ")
+            })
+            .map_err(ValidationError::SchemaViolation)?;
+        Ok(message)
     }
 
     #[cfg(feature = "type_generation")]
@@ -324,8 +342,10 @@ mod tests {
         }
 
         assert!(matches!(
-            schema.validate_json(b"{}"),
-            Err(SchemaError::InvalidMessage)
+            dbg!(schema.validate_json(b"{}")),
+            Err(SchemaError::InvalidMessage(
+                ValidationError::SchemaViolation(_)
+            ))
         ));
     }
 
