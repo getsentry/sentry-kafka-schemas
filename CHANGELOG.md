@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.3
+
+### Various fixes & improvements
+
+- chore(eco): Adds limited taskworker topic + DLQ topic for Control tasks (#439) by @GabeVillalobos
+
 ## 2.1.2
 
 ### Various fixes & improvements
