@@ -8,9 +8,7 @@
       "$ref": "#/definitions/SegmentSpans"
     }
   },
-  "required": [
-    "spans"
-  ],
+  "required": ["spans"],
   "definitions": {
     "SegmentSpans": {
       "type": "array",
