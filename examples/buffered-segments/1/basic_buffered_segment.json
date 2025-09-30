@@ -1,58 +1,100 @@
 {
   "spans": [
     {
-      "duration_ms": 0,
-      "event_id": "72fcea47d44a444fb132f8d462eeb0b4",
-      "exclusive_time_ms": 0.006,
-      "is_segment": true,
-      "parent_span_id": "93f0e87ad9cc709e",
-      "profile_id": "7ce060d7ea62432b8355bc9e612676e4",
-      "organization_id": 69,
-      "project_id": 1,
-      "received": 1706734067.029479,
+      "organization_id": 1,
+      "project_id": 42,
+      "key_id": 123,
+      "event_id": "cbf6960622e14a45abc1f03b2055b186",
+      "received": 1759215783.850951,
       "retention_days": 90,
-      "segment_id": "ace31e54d65652aa",
-      "sentry_tags": {
-        "environment": "development",
-        "op": "relay_fetch_org_options",
-        "release": "backend@24.2.0.dev0+df7615f2ff7dc3c8802f806477f920bb934bd198",
-        "transaction": "/api/0/relays/projectconfigs/",
-        "transaction.method": "POST",
-        "transaction.op": "http.server",
-        "user": "ip:127.0.0.1"
+      "downsampled_retention_days": 90,
+      "attributes": {
+        "sentry.category": {
+          "type": "string",
+          "value": "http"
+        },
+        "sentry.description": {
+          "type": "string",
+          "value": "GET /api/0/organizations/?member=1"
+        },
+        "sentry.group": {
+          "type": "string",
+          "value": "37e3d9fab1ae9162"
+        },
+        "sentry.is_segment": {
+          "type": "boolean",
+          "value": false
+        },
+        "sentry.name": {
+          "type": "string",
+          "value": "http"
+        },
+        "sentry.normalized_description": {
+          "type": "string",
+          "value": "GET *"
+        },
+        "sentry.op": {
+          "type": "string",
+          "value": "http"
+        },
+        "sentry.origin": {
+          "type": "string",
+          "value": "manual"
+        },
+        "sentry.platform": {
+          "type": "string",
+          "value": "other"
+        },
+        "sentry.sdk.name": {
+          "type": "string",
+          "value": "raven-node"
+        },
+        "sentry.sdk.version": {
+          "type": "string",
+          "value": "2.6.3"
+        },
+        "sentry.segment.id": {
+          "type": "string",
+          "value": "968cff94913ebb07"
+        },
+        "sentry.status": {
+          "type": "string",
+          "value": "ok"
+        },
+        "sentry.trace.status": {
+          "type": "string",
+          "value": "ok"
+        },
+        "sentry.transaction": {
+          "type": "string",
+          "value": "hi"
+        },
+        "sentry.transaction.op": {
+          "type": "string",
+          "value": "hi"
+        }
       },
-      "span_id": "95acbe6d30a66717",
-      "start_timestamp_ms": 1715868485371,
-      "start_timestamp_precise": 1715868485.370551,
-      "end_timestamp_precise": 1715868486.370551,
-      "trace_id": "8e6f22e6169545cc963255d0f29cb76b"
-    },
-    {
-      "duration_ms": 0,
-      "event_id": "72fcea47d44a444fb132f8d462eeb0b4",
-      "exclusive_time_ms": 0.006,
-      "is_segment": false,
-      "parent_span_id": "93f0e87ad9cc709e",
-      "profile_id": "7ce060d7ea62432b8355bc9e612676e4",
-      "organization_id": 69,
-      "project_id": 1,
-      "received": 1706734067.029479,
-      "retention_days": 90,
-      "segment_id": "ace31e54d65652aa",
-      "sentry_tags": {
-        "environment": "development",
-        "op": "relay_fetch_org_options",
-        "release": "backend@24.2.0.dev0+df7615f2ff7dc3c8802f806477f920bb934bd198",
-        "transaction": "/api/0/relays/projectconfigs/",
-        "transaction.method": "POST",
-        "transaction.op": "http.server",
-        "user": "ip:127.0.0.1"
-      },
-      "span_id": "95acbe6d30a66717",
-      "start_timestamp_ms": 1715868485371,
-      "start_timestamp_precise": 1715868485.370551,
-      "end_timestamp_precise": 1715868486.370551,
-      "trace_id": "8e6f22e6169545cc963255d0f29cb76b"
+      "end_timestamp": 1759215782.849409,
+      "is_remote": false,
+      "links": [
+        {
+          "trace_id": "0f62a8b040f340bda5d830223def1d82",
+          "span_id": "cbbbbbbbbbbbbbbc",
+          "sampled": true,
+          "attributes": {
+            "span_key": {
+              "type": "string",
+              "value": "span_value"
+            }
+          }
+        }
+      ],
+      "name": "http",
+      "parent_span_id": "968cff94913ebb07",
+      "span_id": "bbbbbbbbbbbbbbbb",
+      "start_timestamp": 1759215782.349409,
+      "status": "ok",
+      "trace_id": "ff62a8b040f340bda5d830223def1d81"
     }
   ]
 }

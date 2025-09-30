@@ -44,6 +44,9 @@
         "retention_days": {
           "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt16"
         },
+        "downsampled_retention_days": {
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt16"
+        },
         "received": {
           "$ref": "./ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "Unix timestamp when the span was received by Sentry."
@@ -145,10 +148,21 @@
       "type": "object",
       "properties": {
         "type": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "boolean",
+            "integer",
+            "double",
+            "string"
+          ]
         },
         "value": {
-          "type": "number"
+          "type": [
+            "number",
+            "null",
+            "string",
+            "boolean"
+          ]
         }
       },
       "required": ["type", "value"]
