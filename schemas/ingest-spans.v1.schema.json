@@ -149,10 +149,24 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["boolean", "integer", "double", "string"]
+          "enum": [
+            "boolean",
+            "integer",
+            "double",
+            "string",
+            "array",
+            "object"
+          ]
         },
         "value": {
-          "type": ["number", "null", "string", "boolean"]
+          "type": [
+            "number",
+            "null",
+            "string",
+            "boolean",
+            "array",
+            "object"
+          ]
         }
       },
       "required": ["type", "value"]
