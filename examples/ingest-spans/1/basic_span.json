@@ -1,43 +1,96 @@
 {
-  "event_id": "dcc403b73ef548648188bbfa6012e9dc",
-  "organization_id": 69,
-  "project_id": 1,
-  "trace_id": "deadbeefdeadbeefdeadbeefdeadbeef",
-  "span_id": "deadbeefdeadbeef",
-  "parent_span_id": "deadbeefdeadbeef",
-  "segment_id": "deadbeefdeadbeef",
-  "duration_ms": 1000,
-  "exclusive_time_ms": 1000,
-  "is_segment": false,
-  "profile_id": "deadbeefdeadbeefdeadbeefdeadbeef",
-  "received": 1715868485.381,
+  "organization_id": 1,
+  "project_id": 42,
+  "key_id": 123,
+  "event_id": "cbf6960622e14a45abc1f03b2055b186",
+  "received": 1759215783.850951,
   "retention_days": 90,
-  "start_timestamp_ms": 1715868485371,
-  "start_timestamp_precise": 1715868485.370551,
-  "end_timestamp_precise": 1715868486.370551,
-  "tags": {
-    "tag1": "value1",
-    "tag2": "123",
-    "tag3": "True"
-  },
-  "sentry_tags": {
-    "http.method": "GET",
-    "action": "GET",
-    "domain": "targetdomain.tld:targetport",
-    "module": "http",
-    "group": "deadbeefdeadbeef",
-    "status": "ok",
-    "system": "python",
-    "status_code": "200",
-    "transaction": "/organizations/:orgId/issues/",
-    "transaction.op": "navigation",
-    "op": "http.client",
-    "transaction.method": "GET"
-  },
-  "measurements": {
-    "http.response_content_length": {
-      "value": 100.0,
-      "unit": "byte"
+  "downsampled_retention_days": 90,
+  "attributes": {
+    "sentry.category": {
+      "type": "string",
+      "value": "http"
+    },
+    "sentry.description": {
+      "type": "string",
+      "value": "GET /api/0/organizations/?member=1"
+    },
+    "sentry.group": {
+      "type": "string",
+      "value": "37e3d9fab1ae9162"
+    },
+    "sentry.is_segment": {
+      "type": "boolean",
+      "value": false
+    },
+    "sentry.name": {
+      "type": "string",
+      "value": "http"
+    },
+    "sentry.normalized_description": {
+      "type": "string",
+      "value": "GET *"
+    },
+    "sentry.op": {
+      "type": "string",
+      "value": "http"
+    },
+    "sentry.origin": {
+      "type": "string",
+      "value": "manual"
+    },
+    "sentry.platform": {
+      "type": "string",
+      "value": "other"
+    },
+    "sentry.sdk.name": {
+      "type": "string",
+      "value": "raven-node"
+    },
+    "sentry.sdk.version": {
+      "type": "string",
+      "value": "2.6.3"
+    },
+    "sentry.segment.id": {
+      "type": "string",
+      "value": "968cff94913ebb07"
+    },
+    "sentry.status": {
+      "type": "string",
+      "value": "ok"
+    },
+    "sentry.trace.status": {
+      "type": "string",
+      "value": "ok"
+    },
+    "sentry.transaction": {
+      "type": "string",
+      "value": "hi"
+    },
+    "sentry.transaction.op": {
+      "type": "string",
+      "value": "hi"
     }
-  }
+  },
+  "end_timestamp": 1759215782.849409,
+  "is_remote": false,
+  "links": [
+    {
+      "trace_id": "0f62a8b040f340bda5d830223def1d82",
+      "span_id": "cbbbbbbbbbbbbbbc",
+      "sampled": true,
+      "attributes": {
+        "span_key": {
+          "type": "string",
+          "value": "span_value"
+        }
+      }
+    }
+  ],
+  "name": "http",
+  "parent_span_id": "968cff94913ebb07",
+  "span_id": "bbbbbbbbbbbbbbbb",
+  "start_timestamp": 1759215782.349409,
+  "status": "ok",
+  "trace_id": "ff62a8b040f340bda5d830223def1d81"
 }
