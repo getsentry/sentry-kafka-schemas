@@ -29,32 +29,19 @@
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
-        "segment_id": {
-          "type": ["string", "null"],
-          "description": "The ID of the segment span that this span is nested within. It is an 8 byte hexadecimal string."
-        },
-        "profile_id": {
-          "$ref": "#/definitions/UUID",
-          "description": "The profile ID. It is an 16 byte hexadecimal string."
-        },
-        "start_timestamp_ms": {
-          "$ref": "#/definitions/UInt",
-          "description": "The start timestamp of the span in milliseconds since epoch."
-        },
-        "start_timestamp_precise": {
+        "start_timestamp": {
           "$ref": "#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
-        "end_timestamp_precise": {
+        "end_timestamp": {
           "$ref": "#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
-        },
-        "duration_ms": {
-          "$ref": "#/definitions/UInt32",
-          "description": "The duration of the span in milliseconds."
         },
         "retention_days": {
           "$ref": "#/definitions/UInt16"
@@ -63,95 +50,41 @@
           "$ref": "#/definitions/PositiveFloat",
           "description": "Unix timestamp when the span was received by Sentry."
         },
-        "description": {
+        "name": {
           "type": "string"
         },
-        "tags": {
-          "description": " Manual key/value tag pairs.",
-          "anyOf": [
-            {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/TagValue"
-              }
-            },
-            {
-              "type": "null"
-            }
-          ]
+        "status": {
+          "$ref": "#/definitions/SpanStatus"
         },
-        "sentry_tags": {
-          "$ref": "#/definitions/SentryExtractedTags"
+        "is_remote": {
+          "type": "boolean"
         },
-        "measurements": {
-          "$ref": "#/definitions/Measurements"
+        "kind": {
+          "$ref": "#/definitions/SpanKind"
         },
-        "data": {
-          "$ref": "#/definitions/Data"
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpanLink"
+          }
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
         }
       },
       "required": [
-        "duration_ms",
         "organization_id",
         "project_id",
         "received",
         "retention_days",
         "span_id",
-        "start_timestamp_ms",
-        "start_timestamp_precise",
-        "end_timestamp_precise",
-        "trace_id"
+        "start_timestamp",
+        "end_timestamp",
+        "trace_id",
+        "name",
+        "status",
+        "is_remote"
       ]
-    },
-    "SentryExtractedTags": {
-      "description": "Tags extracted by sentry. These are kept separate from customer tags",
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "http.method": {
-              "type": "string"
-            },
-            "action": {
-              "type": "string"
-            },
-            "domain": {
-              "type": "string"
-            },
-            "module": {
-              "type": "string"
-            },
-            "group": {
-              "type": "string"
-            },
-            "system": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "status_code": {
-              "type": "string"
-            },
-            "transaction": {
-              "type": "string"
-            },
-            "transaction.op": {
-              "type": "string"
-            },
-            "op": {
-              "type": "string"
-            },
-            "transaction.method": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": true
-        }
-      ]
-    },
-    "TagValue": {
-      "type": "string"
     },
     "UUID": {
       "type": "string",
@@ -176,26 +109,66 @@
       "type": "number",
       "minimum": 0
     },
-    "Measurements": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/MeasurementValue"
-      }
+    "SpanStatus": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "error"
+      ]
     },
-    "Data": {
-      "type": "object"
+    "SpanKind": {
+      "type": "string",
+      "enum": [
+        "internal",
+        "server",
+        "client",
+        "producer",
+        "consumer"
+      ]
     },
-    "MeasurementValue": {
+    "SpanLink": {
       "type": "object",
+      "title": "span_link",
+      "additionalProperties": true,
       "properties": {
-        "value": {
-          "type": "number"
+        "trace_id": {
+          "$ref": "#/definitions/UUID"
         },
-        "unit": {
+        "span_id": {
           "type": "string"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "sampled": {
+          "type": "boolean"
         }
       },
-      "required": ["value"]
+      "required": [
+        "trace_id",
+        "span_id"
+      ]
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/AttributeValue"
+      }
     }
+  },
+  "AttributeValue": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string"
+      },
+      "value": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "type",
+      "value"
+    ]
   }
 }
