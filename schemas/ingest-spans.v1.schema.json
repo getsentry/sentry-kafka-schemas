@@ -1,4 +1,5 @@
 {
+  "$id": "ingestspans",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "spans_stream_message",
   "$ref": "#/definitions/SpanEvent",
@@ -9,19 +10,19 @@
       "additionalProperties": true,
       "properties": {
         "event_id": {
-          "$ref": "#/definitions/UUID"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "organization_id": {
-          "$ref": "#/definitions/UInt"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt"
         },
         "project_id": {
-          "$ref": "#/definitions/UInt"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt"
         },
         "key_id": {
-          "$ref": "#/definitions/UInt"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt"
         },
         "trace_id": {
-          "$ref": "#/definitions/UUID",
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UUID",
           "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
         },
         "span_id": {
@@ -36,40 +37,40 @@
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
-          "$ref": "#/definitions/PositiveFloat",
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "end_timestamp": {
-          "$ref": "#/definitions/PositiveFloat",
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "retention_days": {
-          "$ref": "#/definitions/UInt16"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UInt16"
         },
         "received": {
-          "$ref": "#/definitions/PositiveFloat",
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "Unix timestamp when the span was received by Sentry."
         },
         "name": {
           "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/SpanStatus"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/SpanStatus"
         },
         "is_remote": {
           "type": "boolean"
         },
         "kind": {
-          "$ref": "#/definitions/SpanKind"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/SpanKind"
         },
         "links": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SpanLink"
+            "$ref": "./ingest-spans.v1.schema.json#/definitions/SpanLink"
           }
         },
         "attributes": {
-          "$ref": "#/definitions/Attributes"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/Attributes"
         }
       },
       "required": [
@@ -132,13 +133,13 @@
       "additionalProperties": true,
       "properties": {
         "trace_id": {
-          "$ref": "#/definitions/UUID"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "span_id": {
           "type": "string"
         },
         "attributes": {
-          "$ref": "#/definitions/Attributes"
+          "$ref": "./ingest-spans.v1.schema.json#/definitions/Attributes"
         },
         "sampled": {
           "type": "boolean"
@@ -152,23 +153,23 @@
     "Attributes": {
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/definitions/AttributeValue"
-      }
-    }
-  },
-  "AttributeValue": {
-    "type": "object",
-    "properties": {
-      "type": {
-        "type": "string"
-      },
-      "value": {
-        "type": "number"
+        "$ref": "./ingest-spans.v1.schema.json#/definitions/AttributeValue"
       }
     },
-    "required": [
-      "type",
-      "value"
-    ]
+    "AttributeValue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    }
   }
 }
