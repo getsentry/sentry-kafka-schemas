@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.4
+
+### Various fixes & improvements
+
+- feat(spans): Span V2 kafka schema (#440) by @jjbayer
+
 ## 2.1.3
 
 ### Various fixes & improvements
