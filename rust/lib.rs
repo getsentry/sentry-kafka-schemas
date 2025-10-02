@@ -43,7 +43,7 @@ pub enum SchemaError {
     InvalidType,
     #[error("Invalid schema")]
     InvalidSchema,
-    #[error("Invalid message: {0:?}")]
+    #[error("Invalid message")]
     InvalidMessage(#[from] ValidationError),
 }
 #[derive(Debug, Error)]
@@ -124,7 +124,7 @@ impl Schema {
             .validate(&message)
             .map_err(|errors| {
                 errors
-                    .map(|e| format!("{:?}", e))
+                    .map(|e| format!("{}: {}", e.instance_path, e.to_string()))
                     .collect::<Vec<_>>()
                     .join(". ")
             })
@@ -342,7 +342,7 @@ mod tests {
         }
 
         assert!(matches!(
-            dbg!(schema.validate_json(b"{}")),
+            schema.validate_json(b"{}"),
             Err(SchemaError::InvalidMessage(
                 ValidationError::SchemaViolation(_)
             ))
