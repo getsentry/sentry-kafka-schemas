@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.5
+
+### Various fixes & improvements
+
+- fix(spans): Fix relative paths (#441) by @jjbayer
+
 ## 2.1.4
 
 ### Various fixes & improvements
