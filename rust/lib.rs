@@ -43,10 +43,22 @@ pub enum SchemaError {
     InvalidType,
     #[error("Invalid schema")]
     InvalidSchema,
-    // FIXME(swatinem): maybe a dedicated `ValidationError` would be nice which
-    // carries a JSON error as well as the exact Schema error.
     #[error("Invalid message")]
-    InvalidMessage,
+    InvalidMessage(#[from] ValidationError),
+}
+#[derive(Debug, Error)]
+pub enum ValidationError {
+    InvalidJson(#[from] serde_json::Error),
+    SchemaViolation(String),
+}
+
+impl std::fmt::Display for ValidationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ValidationError::InvalidJson(error) => error.fmt(f),
+            ValidationError::SchemaViolation(s) => s.fmt(f),
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -97,21 +109,27 @@ impl PartialEq for Schema {
 
 impl Schema {
     pub fn validate_json(&self, input: &[u8]) -> Result<serde_json::Value, SchemaError> {
-        if self.schema_type == SchemaType::Protobuf {
+        if self.schema_type != SchemaType::Json {
             return Err(SchemaError::InvalidType);
         }
 
-        let message = serde_json::from_slice(input).map_err(|_| SchemaError::InvalidMessage)?;
+        let json_schema = self
+            .compiled_json_schema
+            .as_ref()
+            .expect("Schema of type JSON without content");
 
-        if let Some(json_schema) = &self.compiled_json_schema {
-            if json_schema.is_valid(&message) {
-                return Ok(message);
-            }
+        let message = serde_json::from_slice(input).map_err(ValidationError::InvalidJson)?;
 
-            return Err(SchemaError::InvalidMessage);
-        }
-
-        Err(SchemaError::InvalidSchema)
+        json_schema
+            .validate(&message)
+            .map_err(|errors| {
+                errors
+                    .map(|e| format!("{}: {}", e.instance_path, e.to_string()))
+                    .collect::<Vec<_>>()
+                    .join(". ")
+            })
+            .map_err(ValidationError::SchemaViolation)?;
+        Ok(message)
     }
 
     #[cfg(feature = "type_generation")]
@@ -325,7 +343,9 @@ mod tests {
 
         assert!(matches!(
             schema.validate_json(b"{}"),
-            Err(SchemaError::InvalidMessage)
+            Err(SchemaError::InvalidMessage(
+                ValidationError::SchemaViolation(_)
+            ))
         ));
     }
 
@@ -336,5 +356,26 @@ mod tests {
         validate_schema("snuba-uptime-results");
         validate_schema("ingest-spans");
         validate_schema("buffered-segments");
+    }
+
+    #[test]
+    fn test_error_message() {
+        let schema = get_schema("ingest-spans", None).unwrap();
+
+        let examples = schema.examples();
+        assert!(!examples.is_empty());
+        for example in examples {
+            schema.validate_json(example.payload()).unwrap();
+        }
+
+        let Err(SchemaError::InvalidMessage(ValidationError::SchemaViolation(message))) =
+            schema.validate_json(br#"{"is_remote": null}"#)
+        else {
+            panic!();
+        };
+        assert_eq!(
+            &message,
+            r#"/is_remote: null is not of type "boolean". : "organization_id" is a required property. : "project_id" is a required property. : "received" is a required property. : "retention_days" is a required property. : "span_id" is a required property. : "start_timestamp" is a required property. : "end_timestamp" is a required property. : "trace_id" is a required property. : "name" is a required property. : "status" is a required property"#
+        );
     }
 }
