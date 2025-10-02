@@ -357,4 +357,25 @@ mod tests {
         validate_schema("ingest-spans");
         validate_schema("buffered-segments");
     }
+
+    #[test]
+    fn test_error_message() {
+        let schema = get_schema("ingest-spans", None).unwrap();
+
+        let examples = schema.examples();
+        assert!(!examples.is_empty());
+        for example in examples {
+            schema.validate_json(example.payload()).unwrap();
+        }
+
+        let Err(SchemaError::InvalidMessage(ValidationError::SchemaViolation(message))) =
+            schema.validate_json(br#"{"is_remote": null}"#)
+        else {
+            panic!();
+        };
+        assert_eq!(
+            &message,
+            r#"/is_remote: null is not of type "boolean". : "organization_id" is a required property. : "project_id" is a required property. : "received" is a required property. : "retention_days" is a required property. : "span_id" is a required property. : "start_timestamp" is a required property. : "end_timestamp" is a required property. : "trace_id" is a required property. : "name" is a required property. : "status" is a required property"#
+        );
+    }
 }
