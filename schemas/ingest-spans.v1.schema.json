@@ -29,7 +29,10 @@
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
@@ -111,11 +114,20 @@
     },
     "SpanStatus": {
       "type": "string",
-      "enum": ["ok", "error"]
+      "enum": [
+        "ok",
+        "error"
+      ]
     },
     "SpanKind": {
       "type": "string",
-      "enum": ["internal", "server", "client", "producer", "consumer"]
+      "enum": [
+        "internal",
+        "server",
+        "client",
+        "producer",
+        "consumer"
+      ]
     },
     "SpanLink": {
       "type": "object",
@@ -135,7 +147,10 @@
           "type": "boolean"
         }
       },
-      "required": ["trace_id", "span_id"]
+      "required": [
+        "trace_id",
+        "span_id"
+      ]
     },
     "Attributes": {
       "type": "object",
@@ -144,17 +159,37 @@
       }
     },
     "AttributeValue": {
-      "type": "object",
+      "type": [
+        "null",
+        "object"
+      ],
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["boolean", "integer", "double", "string", "array", "object"]
+          "enum": [
+            "boolean",
+            "integer",
+            "double",
+            "string",
+            "array",
+            "object"
+          ]
         },
         "value": {
-          "type": ["number", "null", "string", "boolean", "array", "object"]
+          "type": [
+            "number",
+            "null",
+            "string",
+            "boolean",
+            "array",
+            "object"
+          ]
         }
       },
-      "required": ["type", "value"]
+      "required": [
+        "type",
+        "value"
+      ]
     }
   }
 }
