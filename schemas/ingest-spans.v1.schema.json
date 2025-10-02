@@ -144,7 +144,7 @@
       }
     },
     "AttributeValue": {
-      "type": "object",
+      "type": ["null", "object"],
       "properties": {
         "type": {
           "type": "string",
