@@ -334,5 +334,7 @@ mod tests {
         validate_schema("snuba-queries");
         validate_schema("uptime-results");
         validate_schema("snuba-uptime-results");
+        validate_schema("ingest-spans");
+        validate_schema("buffered-segments");
     }
 }
