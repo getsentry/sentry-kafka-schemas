@@ -14,7 +14,7 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "file://./ingest-spans.v1.schema.json#/definitions/SpanEvent"
+        "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanEvent"
       }
     }
   }
