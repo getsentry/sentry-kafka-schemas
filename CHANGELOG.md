@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.6
+
+### Various fixes & improvements
+
+- fix(spans): Attributes can be null (#443) by @jjbayer
+
 ## 2.1.5
 
 ### Various fixes & improvements
