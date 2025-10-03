@@ -7,12 +7,7 @@
       "title": "check_status",
       "description": "The status of the check",
       "type": "string",
-      "enum": [
-        "success",
-        "failure",
-        "missed_window",
-        "disallowed_by_robots"
-      ]
+      "enum": ["success", "failure", "missed_window", "disallowed_by_robots"]
     },
     "CheckStatusReasonType": {
       "title": "check_status_reason_type",
