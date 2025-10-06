@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.7
+
+### Various fixes & improvements
+
+- feat(uptime): add robots.txt rejection as an uptime check result (#444) by @klochek
+- feat: verbose errors (#442) by @jjbayer
+
 ## 2.1.6
 
 ### Various fixes & improvements
