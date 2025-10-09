@@ -15,5 +15,6 @@
     "span_id": null,
     "start_timestamp": null,
     "status": null,
-    "trace_id": null
+    "trace_id": null,
+    "kind": null
 }

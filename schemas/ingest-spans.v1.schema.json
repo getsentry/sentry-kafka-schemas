@@ -39,11 +39,21 @@
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
+          "$anyOf": [
+            {
+              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
+            },
+            null
+          ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "end_timestamp": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
+          "$anyOf": [
+            {
+              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
+            },
+            null
+          ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "retention_days": {
@@ -75,7 +85,10 @@
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanKind"
         },
         "links": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "items": {
             "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanLink"
           }
@@ -128,24 +141,39 @@
       "minimum": 0
     },
     "SpanStatus": {
-      "type": "string",
-      "enum": [
-        "ok",
-        "error"
+      "anyOf": [
+        {
+          "enum": [
+            "ok",
+            "error"
+          ]
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "SpanKind": {
-      "type": "string",
-      "enum": [
-        "internal",
-        "server",
-        "client",
-        "producer",
-        "consumer"
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "internal",
+            "server",
+            "client",
+            "producer",
+            "consumer"
+          ]
+        }
       ]
     },
     "SpanLink": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "title": "span_link",
       "additionalProperties": true,
       "properties": {
@@ -153,13 +181,19 @@
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "span_id": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "attributes": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/Attributes"
         },
         "sampled": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
       "required": [
@@ -168,7 +202,10 @@
       ]
     },
     "Attributes": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "$ref": "file://ingest-spans.v1.schema.json#/definitions/AttributeValue"
       }
@@ -180,14 +217,20 @@
       ],
       "properties": {
         "type": {
-          "type": "string",
-          "enum": [
-            "boolean",
-            "integer",
-            "double",
-            "string",
-            "array",
-            "object"
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "boolean",
+                "integer",
+                "double",
+                "string",
+                "array",
+                "object"
+              ]
+            }
           ]
         },
         "value": {
