@@ -1,31 +1,31 @@
 {
-    "organization_id": 1,
-    "project_id": 42,
-    "key_id": 123,
-    "event_id": "cbf6960622e14a45abc1f03b2055b186",
-    "received": 1759215783.850951,
-    "retention_days": 90,
-    "downsampled_retention_days": 90,
-    "attributes": null,
-    "end_timestamp": null,
-    "is_remote": null,
-    "links": [
-        {
-            "trace_id": null,
-            "span_id": null,
-            "sampled": null,
-            "attributes": {
-                "span_key": {
-                    "type": null,
-                    "value": null
-                }
-            }
+  "organization_id": 1,
+  "project_id": 42,
+  "key_id": 123,
+  "event_id": "cbf6960622e14a45abc1f03b2055b186",
+  "received": 1759215783.850951,
+  "retention_days": 90,
+  "downsampled_retention_days": 90,
+  "attributes": null,
+  "end_timestamp": null,
+  "is_remote": null,
+  "links": [
+    {
+      "trace_id": null,
+      "span_id": null,
+      "sampled": null,
+      "attributes": {
+        "span_key": {
+          "type": null,
+          "value": null
         }
-    ],
-    "name": null,
-    "parent_span_id": null,
-    "span_id": null,
-    "start_timestamp": null,
-    "status": null,
-    "trace_id": null
+      }
+    }
+  ],
+  "name": null,
+  "parent_span_id": null,
+  "span_id": null,
+  "start_timestamp": null,
+  "status": null,
+  "trace_id": null
 }
