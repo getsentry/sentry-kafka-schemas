@@ -373,9 +373,6 @@ mod tests {
         else {
             panic!();
         };
-        assert_eq!(
-            &message,
-            r#"/is_remote: null is not of type "boolean". : "organization_id" is a required property. : "project_id" is a required property. : "received" is a required property. : "retention_days" is a required property. : "span_id" is a required property. : "start_timestamp" is a required property. : "end_timestamp" is a required property. : "trace_id" is a required property. : "name" is a required property. : "status" is a required property"#
-        );
+        assert_eq!(&message, ": \"organization_id\" is a required property. : \"project_id\" is a required property. : \"received\" is a required property. : \"retention_days\" is a required property. : \"span_id\" is a required property. : \"start_timestamp\" is a required property. : \"end_timestamp\" is a required property. : \"trace_id\" is a required property. : \"name\" is a required property. : \"status\" is a required property");
     }
 }

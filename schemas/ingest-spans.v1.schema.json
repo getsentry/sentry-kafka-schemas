@@ -25,7 +25,7 @@
           "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
         },
         "span_id": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
@@ -33,11 +33,21 @@
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
+          "$anyOf": [
+            {
+              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
+            },
+            null
+          ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "end_timestamp": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
+          "$anyOf": [
+            {
+              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
+            },
+            null
+          ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "retention_days": {
@@ -51,19 +61,19 @@
           "description": "Unix timestamp when the span was received by Sentry."
         },
         "name": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "status": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanStatus"
         },
         "is_remote": {
-          "type": "boolean"
+          "type": ["boolean", "null"]
         },
         "kind": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanKind"
         },
         "links": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanLink"
           }
@@ -90,7 +100,7 @@
       ]
     },
     "UUID": {
-      "type": "string",
+      "type": ["string", "null"],
       "minLength": 32,
       "maxLength": 36
     },
@@ -113,15 +123,27 @@
       "minimum": 0
     },
     "SpanStatus": {
-      "type": "string",
-      "enum": ["ok", "error"]
+      "anyOf": [
+        {
+          "enum": ["ok", "error"]
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "SpanKind": {
-      "type": "string",
-      "enum": ["internal", "server", "client", "producer", "consumer"]
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": ["internal", "server", "client", "producer", "consumer"]
+        }
+      ]
     },
     "SpanLink": {
-      "type": "object",
+      "type": ["object", "null"],
       "title": "span_link",
       "additionalProperties": true,
       "properties": {
@@ -129,19 +151,19 @@
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "span_id": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "attributes": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/Attributes"
         },
         "sampled": {
-          "type": "boolean"
+          "type": ["boolean", "null"]
         }
       },
       "required": ["trace_id", "span_id"]
     },
     "Attributes": {
-      "type": "object",
+      "type": ["object", "null"],
       "additionalProperties": {
         "$ref": "file://ingest-spans.v1.schema.json#/definitions/AttributeValue"
       }
@@ -150,8 +172,21 @@
       "type": ["null", "object"],
       "properties": {
         "type": {
-          "type": "string",
-          "enum": ["boolean", "integer", "double", "string", "array", "object"]
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "boolean",
+                "integer",
+                "double",
+                "string",
+                "array",
+                "object"
+              ]
+            }
+          ]
         },
         "value": {
           "type": ["number", "null", "string", "boolean", "array", "object"]
