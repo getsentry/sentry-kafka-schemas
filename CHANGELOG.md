@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.8
+
+### Various fixes & improvements
+
+- fix(spans): Span V2 nullable fields (#446) by @jjbayer
+- fix(spans): Add \_meta field to ingest spans (#445) by @mjq
+
 ## 2.1.7
 
 ### Various fixes & improvements
