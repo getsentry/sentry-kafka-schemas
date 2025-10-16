@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.9
+
+### Various fixes & improvements
+
+- fix(spans): Fix `anyOf` syntax for nullable timestamps (#447) by @mjq
+
 ## 2.1.8
 
 ### Various fixes & improvements
