@@ -33,20 +33,20 @@
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
-          "$anyOf": [
+          "anyOf": [
             {
               "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
             },
-            null
+            { "type": "null" }
           ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "end_timestamp": {
-          "$anyOf": [
+          "anyOf": [
             {
               "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
             },
-            null
+            { "type": "null" }
           ],
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
