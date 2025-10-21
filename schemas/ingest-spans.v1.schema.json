@@ -29,10 +29,7 @@
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
-          "type": [
-            "string",
-            "null"
-          ],
+          "type": ["string", "null"],
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
@@ -54,31 +51,19 @@
           "description": "Unix timestamp when the span was received by Sentry."
         },
         "name": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "status": {
           "type": "string"
         },
         "is_remote": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": ["boolean", "null"]
         },
         "kind": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "links": {
-          "type": [
-            "array",
-            "null"
-          ],
+          "type": ["array", "null"],
           "items": {
             "oneOf": [
               {
@@ -135,9 +120,7 @@
       "minimum": 0
     },
     "SpanLink": {
-      "type": [
-        "object"
-      ],
+      "type": ["object"],
       "title": "span_link",
       "additionalProperties": true,
       "properties": {
@@ -152,31 +135,19 @@
           ]
         },
         "span_id": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": ["string", "null"]
         },
         "attributes": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/Attributes"
         },
         "sampled": {
-          "type": [
-            "boolean",
-            "null"
-          ]
+          "type": ["boolean", "null"]
         }
       },
-      "required": [
-        "trace_id",
-        "span_id"
-      ]
+      "required": ["trace_id", "span_id"]
     },
     "Attributes": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": ["object", "null"],
       "additionalProperties": {
         "$ref": "file://ingest-spans.v1.schema.json#/definitions/AttributeValue"
       }
@@ -202,20 +173,10 @@
           ]
         },
         "value": {
-          "type": [
-            "number",
-            "null",
-            "string",
-            "boolean",
-            "array",
-            "object"
-          ]
+          "type": ["number", "null", "string", "boolean", "array", "object"]
         }
       },
-      "required": [
-        "type",
-        "value"
-      ]
+      "required": ["type", "value"]
     }
   }
 }
