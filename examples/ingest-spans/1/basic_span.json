@@ -70,7 +70,8 @@
     "sentry.transaction.op": {
       "type": "string",
       "value": "hi"
-    }
+    },
+    "foo": null
   },
   "end_timestamp": 1759215782.849409,
   "is_remote": false,
