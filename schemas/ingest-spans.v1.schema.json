@@ -142,20 +142,10 @@
       "additionalProperties": true,
       "properties": {
         "trace_id": {
-          "oneOf": [
-            {
-              "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "span_id": {
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "attributes": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/Attributes"

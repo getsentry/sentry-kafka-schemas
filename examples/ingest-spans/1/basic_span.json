@@ -88,12 +88,17 @@
       }
     },
     {
-      "trace_id": null,
-      "span_id": null,
+      "trace_id": "0f62a8b040f340bda5d830223def1d82",
+      "span_id": "cbbbbbbbbbbbbbbd",
       "sampled": null,
       "attributes": {
         "span_key": null
       }
+    },
+    {
+      "trace_id": "0f62a8b040f340bda5d830223def1d82",
+      "span_id": "cbbbbbbbbbbbbbbe",
+      "attributes": null
     }
   ],
   "name": "http",
