@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.10
+
+### Various fixes & improvements
+
+- feat(spans): Guarantee non-null for basic span fields (#448) by @jjbayer
+
 ## 2.1.9
 
 ### Various fixes & improvements
