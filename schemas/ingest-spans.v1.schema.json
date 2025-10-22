@@ -25,7 +25,7 @@
           "description": "The trace ID is a unique identifier for a trace. It is a 16 byte hexadecimal string."
         },
         "span_id": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "The span ID is a unique identifier for a span within a trace. It is an 8 byte hexadecimal string."
         },
         "parent_span_id": {
@@ -33,21 +33,11 @@
           "description": "The parent span ID is the ID of the span that caused this span. It is an 8 byte hexadecimal string."
         },
         "start_timestamp": {
-          "anyOf": [
-            {
-              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
-            },
-            { "type": "null" }
-          ],
+          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "end_timestamp": {
-          "anyOf": [
-            {
-              "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat"
-            },
-            { "type": "null" }
-          ],
+          "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "UNIX timestamp in seconds with fractional part up to microsecond precision."
         },
         "retention_days": {
@@ -64,18 +54,25 @@
           "type": ["string", "null"]
         },
         "status": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanStatus"
+          "type": "string"
         },
         "is_remote": {
           "type": ["boolean", "null"]
         },
         "kind": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanKind"
+          "type": ["string", "null"]
         },
         "links": {
           "type": ["array", "null"],
           "items": {
-            "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanLink"
+            "oneOf": [
+              {
+                "$ref": "file://ingest-spans.v1.schema.json#/definitions/SpanLink"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "attributes": {
@@ -100,7 +97,7 @@
       ]
     },
     "UUID": {
-      "type": ["string", "null"],
+      "type": "string",
       "minLength": 32,
       "maxLength": 36
     },
@@ -122,33 +119,20 @@
       "type": "number",
       "minimum": 0
     },
-    "SpanStatus": {
-      "anyOf": [
-        {
-          "enum": ["ok", "error"]
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "SpanKind": {
-      "anyOf": [
-        {
-          "type": "null"
-        },
-        {
-          "enum": ["internal", "server", "client", "producer", "consumer"]
-        }
-      ]
-    },
     "SpanLink": {
-      "type": ["object", "null"],
+      "type": ["object"],
       "title": "span_link",
       "additionalProperties": true,
       "properties": {
         "trace_id": {
-          "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
+          "oneOf": [
+            {
+              "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "span_id": {
           "type": ["string", "null"]
@@ -169,7 +153,7 @@
       }
     },
     "AttributeValue": {
-      "type": ["null", "object"],
+      "type": "object",
       "properties": {
         "type": {
           "anyOf": [
