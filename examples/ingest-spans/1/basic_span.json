@@ -85,6 +85,14 @@
           "value": "span_value"
         }
       }
+    },
+    {
+      "trace_id": null,
+      "span_id": null,
+      "sampled": null,
+      "attributes": {
+        "span_key": null
+      }
     }
   ],
   "name": "http",
