@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.11
+
+### Various fixes & improvements
+
+- fix(spans): Nullable attributes (#450) by @jjbayer
+
 ## 2.1.10
 
 ### Various fixes & improvements
