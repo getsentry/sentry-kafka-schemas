@@ -70,7 +70,8 @@
     "sentry.transaction.op": {
       "type": "string",
       "value": "hi"
-    }
+    },
+    "foo": null
   },
   "end_timestamp": 1759215782.849409,
   "is_remote": false,
@@ -85,6 +86,19 @@
           "value": "span_value"
         }
       }
+    },
+    {
+      "trace_id": "0f62a8b040f340bda5d830223def1d82",
+      "span_id": "cbbbbbbbbbbbbbbd",
+      "sampled": null,
+      "attributes": {
+        "span_key": null
+      }
+    },
+    {
+      "trace_id": "0f62a8b040f340bda5d830223def1d82",
+      "span_id": "cbbbbbbbbbbbbbbe",
+      "attributes": null
     }
   ],
   "name": "http",

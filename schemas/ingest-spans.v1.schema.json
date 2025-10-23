@@ -125,17 +125,10 @@
       "additionalProperties": true,
       "properties": {
         "trace_id": {
-          "oneOf": [
-            {
-              "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "file://ingest-spans.v1.schema.json#/definitions/UUID"
         },
         "span_id": {
-          "type": ["string", "null"]
+          "type": "string"
         },
         "attributes": {
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/Attributes"
@@ -149,28 +142,21 @@
     "Attributes": {
       "type": ["object", "null"],
       "additionalProperties": {
-        "$ref": "file://ingest-spans.v1.schema.json#/definitions/AttributeValue"
+        "oneOf": [
+          {
+            "$ref": "file://ingest-spans.v1.schema.json#/definitions/AttributeValue"
+          },
+          {
+            "type": "null"
+          }
+        ]
       }
     },
     "AttributeValue": {
       "type": "object",
       "properties": {
         "type": {
-          "anyOf": [
-            {
-              "type": "null"
-            },
-            {
-              "enum": [
-                "boolean",
-                "integer",
-                "double",
-                "string",
-                "array",
-                "object"
-              ]
-            }
-          ]
+          "enum": ["boolean", "integer", "double", "string", "array", "object"]
         },
         "value": {
           "type": ["number", "null", "string", "boolean", "array", "object"]
