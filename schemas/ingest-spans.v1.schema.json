@@ -59,6 +59,9 @@
         "is_remote": {
           "type": ["boolean", "null"]
         },
+        "is_segment": {
+          "type": ["boolean", "null"]
+        },
         "kind": {
           "type": ["string", "null"]
         },
@@ -92,8 +95,15 @@
         "end_timestamp",
         "trace_id",
         "name",
-        "status",
-        "is_remote"
+        "status"
+      ],
+      "oneOf": [
+        {
+          "required": ["is_remote"]
+        },
+        {
+          "required": ["is_segment"]
+        }
       ]
     },
     "UUID": {
