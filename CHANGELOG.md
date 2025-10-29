@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.12
+
+### Various fixes & improvements
+
+- feat(spans): Allow either is_remote or is_segment (#451) by @jjbayer
+
 ## 2.1.11
 
 ### Various fixes & improvements
