@@ -17,8 +17,7 @@ view-rust-types:
 .PHONY: view-rust-types
 
 build: python/sentry_kafka_schemas/schema_types
-	pip install --upgrade pip
-	pip install wheel
+	pip install setuptools wheel
 	python setup.py sdist bdist_wheel
 .PHONY: build
 
