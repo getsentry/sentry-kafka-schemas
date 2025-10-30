@@ -16,13 +16,16 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: 3.13
       - run: make build
       - uses: actions/upload-artifact@v4
         if: github.event_name != 'pull_request'
         with:
           name: ${{ github.sha }}
           path: dist/*
+
+      # see what files have been created
+      - run: ls -lhrt dist
 
       # validate that the built wheel is actually importable
       - run: python -m venv /tmp/venv
