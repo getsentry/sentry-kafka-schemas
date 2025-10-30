@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.13
+
+### Various fixes & improvements
+
+- build(py): Bump python version to 3.13 (#452) by @jjbayer
+- feat(spans): Allow either is_remote or is_segment (#451) by @jjbayer
+
 ## 2.1.11
 
 ### Various fixes & improvements
