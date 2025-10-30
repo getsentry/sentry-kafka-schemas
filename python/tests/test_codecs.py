@@ -54,7 +54,7 @@ def test_protobuf_codec() -> None:
         resource="sentry_protos.sentry.v1.taskworker_pb2.TaskActivation"
     )
     serialized = codec.encode(activation)
-    assert type(serialized) == bytes
+    assert type(serialized) is bytes
 
     rebuild = codec.decode(serialized)
     assert rebuild
