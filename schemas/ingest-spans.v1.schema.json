@@ -96,14 +96,6 @@
         "trace_id",
         "name",
         "status"
-      ],
-      "oneOf": [
-        {
-          "required": ["is_remote"]
-        },
-        {
-          "required": ["is_segment"]
-        }
       ]
     },
     "UUID": {
