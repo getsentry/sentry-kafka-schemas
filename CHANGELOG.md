@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.14
+
+### Various fixes & improvements
+
+- feat(spans): Do not require is_segment (#453) by @jjbayer
+
 ## 2.1.13
 
 ### Various fixes & improvements
