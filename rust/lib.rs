@@ -369,7 +369,7 @@ mod tests {
         }
 
         let Err(SchemaError::InvalidMessage(ValidationError::SchemaViolation(message))) =
-            schema.validate_json(br#"{"is_remote": null}"#)
+            schema.validate_json(br#"{"is_segment": null}"#)
         else {
             panic!();
         };
