@@ -56,9 +56,6 @@
         "status": {
           "type": "string"
         },
-        "is_remote": {
-          "type": ["boolean", "null"]
-        },
         "is_segment": {
           "type": ["boolean", "null"]
         },

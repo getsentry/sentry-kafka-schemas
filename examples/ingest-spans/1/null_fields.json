@@ -8,7 +8,7 @@
   "downsampled_retention_days": 90,
   "attributes": null,
   "end_timestamp": 1759215782.849409,
-  "is_remote": null,
+  "is_segment": null,
   "links": null,
   "name": null,
   "parent_span_id": null,
