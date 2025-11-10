@@ -119,16 +119,19 @@ jobs:
       - name: Build sentry-kafka-schemas
         run: |
           cd sentry-kafka-schemas
+          source .venv/bin/activate
           python -m pip install --upgrade pip
           make install
           make build
       - name: Install sentry-kafka-schemas
         run: |
           cd sentry
+          source .venv/bin/activate
           python -m pip install --force-reinstall ../sentry-kafka-schemas/dist/*.whl
       - name: Run mypy for sentry
         run: |
           cd sentry
+          source .venv/bin/activate
           PYTHONWARNINGS=error::RuntimeWarning mypy
 
   tests:
