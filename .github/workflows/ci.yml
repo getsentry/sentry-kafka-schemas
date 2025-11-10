@@ -97,19 +97,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        name: Checkout sentry-kafka-schemas
-        with:
-          path: sentry-kafka-schemas
-      - uses: actions/setup-python@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        with:
-          python-version: 3.13
-      - name: Build sentry-kafka-schemas
-        run: |
-          cd sentry-kafka-schemas
-          python -m pip install --upgrade pip
-          make install
-          make build
       - uses: astral-sh/setup-uv@884ad927a57e558e7a70b92f2bccf9198a4be546 # v6
         name: Setup uv
         with:
@@ -125,6 +112,16 @@ jobs:
           python-version: 3.13
           cache-dependency-path: sentry/uv.lock
           install-cmd: cd sentry && uv sync --frozen --active
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        name: Checkout sentry-kafka-schemas
+        with:
+          path: sentry-kafka-schemas
+      - name: Build sentry-kafka-schemas
+        run: |
+          cd sentry-kafka-schemas
+          python -m pip install --upgrade pip
+          make install
+          make build
       - name: Install sentry-kafka-schemas
         run: |
           cd sentry
