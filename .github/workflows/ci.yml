@@ -129,7 +129,7 @@ jobs:
       - name: Run mypy for sentry
         run: |
           cd sentry
-          uv run mypy --python-executable=python
+          PYTHONWARNINGS=error::RuntimeWarning .venv/bin/mypy
 
   tests:
     name: "Run tests"
