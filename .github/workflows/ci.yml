@@ -119,7 +119,6 @@ jobs:
       - name: Build sentry-kafka-schemas
         run: |
           cd sentry-kafka-schemas
-          source .venv/bin/activate
           python -m pip install --upgrade pip
           make install
           make build
