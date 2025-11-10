@@ -125,13 +125,11 @@ jobs:
       - name: Install sentry-kafka-schemas
         run: |
           cd sentry
-          source .venv/bin/activate
-          python -m pip install --force-reinstall ../sentry-kafka-schemas/dist/*.whl
+          uv pip install --force-reinstall ../sentry-kafka-schemas/dist/*.whl
       - name: Run mypy for sentry
         run: |
           cd sentry
-          source .venv/bin/activate
-          PYTHONWARNINGS=error::RuntimeWarning mypy
+          uv run mypy --python-executable=python
 
   tests:
     name: "Run tests"
