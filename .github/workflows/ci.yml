@@ -92,6 +92,50 @@ jobs:
       - name: Run mypy
         run: |
           make type-checking
+  sentry-typing:
+    name: "Sentry type checking"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: astral-sh/setup-uv@884ad927a57e558e7a70b92f2bccf9198a4be546 # v6
+        name: Setup uv
+        with:
+          version: "0.8.2"
+          enable-cache: false
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        name: Checkout sentry-kafka-schemas
+        with:
+          path: sentry-kafka-schemas
+      - name: Build sentry-kafka-schemas
+        run: |
+          cd sentry-kafka-schemas
+          python -m pip install --upgrade pip
+          make install
+          make build
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        name: Checkout sentry
+        with:
+          repository: getsentry/sentry
+          path: sentry
+      - uses: getsentry/action-setup-venv@3a832a9604b3e1a4202ae559248f26867b467cc7 # v2.1.1
+        with:
+          python-version: 3.13
+          cache-dependency-path: sentry/uv.lock
+          install-cmd: cd sentry && uv sync --frozen --active
+      - name: setup sentry
+        run: |
+          cd sentry
+          python -m tools.fast_editable --path .
+          sentry init
+      - name: Install sentry-kafka-schemas
+        run: |
+          cd sentry
+          uv pip install ../sentry-kafka-schemas/dist/*.whl
+      - name: Run mypy for sentry
+        run: |
+          cd sentry
+          PYTHONWARNINGS=error::RuntimeWarning mypy
+
   tests:
     name: "Run tests"
     runs-on: ubuntu-latest
