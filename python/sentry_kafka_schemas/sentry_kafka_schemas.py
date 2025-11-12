@@ -144,7 +144,7 @@ def _get_schema(topic: str, version: Optional[int] = None) -> Schema:
     return schema
 
 
-def get_codec(topic: str, version: Optional[int] = None) -> Codec[Any]:
+def get_codec(topic: str, version: Optional[int] = None) -> str:
     cache_key = (topic, version)
     if cache_key in __TOPIC_TO_CODEC:
         cache_value = __TOPIC_TO_CODEC[cache_key]
