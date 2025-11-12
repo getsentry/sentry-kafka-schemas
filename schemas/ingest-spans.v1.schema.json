@@ -59,9 +59,6 @@
         "is_segment": {
           "type": ["boolean", "null"]
         },
-        "kind": {
-          "type": ["string", "null"]
-        },
         "links": {
           "type": ["array", "null"],
           "items": {
