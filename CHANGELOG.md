@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.15
+
+### Various fixes & improvements
+
+- ref(spans): Remove span kind from the schema (#457) by @Dav1dde
+- feat(spans): rm is_remote (#454) by @jjbayer
+
 ## 2.1.14
 
 ### Various fixes & improvements
