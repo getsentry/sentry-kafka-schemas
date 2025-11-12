@@ -15,6 +15,5 @@
   "span_id": "bbbbbbbbbbbbbbbb",
   "start_timestamp": 1759215782.349409,
   "status": "ok",
-  "trace_id": "ff62a8b040f340bda5d830223def1d81",
-  "kind": null
+  "trace_id": "ff62a8b040f340bda5d830223def1d81"
 }
