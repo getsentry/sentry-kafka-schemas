@@ -21,7 +21,9 @@
         "connection_error",
         "redirect_error",
         "miss_produced",
-        "miss_backfill"
+        "miss_backfill",
+        "assertion_compilation_error",
+        "assertion_evaluation_error"
       ]
     },
     "RequestType": {
@@ -125,6 +127,40 @@
       },
       "required": ["request_type", "http_status_code"]
     },
+    "EvalPathKind": {
+      "title": "eval_path_kind",
+      "description": "The type of path node",
+      "type": "string",
+      "enum": [
+        "leaf",
+        "all_children",
+        "child_index"
+      ]
+    },
+    "EvalPath": {
+      "title": "eval_path",
+      "description": "The path of evaluations that lead to a assertion result",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/definitions/EvalPathKind"
+        },
+        "index": {
+          "type" : ["integer", "null"]
+        },
+        "child": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/EvalPath"
+            }
+          ]
+        }
+      },
+      "required": ["kind"]
+    },
     "CheckResult": {
       "title": "check_result",
       "description": "A message containing the result of the uptime check.",
@@ -192,6 +228,16 @@
         "region": {
           "description": "The region that this check was performed in",
           "type": "string"
+        },
+        "assertion_failure_data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/EvalPath"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
