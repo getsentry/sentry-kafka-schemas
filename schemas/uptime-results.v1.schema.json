@@ -131,11 +131,7 @@
       "title": "eval_path_kind",
       "description": "The type of path node",
       "type": "string",
-      "enum": [
-        "leaf",
-        "all_children",
-        "child_index"
-      ]
+      "enum": ["leaf", "all_children", "child_index"]
     },
     "EvalPath": {
       "title": "eval_path",
@@ -146,7 +142,7 @@
           "$ref": "#/definitions/EvalPathKind"
         },
         "index": {
-          "type" : ["integer", "null"]
+          "type": ["integer", "null"]
         },
         "child": {
           "oneOf": [
