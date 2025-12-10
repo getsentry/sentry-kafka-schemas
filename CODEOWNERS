@@ -127,7 +127,7 @@
 /schemas/snuba-profile-chunks.v1.schema.json                   @getsentry/profiling
 /schemas/group-attributes.v1.schema.json                       @getsentry/owners-snuba @getsentry/issues
 /schemas/ingest-spans.v1.schema.json                           @getsentry/ingest
-/schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/performance
+/schemas/buffered-segments.v1.schema.json                      @getsentry/owners-snuba @getsentry/data-browsing
 /schemas/ingest-monitors.v1.schema.json                        @getsentry/crons
 /schemas/monitors-clock-tick.v1.schema.json                    @getsentry/crons
 /schemas/monitors-clock-tasks.v1.schema.json                   @getsentry/crons
@@ -145,7 +145,7 @@
 /examples/profile-metadata/                                    @getsentry/profiling
 /examples/profile-functions/                                   @getsentry/profiling
 /examples/snuba-profile-chunks/                                @getsentry/profiling
-/examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/performance
+/examples/buffered-segments/                                   @getsentry/owners-snuba @getsentry/data-browsing
 /examples/ingest-monitors/                                     @getsentry/crons
 /examples/monitors-clock-tick/                                 @getsentry/crons
 /examples/monitors-clock-tasks/                                @getsentry/crons
