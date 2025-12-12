@@ -19,7 +19,9 @@
         "failure",
         "tls_error",
         "connection_error",
-        "redirect_error"
+        "redirect_error",
+        "miss_produced",
+        "miss_backfill"
       ]
     },
     "RequestType": {
