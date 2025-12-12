@@ -1,5 +1,21 @@
 # Changelog and versioning
 
+## 2.1.16
+
+### New Features ✨
+
+- feat(ci): Run type checking on Sentry by @lvthanh03 in [#456](https://github.com/getsentry/sentry-kafka-schemas/pull/456)
+
+- feat(uptime): Add miss_produced and miss_backfill status reason types by @evanpurkhiser in [#463](https://github.com/getsentry/sentry-kafka-schemas/pull/463)
+
+### Bug Fixes 🐛
+
+- fix: Remove performance code owners by @gggritso in [#462](https://github.com/getsentry/sentry-kafka-schemas/pull/462)
+
+### Build / dependencies / internal 🔧
+
+- chore: Remove Performance code owners by @gggritso in [#461](https://github.com/getsentry/sentry-kafka-schemas/pull/461)
+
 ## 2.1.15
 
 ### Various fixes & improvements
