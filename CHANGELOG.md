@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.17
+
+### New Features ✨
+
+- feat(uptime): add assertion failure details to CheckResult by @klochek in [#459](https://github.com/getsentry/sentry-kafka-schemas/pull/459)
+
 ## 2.1.16
 
 ### New Features ✨
