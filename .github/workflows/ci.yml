@@ -32,7 +32,7 @@ jobs:
         with:
           repository: getsentry/sentry
           path: sentry
-      - uses: getsentry/action-setup-venv@v3
+      - uses: getsentry/action-setup-venv@v3.1.0
         with:
           cache-dependency-path: sentry/uv.lock
           install-cmd: cd sentry && uv sync --frozen --active
