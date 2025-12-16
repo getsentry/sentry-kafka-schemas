@@ -43,9 +43,12 @@ jobs:
           which python
           source /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin/activate
           which python
+          /home/runner/.local/share/uv/python/cpython-3.13.1-linux-x86_64-gnu/bin/python3.13 --version || true
+          ls -lah /home/runner/.local/share/uv/python/cpython-3.13.1-linux-x86_64-gnu/bin
           ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin
           ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.*
-          ls -lah /home/runner/work/sentry-kafka-schemas/.*
+          ls -lah /home/runner/work/sentry-kafka-schemas
+          ls -lah /home/runner/work/sentry-kafka-schemas/bin
           python -m tools.fast_editable --path . || true
           sentry init
       - name: Install sentry-kafka-schemas
