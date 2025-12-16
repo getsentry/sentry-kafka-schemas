@@ -117,7 +117,7 @@ jobs:
         with:
           repository: getsentry/sentry
           path: sentry
-      - uses: getsentry/action-setup-venv@7acb66f8226c9170009a774bfcec671b097ebe0f
+      - uses: getsentry/action-setup-venv@5a80476d175edf56cb205b08bc58986fa99d1725 # v3.2.0
         with:
           working-directory: sentry
           cache-dependency-path: sentry/uv.lock
