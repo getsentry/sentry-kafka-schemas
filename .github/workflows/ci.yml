@@ -32,7 +32,7 @@ jobs:
         with:
           repository: getsentry/sentry
           path: sentry
-      - uses: getsentry/action-setup-venv@v3.1.0
+      - uses: getsentry/action-setup-venv@c53dadce505b4460f1cf914203c3a6c40e2e9d8e
         with:
           working-directory: sentry
           cache-dependency-path: sentry/uv.lock
