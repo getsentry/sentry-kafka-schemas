@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 2.1.18
+
+### New Features ✨
+
+- feat(uptime): add assertion failure details to CheckResult by @klochek in [#459](https://github.com/getsentry/sentry-kafka-schemas/pull/459)
+
+### Bug Fixes 🐛
+
+- fix(ci): upgrade to action-setup-venv v3.2.0 which can infer the .python-version to prevent mismatches by @joshuarli in [#465](https://github.com/getsentry/sentry-kafka-schemas/pull/465)
+
 ## 2.1.16
 
 ### New Features ✨
