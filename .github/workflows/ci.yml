@@ -40,6 +40,10 @@ jobs:
       - name: setup sentry
         run: |
           cd sentry
+          which python
+          env | grep VIRTUAL_ENV
+          python -m tools.fast_editable --path . || true
+          source ../.venv/bin/activate
           python -m tools.fast_editable --path .
           sentry init
       - name: Install sentry-kafka-schemas
