@@ -34,8 +34,9 @@ jobs:
           path: sentry
       - uses: getsentry/action-setup-venv@v3.1.0
         with:
+          working-directory: sentry
           cache-dependency-path: sentry/uv.lock
-          install-cmd: cd sentry && uv sync --frozen --active
+          install-cmd: uv sync --frozen --active
       - name: setup sentry
         run: |
           cd sentry
