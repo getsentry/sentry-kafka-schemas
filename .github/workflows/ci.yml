@@ -40,13 +40,13 @@ jobs:
       - name: setup sentry
         run: |
           cd sentry
-          echo $PATH
           which python
+          source /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin/activate
+          which python
+          ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin
+          ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.*
+          ls -lah /home/runner/work/sentry-kafka-schemas/.*
           python -m tools.fast_editable --path . || true
-          source ../.venv/bin/activate
-          echo $PATH
-          which python
-          python -m tools.fast_editable --path .
           sentry init
       - name: Install sentry-kafka-schemas
         run: |
