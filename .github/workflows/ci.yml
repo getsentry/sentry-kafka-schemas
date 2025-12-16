@@ -36,20 +36,12 @@ jobs:
         with:
           python-version: 3.13
           cache-dependency-path: sentry/uv.lock
-          install-cmd: cd sentry && uv sync --frozen --active
+          install-cmd: cd sentry && uv sync --frozen --active --no-managed-python
       - name: setup sentry
         run: |
           cd sentry
           which python
-          source /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin/activate
-          which python
-          /home/runner/.local/share/uv/python/cpython-3.13.1-linux-x86_64-gnu/bin/python3.13 --version || true
-          ls -lah /home/runner/.local/share/uv/python/cpython-3.13.1-linux-x86_64-gnu/bin
-          ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.venv/bin
-          ls -lah /home/runner/work/sentry-kafka-schemas/sentry-kafka-schemas/.*
-          ls -lah /home/runner/work/sentry-kafka-schemas
-          ls -lah /home/runner/work/sentry-kafka-schemas/bin
-          python -m tools.fast_editable --path . || true
+          python -m tools.fast_editable --path .
           sentry init
       - name: Install sentry-kafka-schemas
         run: |
