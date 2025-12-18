@@ -157,6 +157,220 @@
       },
       "required": ["kind"]
     },
+    "AssertionOpComparison": {
+      "title": "assertion_op_comparison",
+      "description": "TODO",
+      "enum": [
+        "always",
+        "never",
+        "less_than",
+        "greater_than",
+        "equals",
+        "not_equals"
+      ]
+    },
+    "AssertionOpHeaderOperandNone": {
+      "title": "assertion_op_header_operand_none",
+      "description": "TODO",
+      "properties": {
+        "header_op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "none"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandLiteral": {
+      "title": "assertion_op_header_operand_literal",
+      "description": "TODO",
+      "properties": {
+        "header_op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "literal"
+        },
+        "value": {
+          "description": "TODO",
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandGlobPattern": {
+      "title": "assertion_op_header_operand_glob_pattern",
+      "description": "TODO",
+      "properties": {
+        "value": {
+          "description": "TODO",
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandGlob": {
+      "title": "assertion_op_header_operand_glob",
+      "description": "TODO",
+      "properties": {
+        "header_op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "glob"
+        },
+        "pattern": {
+          "description": "TODO",
+          "type": "object",
+          "$ref": "#/definitions/AssertionOpHeaderOperandGlobPattern"
+        }
+      }
+    },
+    "AssertionOpHeaderOperand": {
+      "title": "assertion_op_header_operand",
+      "description": "TODO",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandGlob"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandLiteral"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandNone"
+        }
+      ]
+    },
+    "AssertionOpHeaderCheck": {
+      "title": "assertion_op_header_check",
+      "description": "TODO",
+      "properties": {
+        "key_op": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOpComparison"
+        },
+        "key_operand": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOpHeaderOperand"
+        },
+        "value_op": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOpComparison"
+        },
+        "value_operand": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOpHeaderOperand"
+        }
+      }
+    },
+    "AssertionOpStatusCodeCheck": {
+      "title": "assertion_op_status_code_check",
+      "description": "TODO",
+      "properties": {
+        "value": {
+          "description": "TODO",
+          "type": "integer"
+        },
+        "operator": {
+          "$ref": "#/definitions/AssertionOpComparison"
+        }
+      }
+    },
+    "AssertionOpJsonPath": {
+      "title": "assertion_op_jsonpath",
+      "description": "TODO",
+      "properties": {
+        "op": {
+          "description": "TODO",
+          "const": "json_path"
+        },
+        "value": {
+          "description": "TODO",
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpNot": {
+      "title": "assertion_op_not",
+      "description": "TODO",
+      "properties": {
+        "op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "not"
+        },
+        "operand": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOp"
+        }
+      }
+    },
+    "AssertionOpOr": {
+      "title": "assertion_op_or",
+      "description": "TODO",
+      "properties": {
+        "op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "or"
+        },
+        "children": {
+          "description": "TODO",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssertionOp"
+          }
+        }
+      }
+    },
+    "AssertionOpAnd": {
+      "title": "assertion_op_and",
+      "description": "TODO",
+      "properties": {
+        "op": {
+          "description": "TODO",
+          "type": "string",
+          "const": "and"
+        },
+        "children": {
+          "description": "TODO",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssertionOp"
+          }
+        }
+      }
+    },
+    "AssertionOp": {
+      "title": "assertion_op",
+      "description": "TODO",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AssertionOpAnd"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpOr"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpNot"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpStatusCodeCheck"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpJsonPath"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderCheck"
+        }
+      ]
+    },
+    "Assertion": {
+      "title": "assertion",
+      "description": "TODO",
+      "type": "object",
+      "properties": {
+        "root": {
+          "description": "TODO",
+          "$ref": "#/definitions/AssertionOp"
+        }
+      }
+    },
     "CheckResult": {
       "title": "check_result",
       "description": "A message containing the result of the uptime check.",
@@ -228,7 +442,7 @@
         "assertion_failure_data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/EvalPath"
+              "$ref": "#/definitions/Assertion"
             },
             {
               "type": "null"
