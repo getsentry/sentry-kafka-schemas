@@ -159,7 +159,7 @@
     },
     "AssertionOpComparison": {
       "title": "assertion_op_comparison",
-      "description": "TODO",
+      "description": "The kind of comparison to make.",
       "enum": [
         "always",
         "never",
@@ -171,10 +171,9 @@
     },
     "AssertionOpHeaderOperandNone": {
       "title": "assertion_op_header_operand_none",
-      "description": "TODO",
+      "description": "A none operand for the comparison",
       "properties": {
         "header_op": {
-          "description": "TODO",
           "type": "string",
           "const": "none"
         }
@@ -182,40 +181,35 @@
     },
     "AssertionOpHeaderOperandLiteral": {
       "title": "assertion_op_header_operand_literal",
-      "description": "TODO",
+      "description": "A literal value for comparison",
       "properties": {
         "header_op": {
-          "description": "TODO",
           "type": "string",
           "const": "literal"
         },
         "value": {
-          "description": "TODO",
           "type": "string"
         }
       }
     },
     "AssertionOpHeaderOperandGlobPattern": {
       "title": "assertion_op_header_operand_glob_pattern",
-      "description": "TODO",
+      "description": "The actual glob pattern, as a string",
       "properties": {
         "value": {
-          "description": "TODO",
           "type": "string"
         }
       }
     },
     "AssertionOpHeaderOperandGlob": {
       "title": "assertion_op_header_operand_glob",
-      "description": "TODO",
+      "description": "A global pattern for matching",
       "properties": {
         "header_op": {
-          "description": "TODO",
           "type": "string",
           "const": "glob"
         },
         "pattern": {
-          "description": "TODO",
           "type": "object",
           "$ref": "#/definitions/AssertionOpHeaderOperandGlobPattern"
         }
@@ -223,7 +217,7 @@
     },
     "AssertionOpHeaderOperand": {
       "title": "assertion_op_header_operand",
-      "description": "TODO",
+      "description": "A operand for comparison against HTTP header keys and values",
       "anyOf": [
         {
           "$ref": "#/definitions/AssertionOpHeaderOperandGlob"
@@ -238,32 +232,27 @@
     },
     "AssertionOpHeaderCheck": {
       "title": "assertion_op_header_check",
-      "description": "TODO",
+      "description": "The HTTP header (key and value) comparison operation",
       "properties": {
         "key_op": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOpComparison"
         },
         "key_operand": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOpHeaderOperand"
         },
         "value_op": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOpComparison"
         },
         "value_operand": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOpHeaderOperand"
         }
       }
     },
     "AssertionOpStatusCodeCheck": {
       "title": "assertion_op_status_code_check",
-      "description": "TODO",
+      "description": "The HTTP status code comparison operation",
       "properties": {
         "value": {
-          "description": "TODO",
           "type": "integer"
         },
         "operator": {
@@ -273,44 +262,38 @@
     },
     "AssertionOpJsonPath": {
       "title": "assertion_op_jsonpath",
-      "description": "TODO",
+      "description": "The JSONPath query operation",
       "properties": {
         "op": {
-          "description": "TODO",
           "const": "json_path"
         },
         "value": {
-          "description": "TODO",
           "type": "string"
         }
       }
     },
     "AssertionOpNot": {
       "title": "assertion_op_not",
-      "description": "TODO",
+      "description": "The negation operation",
       "properties": {
         "op": {
-          "description": "TODO",
           "type": "string",
           "const": "not"
         },
         "operand": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOp"
         }
       }
     },
     "AssertionOpOr": {
       "title": "assertion_op_or",
-      "description": "TODO",
+      "description": "The boolean OR operation",
       "properties": {
         "op": {
-          "description": "TODO",
           "type": "string",
           "const": "or"
         },
         "children": {
-          "description": "TODO",
           "type": "array",
           "items": {
             "$ref": "#/definitions/AssertionOp"
@@ -320,15 +303,13 @@
     },
     "AssertionOpAnd": {
       "title": "assertion_op_and",
-      "description": "TODO",
+      "description": "The boolean AND operation",
       "properties": {
         "op": {
-          "description": "TODO",
           "type": "string",
           "const": "and"
         },
         "children": {
-          "description": "TODO",
           "type": "array",
           "items": {
             "$ref": "#/definitions/AssertionOp"
@@ -338,7 +319,7 @@
     },
     "AssertionOp": {
       "title": "assertion_op",
-      "description": "TODO",
+      "description": "All possible assertion operations",
       "anyOf": [
         {
           "$ref": "#/definitions/AssertionOpAnd"
@@ -362,11 +343,10 @@
     },
     "Assertion": {
       "title": "assertion",
-      "description": "TODO",
+      "description": "The root of the uptime assertion",
       "type": "object",
       "properties": {
         "root": {
-          "description": "TODO",
           "$ref": "#/definitions/AssertionOp"
         }
       }
