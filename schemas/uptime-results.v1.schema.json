@@ -206,7 +206,7 @@
     },
     "AssertionOpHeaderOperandGlob": {
       "title": "assertion_op_header_operand_glob",
-      "description": "A global pattern for matching",
+      "description": "A glob pattern for matching",
       "type": "object",
       "properties": {
         "header_op": {
