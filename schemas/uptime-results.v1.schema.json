@@ -157,6 +157,210 @@
       },
       "required": ["kind"]
     },
+    "AssertionOpComparison": {
+      "title": "assertion_op_comparison",
+      "description": "The kind of comparison to make.",
+      "enum": [
+        "always",
+        "never",
+        "less_than",
+        "greater_than",
+        "equals",
+        "not_equals"
+      ]
+    },
+    "AssertionOpHeaderOperandNone": {
+      "title": "assertion_op_header_operand_none",
+      "description": "A none operand for the comparison",
+      "type": "object",
+      "properties": {
+        "header_op": {
+          "type": "string",
+          "const": "none"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandLiteral": {
+      "title": "assertion_op_header_operand_literal",
+      "description": "A literal value for comparison",
+      "type": "object",
+      "properties": {
+        "header_op": {
+          "type": "string",
+          "const": "literal"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandGlobPattern": {
+      "title": "assertion_op_header_operand_glob_pattern",
+      "description": "The actual glob pattern, as a string",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpHeaderOperandGlob": {
+      "title": "assertion_op_header_operand_glob",
+      "description": "A glob pattern for matching",
+      "type": "object",
+      "properties": {
+        "header_op": {
+          "type": "string",
+          "const": "glob"
+        },
+        "pattern": {
+          "type": "object",
+          "$ref": "#/definitions/AssertionOpHeaderOperandGlobPattern"
+        }
+      }
+    },
+    "AssertionOpHeaderOperand": {
+      "title": "assertion_op_header_operand",
+      "description": "A operand for comparison against HTTP header keys and values",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandGlob"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandLiteral"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderOperandNone"
+        }
+      ]
+    },
+    "AssertionOpHeaderCheck": {
+      "title": "assertion_op_header_check",
+      "description": "The HTTP header (key and value) comparison operation",
+      "type": "object",
+      "properties": {
+        "key_op": {
+          "$ref": "#/definitions/AssertionOpComparison"
+        },
+        "key_operand": {
+          "$ref": "#/definitions/AssertionOpHeaderOperand"
+        },
+        "value_op": {
+          "$ref": "#/definitions/AssertionOpComparison"
+        },
+        "value_operand": {
+          "$ref": "#/definitions/AssertionOpHeaderOperand"
+        }
+      }
+    },
+    "AssertionOpStatusCodeCheck": {
+      "title": "assertion_op_status_code_check",
+      "description": "The HTTP status code comparison operation",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer"
+        },
+        "operator": {
+          "$ref": "#/definitions/AssertionOpComparison"
+        }
+      }
+    },
+    "AssertionOpJsonPath": {
+      "title": "assertion_op_jsonpath",
+      "description": "The JSONPath query operation",
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "json_path"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "AssertionOpNot": {
+      "title": "assertion_op_not",
+      "description": "The negation operation",
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string",
+          "const": "not"
+        },
+        "operand": {
+          "$ref": "#/definitions/AssertionOp"
+        }
+      }
+    },
+    "AssertionOpOr": {
+      "title": "assertion_op_or",
+      "description": "The boolean OR operation",
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string",
+          "const": "or"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssertionOp"
+          }
+        }
+      }
+    },
+    "AssertionOpAnd": {
+      "title": "assertion_op_and",
+      "description": "The boolean AND operation",
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string",
+          "const": "and"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssertionOp"
+          }
+        }
+      }
+    },
+    "AssertionOp": {
+      "title": "assertion_op",
+      "description": "All possible assertion operations",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AssertionOpAnd"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpOr"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpNot"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpStatusCodeCheck"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpJsonPath"
+        },
+        {
+          "$ref": "#/definitions/AssertionOpHeaderCheck"
+        }
+      ]
+    },
+    "Assertion": {
+      "title": "assertion",
+      "description": "The root of the uptime assertion",
+      "type": "object",
+      "properties": {
+        "root": {
+          "$ref": "#/definitions/AssertionOp"
+        }
+      }
+    },
     "CheckResult": {
       "title": "check_result",
       "description": "A message containing the result of the uptime check.",
@@ -228,7 +432,7 @@
         "assertion_failure_data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/EvalPath"
+              "$ref": "#/definitions/Assertion"
             },
             {
               "type": "null"
