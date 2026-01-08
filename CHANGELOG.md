@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.19
+
+### New Features ✨
+
+- (uptime) Change assertion_failure_data type by @klochek in [#466](https://github.com/getsentry/sentry-kafka-schemas/pull/466)
+
 ## 2.1.18
 
 ### New Features ✨
