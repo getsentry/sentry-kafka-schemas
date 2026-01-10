@@ -11,6 +11,10 @@ on:
 env:
   JSON_SCHEMA_DIFF_VERSION: 0.1.6
 
+
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   post_changes:
     name: Post new JSON schema changes from migrations
