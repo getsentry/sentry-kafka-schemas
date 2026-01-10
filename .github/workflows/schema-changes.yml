@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
         name: Checkout master for diffing
         with:
           ref: main
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
         name: Checkout HEAD of code that may have migration changes
         with:
           clean: false
