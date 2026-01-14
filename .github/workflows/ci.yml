@@ -6,16 +6,13 @@ on:
       - release/**
   pull_request:
 
-permissions:
-  contents: write
-  pull-requests: write
 jobs:
   format:
     name: "Code formatting"
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
 
       - name: Internal github app token
         id: token
@@ -42,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
         name: Checkout code
       - name: Install protoc
         uses: arduino/setup-protoc@v3
@@ -66,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
         name: Checkout code
       - uses: actions/setup-python@v2
         with:
@@ -83,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
         name: Checkout code
       - uses: actions/setup-python@v2
         with:
@@ -105,7 +102,7 @@ jobs:
         with:
           version: "0.8.2"
           enable-cache: false
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.1.7
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         name: Checkout sentry-kafka-schemas
         with:
           path: sentry-kafka-schemas
@@ -115,7 +112,7 @@ jobs:
           python -m pip install --upgrade pip
           make install
           make build
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.1.7
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         name: Checkout sentry
         with:
           repository: getsentry/sentry
@@ -148,7 +145,7 @@ jobs:
         python: ["3.10", "3.11", "3.12"]
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
         name: Checkout code
       - uses: actions/setup-python@v2
         with:
@@ -165,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v2
+      - uses: actions/checkout@v2
         name: Checkout code
       - name: Install protoc
         uses: arduino/setup-protoc@v3

@@ -11,20 +11,17 @@ on:
 env:
   JSON_SCHEMA_DIFF_VERSION: 0.1.6
 
-permissions:
-  contents: write
-  pull-requests: write
 jobs:
   post_changes:
     name: Post new JSON schema changes from migrations
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v3
+      - uses: actions/checkout@v3
         name: Checkout master for diffing
         with:
           ref: main
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v3
+      - uses: actions/checkout@v3
         name: Checkout HEAD of code that may have migration changes
         with:
           clean: false
