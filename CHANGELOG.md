@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.20
+
+### New Features ✨
+
+- (uptime) Add response_body and response_headers to CheckResult schema by @wedamija in [#468](https://github.com/getsentry/sentry-kafka-schemas/pull/468)
+
 ## 2.1.19
 
 ### New Features ✨
