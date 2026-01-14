@@ -93,6 +93,21 @@
         }
       }
     },
+    "ResponseHeader": {
+      "title": "response_header",
+      "description": "A response header, consisting of a name and value as a tuple.",
+      "type": "array",
+      "prefixItems": [
+        {
+          "title": "header_name",
+          "type": "string"
+        },
+        {
+          "title": "header_value",
+          "type": "string"
+        }
+      ]
+    },
     "RequestInfo": {
       "title": "request_info",
       "description": "Additional information about each request made",
@@ -123,6 +138,17 @@
         },
         "durations": {
           "$ref": "#/definitions/RequestDurations"
+        },
+        "response_body": {
+          "description": "Response body content, captured on failure when configured. Base64 encoded.",
+          "type": ["string", "null"]
+        },
+        "response_headers": {
+          "description": "Response headers, captured on failure when configured.",
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "#/definitions/ResponseHeader"
+          }
         }
       },
       "required": ["request_type", "http_status_code"]
