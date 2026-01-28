@@ -369,10 +369,24 @@
           "type": "string"
         },
         "operator": {
-          "$ref": "#/definitions/AssertionOpComparison"
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AssertionOpComparison"
+            }
+          ]
         },
         "operand": {
-          "$ref": "#/definitions/AssertionOpJsonPathOperand"
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AssertionOpJsonPathOperand"
+            }
+          ]
         }
       }
     },
