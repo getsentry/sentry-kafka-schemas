@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.22
+
+### Bug Fixes 🐛
+
+- (uptime) Add jsonpath comparison types by @klochek in [#470](https://github.com/getsentry/sentry-kafka-schemas/pull/470)
+
 ## 2.1.21
 
 ### Internal Changes 🔧
