@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.21
+
+### Internal Changes 🔧
+
+- (deps) Upgrades prost to 0.14 and thiserror to 2 by @Dav1dde in [#469](https://github.com/getsentry/sentry-kafka-schemas/pull/469)
+
 ## 2.1.20
 
 ### New Features ✨
