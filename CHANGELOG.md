@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.24
+
+### New Features ✨
+
+- (uptime) Add check result error details by @klochek in [#471](https://github.com/getsentry/sentry-kafka-schemas/pull/471)
+
 ## 2.1.22
 
 ### Bug Fixes 🐛
