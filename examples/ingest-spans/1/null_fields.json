@@ -9,7 +9,7 @@
   "attributes": null,
   "end_timestamp": 1759215782.849409,
   "is_segment": null,
-  "outcome_emitted": null,
+  "accepted_outcome_emitted": null,
   "links": null,
   "name": null,
   "parent_span_id": null,

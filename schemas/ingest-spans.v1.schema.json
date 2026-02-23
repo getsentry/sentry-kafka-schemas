@@ -59,7 +59,7 @@
         "is_segment": {
           "type": ["boolean", "null"]
         },
-        "outcome_emitted": {
+        "accepted_outcome_emitted": {
           "type": ["boolean", "null"]
         },
         "links": {
