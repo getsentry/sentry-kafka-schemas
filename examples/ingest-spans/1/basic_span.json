@@ -75,6 +75,7 @@
   },
   "end_timestamp": 1759215782.849409,
   "is_segment": false,
+  "outcome_emitted": false,
   "links": [
     {
       "trace_id": "0f62a8b040f340bda5d830223def1d82",

@@ -59,6 +59,9 @@
         "is_segment": {
           "type": ["boolean", "null"]
         },
+        "outcome_emitted": {
+          "type": ["boolean", "null"]
+        },
         "links": {
           "type": ["array", "null"],
           "items": {
