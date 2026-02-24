@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.24
+
+### New Features ✨
+
+- (span) Add `accepted_outcome_emitted` property to span by @tobias-wilfert in [#472](https://github.com/getsentry/sentry-kafka-schemas/pull/472)
+
 ## 2.1.23
 
 ### New Features ✨
