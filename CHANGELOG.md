@@ -1,5 +1,9 @@
 # Changelog and versioning
 
+## 2.1.25
+
+- Increase buffered segments size by @fpacifici in [#473](https://github.com/getsentry/sentry-kafka-schemas/pull/473)
+
 ## 2.1.24
 
 ### New Features ✨
