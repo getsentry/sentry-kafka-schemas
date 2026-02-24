@@ -6,6 +6,7 @@
   "received": 1759215783.850951,
   "retention_days": 90,
   "downsampled_retention_days": 90,
+  "accepted_outcome_emitted": false,
   "attributes": {
     "sentry.category": {
       "type": "string",
