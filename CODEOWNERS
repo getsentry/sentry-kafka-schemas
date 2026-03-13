@@ -88,6 +88,10 @@
 /topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-control-limited.yaml                       @getsentry/taskbroker
 /topics/taskworker-control-limited-dlq.yaml                   @getsentry/taskbroker
+/topics/taskworker-cutover.yaml                               @getsentry/taskbroker
+/topics/taskworker-email.yaml                                 @getsentry/taskbroker
+/topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
+/topics/taskworker-example.yaml                               @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
 /topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
 /topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
@@ -114,9 +118,6 @@
 /topics/taskworker-symbolication-dlq.yaml                     @getsentry/taskbroker
 /topics/taskworker-usage.yaml                                 @getsentry/taskbroker
 /topics/taskworker-usage-dlq.yaml                             @getsentry/taskbroker
-/topics/taskworker-email.yaml                                 @getsentry/taskbroker
-/topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
-/topics/taskworker-cutover.yaml                               @getsentry/taskbroker
 /topics/taskworker-workflows-engine.yaml                      @getsentry/taskbroker
 /topics/taskworker-workflows-engine-dlq.yaml                  @getsentry/taskbroker
 
