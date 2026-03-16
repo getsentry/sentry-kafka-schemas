@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.26
+
+### Internal Changes 🔧
+
+- (spans) Add example with missing fields by @Dav1dde in [#474](https://github.com/getsentry/sentry-kafka-schemas/pull/474)
+- (taskbroker) Add topic that handles example activations by @evanh in [#476](https://github.com/getsentry/sentry-kafka-schemas/pull/476)
+
 ## 2.1.25
 
 - Increase buffered segments size by @fpacifici in [#473](https://github.com/getsentry/sentry-kafka-schemas/pull/473)
