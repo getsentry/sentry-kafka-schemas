@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.27
+
+### Internal Changes 🔧
+
+- Add topic definition for launchpad tasks by @markstory in [#477](https://github.com/getsentry/sentry-kafka-schemas/pull/477)
+
 ## 2.1.26
 
 ### Internal Changes 🔧
