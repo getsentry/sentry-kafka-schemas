@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.28
+
+### Internal Changes 🔧
+
+- (taskbroker) Add missed -dlq topic for examples by @evanh in [#479](https://github.com/getsentry/sentry-kafka-schemas/pull/479)
+- Pin GitHub Actions to full-length commit SHAs by @joshuarli in [#478](https://github.com/getsentry/sentry-kafka-schemas/pull/478)
+
 ## 2.1.27
 
 ### Internal Changes 🔧
