@@ -1,5 +1,9 @@
 # Changelog and versioning
 
+## 2.1.29
+
+- feat(tasks) Add topic for seer taskworker by @markstory in [#480](https://github.com/getsentry/sentry-kafka-schemas/pull/480)
+
 ## 2.1.28
 
 ### Internal Changes 🔧
