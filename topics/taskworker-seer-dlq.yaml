@@ -3,9 +3,9 @@ description: |
   DLQ for taskworker-seer
 services:
   producers:
-    - getsentry/seer
+    - getsentry/taskbroker
   consumers:
-    - getsentry/seer
+    - getsentry/taskbroker
 schemas:
   - version: 1
     compatibility_mode: none

@@ -6,7 +6,7 @@ services:
     - getsentry/sentry
     - getsentry/seer
   consumers:
-    - getsentry/seer
+    - getsentry/taskbroker
 schemas:
   - version: 1
     compatibility_mode: none
