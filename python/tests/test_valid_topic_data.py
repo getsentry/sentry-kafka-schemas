@@ -58,14 +58,15 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             "Repo": {
                 "enum": [
                     # enumerate all repos here to avoid typos
+                    "getsentry/launchpad",
                     "getsentry/relay",
+                    "getsentry/seer",
                     "getsentry/sentry",
                     "getsentry/snuba",
-                    "getsentry/vroom",
-                    "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
                     "getsentry/taskbroker",
-                    "getsentry/launchpad",
+                    "getsentry/vroom",
+                    "getsentry/uptime-checker",
                 ]
             }
         },
