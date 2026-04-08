@@ -109,14 +109,14 @@
 /topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
 /topics/taskworker-launchpad.yaml                             @getsentry/taskbroker
 /topics/taskworker-launchpad-dlq.yaml                         @getsentry/taskbroker
-/topics/taskworker-seer.yaml                                  @getsentry/taskbroker
-/topics/taskworker-seer-dlq.yaml                              @getsentry/taskbroker
 /topics/taskworker-limited.yaml                               @getsentry/taskbroker
 /topics/taskworker-limited-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-long.yaml                                  @getsentry/taskbroker
 /topics/taskworker-long-dlq.yaml                              @getsentry/taskbroker
 /topics/taskworker-products.yaml                              @getsentry/taskbroker
 /topics/taskworker-products-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-seer.yaml                                  @getsentry/taskbroker
+/topics/taskworker-seer-dlq.yaml                              @getsentry/taskbroker
 /topics/taskworker-sentryapp.yaml                             @getsentry/taskbroker
 /topics/taskworker-sentryapp-dlq.yaml                         @getsentry/taskbroker
 /topics/taskworker-symbolication.yaml                         @getsentry/taskbroker
