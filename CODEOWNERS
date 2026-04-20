@@ -189,7 +189,3 @@
 /topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
 /topics/snuba-dead-letter-items.yaml           @getsentry/events-analytics-platform
-
-# Launchpad topics
-/topics/preprod-artifact-events.yaml @getsentry/emerge-tools
-/topics/preprod-artifact-events-dlq.yaml @getsentry/emerge-tools
