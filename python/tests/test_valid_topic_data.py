@@ -185,6 +185,11 @@ def test_dlq_configuration() -> None:
     dlq_suffix = "-dlq"
     snuba_dlq_prefix = "snuba-dead-letter-"
 
+    # DLQs that are intentionally allowed to diverge from their main topic's max.message.bytes
+    skip_max_message_bytes_check = {
+        "snuba-dead-letter-items",
+    }
+
     for filename in topics_dir.iterdir():
         if filename.stem.endswith(dlq_suffix):
             main_topic_name = custom_dlq_mapping.get(
@@ -206,9 +211,10 @@ def test_dlq_configuration() -> None:
             main_topic_data = safe_load(main_topic_file)
 
             # max.message.bytes matches
-            assert dlq_topic_data["topic_creation_config"].get(
-                "max.message.bytes"
-            ) == main_topic_data["topic_creation_config"].get("max.message.bytes")
+            if filename.stem not in skip_max_message_bytes_check:
+                assert dlq_topic_data["topic_creation_config"].get(
+                    "max.message.bytes"
+                ) == main_topic_data["topic_creation_config"].get("max.message.bytes")
 
             # DLQ has 7 day retention
             assert dlq_topic_data["topic_creation_config"]["retention.ms"] == str(
