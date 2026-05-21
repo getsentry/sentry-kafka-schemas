@@ -1,5 +1,15 @@
 # Changelog and versioning
 
+## 2.1.30
+
+### New Features ✨
+
+- (topics) Add snuba-dead-letter-accepted-outcomes DLQ topic by @MeredithAnya in [#483](https://github.com/getsentry/sentry-kafka-schemas/pull/483)
+
+### Internal Changes 🔧
+
+- (topics) Remove preprod-artifact-events topic by @NicoHinderling in [#481](https://github.com/getsentry/sentry-kafka-schemas/pull/481)
+
 ## 2.1.29
 
 - feat(tasks) Add topic for seer taskworker by @markstory in [#480](https://github.com/getsentry/sentry-kafka-schemas/pull/480)
