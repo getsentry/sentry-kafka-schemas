@@ -189,3 +189,4 @@
 /topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
 /topics/snuba-dead-letter-items.yaml           @getsentry/events-analytics-platform
+/topics/snuba-dead-letter-accepted-outcomes.yaml  @getsentry/events-analytics-platform
