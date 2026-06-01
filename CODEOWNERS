@@ -117,7 +117,7 @@
 /topics/taskworker-products-dlq.yaml                          @getsentry/taskbroker
 /topics/taskworker-seer.yaml                                  @getsentry/taskbroker
 /topics/taskworker-seer-dlq.yaml                              @getsentry/taskbroker
-/topics/taskworker-seer-push.yaml                                  @getsentry/taskbroker
+/topics/taskworker-seer-push.yaml                             @getsentry/taskbroker
 /topics/taskworker-sentryapp.yaml                             @getsentry/taskbroker
 /topics/taskworker-sentryapp-dlq.yaml                         @getsentry/taskbroker
 /topics/taskworker-symbolication.yaml                         @getsentry/taskbroker
