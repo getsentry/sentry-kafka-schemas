@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.31
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-ingest-push` Topic by @george-sentry in [#484](https://github.com/getsentry/sentry-kafka-schemas/pull/484)
+
 ## 2.1.30
 
 ### New Features ✨
