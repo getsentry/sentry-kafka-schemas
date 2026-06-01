@@ -95,6 +95,7 @@
 /topics/taskworker-example-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
 /topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+/topics/taskworker-ingest-push.yaml                           @getsentry/taskbroker
 /topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
 /topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
 /topics/taskworker-ingest-errors-postprocess.yaml             @getsentry/taskbroker
