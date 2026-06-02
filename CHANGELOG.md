@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.32
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-seer-push` Topic by @george-sentry in [#485](https://github.com/getsentry/sentry-kafka-schemas/pull/485)
+
 ## 2.1.31
 
 ### New Features ✨
