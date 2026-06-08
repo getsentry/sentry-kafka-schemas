@@ -79,6 +79,7 @@
 
 # Topic for taskworker
 /topics/taskworker.yaml                                       @getsentry/taskbroker
+/topics/taskworker-push.yaml                                  @getsentry/taskbroker
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
 /topics/taskworker-billing.yaml                               @getsentry/taskbroker
 /topics/taskworker-billing-dlq.yaml                           @getsentry/taskbroker
