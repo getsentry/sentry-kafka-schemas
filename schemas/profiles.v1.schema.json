@@ -13,6 +13,19 @@
     "received": { "type": "integer" },
     "payload": {
       "description": "bytes"
+    },
+    "attachments": {
+      "description": "files related to the profile chunk (e.g. a raw profile), stored in the object store",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "stored_id"],
+        "properties": {
+          "name": { "type": "string" },
+          "content_type": { "type": "string" },
+          "stored_id": { "type": "string" }
+        }
+      }
     }
   }
 }
