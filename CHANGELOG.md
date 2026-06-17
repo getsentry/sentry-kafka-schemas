@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.34
+
+### New Features ✨
+
+- (profiles) Add `attachments` to profiles schema by @markushi in [#487](https://github.com/getsentry/sentry-kafka-schemas/pull/487)
+
 ## 2.1.33
 
 ### New Features ✨
