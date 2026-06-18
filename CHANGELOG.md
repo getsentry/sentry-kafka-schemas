@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.35
+
+### Bug Fixes 🐛
+
+- (transactions) Allow nullable measurements, breakdowns, and measurement entries by @phacops in [#489](https://github.com/getsentry/sentry-kafka-schemas/pull/489)
+
 ## 2.1.34
 
 ### New Features ✨
