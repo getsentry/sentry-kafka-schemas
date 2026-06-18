@@ -58,14 +58,15 @@ _TOPIC_SCHEMA = fastjsonschema.compile(
             "Repo": {
                 "enum": [
                     # enumerate all repos here to avoid typos
+                    "getsentry/launchpad",
                     "getsentry/relay",
+                    "getsentry/seer",
                     "getsentry/sentry",
                     "getsentry/snuba",
-                    "getsentry/vroom",
-                    "getsentry/uptime-checker",
                     "getsentry/super-big-consumers",
                     "getsentry/taskbroker",
-                    "getsentry/launchpad",
+                    "getsentry/vroom",
+                    "getsentry/uptime-checker",
                 ]
             }
         },
@@ -178,6 +179,7 @@ def test_dlq_configuration() -> None:
         "snuba-dead-letter-querylog": "snuba-queries",
         "snuba-dead-letter-generic-metrics": "snuba-generic-metrics",
         "snuba-dead-letter-items": "snuba-items",
+        "snuba-dead-letter-accepted-outcomes": "snuba-items",
     }
 
     topics_dir = _TOPICS

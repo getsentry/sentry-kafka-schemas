@@ -1,5 +1,69 @@
 # Changelog and versioning
 
+## 2.1.35
+
+### Bug Fixes 🐛
+
+- (transactions) Allow nullable measurements, breakdowns, and measurement entries by @phacops in [#489](https://github.com/getsentry/sentry-kafka-schemas/pull/489)
+
+## 2.1.34
+
+### New Features ✨
+
+- (profiles) Add `attachments` to profiles schema by @markushi in [#487](https://github.com/getsentry/sentry-kafka-schemas/pull/487)
+
+## 2.1.33
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-push` Topic by @george-sentry in [#486](https://github.com/getsentry/sentry-kafka-schemas/pull/486)
+
+## 2.1.32
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-seer-push` Topic by @george-sentry in [#485](https://github.com/getsentry/sentry-kafka-schemas/pull/485)
+
+## 2.1.31
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-ingest-push` Topic by @george-sentry in [#484](https://github.com/getsentry/sentry-kafka-schemas/pull/484)
+
+## 2.1.30
+
+### New Features ✨
+
+- (topics) Add snuba-dead-letter-accepted-outcomes DLQ topic by @MeredithAnya in [#483](https://github.com/getsentry/sentry-kafka-schemas/pull/483)
+
+### Internal Changes 🔧
+
+- (topics) Remove preprod-artifact-events topic by @NicoHinderling in [#481](https://github.com/getsentry/sentry-kafka-schemas/pull/481)
+
+## 2.1.29
+
+- feat(tasks) Add topic for seer taskworker by @markstory in [#480](https://github.com/getsentry/sentry-kafka-schemas/pull/480)
+
+## 2.1.28
+
+### Internal Changes 🔧
+
+- (taskbroker) Add missed -dlq topic for examples by @evanh in [#479](https://github.com/getsentry/sentry-kafka-schemas/pull/479)
+- Pin GitHub Actions to full-length commit SHAs by @joshuarli in [#478](https://github.com/getsentry/sentry-kafka-schemas/pull/478)
+
+## 2.1.27
+
+### Internal Changes 🔧
+
+- Add topic definition for launchpad tasks by @markstory in [#477](https://github.com/getsentry/sentry-kafka-schemas/pull/477)
+
+## 2.1.26
+
+### Internal Changes 🔧
+
+- (spans) Add example with missing fields by @Dav1dde in [#474](https://github.com/getsentry/sentry-kafka-schemas/pull/474)
+- (taskbroker) Add topic that handles example activations by @evanh in [#476](https://github.com/getsentry/sentry-kafka-schemas/pull/476)
+
 ## 2.1.25
 
 - Increase buffered segments size by @fpacifici in [#473](https://github.com/getsentry/sentry-kafka-schemas/pull/473)

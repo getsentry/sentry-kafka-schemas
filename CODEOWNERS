@@ -79,6 +79,7 @@
 
 # Topic for taskworker
 /topics/taskworker.yaml                                       @getsentry/taskbroker
+/topics/taskworker-push.yaml                                  @getsentry/taskbroker
 /topics/taskworker-dlq.yaml                                   @getsentry/taskbroker
 /topics/taskworker-billing.yaml                               @getsentry/taskbroker
 /topics/taskworker-billing-dlq.yaml                           @getsentry/taskbroker
@@ -88,8 +89,14 @@
 /topics/taskworker-control-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-control-limited.yaml                       @getsentry/taskbroker
 /topics/taskworker-control-limited-dlq.yaml                   @getsentry/taskbroker
+/topics/taskworker-cutover.yaml                               @getsentry/taskbroker
+/topics/taskworker-email.yaml                                 @getsentry/taskbroker
+/topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
+/topics/taskworker-example.yaml                               @getsentry/taskbroker
+/topics/taskworker-example-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-ingest.yaml                                @getsentry/taskbroker
 /topics/taskworker-ingest-dlq.yaml                            @getsentry/taskbroker
+/topics/taskworker-ingest-push.yaml                           @getsentry/taskbroker
 /topics/taskworker-ingest-errors.yaml                         @getsentry/taskbroker
 /topics/taskworker-ingest-errors-dlq.yaml                     @getsentry/taskbroker
 /topics/taskworker-ingest-errors-postprocess.yaml             @getsentry/taskbroker
@@ -102,21 +109,23 @@
 /topics/taskworker-ingest-profiling-dlq.yaml                  @getsentry/taskbroker
 /topics/taskworker-internal.yaml                              @getsentry/taskbroker
 /topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-launchpad.yaml                             @getsentry/taskbroker
+/topics/taskworker-launchpad-dlq.yaml                         @getsentry/taskbroker
 /topics/taskworker-limited.yaml                               @getsentry/taskbroker
 /topics/taskworker-limited-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-long.yaml                                  @getsentry/taskbroker
 /topics/taskworker-long-dlq.yaml                              @getsentry/taskbroker
 /topics/taskworker-products.yaml                              @getsentry/taskbroker
 /topics/taskworker-products-dlq.yaml                          @getsentry/taskbroker
+/topics/taskworker-seer.yaml                                  @getsentry/taskbroker
+/topics/taskworker-seer-dlq.yaml                              @getsentry/taskbroker
+/topics/taskworker-seer-push.yaml                             @getsentry/taskbroker
 /topics/taskworker-sentryapp.yaml                             @getsentry/taskbroker
 /topics/taskworker-sentryapp-dlq.yaml                         @getsentry/taskbroker
 /topics/taskworker-symbolication.yaml                         @getsentry/taskbroker
 /topics/taskworker-symbolication-dlq.yaml                     @getsentry/taskbroker
 /topics/taskworker-usage.yaml                                 @getsentry/taskbroker
 /topics/taskworker-usage-dlq.yaml                             @getsentry/taskbroker
-/topics/taskworker-email.yaml                                 @getsentry/taskbroker
-/topics/taskworker-email-dlq.yaml                             @getsentry/taskbroker
-/topics/taskworker-cutover.yaml                               @getsentry/taskbroker
 /topics/taskworker-workflows-engine.yaml                      @getsentry/taskbroker
 /topics/taskworker-workflows-engine-dlq.yaml                  @getsentry/taskbroker
 
@@ -183,7 +192,4 @@
 /topics/scheduled-subscriptions-eap-items.yaml @getsentry/events-analytics-platform
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
 /topics/snuba-dead-letter-items.yaml           @getsentry/events-analytics-platform
-
-# Launchpad topics
-/topics/preprod-artifact-events.yaml @getsentry/emerge-tools
-/topics/preprod-artifact-events-dlq.yaml @getsentry/emerge-tools
+/topics/snuba-dead-letter-accepted-outcomes.yaml  @getsentry/events-analytics-platform

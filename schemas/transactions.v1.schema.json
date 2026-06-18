@@ -331,7 +331,7 @@
       ]
     },
     "Breakdowns": {
-      "type": "object",
+      "type": ["object", "null"],
       "additionalProperties": true,
       "properties": {
         "span_ops": {
@@ -858,7 +858,7 @@
       "additionalProperties": true
     },
     "Measurements": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "num_of_spans": {
           "$ref": "#/definitions/NumOfSpans"

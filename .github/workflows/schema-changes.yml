@@ -17,16 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
         name: Checkout master for diffing
         with:
           ref: main
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
         name: Checkout HEAD of code that may have migration changes
         with:
           clean: false
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2
         with:
           python-version: 3.13
 
@@ -34,7 +34,7 @@ jobs:
 
       - name: Cache json-schema-diff
         id: cache-json-schema-diff-bin
-        uses: actions/cache@v3
+        uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
         with:
           path: ~/.cargo/bin/json-schema-diff
           key: ${{ runner.os }}-json-schema-diff-bin-v${{ env.JSON_SCHEMA_DIFF_VERSION }}
@@ -46,7 +46,7 @@ jobs:
             --features build-binary
       - name: Generate schema diff
         if: github.event_name == 'pull_request'
-        uses: getsentry/action-migrations@v1.2.2
+        uses: getsentry/action-migrations@5ca775d9f0cfef6f2557ac8a7e8c744bcb4e7078 # v1.2.2
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           useRawBody: "true"
