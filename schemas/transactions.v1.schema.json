@@ -304,10 +304,7 @@
           ]
         },
         "breakdowns": {
-          "anyOf": [
-            { "$ref": "#/definitions/Breakdowns" },
-            { "type": "null" }
-          ]
+          "anyOf": [{ "$ref": "#/definitions/Breakdowns" }, { "type": "null" }]
         },
         "culprit": {
           "type": "string"
@@ -866,17 +863,11 @@
     "Measurements": {
       "type": "object",
       "additionalProperties": {
-        "anyOf": [
-          { "$ref": "#/definitions/NumOfSpans" },
-          { "type": "null" }
-        ]
+        "anyOf": [{ "$ref": "#/definitions/NumOfSpans" }, { "type": "null" }]
       },
       "properties": {
         "num_of_spans": {
-          "anyOf": [
-            { "$ref": "#/definitions/NumOfSpans" },
-            { "type": "null" }
-          ]
+          "anyOf": [{ "$ref": "#/definitions/NumOfSpans" }, { "type": "null" }]
         }
       }
     },
