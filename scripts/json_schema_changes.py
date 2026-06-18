@@ -86,20 +86,17 @@ def main() -> None:
         print("</details>")
 
     if not non_breaking_changes and not breaking_changes:
-        print(
-            """\
+        print("""\
 There were changes to the JSON schema file, but we couldn't categorize any of
 them. Therefore we don't know whether this change is safe to make.
 
 This might be a gap in linting. Want to take a look at
-https://github.com/getsentry/json-schema-diff/ and figure it out?"""
-        )
+https://github.com/getsentry/json-schema-diff/ and figure it out?""")
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
 
     elif breaking_changes:
-        print(
-            """
+        print("""
 ⚠️ **This PR contains breaking changes.** Normally you should avoid that and make
 your consumer backwards-compatible (meaning that updated consumers can still
 accept old messages). There are a few exceptions:
@@ -109,14 +106,12 @@ accept old messages). There are a few exceptions:
 
 * If you know what you are doing, this change could potentially be rolled out
   to **producers** first, but that's not a flow we support.
-"""
-        )
+""")
         if "--no-exit-code" not in sys.argv:
             sys.exit(2)
     else:
         newline = "\n"
-        print(
-            f"""
+        print(f"""
 ✅ This PR should be safe to roll out to **consumers** first. Make sure to bump
 the library in the following repos first:
 
@@ -131,8 +126,7 @@ the library in the following repos first:
 ```
 
 Take a look at the README for how to release a new version of sentry-kafka-schemas.
-        """
-        )
+        """)
 
 
 def print_files_and_changes(file_to_changes: Mapping[str, Sequence[Change]]) -> None:
