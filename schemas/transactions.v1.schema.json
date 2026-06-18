@@ -298,13 +298,10 @@
           }
         },
         "measurements": {
-          "anyOf": [
-            { "$ref": "#/definitions/Measurements" },
-            { "type": "null" }
-          ]
+          "$ref": "#/definitions/Measurements"
         },
         "breakdowns": {
-          "anyOf": [{ "$ref": "#/definitions/Breakdowns" }, { "type": "null" }]
+          "$ref": "#/definitions/Breakdowns"
         },
         "culprit": {
           "type": "string"
@@ -334,7 +331,7 @@
       ]
     },
     "Breakdowns": {
-      "type": "object",
+      "type": ["object", "null"],
       "additionalProperties": true,
       "properties": {
         "span_ops": {
@@ -861,13 +858,10 @@
       "additionalProperties": true
     },
     "Measurements": {
-      "type": "object",
-      "additionalProperties": {
-        "anyOf": [{ "$ref": "#/definitions/NumOfSpans" }, { "type": "null" }]
-      },
+      "type": ["object", "null"],
       "properties": {
         "num_of_spans": {
-          "anyOf": [{ "$ref": "#/definitions/NumOfSpans" }, { "type": "null" }]
+          "$ref": "#/definitions/NumOfSpans"
         }
       }
     },
