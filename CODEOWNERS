@@ -111,6 +111,7 @@
 /topics/taskworker-internal-dlq.yaml                          @getsentry/taskbroker
 /topics/taskworker-launchpad.yaml                             @getsentry/taskbroker
 /topics/taskworker-launchpad-dlq.yaml                         @getsentry/taskbroker
+/topics/taskworker-launchpad-push.yaml                        @getsentry/streaming-platform
 /topics/taskworker-limited.yaml                               @getsentry/taskbroker
 /topics/taskworker-limited-dlq.yaml                           @getsentry/taskbroker
 /topics/taskworker-long.yaml                                  @getsentry/taskbroker
