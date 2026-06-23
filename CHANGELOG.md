@@ -1,5 +1,12 @@
 # Changelog and versioning
 
+## 2.1.36
+
+### Internal Changes 🔧
+
+- (deps) Bump black from 25.9.0 to 26.3.1 in /python by @dependabot in [#475](https://github.com/getsentry/sentry-kafka-schemas/pull/475)
+- (spans) Remove `accepted_outcome_emitted` by @tobias-wilfert in [#488](https://github.com/getsentry/sentry-kafka-schemas/pull/488)
+
 ## 2.1.35
 
 ### Bug Fixes 🐛
