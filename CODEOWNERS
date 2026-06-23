@@ -47,6 +47,9 @@
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/data-browsing
 /topics/buffered-segments-dlq.yaml                             @getsentry/owners-snuba @getsentry/data-browsing
 
+# Topic used for Anti-Abuse outcomes
+/topics/loadbalancer-outcomes.yaml                             @getsentry/ops
+
 # DLQs for Snuba topics
 /topics/snuba-dead-letter-metrics.yaml                         @getsentry/owners-snuba
 /topics/snuba-dead-letter-generic-metrics.yaml                 @getsentry/owners-snuba

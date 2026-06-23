@@ -1,0 +1,19 @@
+pipeline: outcomes
+description: Outcomes for events sent to Sentry and rejected by Anti-Abuse
+services:
+  producers:
+    - getsentry/ops
+  consumers:
+    - getsentry/snuba
+    - getsentry/super-big-consumers
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: outcomes.v1.schema.json
+    examples:
+      - outcomes/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
+  segment.bytes: "262144000"
