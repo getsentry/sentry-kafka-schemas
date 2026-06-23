@@ -50,9 +50,6 @@
           "$ref": "file://ingest-spans.v1.schema.json#/definitions/PositiveFloat",
           "description": "Unix timestamp when the span was received by Sentry."
         },
-        "accepted_outcome_emitted": {
-          "type": ["boolean"]
-        },
         "name": {
           "type": ["string", "null"]
         },
