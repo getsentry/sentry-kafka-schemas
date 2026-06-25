@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.38
+
+### New Features ✨
+
+- (shared-resources-usage) Add operations usage_unit by @andrewshie-sentry in [#492](https://github.com/getsentry/sentry-kafka-schemas/pull/492)
+
 ## 2.1.37
 
 ### New Features ✨
