@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.37
+
+### New Features ✨
+
+- (taskbroker) Add `taskworker-launchpad-push` topic by @evanh in [#490](https://github.com/getsentry/sentry-kafka-schemas/pull/490)
+
 ## 2.1.36
 
 ### Internal Changes 🔧
