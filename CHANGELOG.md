@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.39
+
+### New Features ✨
+
+- (llm-proxy-cost) Add topic, schema, and example by @sehr-m in [#493](https://github.com/getsentry/sentry-kafka-schemas/pull/493)
+
 ## 2.1.38
 
 ### New Features ✨
