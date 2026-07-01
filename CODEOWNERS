@@ -42,6 +42,7 @@
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
+/topics/snuba-llm-proxy-cost.yaml                              @getsentry/ml-ai
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/data-browsing
@@ -145,6 +146,8 @@
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
 /schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 /schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
+/schemas/snuba-llm-proxy-cost.v1.schema.json                   @getsentry/ml-ai
+
 
 # Examples
 /examples/group-attributes/                                    @getsentry/owners-snuba @getsentry/issues
@@ -163,6 +166,7 @@
 /examples/snuba-uptime-results/                                @getsentry/crons
 /examples/snuba-items/                                         @getsentry/events-analytics-platform
 /examples/taskworker/                                          @getsentry/taskbroker
+/examples/snuba-llm-proxy-cost/                                      @getsentry/ml-ai
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
@@ -194,8 +198,3 @@
 /topics/subscription-results-eap-items.yaml    @getsentry/events-analytics-platform
 /topics/snuba-dead-letter-items.yaml           @getsentry/events-analytics-platform
 /topics/snuba-dead-letter-accepted-outcomes.yaml  @getsentry/events-analytics-platform
-
-# LLM proxy cost
-/topics/snuba-llm-proxy-cost.yaml                @getsentry/ml-ai
-/schemas/llm-proxy-cost.v1.schema.json           @getsentry/ml-ai
-/examples/llm-proxy-cost/                        @getsentry/ml-ai

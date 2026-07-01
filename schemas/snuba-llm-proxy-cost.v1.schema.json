@@ -11,7 +11,7 @@
       "type": "integer"
     },
     "project_id": {
-      "type": ["integer", "null"]
+      "type": "integer"
     },
     "feature": {
       "type": "string",
@@ -79,6 +79,7 @@
   "required": [
     "timestamp",
     "org_id",
+    "project_id",
     "feature",
     "model",
     "prompt_tokens",
