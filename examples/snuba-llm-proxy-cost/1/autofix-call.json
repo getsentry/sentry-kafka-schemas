@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-06-30T22:15:30.123456Z",
+  "org_id": 1,
+  "project_id": 42,
+  "feature": "autofix",
+  "model": "claude-sonnet-4-6",
+  "region": "us-east5",
+  "call_type": "chat.completion",
+  "prompt_tokens": 15000,
+  "completion_tokens": 2500,
+  "cache_read_tokens": 8000,
+  "cache_write_tokens": 3000,
+  "total_cost_usd": 0.0385,
+  "input_cost_usd": 0.015,
+  "output_cost_usd": 0.0125,
+  "cache_read_cost_usd": 0.004,
+  "cache_write_cost_usd": 0.003,
+  "litellm_cost_usd": 0.035,
+  "is_long_context": 0,
+  "is_regional": 1,
+  "response_time_ms": 4523.7,
+  "litellm_call_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+}
