@@ -196,7 +196,6 @@
 /topics/snuba-dead-letter-accepted-outcomes.yaml  @getsentry/events-analytics-platform
 
 # LLM proxy cost
-/topics/llm-proxy-cost.yaml                      @getsentry/ml-ai
-/topics/llm-proxy-cost-dlq.yaml                  @getsentry/ml-ai
+/topics/snuba-llm-proxy-cost.yaml                @getsentry/ml-ai
 /schemas/llm-proxy-cost.v1.schema.json           @getsentry/ml-ai
 /examples/llm-proxy-cost/                        @getsentry/ml-ai
