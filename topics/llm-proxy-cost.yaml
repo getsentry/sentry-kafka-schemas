@@ -4,6 +4,7 @@ services:
   producers:
     - getsentry/ops
   consumers:
+    - getsentry/snuba
     - getsentry/sentry
 schemas:
   - version: 1
