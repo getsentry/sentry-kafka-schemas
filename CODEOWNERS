@@ -42,7 +42,7 @@
 /topics/processed-profiles.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/profiles-call-tree.yaml                                @getsentry/owners-snuba @getsentry/profiling
 /topics/snuba-profile-chunks.yaml                              @getsentry/owners-snuba @getsentry/profiling
-/topics/snuba-llm-proxy-cost.yaml                              @getsentry/ml-ai
+/topics/snuba-llm-proxy-cost.yaml                              @getsentry/machine-learning-ai
 
 # Topics produced by Sentry
 /topics/buffered-segments.yaml                                 @getsentry/owners-snuba @getsentry/data-browsing
@@ -146,7 +146,7 @@
 /schemas/snuba-uptime-results.v1.schema.json                   @getsentry/crons
 /schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 /schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
-/schemas/snuba-llm-proxy-cost.v1.schema.json                   @getsentry/ml-ai
+/schemas/snuba-llm-proxy-cost.v1.schema.json                   @getsentry/machine-learning-ai
 
 
 # Examples
@@ -166,7 +166,7 @@
 /examples/snuba-uptime-results/                                @getsentry/crons
 /examples/snuba-items/                                         @getsentry/events-analytics-platform
 /examples/taskworker/                                          @getsentry/taskbroker
-/examples/snuba-llm-proxy-cost/                                      @getsentry/ml-ai
+/examples/snuba-llm-proxy-cost/                                @getsentry/machine-learning-ai
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
