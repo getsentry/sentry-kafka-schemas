@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "llm_proxy_cost",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "description": "ISO 8601 UTC timestamp of the LLM call"
+    },
+    "org_id": {
+      "type": "integer"
+    },
+    "project_id": {
+      "type": ["integer", "null"]
+    },
+    "feature": {
+      "type": "string",
+      "description": "Seer feature that initiated the call (e.g. autofix, issue_detection)"
+    },
+    "model": {
+      "type": "string",
+      "description": "LLM model name (e.g. claude-sonnet-4-6)"
+    },
+    "region": {
+      "type": "string",
+      "description": "Vertex region or 'global'"
+    },
+    "call_type": {
+      "type": "string",
+      "description": "LLM call type (e.g. chat.completion, embedding)"
+    },
+    "prompt_tokens": {
+      "type": "integer"
+    },
+    "completion_tokens": {
+      "type": "integer"
+    },
+    "cache_read_tokens": {
+      "type": "integer"
+    },
+    "cache_write_tokens": {
+      "type": "integer"
+    },
+    "total_cost_usd": {
+      "type": "number",
+      "description": "Corrected total cost in USD (includes regional/long-context adjustments)"
+    },
+    "input_cost_usd": {
+      "type": "number"
+    },
+    "output_cost_usd": {
+      "type": "number"
+    },
+    "cache_read_cost_usd": {
+      "type": "number"
+    },
+    "cache_write_cost_usd": {
+      "type": "number"
+    },
+    "litellm_cost_usd": {
+      "type": "number",
+      "description": "Original uncorrected cost from LiteLLM"
+    },
+    "is_long_context": {
+      "type": "integer",
+      "description": "1 if input exceeded 200K token threshold, 0 otherwise"
+    },
+    "is_regional": {
+      "type": "integer",
+      "description": "1 if Claude model on non-global Vertex region, 0 otherwise"
+    },
+    "response_time_ms": {
+      "type": "number"
+    },
+    "litellm_call_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "timestamp",
+    "org_id",
+    "feature",
+    "model",
+    "prompt_tokens",
+    "completion_tokens",
+    "total_cost_usd"
+  ],
+  "additionalProperties": false
+}

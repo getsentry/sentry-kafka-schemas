@@ -1,0 +1,17 @@
+pipeline: llm-proxy
+description: Per-request LLM cost data from the LLM proxy with org attribution
+services:
+  producers:
+    - getsentry/ops
+  consumers:
+    - getsentry/sentry
+schemas:
+  - version: 1
+    compatibility_mode: none
+    type: json
+    resource: llm-proxy-cost.v1.schema.json
+    examples:
+      - llm-proxy-cost/1/
+topic_creation_config:
+  compression.type: lz4
+  retention.ms: "86400000"
