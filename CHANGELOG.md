@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.1.40
+
+### New Features ✨
+
+- (taskbroker) Add schema for the taskworker-process-segment topic by @lvthanh03 in [#494](https://github.com/getsentry/sentry-kafka-schemas/pull/494)
+
 ## 2.1.39
 
 ### New Features ✨
