@@ -104,6 +104,8 @@
 /topics/taskworker-ingest-errors-postprocess-dlq.yaml         @getsentry/taskbroker
 /topics/taskworker-ingest-transactions.yaml                   @getsentry/taskbroker
 /topics/taskworker-ingest-transactions-dlq.yaml               @getsentry/taskbroker
+/topics/taskworker-process-segments.yaml                      @getsentry/taskbroker
+/topics/taskworker-process-segments-dlq.yaml                  @getsentry/taskbroker
 /topics/taskworker-ingest-attachments.yaml                    @getsentry/taskbroker
 /topics/taskworker-ingest-attachments-dlq.yaml                @getsentry/taskbroker
 /topics/taskworker-ingest-profiling.yaml                      @getsentry/taskbroker
