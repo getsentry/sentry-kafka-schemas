@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.2.0
+
+### New Features ✨
+
+- (taskbroker) Remove Private Taskworker Topics by @george-sentry in [#495](https://github.com/getsentry/sentry-kafka-schemas/pull/495)
+
 ## 2.1.40
 
 ### New Features ✨
