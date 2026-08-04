@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "shared_resources_inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "shared_resource_id": {
+      "type": "string",
+      "description": "Identifies the shared resource this record belongs to. Matches the shared_resource_id label on the billed GCP resource."
+    },
+    "app_feature": {
+      "type": "string",
+      "description": "The product feature this record is attributed to."
+    },
+    "op_type": {
+      "enum": ["WRITE", "UPDATE", "DELETE"],
+      "description": "WRITE creates or replaces a record. UPDATE mutates fields of an existing record without changing its stored size (to, for example, extend an expiration deadline). DELETE removes it."
+    },
+    "record_id": {
+      "type": "string",
+      "description": "Opaque stable identifier for the stored record, unique within a shared_resource_id. It is recommended that producers use a hash (e.g. BLAKE3) of some app-level ID. Once decided, it shouldn't be changed."
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Unix epoch microseconds at which the operation occurred. NOTE: this differs from shared-resources-usage, which uses epoch seconds. Microsecond resolution keeps same-instant collisions rare enough that ordering per record_id can be resolved by timestamp plus a fixed op_type precedence."
+    },
+    "sample_rate": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1,
+      "description": "Proportion of records the producer is emitting for this shared_resource_id. Producers that emit every record set this to 1. Consumers/pipelines may use `1 / sample_rate` as a weight when computing rollups to keep the rollup proportionally stable even when sample_rate changes."
+    },
+    "size": {
+      "type": ["integer", "null"],
+      "description": "Stored size in bytes. Required for op_type=WRITE. Omitted for DELETE, and for UPDATE when the size is unchanged."
+    },
+    "expiration_time": {
+      "type": ["integer", "null"],
+      "description": "Unix epoch microseconds at which the record is expected to be reclaimed by the backend, if known. Backends that expire records without notifying the producer rely on this for downstream removal."
+    },
+    "organization_id": {
+      "type": ["integer", "null"],
+      "description": "Sentry organization ID the record is attributed to, if known."
+    },
+    "project_id": {
+      "type": ["integer", "null"],
+      "description": "Sentry project ID the record is attributed to, if known."
+    }
+  },
+  "required": [
+    "app_feature",
+    "op_type",
+    "record_id",
+    "sample_rate",
+    "shared_resource_id",
+    "timestamp"
+  ]
+}
