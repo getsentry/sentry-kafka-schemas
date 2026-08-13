@@ -82,6 +82,7 @@
 /topics/taskworker.yaml                                        @getsentry/taskbroker
 /topics/taskworker-dlq.yaml                                    @getsentry/taskbroker
 /topics/taskworker-control.yaml                                @getsentry/taskbroker
+/topics/test-saman.yaml					       @getsentry/taskbroker
 
 # Schemas
 /schemas/profile-metadata.v1.schema.json                       @getsentry/profiling
