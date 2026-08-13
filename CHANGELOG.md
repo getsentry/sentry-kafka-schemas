@@ -1,5 +1,9 @@
 # Changelog and versioning
 
+## 2.2.1
+
+- adding test schema by @snalvi in [#498](https://github.com/getsentry/sentry-kafka-schemas/pull/498)
+
 ## 2.2.0
 
 ### New Features ✨
