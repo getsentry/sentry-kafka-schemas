@@ -1,0 +1,12 @@
+{
+  "shared_resource_id": "example_resource",
+  "app_feature": "example_feature",
+  "op_type": "UPDATE",
+  "record_id": "3f7a1c2e9b4d5a6f8c0e1d2b3a4f5e6c",
+  "timestamp": 1785369600000000,
+  "sample_rate": 1,
+  "size": null,
+  "expiration_time": 1785974400000000,
+  "organization_id": 1,
+  "project_id": 1
+}

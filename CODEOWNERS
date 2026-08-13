@@ -69,6 +69,9 @@
 # Topics produced to by Snuba and Sentry
 /topics/shared-resources-usage.yaml                            @getsentry/owners-snuba @getsentry/data
 
+# Shared resource inventory, used as COGS enrichment data
+/topics/shared-resources-inventory.yaml                        @getsentry/foundational-storage @getsentry/data
+
 # Topics related to cron monitor tasks
 /topics/monitors-clock-tick.yaml                               @getsentry/crons
 /topics/monitors-clock-tasks.yaml                              @getsentry/crons
@@ -99,6 +102,7 @@
 /schemas/snuba-items.v1.schema.json                            @getsentry/events-analytics-platform
 /schemas/taskworker.v1.schema.json                             @getsentry/taskbroker
 /schemas/snuba-llm-proxy-cost.v1.schema.json                   @getsentry/machine-learning-ai
+/schemas/shared-resources-inventory.v1.schema.json             @getsentry/foundational-storage @getsentry/data
 
 
 # Examples
@@ -119,6 +123,7 @@
 /examples/snuba-items/                                         @getsentry/events-analytics-platform
 /examples/taskworker/                                          @getsentry/taskbroker
 /examples/snuba-llm-proxy-cost/                                @getsentry/machine-learning-ai
+/examples/shared-resources-inventory/                          @getsentry/foundational-storage @getsentry/data
 
 # Internal Snuba topics
 /topics/snuba-queries.yaml                                     @getsentry/owners-snuba
