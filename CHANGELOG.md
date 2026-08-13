@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 2.2.2
+
+### New Features ✨
+
+- (cogs) New shared-resources-inventory topic by @matt-codecov in [#497](https://github.com/getsentry/sentry-kafka-schemas/pull/497)
+
 ## 2.2.1
 
 - adding test schema by @snalvi in [#498](https://github.com/getsentry/sentry-kafka-schemas/pull/498)
