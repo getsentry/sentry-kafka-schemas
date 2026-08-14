@@ -3,10 +3,10 @@ import subprocess
 import sys
 import tempfile
 import urllib.request
+from importlib.metadata import version as get_package_version
 from typing import Any, Callable, Mapping, MutableMapping, MutableSequence, Sequence, Tuple
 from urllib.error import HTTPError
 
-import pkg_resources
 from sentry_kafka_schemas.sentry_kafka_schemas import TopicData, get_topic, list_topics
 
 Change = Mapping[str, Any]
@@ -211,7 +211,7 @@ def check_for_outdated_repos(
     consumers: Mapping[Repo, Sequence[FileName]],
     producers: Mapping[Repo, Sequence[FileName]],
 ) -> None:
-    latest_version = parse_version(pkg_resources.get_distribution("sentry-kafka-schemas").version)
+    latest_version = parse_version(get_package_version("sentry-kafka-schemas"))
 
     sboms = {}
     for repo in {*consumers, *producers}:
