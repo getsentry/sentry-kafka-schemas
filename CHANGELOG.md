@@ -1,5 +1,16 @@
 # Changelog and versioning
 
+## 3.0.0
+
+### Internal Changes 🔧
+
+- (deps) Bump setuptools from 80.9.0 to 83.0.0 in /python by @dependabot in [#496](https://github.com/getsentry/sentry-kafka-schemas/pull/496)
+- (kafka) Remove unused generic metrics s/g/d topics by @phacops in [#499](https://github.com/getsentry/sentry-kafka-schemas/pull/499)
+
+### Other
+
+- release: 2.2.2 by @getsentry-bot in [471d7e11](https://github.com/getsentry/sentry-kafka-schemas/commit/471d7e111fe1e95221d77b9a8cf2e6614baa546e)
+
 ## 2.2.2
 
 ### New Features ✨
