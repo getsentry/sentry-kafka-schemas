@@ -1,5 +1,9 @@
 # Changelog and versioning
 
+## 3.0.1
+
+- removing test-topic-saman by @snalvi in [#501](https://github.com/getsentry/sentry-kafka-schemas/pull/501)
+
 ## 3.0.0
 
 ### Internal Changes 🔧
