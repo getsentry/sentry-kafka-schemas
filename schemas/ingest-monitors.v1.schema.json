@@ -19,6 +19,14 @@
         "message_type": {
           "description": "Discriminant marker identifying this as a clock-pulse message.",
           "const": "clock_pulse"
+        },
+        "partition_ids": {
+          "description": "The Kafka partition ids that this clock pulse was sent to.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
         }
       },
       "required": ["message_type"]
