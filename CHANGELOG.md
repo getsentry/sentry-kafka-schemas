@@ -1,5 +1,11 @@
 # Changelog and versioning
 
+## 3.0.2
+
+### New Features ✨
+
+- (ingest-monitors) Add optional partition_ids to the clock pulse message by @strongs in [#502](https://github.com/getsentry/sentry-kafka-schemas/pull/502)
+
 ## 3.0.1
 
 - removing test-topic-saman by @snalvi in [#501](https://github.com/getsentry/sentry-kafka-schemas/pull/501)
