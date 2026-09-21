@@ -16,11 +16,11 @@ jobs:
 
       - name: Internal github app token
         id: token
-        uses: getsentry/action-github-app-token@97c9e23528286821f97fba885c1b1123284b29cc # v2.0.0
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         continue-on-error: true
         with:
-          app_id: ${{ vars.SENTRY_INTERNAL_APP_ID }}
-          private_key: ${{ secrets.SENTRY_INTERNAL_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.SENTRY_INTERNAL_APP_ID }}
+          private-key: ${{ secrets.SENTRY_INTERNAL_APP_PRIVATE_KEY }}
 
       - uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2
         with:
