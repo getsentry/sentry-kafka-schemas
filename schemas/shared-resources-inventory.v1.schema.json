@@ -13,8 +13,8 @@
       "description": "The product feature this record is attributed to."
     },
     "op_type": {
-      "enum": ["WRITE", "UPDATE", "DELETE"],
-      "description": "WRITE creates or replaces a record. UPDATE mutates fields of an existing record without changing its stored size (to, for example, extend an expiration deadline). DELETE removes it."
+      "enum": ["WRITE", "UPDATE", "DELETE", "WRITE_SESSION", "DELETE_SESSION"],
+      "description": "WRITE creates or replaces a record. UPDATE mutates fields of an existing record without changing its stored size (to, for example, extend an expiration deadline). DELETE removes it. WRITE_SESSION creates or replaces an upload-session estimate. DELETE_SESSION removes that session after completion or cancellation. Session operations are distinguishable from stored-object operations so consumers can exclude estimates from cost attribution."
     },
     "record_id": {
       "type": "string",
@@ -32,7 +32,7 @@
     },
     "size": {
       "type": ["integer", "null"],
-      "description": "Stored size in bytes. Required for op_type=WRITE. Omitted for DELETE, and for UPDATE when the size is unchanged."
+      "description": "Stored size in bytes, or estimated size for an upload session. Required for WRITE and WRITE_SESSION. Omitted for DELETE and DELETE_SESSION, and for UPDATE when the size is unchanged."
     },
     "expiration_time": {
       "type": ["integer", "null"],
