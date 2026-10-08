@@ -1,7 +1,8 @@
 description: >
   Per-record inventory change stream for shared storage resources. Producers emit
   WRITE/UPDATE/DELETE records describing what they store; consumers reconstruct
-  current bytes-stored per app_feature for use as COGS enrichment data.
+  current bytes-stored per app_feature for use as COGS enrichment data. Upload-session
+  estimates use WRITE_SESSION/DELETE_SESSION so consumers can exclude them from costs.
 services:
   producers:
     - getsentry/objectstore
