@@ -15,7 +15,7 @@
     "attachment_id": { "type": "string" },
     "chunk_index": { "type": "integer" },
     "attachment": {
-      "type": "object"
+      "$ref": "#/definitions/ChunkedAttachment"
     }
   },
   "oneOf": [
@@ -25,5 +25,58 @@
     {
       "required": ["attachment_id", "chunk_index", "payload"]
     }
-  ]
+  ],
+  "definitions": {
+    "ChunkedAttachment": {
+      "type": "object",
+      "title": "chunked_attachment",
+      "description": "An attachment, either sent standalone or as part of an event. The payload is chunked into separate `attachment_chunk` messages, inlined, or already stored.",
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "description": "The attachment ID within the event. The triple `(project_id, event_id, id)` identifies an attachment uniquely.",
+          "type": "string"
+        },
+        "name": {
+          "description": "File name of the attachment file.",
+          "type": "string"
+        },
+        "rate_limited": {
+          "description": "Set if the attachment was rate limited and must be removed after processing. Native crash reports are still forwarded when rate limited so that an event can be extracted from them. A string is the reason code of the quota that rate limited the attachment, for example `attachment_usage_exceeded`. `true` means the quota had no reason code. Omitted (or `false` in older messages) if the attachment was not rate limited.",
+          "type": ["boolean", "string"]
+        },
+        "content_type": {
+          "description": "Content type of the attachment payload.",
+          "type": "string"
+        },
+        "attachment_type": {
+          "description": "The Sentry-internal attachment type used in the processing pipeline, for example `event.minidump`.",
+          "type": "string"
+        },
+        "size": {
+          "description": "The size of the attachment in bytes.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "retention_days": {
+          "description": "The retention in days for this attachment.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "chunks": {
+          "description": "The number of `attachment_chunk` messages the payload was split into.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "data": {
+          "description": "The attachment payload, inlined.",
+          "$bytes": true
+        },
+        "stored_id": {
+          "description": "The ID of the attachment payload in the objectstore.",
+          "type": "string"
+        }
+      }
+    }
+  }
 }
