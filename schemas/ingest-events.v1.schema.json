@@ -9,7 +9,14 @@
     },
     "event_id": { "type": "string" },
     "project_id": { "type": "integer" },
-    "start_time": { "type": "integer" }
+    "start_time": { "type": "integer" },
+    "attachments": {
+      "description": "Attachments that are potentially relevant for processing the event, such as minidumps.",
+      "type": "array",
+      "items": {
+        "$ref": "file://ingest-attachments.v1.schema.json#/definitions/ChunkedAttachment"
+      }
+    }
   },
   "required": ["type", "event_id", "project_id", "payload", "start_time"]
 }

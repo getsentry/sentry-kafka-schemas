@@ -300,7 +300,7 @@ mod tests {
         let schema = get_schema("ingest-events", None).unwrap();
         assert_eq!(schema.version, 1);
         assert_eq!(schema.schema_type, SchemaType::Msgpack);
-        assert_eq!(schema.examples.len(), 1);
+        assert_eq!(schema.examples.len(), 2);
         assert!(schema.schema.starts_with("{"));
 
         // Protobuf topic
