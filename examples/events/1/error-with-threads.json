@@ -341,6 +341,7 @@
         "display_title_with_tree_label": false,
         "filename": "MainActivity.java",
         "function": "lambda$onCreate$6",
+        "rate_limited_reason": "project_quota_attachment_usage_exceeded",
         "type": "Exception",
         "value": "Some exception."
       },
