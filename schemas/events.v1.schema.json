@@ -327,6 +327,18 @@
           "default": null,
           "type": ["string", "null"]
         },
+        "metadata": {
+          "type": ["object", "null"],
+          "title": "event_metadata",
+          "description": "Event metadata computed by Sentry, merged with any metadata Relay attached to the event.",
+          "properties": {
+            "rate_limited_reason": {
+              "description": "Reason code of the rate limit that caused Relay to drop the event's crash attachment (e.g. a minidump), such as `project_quota_attachment_usage_exceeded`. Absent if no attachment was rate limited.",
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": true
+        },
         "modules": {
           "default": null,
           "type": ["object", "null"],
