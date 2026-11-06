@@ -3,6 +3,7 @@ description: Per-request LLM cost data from the LLM proxy with org attribution
 services:
   producers:
     - getsentry/ops
+    - getsentry/getsentry
   consumers:
     - getsentry/snuba
 schemas:
