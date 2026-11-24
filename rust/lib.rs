@@ -1,10 +1,8 @@
-use jsonschema::{JSONSchema, SchemaResolver, SchemaResolverError};
+use jsonschema::{Registry, RegistryBuilder, Validator};
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use std::any::Any;
-use std::sync::Arc;
+use std::sync::LazyLock;
 use thiserror::Error;
-use url::Url;
 // This file is supposed to be auto-generated via rust/build.rs
 pub mod schema_types {
     include!(concat!(env!("OUT_DIR"), "/schema_types.rs"));
@@ -94,7 +92,7 @@ pub struct Schema {
     pub schema_type: SchemaType,
     pub compatibility_mode: CompatibilityMode,
     schema: &'static str,
-    compiled_json_schema: Option<JSONSchema>,
+    compiled_json_schema: Option<Validator>,
     examples: &'static [Example],
 }
 
@@ -120,15 +118,14 @@ impl Schema {
 
         let message = serde_json::from_slice(input).map_err(ValidationError::InvalidJson)?;
 
-        json_schema
-            .validate(&message)
-            .map_err(|errors| {
-                errors
-                    .map(|e| format!("{}: {}", e.instance_path, e.to_string()))
-                    .collect::<Vec<_>>()
-                    .join(". ")
-            })
-            .map_err(ValidationError::SchemaViolation)?;
+        if !json_schema.is_valid(&message) {
+            let errors = json_schema
+                .iter_errors(&message)
+                .map(|e| format!("{}: {e}", e.instance_path()))
+                .collect::<Vec<_>>()
+                .join(". ");
+            return Err(ValidationError::SchemaViolation(errors).into());
+        }
         Ok(message)
     }
 
@@ -194,36 +191,18 @@ fn get_topic_schema(topic: &str, version: Option<u16>) -> Result<TopicSchema, Sc
     Ok(schema_metadata)
 }
 
-struct FileSchemaResolver {}
-
-impl FileSchemaResolver {
-    fn new() -> Self {
-        Self {}
-    }
-}
-
-impl SchemaResolver for FileSchemaResolver {
-    fn resolve(
-        &self,
-        _root_schema: &Value,
-        url: &Url,
-        _original_reference: &str,
-    ) -> Result<Arc<Value>, SchemaResolverError> {
-        if url.scheme() == "file" {
-            let url_str = url.as_str();
-            let relative_path = &url_str[7..url_str.len() - 1];
-            let schema = find_entry(SCHEMAS, relative_path).ok_or(SchemaError::InvalidSchema)?;
-            let schema_json =
-                serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
-            return Ok(Arc::new(schema_json));
-        }
-
-        Err(SchemaResolverError::new(Box::new(std::io::Error::new(
-            std::io::ErrorKind::NotFound,
-            format!("Unsupported URL scheme: {}", url.scheme()),
-        ))))
-    }
-}
+// Schemas reference each other as `file://<name>`.
+static REGISTRY: LazyLock<Registry<'static>> = LazyLock::new(|| {
+    let schemas = SCHEMAS.iter().map(|(name, schema)| {
+        let schema: serde_json::Value =
+            serde_json::from_str(schema).expect("Embedded schema is valid JSON");
+        (format!("file://{name}"), schema)
+    });
+    Registry::new()
+        .extend(schemas)
+        .and_then(RegistryBuilder::prepare)
+        .expect("Embedded schemas form a valid registry")
+});
 
 /// Returns the schema for a topic. If `version` is passed, return the schema for
 /// the specified version, otherwise the latest version is returned.
@@ -261,10 +240,10 @@ pub fn get_schema(topic: &str, version: Option<u16>) -> Result<Schema, SchemaErr
             find_entry(SCHEMAS, &schema_metadata.resource).ok_or(SchemaError::InvalidSchema)?;
 
         let s = serde_json::from_str(schema).map_err(|_| SchemaError::InvalidSchema)?;
-        let resolver = FileSchemaResolver::new();
-        let json_schema = JSONSchema::options()
-            .with_resolver(resolver)
-            .compile(&s)
+        let json_schema = jsonschema::options()
+            .with_registry(&REGISTRY)
+            .offline()
+            .build(&s)
             .map_err(|_| SchemaError::InvalidSchema)?;
 
         Ok(Schema {
