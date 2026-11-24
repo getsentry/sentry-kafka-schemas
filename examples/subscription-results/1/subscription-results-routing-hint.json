@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "payload": {
+    "subscription_id": "0/73fb573ac29811ed8dbb0242ac120006",
+    "result": {
+      "data": [
+        {
+          "count()": 12.0
+        }
+      ],
+      "meta": [],
+      "routing_hint": "eyJ2IjogMSwgInRpZXIiOiA4LCAidHMiOiAxNzk1NDc1MDgzfQ=="
+    },
+    "request": {
+      "request": "Ch0IARIJc29tZXRoaW5nGglzb21ldGhpbmciAwECAxIUIhIKBwgBEgNmb28QBhoFEgNiYXIyIQoaCAESDwgDEgt0ZXN0X21ldHJpYxoDc3VtIAEaA3N1bQ==",
+      "request_name": "TimeSeriesRequest",
+      "request_version": "v1"
+    },
+    "entity": "eap_items",
+    "timestamp": "2020-01-01T01:23:45.1234"
+  }
+}

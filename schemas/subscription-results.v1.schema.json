@@ -45,6 +45,10 @@
                     },
                     "additionalProperties": true
                   }
+                },
+                "routing_hint": {
+                  "type": "string",
+                  "description": "Opaque value naming how the query was routed. Consumers pass it back unchanged on related queries."
                 }
               },
               "required": ["data", "meta"],
